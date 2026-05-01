@@ -26,7 +26,7 @@ export function SearchTrigger() {
       <button
         type="button"
         onClick={open}
-        className="hidden items-center gap-2 rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-xs font-medium text-zinc-500 transition hover:border-zinc-400 hover:text-zinc-700 md:inline-flex md:w-56 lg:w-64 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:text-zinc-200"
+        className="hidden items-center gap-2 rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-xs font-medium text-zinc-500 transition hover:border-zinc-400 hover:text-zinc-700 md:inline-flex md:w-48 lg:w-56 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:text-zinc-200"
         aria-label="Search the catalogue"
       >
         <SearchIcon className="h-3.5 w-3.5" />
