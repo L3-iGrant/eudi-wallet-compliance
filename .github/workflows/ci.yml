@@ -23,7 +23,7 @@ jobs:
 
       - name: Em dash check
         run: |
-          if grep -rn --exclude-dir=node_modules "—" apps packages tools README.md 2>/dev/null; then
+          if grep -rn --exclude-dir=node_modules --exclude-dir=.next "—" apps packages tools README.md 2>/dev/null; then
             echo "Em dash found, please remove"
             exit 1
           fi
