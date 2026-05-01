@@ -1,0 +1,75 @@
+import { z } from 'zod';
+
+export const SpecSourceSchema = z.object({
+  document: z.string(),
+  version: z.string(),
+  clause: z.string(),
+  page: z.number().int().positive().optional(),
+});
+
+export const ModuleSchema = z.enum([
+  'eaa-conformance',
+  'pid-lpid',
+  'wallet-attestation',
+  'oid4vci',
+  'oid4vp',
+  'qtsp',
+  'trust-list',
+]);
+
+export const ModalVerbSchema = z.enum(['shall', 'should', 'may']);
+
+export const AppliesToSchema = z.enum(['ordinary-eaa', 'qeaa', 'pub-eaa', 'all']);
+
+export const ProfileSchema = z.enum(['sd-jwt-vc', 'mdoc', 'abstract']);
+
+export const RoleSchema = z.enum(['issuer', 'verifier', 'wallet', 'rp', 'qtsp', 'all']);
+
+export const EvidenceTypeSchema = z.enum([
+  'eaa-payload',
+  'eaa-header',
+  'issuer-cert',
+  'status-list',
+  'type-metadata',
+  'trust-list',
+]);
+
+const ID_PATTERN = /^[A-Z]+(-[A-Z]+)?-[\d.]+(-\d+)?$/;
+
+export const ControlSchema = z.object({
+  id: z.string().regex(ID_PATTERN, {
+    message: 'id must match prefix-clause-suffix, e.g. EAA-5.2.1.2-01',
+  }),
+  module: ModuleSchema,
+  spec_source: SpecSourceSchema,
+  modal_verb: ModalVerbSchema,
+  applies_to: z.array(AppliesToSchema).default(['all']),
+  profile: z.array(ProfileSchema),
+  role: z.array(RoleSchema),
+  evidence_type: z.array(EvidenceTypeSchema),
+  short_title: z.string().min(5).max(120),
+  spec_text: z.string().min(10),
+  plain_english: z
+    .string()
+    .refine((v) => v === 'TODO' || v.length >= 20, {
+      message:
+        'plain_english must be at least 20 characters or the literal "TODO" placeholder',
+    })
+    .default('TODO'),
+  why_it_matters: z.string().optional(),
+  common_mistakes: z.array(z.string()).default([]),
+  related_controls: z.array(z.string()).default([]),
+  check_function: z.string().optional(),
+});
+
+export const ControlsCatalogueSchema = z.array(ControlSchema);
+
+export type SpecSource = z.infer<typeof SpecSourceSchema>;
+export type Module = z.infer<typeof ModuleSchema>;
+export type ModalVerb = z.infer<typeof ModalVerbSchema>;
+export type AppliesTo = z.infer<typeof AppliesToSchema>;
+export type Profile = z.infer<typeof ProfileSchema>;
+export type Role = z.infer<typeof RoleSchema>;
+export type EvidenceType = z.infer<typeof EvidenceTypeSchema>;
+export type Control = z.infer<typeof ControlSchema>;
+export type ControlsCatalogue = z.infer<typeof ControlsCatalogueSchema>;

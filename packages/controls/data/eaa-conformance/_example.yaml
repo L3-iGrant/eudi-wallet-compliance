@@ -1,0 +1,36 @@
+# Example control entry. Used by the schema test harness as a known-good fixture.
+# Replace or extend during the controls extraction pass.
+
+- id: EAA-5.2.1.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 471
+    version: "1.0.0"
+    clause: "5.2.1.2"
+    page: 23
+  modal_verb: shall
+  applies_to:
+    - all
+  profile:
+    - sd-jwt-vc
+    - mdoc
+  role:
+    - issuer
+  evidence_type:
+    - eaa-payload
+  short_title: Issuer identifier present in EAA payload
+  spec_text: >-
+    The EAA shall include an identifier of the issuer that uniquely identifies the
+    natural or legal person responsible for issuing the attestation.
+  plain_english: >-
+    Every Electronic Attestation of Attributes must clearly identify the issuer so
+    a verifier can decide whether to trust it.
+  why_it_matters: >-
+    Without a clear issuer identifier, verifiers cannot evaluate trustworthiness
+    or look up revocation information.
+  common_mistakes:
+    - Using a placeholder string as the issuer identifier.
+    - Omitting the iss claim in the SD-JWT-VC payload.
+  related_controls:
+    - EAA-5.2.1.2-02
+  check_function: checkIssuerPresent
