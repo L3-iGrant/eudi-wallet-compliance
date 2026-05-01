@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Link from 'next/link';
-import { Suspense, useState } from 'react';
+import { Suspense, useRef, useState } from 'react';
 import type { AssessmentScope, Evidence } from '@iwc/engine';
 import { runAssessmentAction } from '../../../actions/run-assessment';
 
@@ -354,10 +354,20 @@ function DragDropTextarea({
   setValue,
   value,
   highlight,
+  onScroll: callerOnScroll,
   ...textareaProps
 }: DragDropTextareaProps) {
   const [isDragOver, setIsDragOver] = useState(false);
+  const overlayRef = useRef<HTMLPreElement | null>(null);
   const showHighlight = highlight === 'jwt' && !!value && looksLikeJwt(value);
+
+  const syncScroll = (e: React.UIEvent<HTMLTextAreaElement>) => {
+    if (overlayRef.current) {
+      overlayRef.current.scrollTop = e.currentTarget.scrollTop;
+      overlayRef.current.scrollLeft = e.currentTarget.scrollLeft;
+    }
+    callerOnScroll?.(e);
+  };
 
   // The highlight overlay and the textarea must share padding, font, size,
   // line height and wrapping behaviour so the coloured spans line up
@@ -392,6 +402,7 @@ function DragDropTextarea({
     >
       {showHighlight && (
         <pre
+          ref={overlayRef}
           aria-hidden="true"
           className={`${sharedTextClasses} pointer-events-none absolute inset-0 m-0 overflow-hidden whitespace-pre-wrap text-zinc-900 dark:text-zinc-100`}
           style={{ overflowWrap: 'anywhere', wordBreak: 'break-all' }}
@@ -401,12 +412,13 @@ function DragDropTextarea({
       )}
       <textarea
         spellCheck={false}
-        className={`${sharedTextClasses} relative z-10 ${
+        className={`${sharedTextClasses} relative z-10 overflow-auto ${
           showHighlight
             ? 'text-transparent caret-zinc-900 dark:caret-zinc-100 selection:bg-blue-500/40'
             : 'text-zinc-900 dark:text-zinc-100'
         } focus:border-blue-300 focus:outline-2 focus:outline-blue-600`}
         style={{ overflowWrap: 'anywhere', wordBreak: 'break-all', backgroundColor: showHighlight ? 'transparent' : undefined }}
+        onScroll={syncScroll}
         {...textareaProps}
         {...register(name)}
       />
