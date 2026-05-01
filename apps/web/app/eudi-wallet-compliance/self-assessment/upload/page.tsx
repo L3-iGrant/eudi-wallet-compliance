@@ -168,6 +168,8 @@ function UploadInner() {
             rows={6}
             register={register}
             setValue={setValue}
+            value={payloadValue}
+            highlight="jwt"
             placeholder="eyJhbGciOiJFUzI1NiIsImtpZCI6Imlzc3Vlci1rZXktMSIsInR5cCI6InZjK3NkLWp3dCIsIng1YyI6WyIuLi4iXX0..."
           />
           <FileLoader name="eaaPayload" setValue={setValue} />
@@ -340,15 +342,29 @@ interface DragDropTextareaProps
   name: 'eaaPayload' | 'issuerCert';
   register: ReturnType<typeof useForm<EvidenceForm>>['register'];
   setValue: ReturnType<typeof useForm<EvidenceForm>>['setValue'];
+  /** Live form value, used to drive the highlight overlay. Optional. */
+  value?: string;
+  /** Set to 'jwt' to colour-code three-segment compact JWTs and SD-JWT VCs. */
+  highlight?: 'jwt';
 }
 
 function DragDropTextarea({
   name,
   register,
   setValue,
+  value,
+  highlight,
   ...textareaProps
 }: DragDropTextareaProps) {
   const [isDragOver, setIsDragOver] = useState(false);
+  const showHighlight = highlight === 'jwt' && !!value && looksLikeJwt(value);
+
+  // The highlight overlay and the textarea must share padding, font, size,
+  // line height and wrapping behaviour so the coloured spans line up
+  // exactly under the user's cursor.
+  const sharedTextClasses =
+    'block w-full rounded-md border border-zinc-200 bg-white px-3 py-2 font-mono text-xs leading-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-950';
+
   return (
     <div
       onDragEnter={(e) => {
@@ -374,22 +390,102 @@ function DragDropTextarea({
         isDragOver ? 'ring-2 ring-blue-500 ring-offset-2 dark:ring-offset-zinc-950' : ''
       }`}
     >
+      {showHighlight && (
+        <pre
+          aria-hidden="true"
+          className={`${sharedTextClasses} pointer-events-none absolute inset-0 m-0 overflow-hidden whitespace-pre-wrap text-zinc-900 dark:text-zinc-100`}
+          style={{ overflowWrap: 'anywhere', wordBreak: 'break-all' }}
+        >
+          <HighlightedJwt value={value!} />
+        </pre>
+      )}
       <textarea
         spellCheck={false}
-        className="w-full rounded-md border border-zinc-200 bg-white px-3 py-2 font-mono text-xs text-zinc-900 shadow-sm focus:border-blue-300 focus:outline-2 focus:outline-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+        className={`${sharedTextClasses} relative z-10 ${
+          showHighlight
+            ? 'text-transparent caret-zinc-900 dark:caret-zinc-100 selection:bg-blue-500/40'
+            : 'text-zinc-900 dark:text-zinc-100'
+        } focus:border-blue-300 focus:outline-2 focus:outline-blue-600`}
+        style={{ overflowWrap: 'anywhere', wordBreak: 'break-all', backgroundColor: showHighlight ? 'transparent' : undefined }}
         {...textareaProps}
         {...register(name)}
       />
       {isDragOver && (
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-md bg-blue-50/85 text-sm font-semibold text-blue-700 dark:bg-blue-950/60 dark:text-blue-300"
+          className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center rounded-md bg-blue-50/85 text-sm font-semibold text-blue-700 dark:bg-blue-950/60 dark:text-blue-300"
         >
           Drop file to load
         </div>
       )}
     </div>
   );
+}
+
+// Colour palette mirrors the iGrant.io devtools JWT decoder so the look
+// is consistent across iGrant.io properties.
+const JWT_COLOUR_HEADER = '#fb015b';
+const JWT_COLOUR_PAYLOAD = '#d63aff';
+const JWT_COLOUR_SIGNATURE = '#00b9f1';
+const JWT_COLOUR_DISCLOSURE = '#047857';
+const JWT_COLOUR_KBJWT = '#b45309';
+const JWT_COLOUR_SEPARATOR = '#a1a1aa';
+
+function looksLikeJwt(s: string): boolean {
+  // First chunk before any '~' must look like header.payload.signature.
+  const first = s.split('~')[0] ?? '';
+  const parts = first.split('.');
+  if (parts.length !== 3) return false;
+  return parts.every((p) => /^[A-Za-z0-9_-]*$/.test(p));
+}
+
+function HighlightedJwt({ value }: { value: string }): React.ReactElement {
+  // SD-JWT VC compact form is `header.payload.signature[~disclosure]*[~kbjwt]`.
+  // Each `~` separates a base64url segment; the final segment after the last
+  // `~` is the optional Key Binding JWT (which itself has dots inside it).
+  const tildeChunks = value.split('~');
+  const jws = tildeChunks[0] ?? '';
+  const tail = tildeChunks.slice(1);
+  const dotChunks = jws.split('.');
+  const nodes: React.ReactElement[] = [];
+  const dotColours = [JWT_COLOUR_HEADER, JWT_COLOUR_PAYLOAD, JWT_COLOUR_SIGNATURE];
+
+  dotChunks.forEach((chunk, i) => {
+    if (i > 0) {
+      nodes.push(
+        <span key={`d-sep-${i}`} style={{ color: JWT_COLOUR_SEPARATOR }}>
+          .
+        </span>,
+      );
+    }
+    nodes.push(
+      <span key={`d-${i}`} style={{ color: dotColours[i] ?? JWT_COLOUR_SIGNATURE }}>
+        {chunk}
+      </span>,
+    );
+  });
+
+  tail.forEach((chunk, i) => {
+    nodes.push(
+      <span key={`t-sep-${i}`} style={{ color: JWT_COLOUR_SEPARATOR }}>
+        ~
+      </span>,
+    );
+    // The last segment may be a KB-JWT (it contains its own dots). Earlier
+    // segments are disclosures.
+    const isLast = i === tail.length - 1;
+    const isKbJwt = isLast && chunk.includes('.') && chunk.length > 0;
+    nodes.push(
+      <span
+        key={`t-${i}`}
+        style={{ color: isKbJwt ? JWT_COLOUR_KBJWT : JWT_COLOUR_DISCLOSURE }}
+      >
+        {chunk}
+      </span>,
+    );
+  });
+
+  return <>{nodes}</>;
 }
 
 function Spinner() {
