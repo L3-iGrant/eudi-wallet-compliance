@@ -180,11 +180,36 @@ export default async function ControlPage({ params }: PageProps) {
   const moduleName = MODULE_LABEL[control.module] ?? control.module;
 
   return (
-    <article className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
+    <article
+      className="mx-auto max-w-6xl px-6 py-12 sm:py-16"
+      data-pagefind-body
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+
+      {/* Search index metadata and filters: read by Pagefind from data attrs;
+          spans render no visible text and their attribute values stay out
+          of the body excerpt. */}
+      <div className="hidden" aria-hidden="true">
+        <span data-pagefind-meta={`control_id:${control.id}`} />
+        <span data-pagefind-meta={`short_title:${control.short_title}`} />
+        <span data-pagefind-meta={`module:${control.module}`} />
+        <span
+          data-pagefind-meta={`title:${control.id}: ${control.short_title}`}
+        />
+        <span data-pagefind-filter={`modal_verb:${control.modal_verb}`} />
+        {control.applies_to.map((t) => (
+          <span key={`f-tier-${t}`} data-pagefind-filter={`applies_to:${t}`} />
+        ))}
+        {control.profile.map((p) => (
+          <span key={`f-profile-${p}`} data-pagefind-filter={`profile:${p}`} />
+        ))}
+        {control.role.map((r) => (
+          <span key={`f-role-${r}`} data-pagefind-filter={`role:${r}`} />
+        ))}
+      </div>
 
       {/* Header */}
       <header className="border-b border-zinc-200 pb-10 dark:border-zinc-800">

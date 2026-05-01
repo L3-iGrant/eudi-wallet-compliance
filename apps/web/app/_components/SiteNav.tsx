@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { loadModules } from '@iwc/controls';
+import { SearchTrigger } from './SearchTrigger';
 
 const linkClass =
   'inline-flex items-center px-3 py-2 text-sm font-medium text-zinc-700 hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-white';
@@ -21,14 +22,6 @@ export async function SiteNav() {
           <Link href="/self-assessment/" className={linkClass}>
             Self-Assessment
           </Link>
-
-          <span
-            className={`${linkClass} cursor-not-allowed opacity-60`}
-            aria-disabled="true"
-            title="Coming soon"
-          >
-            Workspace
-          </span>
 
           {/* CSS-only dropdown via :focus-within. No client JS in this nav. */}
           <div className="group relative">
@@ -102,12 +95,16 @@ export async function SiteNav() {
           </Link>
         </div>
 
-        <Link
-          href="/self-assessment/"
-          className="ml-auto inline-flex items-center rounded-md bg-zinc-900 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200 dark:focus-visible:outline-white"
-        >
-          Run Assessment <span aria-hidden="true" className="ml-1">&rarr;</span>
-        </Link>
+        <div className="ml-auto flex items-center gap-3">
+          <SearchTrigger />
+          <Link
+            href="/self-assessment/"
+            className="inline-flex items-center rounded-md bg-zinc-900 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200 dark:focus-visible:outline-white"
+          >
+            Run Assessment{' '}
+            <span aria-hidden="true" className="ml-1">&rarr;</span>
+          </Link>
+        </div>
       </nav>
     </header>
   );

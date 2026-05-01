@@ -40,25 +40,6 @@ function PlayIcon({ className }: { className?: string }) {
   );
 }
 
-function StackIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className={className}
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12 3l9 4.5-9 4.5-9-4.5L12 3z" />
-      <path d="M3 12l9 4.5 9-4.5" />
-      <path d="M3 16.5L12 21l9-4.5" />
-    </svg>
-  );
-}
-
 function SearchIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -449,42 +430,6 @@ export default async function Hub() {
         </div>
       </section>
 
-      {/* Workspace teaser (demoted from the old Two-Access-Modes section) */}
-      <section className="mx-auto max-w-6xl px-6 pb-16">
-        <div className="flex flex-col gap-4 rounded-xl border border-dashed border-zinc-300 bg-zinc-50/60 p-6 dark:border-zinc-700 dark:bg-zinc-900/40 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
-          <div className="flex items-start gap-4">
-            <div
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-zinc-200 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400"
-              aria-hidden="true"
-            >
-              <StackIcon className="h-5 w-5" />
-            </div>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
-                Coming Q3 2026
-              </p>
-              <h3 className="mt-1 text-base font-semibold text-zinc-950 dark:text-white">
-                Workspace, the multi-tenant SaaS for compliance teams
-              </h3>
-              <p className="mt-1 text-sm text-zinc-700 dark:text-zinc-300">
-                Persistent assessments, custom controls, role-based
-                collaboration, white-labelled reports, and integrations into
-                your CI and ticketing.
-              </p>
-            </div>
-          </div>
-          <a
-            href="https://igrant.io/contact"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex shrink-0 items-center justify-center rounded-md border border-zinc-300 bg-white px-4 py-2 text-sm font-semibold text-zinc-900 hover:border-blue-300 hover:text-blue-700 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:hover:border-blue-700 dark:hover:text-blue-300"
-          >
-            Talk to iGrant.io{' '}
-            <span aria-hidden="true" className="ml-1.5">&rarr;</span>
-          </a>
-        </div>
-      </section>
-
       {/* Trust signals */}
       <section className="border-t border-zinc-100 bg-white py-12 dark:border-zinc-900 dark:bg-zinc-950">
         <div className="mx-auto max-w-6xl px-6">
@@ -496,18 +441,6 @@ export default async function Hub() {
             <li className="flex items-center gap-2">
               <CheckMark />
               EAA module live on TS 119 472-1 v1.2.1
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckMark />
-              <a
-                href="https://signature-plugtests.etsi.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-zinc-900 hover:underline dark:hover:text-white"
-              >
-                Active during ETSI EAA Plugtests 2026
-                <span aria-hidden="true" className="ml-1">↗</span>
-              </a>
             </li>
             <li className="flex items-center gap-2">
               <CheckMark />

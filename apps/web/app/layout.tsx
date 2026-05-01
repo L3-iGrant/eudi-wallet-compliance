@@ -4,6 +4,7 @@ import './globals.css';
 import { SiteNav } from './_components/SiteNav';
 import { SiteFooter } from './_components/SiteFooter';
 import { Breadcrumbs } from './_components/Breadcrumbs';
+import { SearchOverlay } from './_components/SearchOverlay';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -44,6 +45,7 @@ export default function RootLayout({
           {children}
         </main>
         <SiteFooter />
+        <SearchOverlay />
       </body>
     </html>
   );
