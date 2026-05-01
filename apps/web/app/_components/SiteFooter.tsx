@@ -20,7 +20,17 @@ export function SiteFooter() {
             Open-source on GitHub
           </a>
           <span aria-hidden="true" className="hidden sm:inline">·</span>
-          <span>Maintained by iGrant.io</span>
+          <span>
+            Maintained by{' '}
+            <a
+              href="https://igrant.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-inherit no-underline hover:underline"
+            >
+              iGrant.io
+            </a>
+          </span>
           <span aria-hidden="true" className="hidden sm:inline">·</span>
           <span>
             Anchored in EUDI Wallet specs from ETSI, IETF, ISO, OpenID, and W3C
