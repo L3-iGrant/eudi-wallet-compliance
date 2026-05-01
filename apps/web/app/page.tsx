@@ -148,7 +148,6 @@ export default async function Hub() {
           {/* Left column: copy + CTAs */}
           <div className="lg:col-span-7">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-700 dark:text-blue-400">
-              <span className="inline-block h-px w-6 align-middle bg-blue-700 mr-3 dark:bg-blue-400" />
               Free · Open-source · Spec-anchored
             </p>
             <h1 className="mt-5 max-w-2xl text-balance font-semibold tracking-tight text-zinc-950 dark:text-white">
@@ -181,7 +180,7 @@ export default async function Hub() {
                 className="inline-flex items-center justify-center rounded-md bg-zinc-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-px hover:bg-zinc-800 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
               >
                 Run the Self-Assessment
-                <span aria-hidden="true" className="ml-2">&rarr;</span>
+                <span aria-hidden="true" className="ml-2">&gt;</span>
               </Link>
               <Link
                 href="/modules/eaa-conformance/controls/"
@@ -274,7 +273,7 @@ export default async function Hub() {
             </p>
             <span className="mt-4 inline-flex items-center text-sm font-semibold text-blue-700 group-hover:underline dark:text-blue-300">
               Open the runner{' '}
-              <span aria-hidden="true" className="ml-1 transition group-hover:translate-x-1">&rarr;</span>
+              <span aria-hidden="true" className="ml-1 transition group-hover:translate-x-1">&gt;</span>
             </span>
           </Link>
 
@@ -301,7 +300,7 @@ export default async function Hub() {
             </p>
             <span className="mt-4 inline-flex items-center text-sm font-semibold text-blue-700 group-hover:underline dark:text-blue-300">
               Open the catalogue{' '}
-              <span aria-hidden="true" className="ml-1 transition group-hover:translate-x-1">&rarr;</span>
+              <span aria-hidden="true" className="ml-1 transition group-hover:translate-x-1">&gt;</span>
             </span>
           </Link>
 
@@ -327,7 +326,7 @@ export default async function Hub() {
             </p>
             <span className="mt-4 inline-flex items-center text-sm font-semibold text-blue-700 group-hover:underline dark:text-blue-300">
               Read the overview{' '}
-              <span aria-hidden="true" className="ml-1 transition group-hover:translate-x-1">&rarr;</span>
+              <span aria-hidden="true" className="ml-1 transition group-hover:translate-x-1">&gt;</span>
             </span>
           </Link>
         </div>
@@ -401,7 +400,7 @@ export default async function Hub() {
                         aria-hidden="true"
                         className="translate-x-0 text-blue-700 opacity-0 transition group-hover:translate-x-1 group-hover:opacity-100 dark:text-blue-400"
                       >
-                        &rarr;
+                        &gt;
                       </span>
                     </p>
                   )}

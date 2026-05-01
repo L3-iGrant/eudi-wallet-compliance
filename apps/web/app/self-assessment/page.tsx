@@ -19,7 +19,6 @@ export default function SelfAssessmentComingSoon() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-16 sm:py-24">
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700 dark:text-blue-400">
-        <span className="inline-block h-px w-6 align-middle bg-blue-700 mr-3 dark:bg-blue-400" />
         Self-Assessment · Coming soon
       </p>
       <h1 className="mt-4 text-balance text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl lg:text-5xl dark:text-white">
@@ -48,7 +47,7 @@ export default function SelfAssessmentComingSoon() {
             control has a stable URL you can reference from your tracker.
           </p>
           <span className="mt-4 inline-flex items-center text-sm font-semibold text-blue-700 group-hover:underline dark:text-blue-400">
-            Open the catalogue <span aria-hidden="true" className="ml-1">&rarr;</span>
+            Open the catalogue <span aria-hidden="true" className="ml-1">&gt;</span>
           </span>
         </Link>
 
@@ -69,7 +68,7 @@ export default function SelfAssessmentComingSoon() {
             public launch. If you want to be part of that, get in touch.
           </p>
           <span className="mt-4 inline-flex items-center text-sm font-semibold text-zinc-700 group-hover:underline dark:text-zinc-300">
-            Talk to iGrant.io <span aria-hidden="true" className="ml-1">&rarr;</span>
+            Talk to iGrant.io <span aria-hidden="true" className="ml-1">&gt;</span>
           </span>
         </a>
       </section>

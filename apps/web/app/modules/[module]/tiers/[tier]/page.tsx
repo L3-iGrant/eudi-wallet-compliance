@@ -120,7 +120,7 @@ export default async function TierFilteredPage({ params }: PageProps) {
           className="font-semibold text-blue-700 hover:underline dark:text-blue-400"
         >
           Open the full controls catalogue
-          <span aria-hidden="true" className="ml-1">&rarr;</span>
+          <span aria-hidden="true" className="ml-1">&gt;</span>
         </Link>
         <Link
           href={`/modules/${m.id}/`}

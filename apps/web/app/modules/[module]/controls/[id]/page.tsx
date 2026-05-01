@@ -454,7 +454,7 @@ export default async function ControlPage({ params }: PageProps) {
             className="mt-4 inline-flex shrink-0 items-center justify-center rounded-md border border-zinc-300 bg-white px-4 py-2 text-sm font-semibold text-zinc-900 hover:border-blue-300 hover:text-blue-700 sm:mt-0 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:hover:border-blue-700 dark:hover:text-blue-300"
           >
             Talk to iGrant.io
-            <span aria-hidden="true" className="ml-1.5">&rarr;</span>
+            <span aria-hidden="true" className="ml-1.5">&gt;</span>
           </a>
         </div>
       </footer>

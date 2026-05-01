@@ -102,7 +102,7 @@ export async function SiteNav() {
             className="inline-flex items-center rounded-md bg-zinc-900 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200 dark:focus-visible:outline-white"
           >
             Run Assessment{' '}
-            <span aria-hidden="true" className="ml-1">&rarr;</span>
+            <span aria-hidden="true" className="ml-1">&gt;</span>
           </Link>
         </div>
       </nav>
