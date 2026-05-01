@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { loadAllControls, loadModules } from '@iwc/controls';
+import { ChevronRight } from './_components/ChevronRight';
 
 export const metadata: Metadata = {
   title: 'EUDI Wallet Compliance · iGrant.io',
@@ -180,7 +181,7 @@ export default async function Hub() {
                 className="inline-flex items-center justify-center rounded-md bg-zinc-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-px hover:bg-zinc-800 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
               >
                 Run the Self-Assessment
-                <span aria-hidden="true" className="ml-2">&gt;</span>
+                <ChevronRight className="ml-2" />
               </Link>
               <Link
                 href="/modules/eaa-conformance/controls/"
@@ -273,7 +274,7 @@ export default async function Hub() {
             </p>
             <span className="mt-4 inline-flex items-center text-sm font-semibold text-blue-700 group-hover:underline dark:text-blue-300">
               Open the runner{' '}
-              <span aria-hidden="true" className="ml-1 transition group-hover:translate-x-1">&gt;</span>
+              <ChevronRight className="ml-1 transition group-hover:translate-x-1" />
             </span>
           </Link>
 
@@ -300,7 +301,7 @@ export default async function Hub() {
             </p>
             <span className="mt-4 inline-flex items-center text-sm font-semibold text-blue-700 group-hover:underline dark:text-blue-300">
               Open the catalogue{' '}
-              <span aria-hidden="true" className="ml-1 transition group-hover:translate-x-1">&gt;</span>
+              <ChevronRight className="ml-1 transition group-hover:translate-x-1" />
             </span>
           </Link>
 
@@ -326,7 +327,7 @@ export default async function Hub() {
             </p>
             <span className="mt-4 inline-flex items-center text-sm font-semibold text-blue-700 group-hover:underline dark:text-blue-300">
               Read the overview{' '}
-              <span aria-hidden="true" className="ml-1 transition group-hover:translate-x-1">&gt;</span>
+              <ChevronRight className="ml-1 transition group-hover:translate-x-1" />
             </span>
           </Link>
         </div>
@@ -400,7 +401,7 @@ export default async function Hub() {
                         aria-hidden="true"
                         className="translate-x-0 text-blue-700 opacity-0 transition group-hover:translate-x-1 group-hover:opacity-100 dark:text-blue-400"
                       >
-                        &gt;
+                        <ChevronRight />
                       </span>
                     </p>
                   )}

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { loadAllControls, loadModules, type Role } from '@iwc/controls';
 import { ControlsTable, ROLE_LABEL } from '../../_components/ControlsTable';
+import { ChevronRight } from '../../../../_components/ChevronRight';
 
 const ROLES = ['issuer', 'verifier', 'wallet', 'rp', 'qtsp', 'all'] as const;
 type RoleSlug = (typeof ROLES)[number];
@@ -95,7 +96,7 @@ export default async function RoleFilteredPage({ params }: PageProps) {
           className="font-semibold text-blue-700 hover:underline dark:text-blue-400"
         >
           Open the full controls catalogue
-          <span aria-hidden="true" className="ml-1">&gt;</span>
+          <ChevronRight className="ml-1" />
         </Link>
         <Link
           href={`/modules/${m.id}/`}

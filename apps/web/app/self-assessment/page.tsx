@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { ChevronRight } from '../_components/ChevronRight';
 
 export const metadata: Metadata = {
   title: 'Self-Assessment · EUDI Wallet Compliance · iGrant.io',
@@ -47,7 +48,7 @@ export default function SelfAssessmentComingSoon() {
             control has a stable URL you can reference from your tracker.
           </p>
           <span className="mt-4 inline-flex items-center text-sm font-semibold text-blue-700 group-hover:underline dark:text-blue-400">
-            Open the catalogue <span aria-hidden="true" className="ml-1">&gt;</span>
+            Open the catalogue <ChevronRight className="ml-1" />
           </span>
         </Link>
 
@@ -68,7 +69,7 @@ export default function SelfAssessmentComingSoon() {
             public launch. If you want to be part of that, get in touch.
           </p>
           <span className="mt-4 inline-flex items-center text-sm font-semibold text-zinc-700 group-hover:underline dark:text-zinc-300">
-            Talk to iGrant.io <span aria-hidden="true" className="ml-1">&gt;</span>
+            Talk to iGrant.io <ChevronRight className="ml-1" />
           </span>
         </a>
       </section>

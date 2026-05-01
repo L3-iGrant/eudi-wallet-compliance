@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { loadAllControls, loadModules, type AppliesTo } from '@iwc/controls';
 import { ControlsTable } from '../../_components/ControlsTable';
+import { ChevronRight } from '../../../../_components/ChevronRight';
 
 const TIER_SLUGS = ['ordinary', 'qeaa', 'pub-eaa'] as const;
 type TierSlug = (typeof TIER_SLUGS)[number];
@@ -120,7 +121,7 @@ export default async function TierFilteredPage({ params }: PageProps) {
           className="font-semibold text-blue-700 hover:underline dark:text-blue-400"
         >
           Open the full controls catalogue
-          <span aria-hidden="true" className="ml-1">&gt;</span>
+          <ChevronRight className="ml-1" />
         </Link>
         <Link
           href={`/modules/${m.id}/`}

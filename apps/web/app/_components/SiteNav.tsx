@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { loadModules } from '@iwc/controls';
 import { SearchTrigger } from './SearchTrigger';
+import { ChevronRight } from './ChevronRight';
 
 const linkClass =
   'inline-flex items-center px-3 py-2 text-sm font-medium text-zinc-700 hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-white';
@@ -102,7 +103,7 @@ export async function SiteNav() {
             className="inline-flex items-center rounded-md bg-zinc-900 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200 dark:focus-visible:outline-white"
           >
             Run Assessment{' '}
-            <span aria-hidden="true" className="ml-1">&gt;</span>
+            <ChevronRight className="ml-1" />
           </Link>
         </div>
       </nav>

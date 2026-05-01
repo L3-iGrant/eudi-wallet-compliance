@@ -7,6 +7,7 @@ import {
   type Control,
   type ModuleMetadata,
 } from '@iwc/controls';
+import { ChevronRight } from '../../_components/ChevronRight';
 
 interface PageProps {
   params: Promise<{ module: string }>;
@@ -309,7 +310,7 @@ export default async function ModulePage({ params }: PageProps) {
               className="mt-4 inline-flex w-full items-center justify-center rounded-md bg-zinc-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-zinc-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
             >
               Run the Self-Assessment
-              <span aria-hidden="true" className="ml-1.5">&gt;</span>
+              <ChevronRight className="ml-1.5" />
             </Link>
           </div>
         </aside>
@@ -378,7 +379,7 @@ export default async function ModulePage({ params }: PageProps) {
             className="inline-flex items-center text-sm font-semibold text-blue-700 hover:underline dark:text-blue-400"
           >
             Open the full controls catalogue
-            <span aria-hidden="true" className="ml-1">&gt;</span>
+            <ChevronRight className="ml-1" />
           </Link>
         </div>
       </section>
@@ -492,7 +493,7 @@ function UpcomingModule({ module: m }: { module: ModuleMetadata }) {
           className="mt-4 inline-flex items-center justify-center rounded-md bg-zinc-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
         >
           Talk to iGrant.io
-          <span aria-hidden="true" className="ml-1.5">&gt;</span>
+          <ChevronRight className="ml-1.5" />
         </a>
       </section>
 
