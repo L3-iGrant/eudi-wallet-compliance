@@ -13,7 +13,10 @@ function tierToAppliesTo(tier: AssessmentScope['tier']): string {
 /**
  * Filter a control list down to the ones that apply to a given assessment
  * scope. A control is in scope when:
- *   - its `profile` array intersects `scope.profile`
+ *   - its `profile` array intersects `scope.profile` OR contains 'abstract'
+ *     (cross-cutting controls in `profile: ['abstract']` apply to every
+ *     concrete-profile assessment; e.g. the Section 4 mutex rules apply
+ *     to both SD-JWT VC and mdoc EAAs)
  *   - its `role` array intersects `scope.role`
  *   - its `applies_to` array contains the mapped tier OR contains 'all'
  */
@@ -23,9 +26,9 @@ export function filterControlsForScope(
 ): Control[] {
   const tierKey = tierToAppliesTo(scope.tier);
   return controls.filter((c) => {
-    const profileMatch = c.profile.some((p) =>
-      (scope.profile as string[]).includes(p),
-    );
+    const profileMatch =
+      c.profile.includes('abstract') ||
+      c.profile.some((p) => (scope.profile as string[]).includes(p));
     if (!profileMatch) return false;
 
     const roleMatch = c.role.some((r) => (scope.role as string[]).includes(r));

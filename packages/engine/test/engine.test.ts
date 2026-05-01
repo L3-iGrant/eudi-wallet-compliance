@@ -70,9 +70,16 @@ describe('filterControlsForScope', () => {
     expect(ids).not.toContain('EAA-6.1-01');
   });
 
-  it('excludes abstract-profile controls when scope.profile is sd-jwt-vc only', () => {
+  it('always includes abstract-profile (cross-cutting) controls regardless of scope.profile', () => {
+    // The Section 4 cross-cutting controls carry profile: ['abstract'] and
+    // apply to every concrete-profile assessment.
     const out = filterControlsForScope(sampleControls, sdJwtScope);
-    expect(out.map((c) => c.id)).not.toContain('EAA-4.2.6.6-01');
+    expect(out.map((c) => c.id)).toContain('EAA-4.2.6.6-01');
+    const mdocOut = filterControlsForScope(sampleControls, {
+      ...sdJwtScope,
+      profile: ['mdoc'],
+    });
+    expect(mdocOut.map((c) => c.id)).toContain('EAA-4.2.6.6-01');
   });
 
   it('excludes QEAA-only controls when scope.tier is ordinary', () => {
