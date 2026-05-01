@@ -258,35 +258,6 @@ export default async function Hub() {
         </div>
       </section>
 
-      {/* ETSI Plugtests context banner */}
-      <section className="border-b border-blue-100 bg-blue-50/40 dark:border-blue-900/40 dark:bg-blue-950/20">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
-          <div className="flex items-start gap-3 sm:items-center">
-            <span
-              className="inline-flex shrink-0 items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800 dark:bg-blue-900/40 dark:text-blue-200"
-            >
-              Plugtests companion
-            </span>
-            <p className="text-sm text-zinc-800 dark:text-zinc-200">
-              An open-source companion to the official{' '}
-              <span className="font-semibold">ETSI EAA Plugtests programme</span>.
-              We are building it in the open during the 2026 interop event
-              itself, so vendors can verify their EAA implementations against
-              ETSI TS 119 472-1 alongside the official programme.
-            </p>
-          </div>
-          <a
-            href="https://signature-plugtests.etsi.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex shrink-0 items-center text-sm font-semibold text-blue-700 hover:underline dark:text-blue-300"
-          >
-            ETSI Plugtests programme{' '}
-            <span aria-hidden="true" className="ml-1">↗</span>
-          </a>
-        </div>
-      </section>
-
       {/* Start where you are: task-led 3-card band */}
       <section className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
         <div>
@@ -389,12 +360,14 @@ export default async function Hub() {
               Frameworks covered
             </p>
             <h2 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl dark:text-white">
-              One module ships today. Six more in the build pipeline.
+              Seven modules across the EUDI Wallet compliance stack.
             </h2>
-            <p className="mt-2 max-w-2xl text-sm text-zinc-600 dark:text-zinc-400">
-              The EAA Conformance module is live, covering ETSI TS 119 472-1.
-              The remaining modules sit alongside it and will surface as they
-              reach review.
+            <p className="mt-2 max-w-3xl text-sm text-zinc-600 dark:text-zinc-400">
+              Each module maps to a distinct compliance surface, from
+              issuance and presentation to QTSP operations and trust lists.
+              EAA Conformance is the first to ship, anchored in ETSI TS 119
+              472-1. The other six are in active development across upcoming
+              releases.
             </p>
           </div>
 
@@ -518,11 +491,23 @@ export default async function Hub() {
           <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-zinc-600 dark:text-zinc-400">
             <li className="flex items-center gap-2">
               <CheckMark />
-              Built on TS 119 472-1 v1.2.1
+              Anchored in ETSI, IETF, ISO, and W3C specs
             </li>
             <li className="flex items-center gap-2">
               <CheckMark />
-              References ETSI, IETF, ISO, and W3C
+              EAA module live on TS 119 472-1 v1.2.1
+            </li>
+            <li className="flex items-center gap-2">
+              <CheckMark />
+              <a
+                href="https://signature-plugtests.etsi.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-zinc-900 hover:underline dark:hover:text-white"
+              >
+                Active during ETSI EAA Plugtests 2026
+                <span aria-hidden="true" className="ml-1">↗</span>
+              </a>
             </li>
             <li className="flex items-center gap-2">
               <CheckMark />
