@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { loadAllControls, type Control } from '@iwc/controls';
 import { controlIdToSlug, slugToControlId } from '@iwc/shared';
-import { ChevronRight } from '../../../../_components/ChevronRight';
 
 interface PageProps {
   params: Promise<{ module: string; id: string }>;
