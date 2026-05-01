@@ -1,0 +1,77 @@
+# Module metadata. Drives the framework picker on the Hub page and the module
+# index on the Self-Assessment landing page. Status is one of:
+#   shipped           module is live, controls catalogue is published
+#   in-development    work has started, no public surface yet
+#   planned           on the roadmap, no work yet
+
+- id: eaa-conformance
+  name: EAA Conformance
+  status: shipped
+  short_description: >-
+    Conformance for Electronic Attestations of Attributes (EAA) covering
+    SD-JWT VC and ISO/IEC mdoc profiles, ordinary EAA, QEAA, and PuB-EAA tiers.
+  spec_sources:
+    - ETSI TS 119 472-1
+    - ETSI TS 119 412-6
+
+- id: pid-lpid
+  name: PID and LPID
+  status: in-development
+  short_description: >-
+    Conformance for the Personal Identification Data (PID) and Legal Person
+    Identification Data (LPID) credential types issued under the EUDI Wallet.
+  spec_sources:
+    - ETSI TS 119 471
+    - CIR (EU) 2024/2977
+
+- id: wallet-attestation
+  name: Wallet Attestation
+  status: in-development
+  short_description: >-
+    Conformance for wallet-instance attestations that authenticate the wallet
+    to issuers and relying parties.
+  spec_sources:
+    - OpenID4VC HAIP
+    - IETF draft-ietf-oauth-attestation-based-client-auth
+
+- id: oid4vci
+  name: OpenID for Verifiable Credential Issuance
+  status: in-development
+  short_description: >-
+    Conformance for the OpenID4VCI protocol used to issue credentials into
+    the wallet, including credential offer, authorisation, and issuance flows.
+  spec_sources:
+    - OpenID4VCI Draft 14
+    - OpenID4VC HAIP
+
+- id: oid4vp
+  name: OpenID for Verifiable Presentations
+  status: in-development
+  short_description: >-
+    Conformance for the OpenID4VP protocol used by relying parties to request
+    and verify presentations of credentials held in the wallet.
+  spec_sources:
+    - OpenID4VP Draft 21
+    - OpenID4VC HAIP
+
+- id: qtsp
+  name: QTSP Operations
+  status: in-development
+  short_description: >-
+    Conformance for Qualified Trust Service Providers issuing qualified
+    electronic attestations under eIDAS 2 and the EUDI Architecture Reference
+    Framework.
+  spec_sources:
+    - ETSI EN 319 401
+    - ETSI EN 319 411-2
+    - Regulation (EU) 2024/1183
+
+- id: trust-list
+  name: Trust List Publication
+  status: in-development
+  short_description: >-
+    Conformance for publication and consumption of trust lists used to
+    establish issuer and relying-party legitimacy in the EUDI ecosystem.
+  spec_sources:
+    - ETSI TS 119 612
+    - ETSI TS 119 615

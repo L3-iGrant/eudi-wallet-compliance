@@ -1,0 +1,31 @@
+{
+  "sample_id": "sjv-eaa-1",
+  "title": "Baseline SD-JWT VC EAA, no selective disclosure, no key binding",
+  "description": "Smallest possible conformant SD-JWT VC EAA. The payload carries the mandatory JOSE and SD-JWT VC claims (vct, vct#integrity, iss, nbf, exp) but no selectively-disclosable attributes and no holder key binding. Useful as the floor case for verifier implementations.",
+  "profile": "sd-jwt-vc",
+  "payload": "<placeholder: real signed sample to be produced in Phase 5>",
+  "header": {
+    "alg": "ES256",
+    "typ": "vc+sd-jwt",
+    "kid": "https://issuer.example/keys/issuer-1"
+  },
+  "payload_decoded": {
+    "iss": "https://issuer.example",
+    "vct": "https://issuer.example/credentials/baseline-eaa",
+    "vct#integrity": "sha256-eXAMPLEbaselineintegrityplaceholderlength43c",
+    "iat": 1735689600,
+    "nbf": 1735689600,
+    "exp": 1767225600,
+    "issuing_authority": "Example Issuing Authority"
+  },
+  "exercises_controls": [
+    "EAA-5.1-01",
+    "EAA-5.2.1.2-01",
+    "EAA-5.2.1.2-03",
+    "EAA-5.2.4.1-01",
+    "EAA-5.2.6-01",
+    "EAA-5.2.6-02",
+    "EAA-5.2.7.1-01",
+    "EAA-5.2.7.1-03"
+  ]
+}

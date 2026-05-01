@@ -1,0 +1,41 @@
+{
+  "sample_id": "sjv-eaa-2",
+  "title": "SD-JWT VC EAA with key binding (cnf)",
+  "description": "Baseline EAA augmented with the cnf claim that binds the credential to a holder-controlled key. Adds the key-binding controls in clause 5.5 to those already exercised by sjv-eaa-1.",
+  "profile": "sd-jwt-vc",
+  "payload": "<placeholder: real signed sample to be produced in Phase 5>",
+  "header": {
+    "alg": "ES256",
+    "typ": "vc+sd-jwt",
+    "kid": "https://issuer.example/keys/issuer-1"
+  },
+  "payload_decoded": {
+    "iss": "https://issuer.example",
+    "vct": "https://issuer.example/credentials/keybound-eaa",
+    "vct#integrity": "sha256-eXAMPLEkeyboundintegrityplaceholderlength43cd",
+    "iat": 1735689600,
+    "nbf": 1735689600,
+    "exp": 1767225600,
+    "issuing_authority": "Example Issuing Authority",
+    "cnf": {
+      "jwk": {
+        "kty": "EC",
+        "crv": "P-256",
+        "x": "PLACEHOLDER_HOLDER_PUBKEY_X",
+        "y": "PLACEHOLDER_HOLDER_PUBKEY_Y"
+      }
+    }
+  },
+  "exercises_controls": [
+    "EAA-5.1-01",
+    "EAA-5.2.1.2-01",
+    "EAA-5.2.1.2-03",
+    "EAA-5.2.4.1-01",
+    "EAA-5.2.6-01",
+    "EAA-5.2.7.1-01",
+    "EAA-5.2.7.1-03",
+    "EAA-5.5-01",
+    "EAA-5.5-02",
+    "EAA-5.5-06"
+  ]
+}

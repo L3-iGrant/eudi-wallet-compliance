@@ -1,0 +1,50 @@
+{
+  "sample_id": "sjv-eaa-5",
+  "title": "QEAA signed with a qualified electronic seal",
+  "description": "QEAA produced by a Qualified Trust Service Provider. Signature is a qualified electronic seal under eIDAS 2; the protected header carries x5u and x5t#S256, and (recommended) x5c. Includes a status claim for revocation, as the QEAA is not short-lived.",
+  "profile": "sd-jwt-vc",
+  "payload": "<placeholder: real signed sample to be produced in Phase 5>",
+  "header": {
+    "alg": "ES256",
+    "typ": "vc+sd-jwt",
+    "x5u": "https://qtsp.example/certs/qeaa-issuer.pem",
+    "x5t#S256": "PLACEHOLDER_X5T_S256_THUMBPRINT",
+    "x5c": ["PLACEHOLDER_BASE64_QUALIFIED_CERT_FIRST_LINE"]
+  },
+  "payload_decoded": {
+    "iss": "https://qtsp.example",
+    "vct": "https://qtsp.example/credentials/qeaa-degree",
+    "vct#integrity": "sha256-eXAMPLEqeaaintegrityplaceholderlength43cdef01",
+    "iat": 1735689600,
+    "nbf": 1735689600,
+    "exp": 1767225600,
+    "status": {
+      "type": "TokenStatusList",
+      "purpose": "revocation",
+      "index": 42,
+      "uri": "https://qtsp.example/status/qeaa-revocation"
+    },
+    "cnf": {
+      "jwk": {
+        "kty": "EC",
+        "crv": "P-256",
+        "x": "PLACEHOLDER_HOLDER_PUBKEY_X",
+        "y": "PLACEHOLDER_HOLDER_PUBKEY_Y"
+      }
+    }
+  },
+  "exercises_controls": [
+    "EAA-5.1-01",
+    "EAA-5.2.1.2-01",
+    "EAA-5.2.1.2-03",
+    "EAA-5.2.7.1-01",
+    "EAA-5.2.7.1-03",
+    "QEAA-5.2.5.5-01",
+    "QEAA-5.2.10.2-01",
+    "QEAA-5.6.2-01",
+    "QEAA-5.6.2-02",
+    "QEAA-5.6.2-03",
+    "EAA-5.5-01",
+    "EAA-5.5-02"
+  ]
+}

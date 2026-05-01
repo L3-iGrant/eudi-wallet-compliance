@@ -1,0 +1,41 @@
+{
+  "sample_id": "sjv-eaa-7",
+  "title": "Short-lived SD-JWT VC EAA without a status service",
+  "description": "Demonstrates the short-lived alternative to a status service: the EAA carries the shortLived claim (null) and no status component. Exercises EAA-4.2.11.1-03 (the mutex) and the clause 5.2.12 short-lived rules.",
+  "profile": "sd-jwt-vc",
+  "payload": "<placeholder: real signed sample to be produced in Phase 5>",
+  "header": {
+    "alg": "ES256",
+    "typ": "vc+sd-jwt",
+    "kid": "https://issuer.example/keys/issuer-1"
+  },
+  "payload_decoded": {
+    "iss": "https://issuer.example",
+    "vct": "https://issuer.example/credentials/short-lived-eaa",
+    "vct#integrity": "sha256-eXAMPLEshortlivedintegrityplaceholderlength4",
+    "iat": 1735689600,
+    "nbf": 1735689600,
+    "exp": 1735693200,
+    "issuing_authority": "Example Issuing Authority",
+    "shortLived": null,
+    "cnf": {
+      "jwk": {
+        "kty": "EC",
+        "crv": "P-256",
+        "x": "PLACEHOLDER_HOLDER_PUBKEY_X",
+        "y": "PLACEHOLDER_HOLDER_PUBKEY_Y"
+      }
+    }
+  },
+  "exercises_controls": [
+    "EAA-5.1-01",
+    "EAA-5.2.1.2-01",
+    "EAA-5.2.1.2-03",
+    "EAA-5.2.7.1-01",
+    "EAA-5.2.7.1-03",
+    "EAA-5.2.12-01",
+    "EAA-5.2.12-02",
+    "EAA-4.2.11.1-03",
+    "EAA-5.5-01"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "sample_id": "sjv-eaa-6",
+  "title": "PuB-EAA issued by a public body responsible for an authentic source",
+  "description": "PuB-EAA: an EAA issued by or on behalf of a public body that maintains an authentic source. Carries issuing_country and (where applicable) iss_reg_id, and is signed with a qualified seal. Exercises the PuB-EAA-specific clauses 5.2.4.3, 5.2.5.6, 5.2.10.3, and 5.6.3.",
+  "profile": "sd-jwt-vc",
+  "payload": "<placeholder: real signed sample to be produced in Phase 5>",
+  "header": {
+    "alg": "ES256",
+    "typ": "vc+sd-jwt",
+    "x5u": "https://authority.example.gov/certs/pub-eaa-issuer.pem",
+    "x5t#S256": "PLACEHOLDER_X5T_S256_THUMBPRINT",
+    "x5c": ["PLACEHOLDER_BASE64_QUALIFIED_CERT_FIRST_LINE"]
+  },
+  "payload_decoded": {
+    "iss": "https://authority.example.gov",
+    "vct": "https://authority.example.gov/credentials/pub-eaa-residence",
+    "vct#integrity": "sha256-eXAMPLEpubeaaintegrityplaceholderlength43cde0",
+    "iat": 1735689600,
+    "nbf": 1735689600,
+    "exp": 1767225600,
+    "issuing_country": "BE",
+    "iss_reg_id": "VATBE-0123456789",
+    "status": {
+      "type": "TokenStatusList",
+      "purpose": "revocation",
+      "index": 7,
+      "uri": "https://authority.example.gov/status/pub-eaa-revocation"
+    },
+    "cnf": {
+      "jwk": {
+        "kty": "EC",
+        "crv": "P-256",
+        "x": "PLACEHOLDER_HOLDER_PUBKEY_X",
+        "y": "PLACEHOLDER_HOLDER_PUBKEY_Y"
+      }
+    }
+  },
+  "exercises_controls": [
+    "EAA-5.1-01",
+    "EAA-5.2.1.2-01",
+    "EAA-5.2.1.2-03",
+    "EAA-5.2.7.1-01",
+    "EAA-5.2.7.1-03",
+    "PuB-EAA-5.2.4.3-02",
+    "PuB-EAA-5.2.4.3-03",
+    "PuB-EAA-5.2.4.3-04",
+    "PuB-EAA-5.2.5.6-01",
+    "PuB-EAA-5.2.10.3-01",
+    "PuB-EAA-5.6.3-02",
+    "PuB-EAA-5.6.3-03",
+    "EAA-5.5-01",
+    "EAA-5.5-02"
+  ]
+}

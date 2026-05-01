@@ -1,7 +1,227 @@
 # Canonical SD-JWT VC controls promoted from _draft-section-5.yaml.
 # All entries here have been hand-refined: applies_to, role, evidence_type,
 # short_title, and modal_verb verified against the spec text.
-# plain_english is left as "TODO" placeholder; it is hand-written in a later pass.
+# plain_english is filled in for the highest-value controls; the rest carry
+# a "TODO" placeholder until the next curation pass.
+
+- id: EAA-5.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "5.1"
+    page: 27
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - eaa-header
+  short_title: Clause 5 EAAs must be implemented as SD-JWT VC
+  spec_text: >-
+    SD-JWT VC EAA shall be implemented as a Selective Disclosure JSON Web Token
+    based Verifiable Credential (SD-JWT VC) as specified in IETF SD-JWT VC.
+  plain_english: >-
+    When you implement an EAA according to clause 5 of TS 119 472-1, the wire
+    format must be SD-JWT VC, the IETF Selective Disclosure JSON Web Token
+    format for Verifiable Credentials. You cannot use plain JWT-VC, raw JWS,
+    or the W3C Verifiable Credential JSON-LD form here; those belong to the
+    mdoc track in clause 6 or the W3C track in clause 7.
+  why_it_matters: >-
+    The EUDI Wallet ecosystem assumes a small set of canonical wire formats so
+    that any wallet, issuer, and verifier can interoperate without
+    negotiation. SD-JWT VC is the JSON-flavoured profile assessors will check
+    for, and downstream rules in clause 5 only apply if this base format
+    requirement is met.
+  common_mistakes:
+    - Issuing a plain JWS-VC and labelling it as a clause 5 EAA.
+    - Using a non-SD-JWT JWT and relying on bespoke disclosure logic.
+    - Mixing W3C VCDM JSON-LD payloads under an SD-JWT VC media type.
+  related_controls:
+    - EAA-5.2.1.2-01
+    - EAA-5.4.1.1-01
+    - EAA-5.6.1-01
+
+- id: EAA-5.2.1.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.1.2
+    page: 27
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - type-metadata
+  short_title: SD-JWT VC EAA must include the vct claim
+  spec_text: >-
+    A SD-JWT VC EAA shall include the vct claim as specified in IETF SD-JWT VC,
+    which shall implement the semantics specified in clause 4.2.1.2 of the
+    present document, and that shall be associated to the SD-JWT VC Type
+    Metadata.
+  plain_english: >-
+    Every SD-JWT VC EAA must carry a vct claim. This is the credential-type
+    identifier; verifiers use it to look up the SD-JWT VC Type Metadata
+    document and learn the shape of the payload. Without vct, the EAA cannot
+    be parsed as anything more specific than a generic SD-JWT.
+  why_it_matters: >-
+    vct is how the rest of the SD-JWT VC machinery (Type Metadata, schema
+    validation, status type lookup) is bootstrapped. A verifier cannot
+    evaluate the EAA against any EUDI rule until it knows which credential
+    type it is looking at.
+  common_mistakes:
+    - Omitting vct entirely and treating the EAA as a generic SD-JWT.
+    - Setting vct to a private string with no published Type Metadata.
+    - Using a vct value that points to a metadata document the verifier cannot dereference.
+  related_controls:
+    - EAA-5.1-01
+    - EAA-5.2.1.2-03
+    - EAA-5.4.1.1-01
+
+- id: EAA-5.2.1.2-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.1.2
+    page: 28
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - type-metadata
+  short_title: SD-JWT VC EAA must include vct#integrity
+  spec_text: >-
+    A SD-JWT VC EAA shall incorporate the claim vct#integrity as specified in
+    IETF SD-JWT VC, clause 6.
+  plain_english: >-
+    Alongside vct, an SD-JWT VC EAA must include vct#integrity, an integrity
+    hash over the Type Metadata document the vct resolves to. The claim binds
+    the EAA to a specific, frozen view of its type.
+  why_it_matters: >-
+    Without vct#integrity an attacker who controls the metadata host (or DNS,
+    or a proxy) can swap in a hostile schema that subtly changes the meaning
+    of attribute names or removes constraints the issuer relied on. The
+    integrity hash converts a live URL into a content-addressed reference.
+  common_mistakes:
+    - Omitting vct#integrity while still serving Type Metadata that may change.
+    - Hashing a freshly-rendered metadata document each time rather than the canonical bytes.
+    - Updating Type Metadata without coordinating a rotation of vct#integrity values.
+  related_controls:
+    - EAA-5.2.1.2-01
+    - EAA-5.4.1.5-01
+
+- id: EAA-5.2.4.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.4.1
+    page: 28
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+  evidence_type:
+    - eaa-payload
+  short_title: EAA may include the issuing_authority claim
+  spec_text: >-
+    A SD-JWT VC EAA may include the issuing_authority claim, specified in CIR
+    (EU) 2024/2977, table 5 Annex I, containing the name of the SD-JWT VC EAA
+    issuer.
+  plain_english: >-
+    An SD-JWT VC EAA may carry an issuing_authority claim: a human-readable
+    string naming the entity that issued the EAA. The claim is defined in CIR
+    (EU) 2024/2977 Table 5, Annex I and is intended for surfacing in user
+    interfaces and audit logs.
+  why_it_matters: >-
+    When an EAA travels without an attached qualified certificate (because
+    that certificate is anchored in the trust framework rather than embedded
+    in the wire format), issuing_authority is the only in-payload signal of
+    who claims responsibility. UIs and verifiers commonly show or log this
+    string for users.
+  common_mistakes:
+    - Setting issuing_authority to a technical issuer URL instead of the human-readable name.
+    - Putting the issuing authority in a custom claim name instead of issuing_authority.
+    - Including issuing_authority while the qualified certificate is also present (see EAA-5.2.4.1-03).
+  related_controls:
+    - EAA-5.2.4.1-03
+    - QEAA-5.6.2-01
+    - PuB-EAA-5.2.4.3-02
+
+- id: EAA-5.2.4.1-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.4.1
+    page: 28
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - eaa-header
+    - issuer-cert
+  short_title: issuing_authority must not coexist with the qualified certificate
+  spec_text: >-
+    A SD-JWT VC EAA shall not incorporate the issuing_authority claim if it
+    incorporates the qualified certificate supporting the EAA signature.
+  plain_english: >-
+    If the EAA's signature already carries the qualified certificate of the
+    issuer in the x5c header parameter, the issuing_authority claim must be
+    omitted from the payload. The certificate is the authoritative identity;
+    the claim would only duplicate, and could contradict, what is already
+    cryptographically proven.
+  why_it_matters: >-
+    Two sources of truth for the same fact create a verification ambiguity:
+    which one wins if they disagree? The spec resolves this at issuance time
+    by making the two mutually exclusive, so verifiers always have a single
+    canonical source for issuer identity.
+  common_mistakes:
+    - Including both issuing_authority and a full qualified-cert chain in x5c.
+    - Treating the two signals as interchangeable belt-and-braces rather than mutually exclusive.
+    - Reverting to issuing_authority during a cert rollover without removing the duplicate.
+  related_controls:
+    - EAA-5.2.4.1-01
+    - QEAA-5.6.2-01
+    - QEAA-5.6.2-02
 
 - id: PuB-EAA-5.2.4.3-02
   module: eaa-conformance
@@ -439,11 +659,23 @@
   spec_text: >-
     A SD-JWT VC EAA shall include the nbf claim specified in IETF RFC 7519
     clause 4.1.5, and further profiled in IETF SD-JWT VC clause 3.2.2.2.
-  plain_english: TODO
-  common_mistakes: []
+  plain_english: >-
+    Every SD-JWT VC EAA must carry the nbf ("not before") claim. This is the
+    earliest moment in time at which the EAA is technically valid; before
+    this instant a verifier must reject it.
+  why_it_matters: >-
+    Without an explicit start of validity, an EAA could be replayed before it
+    is supposed to be active or treated as valid forever. nbf is one half of
+    the bounded-validity window every EAA needs.
+  common_mistakes:
+    - Treating nbf as optional (it is mandatory for clause 5 EAAs).
+    - Setting nbf to a sentinel like 0 to skip the check.
+    - Confusing nbf (start of technical validity) with iat (time of issuance).
   related_controls:
     - EAA-5.2.7.1-02
     - EAA-5.2.7.1-03
+    - EAA-5.2.7.1-04
+    - EAA-5.2.6-01
 
 - id: EAA-5.2.7.1-02
   module: eaa-conformance
@@ -497,11 +729,24 @@
   spec_text: >-
     A SD-JWT VC EAA shall include the exp claim specified in IETF RFC 7519
     clause 4.1.5, and further profiled in IETF SD-JWT VC clause 3.2.2.2.
-  plain_english: TODO
-  common_mistakes: []
+  plain_english: >-
+    Every SD-JWT VC EAA must carry the exp ("expiration") claim. This is the
+    moment at which the EAA stops being technically valid; after this instant
+    a verifier must reject it.
+  why_it_matters: >-
+    Bounded lifetime is a basic security and revocation hygiene control. Even
+    when status lists exist, an exp cap limits the impact of a leaked
+    credential and forces issuers to think about how long the underlying
+    attribute claim is meant to remain trustworthy.
+  common_mistakes:
+    - Setting exp decades into the future to avoid having to re-issue.
+    - Omitting exp entirely.
+    - Setting exp before nbf, which produces a never-valid window.
   related_controls:
     - EAA-5.2.7.1-01
+    - EAA-5.2.7.1-02
     - EAA-5.2.7.1-04
+    - EAA-5.2.12-01
 
 - id: EAA-5.2.7.1-04
   module: eaa-conformance
@@ -1004,10 +1249,28 @@
     - status-list
   short_title: Status JSON Object must include the type member
   spec_text: The status JSON Object shall have the type member.
-  plain_english: TODO
-  common_mistakes: []
+  plain_english: >-
+    If the EAA carries a status component, the status JSON object must
+    include a type member naming the status mechanism in use, e.g.
+    TokenStatusList. The type tells the verifier which dereferencing and
+    decoding routine to apply when fetching status.
+  why_it_matters: >-
+    The status component is polymorphic: there is more than one way to
+    express revocation (Token Status List today, future mechanisms later).
+    Without type, a verifier cannot tell which it is looking at, and may
+    either fail open (skip the check) or fail closed (reject every
+    credential).
+  common_mistakes:
+    - Including a status object without a type field.
+    - Putting the status mechanism name in a non-standard place such as inside purpose.
+    - Using a type value outside the registered set.
   related_controls:
+    - EAA-5.2.10.1-03
     - EAA-5.2.10.1-05
+    - EAA-5.2.10.1-06
+    - EAA-5.2.10.1-08
+    - EAA-5.2.10.1-10
+    - EAA-4.2.11.1-04
 
 - id: EAA-5.2.10.1-05
   module: eaa-conformance
@@ -1840,10 +2103,23 @@
     A SD-JWT VC EAA should incorporate the cnf claim as specified in IETF
     SD-JWT, implementing the semantics specified in clause 4.5 of the present
     document.
-  plain_english: TODO
-  common_mistakes: []
+  plain_english: >-
+    An SD-JWT VC EAA should incorporate the cnf claim, the holder's key
+    binding confirmation. The claim ties the EAA to a specific cryptographic
+    key that the holder controls, so a verifier can later check that whoever
+    presents the EAA also proves possession of that key.
+  why_it_matters: >-
+    Without cnf, an EAA is a bearer credential: anyone who gets a copy can
+    replay it. With cnf, presentation requires a signed challenge from the
+    bound key, which closes off the simplest replay attack and matches the
+    EUDI Wallet's holder-binding model.
+  common_mistakes:
+    - Issuing cnf-free EAAs that holders then cannot demonstrate ownership of.
+    - Putting the public key in a custom claim name instead of cnf.
+    - Embedding a long-lived static key the holder cannot rotate.
   related_controls:
     - EAA-5.5-02
+    - EAA-5.5-03
     - EAA-5.5-06
 
 - id: EAA-5.5-02

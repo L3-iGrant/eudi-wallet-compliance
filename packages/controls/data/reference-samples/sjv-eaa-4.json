@@ -1,0 +1,52 @@
+{
+  "sample_id": "sjv-eaa-4",
+  "title": "SD-JWT VC EAA with selective disclosure and key binding",
+  "description": "Combines selective disclosure (clause 5.4.1) with holder key binding (clause 5.5). Represents the fully-featured ordinary-EAA shape that most issuers will produce in practice.",
+  "profile": "sd-jwt-vc",
+  "payload": "<placeholder: real signed sample to be produced in Phase 5>",
+  "header": {
+    "alg": "ES256",
+    "typ": "vc+sd-jwt",
+    "kid": "https://issuer.example/keys/issuer-1"
+  },
+  "payload_decoded": {
+    "iss": "https://issuer.example",
+    "vct": "https://issuer.example/credentials/sd-keybound-eaa",
+    "vct#integrity": "sha256-eXAMPLEsdkbintegrityplaceholderlength43cdef01",
+    "iat": 1735689600,
+    "nbf": 1735689600,
+    "exp": 1767225600,
+    "issuing_authority": "Example Issuing Authority",
+    "_sd_alg": "sha-256",
+    "_sd": [
+      "PLACEHOLDER_DISCLOSURE_DIGEST_FAMILY_NAME",
+      "PLACEHOLDER_DISCLOSURE_DIGEST_GIVEN_NAME",
+      "PLACEHOLDER_DISCLOSURE_DIGEST_BIRTH_DATE",
+      "PLACEHOLDER_DISCLOSURE_DIGEST_NATIONALITY"
+    ],
+    "cnf": {
+      "jwk": {
+        "kty": "EC",
+        "crv": "P-256",
+        "x": "PLACEHOLDER_HOLDER_PUBKEY_X",
+        "y": "PLACEHOLDER_HOLDER_PUBKEY_Y"
+      }
+    }
+  },
+  "exercises_controls": [
+    "EAA-5.1-01",
+    "EAA-5.2.1.2-01",
+    "EAA-5.2.1.2-03",
+    "EAA-5.2.7.1-01",
+    "EAA-5.2.7.1-03",
+    "EAA-5.4.1.1-01",
+    "EAA-5.4.1.3-01",
+    "EAA-5.4.1.3-02",
+    "EAA-5.4.1.4-01",
+    "EAA-5.4.1.5-01",
+    "EAA-5.4.1.5-02",
+    "EAA-5.5-01",
+    "EAA-5.5-02",
+    "EAA-5.5-06"
+  ]
+}

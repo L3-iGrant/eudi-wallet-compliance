@@ -85,10 +85,23 @@
     - status-list
   short_title: shortLived and status service are mutually exclusive
   spec_text: >-
-    An EAA that incorporates the EAA short-lived component (clause 4.2.13 of the
-    present document), shall not incorporate the EAA status service.
-  plain_english: TODO
-  common_mistakes: []
+    An EAA that incorporates the EAA short-lived component (clause 4.2.13 of
+    the present document), shall not incorporate the EAA status service.
+  plain_english: >-
+    An EAA can either be short-lived (briefly valid, re-issued on demand) or
+    use a status service (longer-lived, with revocation state published
+    separately), but never both. Pick one revocation strategy per
+    credential.
+  why_it_matters: >-
+    The two mechanisms are alternative answers to the same question: how does
+    a verifier know whether the credential is still good? Combining them
+    creates ambiguity (which signal wins?) and forces verifiers to do more
+    work than needed; the spec resolves this at issuance time by making them
+    mutually exclusive.
+  common_mistakes:
+    - Issuing a long-lived EAA with both a status claim and a shortLived marker.
+    - Treating shortLived as a quality flag rather than a revocation strategy choice.
+    - Forgetting that shortLived removes the verifier's need to consult any status list.
   related_controls:
     - EAA-5.2.10.1-01
     - EAA-5.2.12-01
