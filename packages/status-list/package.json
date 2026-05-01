@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "cbor-x": "^1.6.0",
+    "fflate": "^0.8.2",
     "jose": "^5.9.0"
   },
   "devDependencies": {

@@ -1,4 +1,4 @@
-import { inflateSync } from 'node:zlib';
+import { unzlibSync } from 'fflate';
 import { decodeJwt } from 'jose';
 import { decode as decodeCbor } from 'cbor-x';
 import type { StatusList, StatusListFormat } from './types';
@@ -49,7 +49,7 @@ function parseJwt(token: string): StatusList {
     throw new Error('JWT status list payload is missing a valid status_list claim');
   }
   const compressed = decodeLst(claim.lst);
-  const bits = inflateSync(compressed);
+  const bits = unzlibSync(compressed);
   assertBitsPerStatus(claim.bits);
   return {
     format: 'jwt' as StatusListFormat,
@@ -79,7 +79,7 @@ function parseCwt(buffer: Uint8Array): StatusList {
     throw new Error('CWT status list payload is missing a valid status_list claim');
   }
   const compressed = decodeLst(claim.lst);
-  const bits = inflateSync(compressed);
+  const bits = unzlibSync(compressed);
   assertBitsPerStatus(claim.bits);
   return {
     format: 'cwt' as StatusListFormat,
@@ -106,9 +106,25 @@ function readKey(value: object, stringKey: string, numericKey: number): unknown 
   return record[stringKey] ?? record[numericKey];
 }
 
-function decodeLst(lst: string | Uint8Array): Buffer {
-  if (lst instanceof Uint8Array) return Buffer.from(lst);
-  return Buffer.from(lst, 'base64url');
+function decodeLst(lst: string | Uint8Array): Uint8Array {
+  if (lst instanceof Uint8Array) return lst;
+  return base64UrlDecode(lst);
+}
+
+/**
+ * Browser-portable base64url decode. Avoids `Buffer` so the bundle does
+ * not pull in the Node polyfill.
+ */
+function base64UrlDecode(s: string): Uint8Array {
+  const padded = s.replace(/-/g, '+').replace(/_/g, '/');
+  const padding = (4 - (padded.length % 4)) % 4;
+  const base64 = padded + '='.repeat(padding);
+  const binary = atob(base64);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) {
+    bytes[i] = binary.charCodeAt(i);
+  }
+  return bytes;
 }
 
 function assertBitsPerStatus(bits: number): void {
