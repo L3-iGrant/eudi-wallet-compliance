@@ -8,6 +8,10 @@
     "packages/*",
     "tools/*"
   ],
+  "scripts": {
+    "lint:no-em-dashes": "! grep -rn --exclude-dir=node_modules \"—\" apps packages tools README.md 2>/dev/null",
+    "lint": "pnpm -r lint && pnpm lint:no-em-dashes"
+  },
   "engines": {
     "node": ">=20"
   },
