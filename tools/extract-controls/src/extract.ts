@@ -12,9 +12,12 @@ interface CliArgs {
 }
 
 function parseCliArgs(): CliArgs {
-  // pnpm 10 forwards the `--` separator into the script; drop it so Node's parseArgs
-  // does not treat the rest as positionals.
-  const args = process.argv.slice(2).filter((a) => a !== '--');
+  // pnpm 10 forwards the `--` separator into the script; drop it (and any
+  // empty/whitespace tokens that some shells slip in) so Node's parseArgs does
+  // not treat them as positionals.
+  const args = process.argv
+    .slice(2)
+    .filter((a) => a !== '--' && a.trim() !== '');
   const { values } = parseArgs({
     args,
     options: {
