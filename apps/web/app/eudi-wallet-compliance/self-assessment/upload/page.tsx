@@ -96,10 +96,14 @@ function UploadInner() {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<EvidenceForm>({
     resolver: zodResolver(EvidenceSchema),
   });
+
+  const payloadValue = watch('eaaPayload') ?? '';
+  const hasPayload = payloadValue.trim().length > 0;
 
   if (!scope) {
     return (
@@ -226,7 +230,10 @@ function UploadInner() {
           </Link>
           <button
             type="submit"
-            disabled={isSubmitting}
+            disabled={isSubmitting || !hasPayload}
+            title={
+              !hasPayload ? 'Paste or drop an EAA payload to run the assessment.' : undefined
+            }
             className="inline-flex items-center justify-center gap-2 rounded-md bg-zinc-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-px hover:bg-zinc-800 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
           >
             {isSubmitting && <Spinner />}
