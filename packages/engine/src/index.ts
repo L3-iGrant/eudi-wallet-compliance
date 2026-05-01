@@ -10,6 +10,10 @@ import type {
 import { getCheck } from './registry';
 import { filterControlsForScope } from './scope';
 
+// Side-effect import: registers the built-in conformance checks into the
+// shared registry as soon as anything imports @iwc/engine.
+import './checks';
+
 export interface RunAssessmentOptions {
   /**
    * Tenant identifier the assessment is attributed to. Defaults to
