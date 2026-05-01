@@ -59,6 +59,43 @@ function StackIcon({ className }: { className?: string }) {
   );
 }
 
+function SearchIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="11" cy="11" r="7" />
+      <path d="M20 20l-4-4" />
+    </svg>
+  );
+}
+
+function BookIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M4 5a2 2 0 012-2h11v18H6a2 2 0 01-2-2V5z" />
+      <path d="M9 7h5" />
+      <path d="M9 11h5" />
+    </svg>
+  );
+}
+
 function ModuleIcon({ status }: { status: 'shipped' | 'in-development' | 'planned' }) {
   const colour =
     status === 'shipped'
@@ -221,77 +258,124 @@ export default async function Hub() {
         </div>
       </section>
 
-      {/* Two-tier picker */}
+      {/* ETSI Plugtests context banner */}
+      <section className="border-b border-blue-100 bg-blue-50/40 dark:border-blue-900/40 dark:bg-blue-950/20">
+        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+          <div className="flex items-start gap-3 sm:items-center">
+            <span
+              className="inline-flex shrink-0 items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800 dark:bg-blue-900/40 dark:text-blue-200"
+            >
+              First public use
+            </span>
+            <p className="text-sm text-zinc-800 dark:text-zinc-200">
+              <span className="font-semibold">ETSI EAA Plugtests preparation.</span>{' '}
+              Vendors building EAA issuers and verifiers can pre-flight their
+              implementation against this toolkit before the interop event.
+            </p>
+          </div>
+          <a
+            href="https://signature-plugtests.etsi.org/homeview"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex shrink-0 items-center text-sm font-semibold text-blue-700 hover:underline dark:text-blue-300"
+          >
+            ETSI Plugtests homepage{' '}
+            <span aria-hidden="true" className="ml-1">↗</span>
+          </a>
+        </div>
+      </section>
+
+      {/* Start where you are: task-led 3-card band */}
       <section className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-700 dark:text-blue-400">
-            How to use this
+            Start where you are
           </p>
           <h2 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl dark:text-white">
-            Two access modes, one catalogue.
+            Pick the path that matches what you came to do.
           </h2>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
           <Link
             href="/self-assessment/"
             className="group flex flex-col rounded-xl border border-zinc-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-blue-700"
           >
-            <div className="flex items-start gap-3">
-              <div
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300"
-                aria-hidden="true"
-              >
-                <PlayIcon className="h-5 w-5" />
-              </div>
-              <div className="flex-1">
-                <span className="inline-flex w-fit items-center rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-semibold text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300">
-                  Available now
-                </span>
-                <h3 className="mt-2 text-lg font-semibold text-zinc-950 group-hover:underline dark:text-white">
-                  Self-Assessment
-                </h3>
-              </div>
+            <div
+              className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300"
+              aria-hidden="true"
+            >
+              <PlayIcon className="h-5 w-5" />
             </div>
-            <p className="mt-4 flex-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-              Free, public, no login. Upload an EAA, pick the role and tier
-              you are checking against, get a control-by-control conformance
-              report. Runs entirely in your browser session.
+            <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-400">
+              I want to check my EAA
+            </p>
+            <h3 className="mt-1 text-lg font-semibold text-zinc-950 group-hover:underline dark:text-white">
+              Run the Self-Assessment
+            </h3>
+            <p className="mt-2 flex-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              Drop in an EAA, pick the role and tier you are checking against,
+              get a control-by-control conformance report. Runs in your
+              browser. No login.
             </p>
             <span className="mt-4 inline-flex items-center text-sm font-semibold text-blue-700 group-hover:underline dark:text-blue-300">
-              Open the tool <span aria-hidden="true" className="ml-1">&rarr;</span>
+              Open the runner{' '}
+              <span aria-hidden="true" className="ml-1 transition group-hover:translate-x-1">&rarr;</span>
             </span>
           </Link>
 
-          <div
-            className="flex flex-col rounded-xl border border-dashed border-zinc-300 bg-zinc-50/60 p-6 dark:border-zinc-700 dark:bg-zinc-900/40"
-            aria-disabled="true"
+          <Link
+            href="/modules/eaa-conformance/controls/"
+            className="group flex flex-col rounded-xl border border-zinc-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-blue-700"
           >
-            <div className="flex items-start gap-3">
-              <div
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-zinc-200 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-500"
-                aria-hidden="true"
-              >
-                <StackIcon className="h-5 w-5" />
-              </div>
-              <div className="flex-1">
-                <span className="inline-flex w-fit items-center rounded-full bg-zinc-200 px-2 py-0.5 text-xs font-semibold text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
-                  Coming Q3 2026
-                </span>
-                <h3 className="mt-2 text-lg font-semibold text-zinc-700 dark:text-zinc-300">
-                  Workspace
-                </h3>
-              </div>
+            <div
+              className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300"
+              aria-hidden="true"
+            >
+              <SearchIcon className="h-5 w-5" />
             </div>
-            <p className="mt-4 flex-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-              Multi-tenant SaaS for compliance teams: persistent assessments,
-              custom controls, role-based collaboration, white-labelled
-              reports, and integrations into your CI and ticketing.
+            <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+              I want to look up a control
             </p>
-            <span className="mt-4 text-sm font-medium text-zinc-500 dark:text-zinc-500">
-              Notify me when this launches
+            <h3 className="mt-1 text-lg font-semibold text-zinc-950 group-hover:underline dark:text-white">
+              Browse the catalogue
+            </h3>
+            <p className="mt-2 flex-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              Filter, search, export. Every requirement from ETSI TS 119 472-1
+              has a stable URL with plain-English explanation, common
+              mistakes, and related controls.
+            </p>
+            <span className="mt-4 inline-flex items-center text-sm font-semibold text-blue-700 group-hover:underline dark:text-blue-300">
+              Open the catalogue{' '}
+              <span aria-hidden="true" className="ml-1 transition group-hover:translate-x-1">&rarr;</span>
             </span>
-          </div>
+          </Link>
+
+          <Link
+            href="/modules/eaa-conformance/"
+            className="group flex flex-col rounded-xl border border-zinc-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-blue-700"
+          >
+            <div
+              className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300"
+              aria-hidden="true"
+            >
+              <BookIcon className="h-5 w-5" />
+            </div>
+            <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-amber-700 dark:text-amber-400">
+              I want to understand the scope
+            </p>
+            <h3 className="mt-1 text-lg font-semibold text-zinc-950 group-hover:underline dark:text-white">
+              Read the EAA module page
+            </h3>
+            <p className="mt-2 flex-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              See the module overview: spec sources, total control count,
+              what we test mechanically, and what we add beyond ETSI.
+            </p>
+            <span className="mt-4 inline-flex items-center text-sm font-semibold text-blue-700 group-hover:underline dark:text-blue-300">
+              Read the overview{' '}
+              <span aria-hidden="true" className="ml-1 transition group-hover:translate-x-1">&rarr;</span>
+            </span>
+          </Link>
         </div>
       </section>
 
@@ -387,6 +471,42 @@ export default async function Hub() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* Workspace teaser (demoted from the old Two-Access-Modes section) */}
+      <section className="mx-auto max-w-6xl px-6 pb-16">
+        <div className="flex flex-col gap-4 rounded-xl border border-dashed border-zinc-300 bg-zinc-50/60 p-6 dark:border-zinc-700 dark:bg-zinc-900/40 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+          <div className="flex items-start gap-4">
+            <div
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-zinc-200 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400"
+              aria-hidden="true"
+            >
+              <StackIcon className="h-5 w-5" />
+            </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
+                Coming Q3 2026
+              </p>
+              <h3 className="mt-1 text-base font-semibold text-zinc-950 dark:text-white">
+                Workspace, the multi-tenant SaaS for compliance teams
+              </h3>
+              <p className="mt-1 text-sm text-zinc-700 dark:text-zinc-300">
+                Persistent assessments, custom controls, role-based
+                collaboration, white-labelled reports, and integrations into
+                your CI and ticketing.
+              </p>
+            </div>
+          </div>
+          <a
+            href="https://igrant.io/contact"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex shrink-0 items-center justify-center rounded-md border border-zinc-300 bg-white px-4 py-2 text-sm font-semibold text-zinc-900 hover:border-blue-300 hover:text-blue-700 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:hover:border-blue-700 dark:hover:text-blue-300"
+          >
+            Talk to iGrant.io{' '}
+            <span aria-hidden="true" className="ml-1.5">&rarr;</span>
+          </a>
         </div>
       </section>
 
