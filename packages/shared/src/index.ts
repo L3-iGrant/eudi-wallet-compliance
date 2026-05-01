@@ -1,3 +1,9 @@
+export {
+  parseSdJwtVc,
+  ParseError,
+  type ParsedSdJwtVc,
+} from './sd-jwt-vc';
+
 /**
  * Convert a control id like "EAA-5.2.10.1-04" or "PuB-EAA-5.6.3-02" into a
  * URL-safe slug: lowercase, dots replaced with dashes. Round-trip via

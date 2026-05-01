@@ -1,0 +1,188 @@
+import { describe, it, expect, beforeEach } from 'vitest';
+import type { Control } from '@iwc/controls';
+import {
+  runAssessment,
+  filterControlsForScope,
+  registerCheck,
+  checkRegistry,
+} from '../src/index';
+import type { AssessmentScope } from '../src/types';
+
+function makeControl(overrides: Partial<Control> & Pick<Control, 'id'>): Control {
+  return {
+    module: 'eaa-conformance',
+    spec_source: { document: 'ETSI TS X', version: 'v1', clause: '1' },
+    modal_verb: 'shall',
+    applies_to: ['ordinary-eaa', 'qeaa', 'pub-eaa'],
+    profile: ['sd-jwt-vc'],
+    role: ['issuer', 'verifier'],
+    evidence_type: ['eaa-payload'],
+    short_title: 'A short title for the test fixture',
+    spec_text: 'Spec text for the test fixture, long enough.',
+    plain_english: 'TODO',
+    common_mistakes: [],
+    related_controls: [],
+    ...overrides,
+  } as Control;
+}
+
+const sdJwtIssuerVerifierAll = makeControl({ id: 'EAA-5.1-01' });
+const qeaaIssuerOnly = makeControl({
+  id: 'QEAA-5.6.2-01',
+  applies_to: ['qeaa'],
+  role: ['issuer'],
+});
+const mdocControl = makeControl({
+  id: 'EAA-6.1-01',
+  profile: ['mdoc'],
+});
+const abstractControl = makeControl({
+  id: 'EAA-4.2.6.6-01',
+  profile: ['abstract'],
+});
+
+const sampleControls: Control[] = [
+  sdJwtIssuerVerifierAll,
+  qeaaIssuerOnly,
+  mdocControl,
+  abstractControl,
+];
+
+const sdJwtScope: AssessmentScope = {
+  module: 'eaa-conformance',
+  profile: ['sd-jwt-vc'],
+  role: ['issuer', 'verifier'],
+  tier: 'ordinary',
+};
+
+beforeEach(() => {
+  // Reset the registry between tests so registrations leak no further.
+  for (const k of Object.keys(checkRegistry)) {
+    delete checkRegistry[k];
+  }
+});
+
+describe('filterControlsForScope', () => {
+  it('keeps SD-JWT VC controls and excludes mdoc-only when scope is sd-jwt-vc', () => {
+    const out = filterControlsForScope(sampleControls, sdJwtScope);
+    const ids = out.map((c) => c.id);
+    expect(ids).toContain('EAA-5.1-01');
+    expect(ids).not.toContain('EAA-6.1-01');
+  });
+
+  it('excludes abstract-profile controls when scope.profile is sd-jwt-vc only', () => {
+    const out = filterControlsForScope(sampleControls, sdJwtScope);
+    expect(out.map((c) => c.id)).not.toContain('EAA-4.2.6.6-01');
+  });
+
+  it('excludes QEAA-only controls when scope.tier is ordinary', () => {
+    const out = filterControlsForScope(sampleControls, sdJwtScope);
+    expect(out.map((c) => c.id)).not.toContain('QEAA-5.6.2-01');
+  });
+
+  it('includes QEAA-only controls when scope.tier is qeaa', () => {
+    const out = filterControlsForScope(sampleControls, {
+      ...sdJwtScope,
+      tier: 'qeaa',
+    });
+    expect(out.map((c) => c.id)).toContain('QEAA-5.6.2-01');
+  });
+
+  it('respects role intersection: a verifier-only scope drops issuer-only controls', () => {
+    const out = filterControlsForScope(sampleControls, {
+      ...sdJwtScope,
+      tier: 'qeaa',
+      role: ['verifier'],
+    });
+    expect(out.map((c) => c.id)).not.toContain('QEAA-5.6.2-01');
+  });
+
+  it('maps tier "ordinary" to applies_to "ordinary-eaa"', () => {
+    const ordinaryOnly = makeControl({
+      id: 'EAA-TEST-ORD',
+      applies_to: ['ordinary-eaa'],
+    });
+    const out = filterControlsForScope([ordinaryOnly], sdJwtScope);
+    expect(out).toHaveLength(1);
+  });
+
+  it('keeps controls whose applies_to contains "all" regardless of tier', () => {
+    const universal = makeControl({
+      id: 'EAA-TEST-ALL',
+      applies_to: ['all'],
+    });
+    for (const tier of ['ordinary', 'qeaa', 'pub-eaa'] as const) {
+      const out = filterControlsForScope([universal], { ...sdJwtScope, tier });
+      expect(out, `tier=${tier}`).toHaveLength(1);
+    }
+  });
+});
+
+describe('runAssessment', () => {
+  it('returns all-na verdicts when no checks are registered', async () => {
+    const result = await runAssessment(sampleControls, {}, sdJwtScope);
+    expect(result.verdicts.length).toBeGreaterThan(0);
+    for (const v of result.verdicts) {
+      expect(v.status).toBe('na');
+      expect(v.notes).toBe('No check implemented yet');
+    }
+    expect(result.summary.na).toBe(result.verdicts.length);
+    expect(result.summary.pass).toBe(0);
+    expect(result.summary.fail).toBe(0);
+    expect(result.summary.warn).toBe(0);
+  });
+
+  it('uses a registered check function when one is available', async () => {
+    registerCheck('EAA-5.1-01', () => ({
+      controlId: 'EAA-5.1-01',
+      status: 'pass',
+      evidenceRef: 'eaa-payload',
+      notes: 'header.typ is vc+sd-jwt',
+    }));
+    const result = await runAssessment(sampleControls, {}, sdJwtScope);
+    const verdict = result.verdicts.find((v) => v.controlId === 'EAA-5.1-01');
+    expect(verdict?.status).toBe('pass');
+    expect(verdict?.notes).toBe('header.typ is vc+sd-jwt');
+    expect(result.summary.pass).toBe(1);
+  });
+
+  it('defaults tenantId to "public-default" when not supplied', async () => {
+    const result = await runAssessment(sampleControls, {}, sdJwtScope);
+    expect(result.tenantId).toBe('public-default');
+  });
+
+  it('uses the supplied tenantId verbatim when provided', async () => {
+    const result = await runAssessment(sampleControls, {}, sdJwtScope, {
+      tenantId: 'workspace-acme',
+    });
+    expect(result.tenantId).toBe('workspace-acme');
+  });
+
+  it('generates a valid v4-shaped UUID for reportId', async () => {
+    const result = await runAssessment(sampleControls, {}, sdJwtScope);
+    expect(result.reportId).toMatch(
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i,
+    );
+  });
+
+  it('lists evidenceRefs for the keys actually supplied in evidence', async () => {
+    const result = await runAssessment(
+      sampleControls,
+      { eaaPayload: 'JWT~D~', issuerCert: '-----BEGIN-----' },
+      sdJwtScope,
+    );
+    expect(result.evidenceRefs).toContain('eaaPayload');
+    expect(result.evidenceRefs).toContain('issuerCert');
+    expect(result.evidenceRefs).not.toContain('statusListUrl');
+  });
+
+  it('returns a placeholder gapAnalysis stub in v0', async () => {
+    const result = await runAssessment(sampleControls, {}, sdJwtScope);
+    expect(result.gapAnalysis).toEqual({
+      canBeQeaa: false,
+      missingForQeaa: [],
+      canBePubEaa: false,
+      missingForPubEaa: [],
+    });
+  });
+});
