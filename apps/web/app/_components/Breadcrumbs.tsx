@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Suspense } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 interface BreadcrumbsProps {
   // Caller may pass a list of canonical control IDs so the final segment of a
@@ -12,7 +13,10 @@ interface BreadcrumbsProps {
 }
 
 const ROUTE_LABELS: Record<string, string> = {
+  'eudi-wallet-compliance': 'EUDI Wallet Compliance',
   'self-assessment': 'Self-Assessment',
+  upload: 'Upload',
+  report: 'Report',
   modules: 'Modules',
   controls: 'Controls',
   profiles: 'Profiles',
@@ -80,9 +84,13 @@ interface Crumb {
   label: string;
 }
 
-function buildCrumbs(pathname: string, controls?: Array<{ id: string }>): Crumb[] {
+function buildCrumbs(
+  pathname: string,
+  searchParams: URLSearchParams,
+  controls?: Array<{ id: string }>,
+): Crumb[] {
   const segments = pathname.split('/').filter(Boolean);
-  const crumbs: Crumb[] = [{ href: '/', label: 'Compliance' }];
+  const crumbs: Crumb[] = [];
 
   let href = '';
   for (let i = 0; i < segments.length; i++) {
@@ -109,16 +117,34 @@ function buildCrumbs(pathname: string, controls?: Array<{ id: string }>): Crumb[
     }
 
     crumbs.push({ href: `${href}/`, label });
+
+    // After the Self-Assessment segment, inject the chosen module from
+    // the URL search params so the user sees their flow context (e.g.
+    // "Self-Assessment / EAA Conformance / Upload"). Only fires when the
+    // module param is present (the upload step carries it; the report
+    // step reads its scope from the stored report and does not).
+    if (segment === 'self-assessment') {
+      const moduleParam = searchParams.get('module');
+      if (moduleParam) {
+        const moduleLabel = MODULE_LABELS[moduleParam] ?? moduleParam;
+        crumbs.push({
+          href: `${href}/?${searchParams.toString()}`,
+          label: moduleLabel,
+        });
+      }
+    }
   }
 
   return crumbs;
 }
 
-export function Breadcrumbs({ controls }: BreadcrumbsProps) {
+function BreadcrumbsInner({ controls }: BreadcrumbsProps) {
   const pathname = usePathname() ?? '/';
+  const searchParams = useSearchParams() ?? new URLSearchParams();
   if (pathname === '/') return null;
 
-  const crumbs = buildCrumbs(pathname, controls);
+  const crumbs = buildCrumbs(pathname, searchParams, controls);
+  if (crumbs.length === 0) return null;
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -160,5 +186,16 @@ export function Breadcrumbs({ controls }: BreadcrumbsProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
     </nav>
+  );
+}
+
+export function Breadcrumbs(props: BreadcrumbsProps) {
+  // useSearchParams requires a Suspense boundary in static-export builds;
+  // wrapping here means the layout can render <Breadcrumbs /> without
+  // every page having to know.
+  return (
+    <Suspense fallback={null}>
+      <BreadcrumbsInner {...props} />
+    </Suspense>
   );
 }
