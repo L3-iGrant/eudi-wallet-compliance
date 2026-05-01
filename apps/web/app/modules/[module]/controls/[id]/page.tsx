@@ -323,6 +323,32 @@ export default async function ControlPage({ params }: PageProps) {
         {/* Sidebar */}
         <aside className="lg:col-span-1">
           <div className="lg:sticky lg:top-24 lg:flex lg:flex-col lg:gap-8">
+            {/* Related controls (top: most-used by engineers in flow) */}
+            {related.length > 0 && (
+              <div className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950">
+                <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-500">
+                  Related controls
+                </h2>
+                <ul className="mt-3 space-y-2.5">
+                  {related.map((r) => (
+                    <li key={r.id}>
+                      <Link
+                        href={`/modules/${r.module}/controls/${controlIdToSlug(r.id)}/`}
+                        className="group block"
+                      >
+                        <p className="font-mono text-xs font-semibold text-blue-700 group-hover:underline dark:text-blue-400">
+                          {r.id}
+                        </p>
+                        <p className="mt-0.5 text-sm leading-snug text-zinc-700 group-hover:text-zinc-950 dark:text-zinc-300 dark:group-hover:text-white">
+                          {r.short_title}
+                        </p>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             {/* Spec source */}
             <div className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950">
               <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-500">
@@ -381,32 +407,6 @@ export default async function ControlPage({ params }: PageProps) {
                 })}
               </ul>
             </div>
-
-            {/* Related controls */}
-            {related.length > 0 && (
-              <div className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950">
-                <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-500">
-                  Related controls
-                </h2>
-                <ul className="mt-3 space-y-2.5">
-                  {related.map((r) => (
-                    <li key={r.id}>
-                      <Link
-                        href={`/modules/${r.module}/controls/${controlIdToSlug(r.id)}/`}
-                        className="group block"
-                      >
-                        <p className="font-mono text-xs font-semibold text-blue-700 group-hover:underline dark:text-blue-400">
-                          {r.id}
-                        </p>
-                        <p className="mt-0.5 text-sm leading-snug text-zinc-700 group-hover:text-zinc-950 dark:text-zinc-300 dark:group-hover:text-white">
-                          {r.short_title}
-                        </p>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
           </div>
         </aside>
       </div>

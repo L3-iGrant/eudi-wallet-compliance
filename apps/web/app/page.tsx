@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { loadModules } from '@iwc/controls';
+import { loadAllControls, loadModules } from '@iwc/controls';
 
 export const metadata: Metadata = {
   title: 'EUDI Wallet Compliance · iGrant.io',
@@ -88,7 +88,17 @@ function ModuleIcon({ status }: { status: 'shipped' | 'in-development' | 'planne
 }
 
 export default async function Hub() {
-  const modules = await loadModules();
+  const [modules, allControls] = await Promise.all([
+    loadModules(),
+    loadAllControls(),
+  ]);
+  const controlCountByModule = new Map<string, number>();
+  for (const c of allControls) {
+    controlCountByModule.set(
+      c.module,
+      (controlCountByModule.get(c.module) ?? 0) + 1,
+    );
+  }
   // Shipped first, then alphabetical by name within each status group.
   const ordered = [...modules].sort((a, b) => {
     if (a.status === b.status) return a.name.localeCompare(b.name);
@@ -305,6 +315,7 @@ export default async function Hub() {
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {ordered.map((m) => {
               const isShipped = m.status === 'shipped';
+              const count = controlCountByModule.get(m.id) ?? 0;
               const cardBase =
                 'group flex flex-col rounded-xl border bg-white p-5 transition dark:bg-zinc-950';
               const shippedBorder =
@@ -341,6 +352,19 @@ export default async function Hub() {
                   <p className="mt-4 text-xs text-zinc-500 dark:text-zinc-500">
                     {m.spec_sources.join(' · ')}
                   </p>
+                  {isShipped && count > 0 && (
+                    <p className="mt-3 flex items-center justify-between text-xs">
+                      <span className="font-semibold text-zinc-700 dark:text-zinc-300">
+                        {count} controls catalogued
+                      </span>
+                      <span
+                        aria-hidden="true"
+                        className="translate-x-0 text-blue-700 opacity-0 transition group-hover:translate-x-1 group-hover:opacity-100 dark:text-blue-400"
+                      >
+                        &rarr;
+                      </span>
+                    </p>
+                  )}
                 </>
               );
 

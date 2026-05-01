@@ -585,26 +585,26 @@ export function CatalogueTable({
           selected={filters.modals}
           onChange={(v) => update('modals', v)}
         />
-        {activeChips.length > 0 && (
+      </div>
+
+      {/* Active filter chips with inline Clear all */}
+      {activeChips.length > 0 && (
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <ul className="contents">
+            {activeChips.map((c) => (
+              <li key={c.key}>
+                <FilterChip label={c.label} onRemove={c.remove} />
+              </li>
+            ))}
+          </ul>
           <button
             type="button"
             onClick={clearAll}
-            className="ml-auto inline-flex items-center rounded-md px-3 py-2 text-sm font-medium text-zinc-600 hover:text-blue-700 dark:text-zinc-400 dark:hover:text-blue-300"
+            className="ml-1 inline-flex items-center rounded-md px-2 py-0.5 text-xs font-semibold text-zinc-600 hover:text-blue-700 dark:text-zinc-400 dark:hover:text-blue-300"
           >
             Clear all
           </button>
-        )}
-      </div>
-
-      {/* Active filter chips */}
-      {activeChips.length > 0 && (
-        <ul className="mt-3 flex flex-wrap gap-2">
-          {activeChips.map((c) => (
-            <li key={c.key}>
-              <FilterChip label={c.label} onRemove={c.remove} />
-            </li>
-          ))}
-        </ul>
+        </div>
       )}
 
       {/* Count + exports */}
@@ -663,8 +663,8 @@ export function CatalogueTable({
             </button>
           </div>
         ) : (
-          <div className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
-            <table className="w-full divide-y divide-zinc-200 text-sm dark:divide-zinc-800">
+          <div className="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800">
+            <table className="w-full min-w-[860px] divide-y divide-zinc-200 text-sm dark:divide-zinc-800">
               <thead className="bg-zinc-50 text-left dark:bg-zinc-900/60">
                 <tr>
                   <SortHeader

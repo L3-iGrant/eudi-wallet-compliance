@@ -31,7 +31,7 @@ export async function SiteNav() {
           </span>
 
           {/* CSS-only dropdown via :focus-within. No client JS in this nav. */}
-          <div className="relative">
+          <div className="group relative">
             <button
               type="button"
               className={linkClass}
@@ -42,7 +42,7 @@ export async function SiteNav() {
               <svg
                 aria-hidden="true"
                 viewBox="0 0 20 20"
-                className="ml-1 h-4 w-4"
+                className="ml-1 h-4 w-4 transition-transform duration-150 group-hover:rotate-180 group-focus-within:rotate-180"
                 fill="currentColor"
               >
                 <path
@@ -55,7 +55,7 @@ export async function SiteNav() {
 
             <ul
               role="menu"
-              className="invisible absolute left-0 top-full z-50 mt-1 w-72 rounded-md border border-zinc-200 bg-white py-1 opacity-0 shadow-lg transition focus-within:visible focus-within:opacity-100 hover:visible hover:opacity-100 dark:border-zinc-800 dark:bg-zinc-900"
+              className="invisible absolute left-0 top-full z-50 mt-1 w-72 rounded-md border border-zinc-200 bg-white py-1 opacity-0 shadow-lg transition focus-within:visible focus-within:opacity-100 group-hover:visible group-hover:opacity-100 dark:border-zinc-800 dark:bg-zinc-900"
             >
               {modules.map((m) => (
                 <li key={m.id} role="none">

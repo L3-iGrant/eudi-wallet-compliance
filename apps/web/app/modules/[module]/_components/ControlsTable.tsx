@@ -78,8 +78,8 @@ export function ControlsTable({
   const sorted = [...controls].sort((a, b) => a.id.localeCompare(b.id));
 
   return (
-    <div className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
-      <table className="w-full divide-y divide-zinc-200 text-sm dark:divide-zinc-800">
+    <div className="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800">
+      <table className="w-full min-w-[720px] divide-y divide-zinc-200 text-sm dark:divide-zinc-800">
         <thead className="bg-zinc-50 text-left dark:bg-zinc-900/60">
           <tr>
             <th
