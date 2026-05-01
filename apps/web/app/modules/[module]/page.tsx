@@ -306,7 +306,7 @@ export default async function ModulePage({ params }: PageProps) {
               get a control-by-control conformance report. No login.
             </p>
             <Link
-              href="/self-assessment/"
+              href="/eudi-wallet-compliance/self-assessment/"
               className="mt-4 inline-flex w-full items-center justify-center rounded-md bg-zinc-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-zinc-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
             >
               Run the Self-Assessment

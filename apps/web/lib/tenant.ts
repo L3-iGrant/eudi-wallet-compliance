@@ -7,6 +7,8 @@
 
 export const PUBLIC_TENANT_ID = 'public-default';
 
-export function resolveTenant(_request: Request): string {
+export function resolveTenant(): string;
+export function resolveTenant(request: Request): string;
+export function resolveTenant(_request?: Request): string {
   return PUBLIC_TENANT_ID;
 }

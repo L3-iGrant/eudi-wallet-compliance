@@ -177,7 +177,7 @@ export default async function Hub() {
             </h1>
             <div className="mt-10 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
               <Link
-                href="/self-assessment/"
+                href="/eudi-wallet-compliance/self-assessment/"
                 className="inline-flex items-center justify-center rounded-md bg-zinc-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-px hover:bg-zinc-800 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
               >
                 Run the Self-Assessment
@@ -252,7 +252,7 @@ export default async function Hub() {
 
         <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
           <Link
-            href="/self-assessment/"
+            href="/eudi-wallet-compliance/self-assessment/"
             className="group flex flex-col rounded-xl border border-zinc-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-blue-700"
           >
             <div

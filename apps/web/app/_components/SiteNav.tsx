@@ -20,7 +20,7 @@ export async function SiteNav() {
         </Link>
 
         <div className="hidden flex-1 items-center gap-1 md:flex">
-          <Link href="/self-assessment/" className={linkClass}>
+          <Link href="/eudi-wallet-compliance/self-assessment/" className={linkClass}>
             Self-Assessment
           </Link>
 
@@ -99,7 +99,7 @@ export async function SiteNav() {
         <div className="ml-auto flex items-center gap-3">
           <SearchTrigger />
           <Link
-            href="/self-assessment/"
+            href="/eudi-wallet-compliance/self-assessment/"
             className="inline-flex items-center rounded-md bg-zinc-900 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200 dark:focus-visible:outline-white"
           >
             Run Assessment{' '}

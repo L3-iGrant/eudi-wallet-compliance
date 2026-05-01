@@ -1,14 +1,16 @@
 import { describe, it, expect } from 'vitest';
 import {
-  CONTROLS_BUNDLE,
-  MODULES_BUNDLE,
   loadAllControls,
-  loadAllControlsSync,
   loadModules,
-  loadModulesSync,
   ControlsCatalogueSchema,
   ModulesCatalogueSchema,
 } from '../src';
+import {
+  CONTROLS_BUNDLE,
+  MODULES_BUNDLE,
+  loadAllControlsSync,
+  loadModulesSync,
+} from '../src/sync';
 
 describe('bundle (browser-safe sync exports)', () => {
   it('parses against the catalogue schema', () => {
