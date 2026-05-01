@@ -7,6 +7,7 @@ import type { AssessmentResult, Verdict } from '@iwc/engine';
 import { loadAllControlsSync } from '@iwc/controls/sync';
 import { controlIdToSlug } from '@iwc/shared';
 import { reportStore } from '../../../../lib/storage';
+import { leadsStore, type Lead } from '../../../../lib/leads';
 import { resolveTenant } from '../../../../lib/tenant';
 
 const STATUS_STYLE: Record<string, string> = {
@@ -70,6 +71,7 @@ function ReportFallback() {
 function ReportInner() {
   const params = useSearchParams();
   const [report, setReport] = useState<AssessmentResult | null | undefined>(undefined);
+  const [lead, setLead] = useState<Lead | null>(null);
 
   const moduleByControlId = useMemo(() => {
     const m = new Map<string, string>();
@@ -84,9 +86,15 @@ function ReportInner() {
       setReport(null);
       return;
     }
-    void reportStore
-      .getReport(resolveTenant(), id)
-      .then((r) => setReport(r))
+    const tenantId = resolveTenant();
+    void Promise.all([
+      reportStore.getReport(tenantId, id),
+      leadsStore.getLeadByReportId(tenantId, id),
+    ])
+      .then(([r, l]) => {
+        setReport(r);
+        setLead(l);
+      })
       .catch(() => setReport(null));
   }, [params]);
 
@@ -203,6 +211,12 @@ function ReportInner() {
         </div>
       </section>
 
+      <DownloadSection
+        report={report}
+        lead={lead}
+        onLeadCaptured={(l) => setLead(l)}
+      />
+
       <section className="mt-10 border-t border-zinc-200 pt-6 dark:border-zinc-800">
         <Link
           href="/eudi-wallet-compliance/self-assessment/"
@@ -213,6 +227,181 @@ function ReportInner() {
       </section>
     </article>
   );
+}
+
+function DownloadSection({
+  report,
+  lead,
+  onLeadCaptured,
+}: {
+  report: AssessmentResult;
+  lead: Lead | null;
+  onLeadCaptured: (lead: Lead) => void;
+}) {
+  return (
+    <section
+      data-testid="download-section"
+      className="mt-10 rounded-lg border border-zinc-200 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900/40"
+    >
+      <h2 className="text-base font-semibold text-zinc-950 dark:text-white">
+        Download this report
+      </h2>
+      {lead ? (
+        <DownloadButtons report={report} />
+      ) : (
+        <EmailGate report={report} onLeadCaptured={onLeadCaptured} />
+      )}
+    </section>
+  );
+}
+
+function EmailGate({
+  report,
+  onLeadCaptured,
+}: {
+  report: AssessmentResult;
+  onLeadCaptured: (lead: Lead) => void;
+}) {
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError('Enter a valid email address.');
+      return;
+    }
+    setIsSubmitting(true);
+    try {
+      const newLead: Lead = {
+        reportId: report.reportId,
+        email: email.trim(),
+        projectId: null,
+        capturedAt: new Date().toISOString(),
+      };
+      await leadsStore.saveLead(resolveTenant(), newLead);
+      onLeadCaptured(newLead);
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="mt-3 space-y-3">
+      <p className="text-sm text-zinc-700 dark:text-zinc-300">
+        Tell us where to send conformance updates and unlock the PDF and JSON
+        downloads. The address is stored locally; we use it to email you about
+        new modules and breaking changes.
+      </p>
+      <div className="flex flex-col gap-2 sm:flex-row">
+        <input
+          type="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="you@example.com"
+          aria-label="Email address"
+          className="flex-1 rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm shadow-sm focus:border-blue-300 focus:outline-2 focus:outline-blue-600 dark:border-zinc-800 dark:bg-zinc-950"
+        />
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="inline-flex items-center justify-center rounded-md bg-zinc-900 px-5 py-2 text-sm font-semibold text-white transition hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+        >
+          Unlock downloads
+        </button>
+      </div>
+      {error && (
+        <p className="text-xs font-medium text-red-700 dark:text-red-400">{error}</p>
+      )}
+    </form>
+  );
+}
+
+function DownloadButtons({ report }: { report: AssessmentResult }) {
+  const [busy, setBusy] = useState<'pdf' | 'json' | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const filenameStem = `conformance-report-${report.reportId.slice(0, 8)}`;
+
+  const downloadPdf = async () => {
+    setBusy('pdf');
+    setError(null);
+    try {
+      const [{ pdf }, { ConformanceReportPdf }] = await Promise.all([
+        import('@react-pdf/renderer'),
+        import('@/components/pdf/ConformanceReportPdf'),
+      ]);
+      const blob = await pdf(<ConformanceReportPdf report={report} />).toBlob();
+      triggerDownload(blob, `${filenameStem}.pdf`);
+    } catch (err) {
+      setError(`Could not build PDF: ${(err as Error).message}`);
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  const downloadJson = () => {
+    setBusy('json');
+    setError(null);
+    try {
+      const blob = new Blob([JSON.stringify(report, null, 2)], {
+        type: 'application/json',
+      });
+      triggerDownload(blob, `${filenameStem}.json`);
+    } catch (err) {
+      setError(`Could not build JSON: ${(err as Error).message}`);
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  return (
+    <div className="mt-3 space-y-3">
+      <p className="text-sm text-emerald-700 dark:text-emerald-400">
+        Email captured. Downloads unlocked.
+      </p>
+      <div className="flex flex-col gap-2 sm:flex-row">
+        <button
+          type="button"
+          onClick={downloadPdf}
+          disabled={busy !== null}
+          data-testid="download-pdf"
+          className="inline-flex items-center justify-center rounded-md bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+        >
+          {busy === 'pdf' ? 'Building PDF…' : 'Download PDF'}
+        </button>
+        <button
+          type="button"
+          onClick={downloadJson}
+          disabled={busy !== null}
+          data-testid="download-json"
+          className="inline-flex items-center justify-center rounded-md border border-zinc-300 bg-white px-4 py-2 text-sm font-semibold text-zinc-900 transition hover:border-blue-300 hover:bg-blue-50/40 disabled:cursor-not-allowed disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:hover:border-blue-700 dark:hover:bg-blue-950/30"
+        >
+          {busy === 'json' ? 'Building JSON…' : 'Download JSON'}
+        </button>
+      </div>
+      {error && (
+        <p className="text-xs font-medium text-red-700 dark:text-red-400">{error}</p>
+      )}
+    </div>
+  );
+}
+
+function triggerDownload(blob: Blob, filename: string): void {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  // Revoke after the click handler returns so Safari has a chance to read it.
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 function Stat({

@@ -12,6 +12,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
     "@iwc/controls": "workspace:*",
+    "@react-pdf/renderer": "^4.1.5",
     "@iwc/engine": "workspace:*",
     "@iwc/shared": "workspace:*",
     "@iwc/status-list": "workspace:*",
