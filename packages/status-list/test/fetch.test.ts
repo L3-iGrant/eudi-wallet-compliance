@@ -61,6 +61,16 @@ describe('fetchStatusList (JWT)', () => {
     );
   });
 
+  it('surfaces a CORS-aware error when fetch itself rejects', async () => {
+    globalThis.fetch = vi.fn(async () => {
+      throw new TypeError('Failed to fetch');
+    }) as typeof fetch;
+
+    await expect(fetchStatusList('https://issuer.example/blocked')).rejects.toThrow(
+      /CORS/,
+    );
+  });
+
   it('throws on an unsupported content-type', async () => {
     globalThis.fetch = vi.fn(async () =>
       new Response('plain text', {

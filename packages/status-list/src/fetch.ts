@@ -18,9 +18,24 @@ interface RawStatusListClaim {
  * deferred until trust-list integration; this resolver only decodes.
  */
 export async function fetchStatusList(uri: string): Promise<StatusList> {
-  const response = await fetch(uri, {
-    headers: { Accept: `${MEDIA_JWT}, ${MEDIA_CWT}` },
-  });
+  let response: Response;
+  try {
+    response = await fetch(uri, {
+      headers: { Accept: `${MEDIA_JWT}, ${MEDIA_CWT}` },
+    });
+  } catch (err) {
+    // fetch() rejects (rather than returning a non-2xx Response) for
+    // network failures and, in the browser, for cross-origin requests
+    // that are blocked by CORS. The browser deliberately hides which it
+    // was, so we surface both possibilities.
+    const original = (err as Error).message || 'unknown error';
+    throw new Error(
+      `Could not reach status list at ${uri}. ` +
+        'This usually means the server does not allow cross-origin ' +
+        'requests (CORS), the URL is unreachable, or the network is ' +
+        `blocked. Original: ${original}`,
+    );
+  }
   if (!response.ok) {
     throw new Error(
       `Failed to fetch status list at ${uri}: ${response.status} ${response.statusText}`,
