@@ -47,36 +47,49 @@ export async function SiteNav() {
               </svg>
             </button>
 
-            <ul
-              role="menu"
-              className="invisible absolute left-0 top-full z-50 mt-1 w-72 rounded-md border border-zinc-200 bg-white py-1 opacity-0 shadow-lg transition focus-within:visible focus-within:opacity-100 group-hover:visible group-hover:opacity-100 dark:border-zinc-800 dark:bg-zinc-900"
+            {/*
+              Outer wrapper sits flush against the button (top-full, no
+              margin) and uses pt-2 to create a transparent "hover bridge"
+              between the button and the visible menu. Without this bridge,
+              moving the cursor downward briefly leaves the .group element,
+              which closes the CSS-only dropdown before the cursor can
+              reach a menu item. The visible padding around items still
+              comes from the inner <ul>.
+            */}
+            <div
+              className="invisible absolute left-0 top-full z-50 pt-2 opacity-0 transition focus-within:visible focus-within:opacity-100 group-hover:visible group-hover:opacity-100"
             >
-              {modules.map((m) => (
-                <li key={m.id} role="none">
-                  {m.status === 'shipped' ? (
-                    <Link
-                      href={`/modules/${m.id}/`}
-                      role="menuitem"
-                      className="flex flex-col px-3 py-2 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white"
-                    >
-                      <span>{m.name}</span>
-                      <span className="text-xs text-emerald-600 dark:text-emerald-400">
-                        Shipped
+              <ul
+                role="menu"
+                className="w-72 rounded-md border border-zinc-200 bg-white py-1 shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
+              >
+                {modules.map((m) => (
+                  <li key={m.id} role="none">
+                    {m.status === 'shipped' ? (
+                      <Link
+                        href={`/modules/${m.id}/`}
+                        role="menuitem"
+                        className="flex flex-col px-3 py-2 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white"
+                      >
+                        <span>{m.name}</span>
+                        <span className="text-xs text-emerald-600 dark:text-emerald-400">
+                          Shipped
+                        </span>
+                      </Link>
+                    ) : (
+                      <span
+                        role="menuitem"
+                        aria-disabled="true"
+                        className="flex cursor-not-allowed flex-col px-3 py-2 text-sm text-zinc-400 dark:text-zinc-500"
+                      >
+                        <span>{m.name}</span>
+                        <span className="text-xs">Coming soon</span>
                       </span>
-                    </Link>
-                  ) : (
-                    <span
-                      role="menuitem"
-                      aria-disabled="true"
-                      className="flex cursor-not-allowed flex-col px-3 py-2 text-sm text-zinc-400 dark:text-zinc-500"
-                    >
-                      <span>{m.name}</span>
-                      <span className="text-xs">Coming soon</span>
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ul>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           <Link href="/modules/eaa-conformance/controls/" className={linkClass}>
