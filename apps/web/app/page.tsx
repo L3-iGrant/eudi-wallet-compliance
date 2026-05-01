@@ -33,8 +33,8 @@ export default async function Hub() {
       <section className="border-b border-zinc-200 bg-gradient-to-b from-zinc-50 to-white py-16 sm:py-24 dark:border-zinc-800 dark:from-zinc-900 dark:to-zinc-950">
         <div className="mx-auto max-w-4xl px-4 text-center">
           <h1 className="text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl md:text-5xl dark:text-white">
-            EUDI Wallet Compliance, the reference toolkit for issuers, wallet
-            providers, QTSPs, and relying parties.
+            EUDI Wallet Compliance - The reference toolkit for (Q) EAA
+            Issuers, Wallet Providers, QTSPs, and Relying Parties.
           </h1>
           <p className="mt-6 text-base text-zinc-600 sm:text-lg dark:text-zinc-400">
             Built and maintained by iGrant.io.
