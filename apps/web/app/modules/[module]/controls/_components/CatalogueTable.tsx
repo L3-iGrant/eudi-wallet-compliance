@@ -766,7 +766,7 @@ function FacetTagList({
       {values.map((v) => (
         <li
           key={v}
-          className="inline-flex items-center rounded-md border border-zinc-200 bg-white px-1.5 py-0.5 text-xs text-zinc-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-400"
+          className="inline-flex items-center whitespace-nowrap rounded-md border border-zinc-200 bg-white px-1.5 py-0.5 text-xs text-zinc-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-400"
         >
           {labels[v] ?? v}
         </li>

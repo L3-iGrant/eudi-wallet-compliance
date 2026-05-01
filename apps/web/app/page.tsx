@@ -213,12 +213,12 @@ export default async function Hub() {
 
       {/* Two-tier picker */}
       <section className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
-        <div className="flex flex-col gap-2 sm:max-w-2xl">
+        <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-700 dark:text-blue-400">
             How to use this
           </p>
-          <h2 className="text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl dark:text-white">
-            Two ways in. Same controls catalogue underneath.
+          <h2 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl dark:text-white">
+            Two access modes, one catalogue.
           </h2>
         </div>
 
@@ -288,14 +288,14 @@ export default async function Hub() {
       {/* Frameworks covered */}
       <section className="border-t border-zinc-100 bg-zinc-50/50 py-16 sm:py-20 dark:border-zinc-900 dark:bg-zinc-900/40">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="flex flex-col gap-2 sm:max-w-2xl">
+          <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-700 dark:text-blue-400">
               Frameworks covered
             </p>
-            <h2 className="text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl dark:text-white">
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl dark:text-white">
               One module ships today. Six more in the build pipeline.
             </h2>
-            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+            <p className="mt-2 max-w-2xl text-sm text-zinc-600 dark:text-zinc-400">
               The EAA Conformance module is live, covering ETSI TS 119 472-1.
               The remaining modules sit alongside it and will surface as they
               reach review.
