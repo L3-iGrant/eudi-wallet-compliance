@@ -1,0 +1,3604 @@
+- id: EAA-4.2.1.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.1.2
+    page: 15
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: This component shall indicate the type of the EAA.
+  spec_text: This component shall indicate the type of the EAA.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.1.4-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.1.4
+    page: 15
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA shall incorporate the EAA type.
+  spec_text: An EAA shall incorporate the EAA type.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.1.2-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.1.2
+    page: 15
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The incorporation, value, and placement of the EAA type data shall depend on
+  spec_text: The incorporation, value, and placement of the EAA type data shall
+    depend on the specific EAA implementation. 4.2.1.3 EAA context
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.1.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.1.3
+    page: 15
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If the components of the EAA have URLs as names, the EAA shall include one or
+  spec_text: If the components of the EAA have URLs as names, the EAA shall
+    include one or more context components. ETSI ETSI TS 119 472 - 1 V1.2.1
+    (2026 - 02) 16
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.1.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.1.3
+    page: 16
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The EAA context component shall reference a document defining a map between
+  spec_text: The EAA context component shall reference a document defining a map
+    between URLs identifying components of an EAA and short-forms aliases for
+    these components.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.1.3-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.1.3
+    page: 16
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The incorporation, value, and placement of the information of the EAA context
+  spec_text: The incorporation, value, and placement of the information of the EAA
+    context components shall depend on the specific EAA implementation. 4.2.1.4
+    EAA schema
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.1.4-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.1.4
+    page: 16
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The EAA schema shall contain details that allow to verify that the
+    contents and
+  spec_text: The EAA schema shall contain details that allow to verify that the
+    contents and the structure of an attribute or an EAA are conformant against
+    a specific schema.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.1.4-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.1.4
+    page: 16
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may incorporate a sequence of one or more references allowing to
+  spec_text: An EAA may incorporate a sequence of one or more references allowing
+    to retrieve the EAA schema.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.1.4-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.1.4
+    page: 16
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: "Each reference in the aforementioned sequence: 1) Shall include a type"
+  spec_text: "Each reference in the aforementioned sequence: 1) Shall include a
+    type identifier; and 2) Shall include a URI Reference which references the
+    schema itself."
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.1.4-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.1.4
+    page: 16
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The incorporation and placement of the aforementioned sequence
+    shall depend on
+  spec_text: The incorporation and placement of the aforementioned sequence shall
+    depend on the specific EAA implementation. 4.2.2 EAA category 4.2.2.1
+    General requirements
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.2
+    page: 16
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The EAA category shall be an explicit signal identifying the category of the
+  spec_text: The EAA category shall be an explicit signal identifying the category
+    of the EAA in the context where the EAA has been issued.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.2-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.2
+    page: 16
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may include the EAA category. 4.2.2.2 Requirements for EU
+    Qualified EAA
+  spec_text: An EAA may include the EAA category. 4.2.2.2 Requirements for EU
+    Qualified EAA (QEAA)
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: QEAA-4.2.2.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.2.2
+    page: 16
+  modal_verb: shall
+  applies_to:
+    - qeaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: A QEAA shall include the EAA category, signalling its condition of QEAA.
+  spec_text: A QEAA shall include the EAA category, signalling its condition of QEAA.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: QEAA-4.2.2.2-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.2.2
+    page: 16
+  modal_verb: shall
+  applies_to:
+    - qeaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: For QEAA realizations using URIs as identifiers of the category, the value of
+  spec_text: 'For QEAA realizations using URIs as identifiers of the category, the
+    value of the EAA category shall be the following URN:
+    urn:etsi:esi:eaa:eu:qualified . NOTE: These requirements meet the
+    requirement (a) in Annex V of Regulation (EU) 2024/1183 [i.2] for QEAA,
+    which requires the presence of "(a) an indication, at least in a form
+    suitable for automated processing, that the attestation has been issued as a
+    qualif ied electronic attestation of attributes". 4.2.2.3 Requirements for
+    EU EAA issued by or on behalf of a public body responsible for an authentic
+    source (PuB-EAA)'
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: PuB-EAA-4.2.2.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.2.3
+    page: 16
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: A PuB-EAA shall include an explicit signal of its condition of PuB-EAA.
+  spec_text: A PuB-EAA shall include an explicit signal of its condition of PuB-EAA.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: PuB-EAA-4.2.2.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.2.3
+    page: 16
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: For PuB-EAA realizations using URIs as identifiers of the category,
+    this signal
+  spec_text: 'For PuB-EAA realizations using URIs as identifiers of the category,
+    this signal shall be the following URN: urn:etsi:esi:eaa:eu:pub . NOTE:
+    These requirements meet the of requirement (a) in Annex VII of Regulation
+    (EU) 2024/1183 [i.2] for PuB-EAA, which requires the presence of "(a) an
+    indication, at least in a form suitable for automated processing, that the
+    attestation has been issued as an electronic attestation of attributes
+    issued by or on behalf of a public body responsible for an authentic
+    source". 4.2.3 EAA identifier'
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.3
+    page: 16
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The EAA identifier shall contain a value that allows to
+    unambiguously identify
+  spec_text: The EAA identifier shall contain a value that allows to unambiguously
+    identify the EAA itself.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.3
+    page: 16
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may incorporate the EAA identifier. ETSI ETSI TS 119 472 - 1 V1.2.1
+  spec_text: An EAA may incorporate the EAA identifier. ETSI ETSI TS 119 472 - 1
+    V1.2.1 (2026 - 02) 17
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.3-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.3
+    page: 17
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The incorporation, value, and placement of the EAA identifier shall depend on
+  spec_text: 'The incorporation, value, and placement of the EAA identifier shall
+    depend on the specific EAA implementation. NOTE 1: The requirements in the
+    present clause meet the first part of requirement (f) in Annex V of
+    Regulation (EU) 2024/1183 [i.2] for QEAA, which requires the presence of
+    "(f) the attestation identity code, which must be unique for the qualified
+    trust service provider" . NOTE 2: The requirements in the present clause
+    meet the first part of requirement (e) in Annex VII of Regulation (EU)
+    2024/1183 [i.2] for PuB-EAA, which requires the presence of "(f) the
+    attestation identity code, which must be unique for the issuing public body"
+    . 4.2.4 EAA issuer identifier 4.2.4.1 General requirements'
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.4.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.1
+    page: 17
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The EAA issuer identifier shall have a value that unambiguously
+    identifies the
+  spec_text: The EAA issuer identifier shall have a value that unambiguously
+    identifies the EAA Trust Service Provider which issues the EAA.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.4.1-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.1
+    page: 17
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may incorporate the EAA issuer identifier.
+  spec_text: An EAA may incorporate the EAA issuer identifier.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.4.1-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.1
+    page: 17
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The incorporation, value, and placement of the EAA issuer identifier shall
+  spec_text: The incorporation, value, and placement of the EAA issuer identifier
+    shall depend on the specific EAA implementation.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.4.1-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.1
+    page: 17
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The EAA may include an identifier of the EU Member State, in which the EAA
+  spec_text: The EAA may include an identifier of the EU Member State, in which
+    the EAA issuer is registered.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.4.1-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.1
+    page: 17
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The value of the identifier of an EU Member State shall be the Alpha
+  spec_text: The value of the identifier of an EU Member State shall be the Alpha
+    2-character country code as specified in ISO 3166-1 [15] corresponding to
+    this EU Member State.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.4.1-06
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.1
+    page: 17
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If the issuer of the EAA is a legal person, the EAA may include a
+    registration
+  spec_text: If the issuer of the EAA is a legal person, the EAA may include a
+    registration identifier as stated in the official records, where such a
+    registration identifier exists.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.4.1-07
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.1
+    page: 17
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If the issuer of the EAA is a legal person, the registration
+    identifier may be
+  spec_text: "If the issuer of the EAA is a legal person, the registration
+    identifier may be built according to the rules defined in clause 5.1.4 of
+    ETSI EN 319 412-1 [16] to build the value of the organizationIdentifier
+    attribute in the subject field of an X.509 certificate. NOTE: Note that
+    although these requirements are defined in clause 5.1.4 of ETSI EN 319 412-1
+    [16] for building strings that are values of the organizationIdentifier
+    attribute in the subject field of an X.509 certificate, the resulting
+    strings can be used as the identifier of an EAA issuer if it is a legal
+    person."
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.4.1-08
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.1
+    page: 17
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If the issuer of the EAA is a legal person, the EAA may include the name of
+  spec_text: If the issuer of the EAA is a legal person, the EAA may include the
+    name of this legal person.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.4.1-09
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.1
+    page: 17
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If both a national Value Added Tax (VAT) identification number and one (or
+  spec_text: If both a national Value Added Tax (VAT) identification number and
+    one (or more) other national identification number exist, the national value
+    added tax identification number shall be used to identify the EAA issuer.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.4.1-10
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.1
+    page: 17
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If the issuer of the EAA is a natural person, the EAA may include the name of
+  spec_text: If the issuer of the EAA is a natural person, the EAA may include the
+    name of this natural person. 4.2.4.2 Requirements for EU Qualified EAA
+    (QEAA)
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: QEAA-4.2.4.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.2
+    page: 17
+  modal_verb: shall
+  applies_to:
+    - qeaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: A QEAA shall incorporate the EAA issuer identifier.
+  spec_text: A QEAA shall incorporate the EAA issuer identifier.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: QEAA-4.2.4.2-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.2
+    page: 17
+  modal_verb: shall
+  applies_to:
+    - qeaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: A QEAA shall include an identifier of the EU Member State, in which the QEAA
+  spec_text: A QEAA shall include an identifier of the EU Member State, in which
+    the QEAA issuer is registered.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: QEAA-4.2.4.2-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.2
+    page: 17
+  modal_verb: shall
+  applies_to:
+    - qeaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The value of the identifier of an EU Member State shall be as specified in
+  spec_text: The value of the identifier of an EU Member State shall be as
+    specified in requirement EAA-4.2.4.1-05 of the present document.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: QEAA-4.2.4.2-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.2
+    page: 17
+  modal_verb: shall
+  applies_to:
+    - qeaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If the issuer of the QEAA is a legal person, the QEAA shall include a
+  spec_text: If the issuer of the QEAA is a legal person, the QEAA shall include a
+    registration identifier as stated in the official records, where such a
+    registration identifier exists.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: QEAA-4.2.4.2-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.2
+    page: 17
+  modal_verb: shall
+  applies_to:
+    - qeaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If the issuer of the QEAA is a legal person , the registration
+    identifier shall
+  spec_text: If the issuer of the QEAA is a legal person , the registration
+    identifier shall be built according to the rules defined in clause 5.1.4 of
+    ETSI EN 319 412-1 [16] to build the value of the organizationIdentifier
+    attribute in the subject field of an X.509 certificate.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: QEAA-4.2.4.2-06
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.2
+    page: 17
+  modal_verb: shall
+  applies_to:
+    - qeaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If the issuer of the QEAA is a legal person, the QEAA shall include
+    the name of
+  spec_text: If the issuer of the QEAA is a legal person, the QEAA shall include
+    the name of this legal person. ETSI ETSI TS 119 472 - 1 V1.2.1 (2026 - 02)
+    18
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: QEAA-4.2.4.2-07
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.2
+    page: 18
+  modal_verb: shall
+  applies_to:
+    - qeaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If the issuer of the QEAA is a natural person, the QEAA shall
+    include the name
+  spec_text: "If the issuer of the QEAA is a natural person, the QEAA shall
+    include the name of this natural person. NOTE 1: These requirements meet
+    requirement (b) in Annex V of Regulation (EU) 2024/1183 [i.2] for QEAA,
+    which requires the presence of \"(b) a set of data unambiguously
+    representing the qualified trust service provider issuing the qualified
+    electronic attestation of attributes including at least, the Member State in
+    which that provider is established and: (i) for a lega l person: the name
+    and, where applicable, registration number as stated in the official
+    records; (ii) for a natural person: the person's name\"."
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: QEAA-4.2.4.2-08
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.2
+    page: 18
+  modal_verb: shall
+  applies_to:
+    - qeaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: A QEAA shall include the download URL of the certificate supporting
+    the digital
+  spec_text: 'A QEAA shall include the download URL of the certificate supporting
+    the digital signature of the QEAA. NOTE 2: This requirement meets
+    requirement (h) in Annex V of Regulation (EU) 2024/1183 [i.2] for QEAA,
+    which requires the presence of "(h) the location where the certificate
+    supporting the qualified electronic signature or qualified electronic seal
+    referred to in point (g) is available free of charge". 4.2.4.3 Requirements
+    for EU EAA issued by or on behalf of a public body responsible for an
+    authentic source (PuB-EAA)'
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: PuB-EAA-4.2.4.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.3
+    page: 18
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: A PuB-EAA shall incorporate the EAA issuer identifier.
+  spec_text: A PuB-EAA shall incorporate the EAA issuer identifier.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: PuB-EAA-4.2.4.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.3
+    page: 18
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: A PuB-EAA shall include an identifier of the EU Member State, in which the
+  spec_text: A PuB-EAA shall include an identifier of the EU Member State, in
+    which the public body issuing the PuB-EAA is established.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: PuB-EAA-4.2.4.3-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.3
+    page: 18
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The value of the identifier of an EU Member State shall be as specified in
+  spec_text: The value of the identifier of an EU Member State shall be as
+    specified in requirement EAA-4.2.4.1-05 of the present document.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: PuB-EAA-4.2.4.3-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.3
+    page: 18
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: A PuB-EAA shall include the registration identifier of the public
+    body issuing
+  spec_text: A PuB-EAA shall include the registration identifier of the public
+    body issuing the PuB-EAA, as stated in the official records, where such a
+    registration identifier exists.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: PuB-EAA-4.2.4.3-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.3
+    page: 18
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The registration identifier shall be built according to the rules defined in
+  spec_text: The registration identifier shall be built according to the rules
+    defined in clause 5.1.4 of ETSI EN 319 412-1 [16] to build the value of the
+    organizationIdentifier attribute in the subject field of an X.509
+    certificate.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: PuB-EAA-4.2.4.3-06
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.3
+    page: 18
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: A PuB-EAA shall include the name of the public body issuing the PuB-EAA. NOTE
+  spec_text: 'A PuB-EAA shall include the name of the public body issuing the
+    PuB-EAA. NOTE 1: These requirements meet requirement (b) in Annex VII of
+    Regulation (EU) 2024/1183 [i.2] for PuB-EAA, which requires the presence of
+    "(b) a set of data unambiguously representing the public body issuing the
+    electronic attestation of attributes, including at least, the Member State
+    in which that public body is established and its name and, where applicable,
+    its registration number as stated in the official record" .'
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: PuB-EAA-4.2.4.3-07
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.4.3
+    page: 18
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: A PuB-EAA shall include the download URL of the certificate supporting the
+  spec_text: 'A PuB-EAA shall include the download URL of the certificate
+    supporting the digital signature of the PuB-EAA. NOTE 2: This requirement
+    meets requirement (h) in Annex VII of Regulation (EU) 2024/1183 [i.2] for
+    Pub-EAA, which requires the presence of "(h) the location where the certific
+    ate supporting the qualified electronic signature or qualified electronic
+    seal referred to in point (g) is available free of charge" . 4.2.5 EAA
+    issued on behalf'
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.5-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.5
+    page: 18
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If the EAA is issued on behalf of another entity, the EAA may incorporate an
+  spec_text: If the EAA is issued on behalf of another entity, the EAA may
+    incorporate an indication of this fact.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.5-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.5
+    page: 18
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The incorporation, value, and placement of this indication shall
+    depend on the
+  spec_text: The incorporation, value, and placement of this indication shall
+    depend on the specific EAA implementation.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.5-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.5
+    page: 18
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If the EAA is issued on behalf of another entity, the EAA may incorporate an
+  spec_text: If the EAA is issued on behalf of another entity, the EAA may
+    incorporate an identifier whose value unambiguously identifies the entity on
+    behalf of which the EAA has been issued.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.5-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.5
+    page: 18
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If the EAA has been issued on behalf of another entity, the EAA may
+    include the
+  spec_text: If the EAA has been issued on behalf of another entity, the EAA may
+    include the name of this entity.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.5-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.5
+    page: 18
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If the entity on whose behalf the EAA has been issued is a legal person, the
+  spec_text: If the entity on whose behalf the EAA has been issued is a legal
+    person, the EAA may include a registration identifier of this legal person
+    as stated in the official records, where such a registration identifier
+    exists. ETSI ETSI TS 119 472 - 1 V1.2.1 (2026 - 02) 19
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.5-06
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.5
+    page: 19
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The registration identifier of the legal entity on whose behalf the EAA has
+  spec_text: The registration identifier of the legal entity on whose behalf the
+    EAA has been issued may be expressed using the structured character string
+    specified in requirement EAA-4.2.4.1-07. 4.2.6 EAA subject and attribute s
+    ubject identifiers and pseudonyms 4.2.6.1 Introduction The present clause
+    defines requirements on identifiers identifying the EAA subject and the
+    attribute subjects. The present clause also defines requirements on
+    pseudonyms for the EAA subject and the attribute subjects. 4.2.6.2 The EAA
+    subject identifier
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.6.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.6.2
+    page: 19
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may include the EAA subject identifier, or the pseudonym of the EAA
+  spec_text: 'An EAA may include the EAA subject identifier, or the pseudonym of
+    the EAA subject, or none of them. NOTE 1: The former requirement implies
+    that there can be EAAs that do not include any identifier or pseudonym of
+    the EAA subject. NOTE 2: This presence of the EAA subject can be provided by
+    a component specifically defined for containing ONLY the EAA subject
+    identifier, or by a component defined for containing the attribute subject
+    identifier. EXAMPLE: Implementations based on "Verifiable Credentials Data
+    Model v2.0" [1], only define a component for identifiers bound to sets of
+    attributes . Each id field within each element of the credentialSubject
+    array contains the identifier of the attribute subject referred by the
+    attributes that are present within this array element. If the
+    credentialSubject array has only one element, the value of this id field is
+    the value of the EAA subject identifier. If the credentialSubject array has
+    several elements, each id field contains one attribute subject identifier
+    and the value of the EAA subject identifier is the value of one of these id
+    fields. In any case, the EAA subject identifier is present within the EAA
+    even if there is not a specific component allocated for containing only the
+    EAA identifier value.'
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.6.2-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.6.2
+    page: 19
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The incorporation, value, and placement of the EAA subject identifier shall
+  spec_text: The incorporation, value, and placement of the EAA subject identifier
+    shall depend on the specific EAA implementation. 4.2.6.3 The EAA subject
+    pseudonym
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.6.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.6.3
+    page: 19
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The presence of the EAA subject pseudonym instead of the EAA
+    subject identifier
+  spec_text: The presence of the EAA subject pseudonym instead of the EAA subject
+    identifier shall be clearly indicated.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.6.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.6.3
+    page: 19
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The mechanism used for incorporating the EAA subject pseudonym
+    within the EAA,
+  spec_text: The mechanism used for incorporating the EAA subject pseudonym within
+    the EAA, shall depend on the specific EAA implementation. 4.2.6.4 The
+    attribute subject identifier
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.6.4-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.6.4
+    page: 19
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The EAA may bind each attribute either to the identifier or to the
+    pseudonym of
+  spec_text: 'The EAA may bind each attribute either to the identifier or to the
+    pseudonym of the entity (attribute subject) that this attribute refers to.
+    NOTE 1: The former requirement implies that there can be EA As that do not
+    bind any attribute to any identifier or pseudonym of an entity. NOTE 2: In
+    an EAA where all the attributes refer to the same entity, the attribute
+    subject identifier and the EAA subject identifier are the same. NOTE 3: In
+    EAA containing several sets of attributes, each one referring to a different
+    attribute subject, the EAA can bind each set of attributes to the identifier
+    of the corresponding attribute subject using specific components defined for
+    containing identifiers of subj ect attributes, as "Verifiable Credentials
+    Data Model v2.0" [1] does.'
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.6.4-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.6.4
+    page: 19
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The incorporation, value, and placement of th e attribute subject identifiers
+  spec_text: 'The incorporation, value, and placement of th e attribute subject
+    identifiers shall depend on the specific EAA implementation. ETSI ETSI TS
+    119 472 - 1 V1.2.1 (20 26 - 02) 20 EXAMPLE: Implementations based on
+    "Verifiable Credentials Data Model v2.0" [1], only define fields for
+    identifiers bound to sets of attributes. E ach id field within each element
+    of the credentialSubject array contains the identifier of the attribute
+    subject referred by the attributes that are present within this array
+    element. 4.2.6.5 The attribute subject pseudonym'
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.6.5-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.6.5
+    page: 20
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may incorporate pseudonym(s) for attribute subject(s).
+  spec_text: An EAA may incorporate pseudonym(s) for attribute subject(s).
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.6.5-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.6.5
+    page: 20
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The mechanism used for incorporating the pseudonym(s) for attribute
+    subject(s)
+  spec_text: The mechanism used for incorporating the pseudonym(s) for attribute
+    subject(s) within the EAA, shall depend on the specific EAA implementation.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.6.5-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.6.5
+    page: 20
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The mechanism used for binding one attribute or a set of attributes to the
+  spec_text: The mechanism used for binding one attribute or a set of attributes
+    to the pseudonym of the attribute subject, shall depend on the specific EAA
+    implementation.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.6.5-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.6.5
+    page: 20
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The presence of the pseudonym(s) for attribute subject(s) instead of
+  spec_text: The presence of the pseudonym(s) for attribute subject(s) instead of
+    identifier(s) for the attribute subject(s), shall be clearly indicated
+    within the EAA. 4.2.6.6 Additional requirements
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.6.6-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.6.6
+    page: 20
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If the EAA contains several attribute subject identifiers, one of
+    them shall be
+  spec_text: If the EAA contains several attribute subject identifiers, one of
+    them shall be the EAA subject identifier.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.6.6-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.6.6
+    page: 20
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If the EAA contains attribute subject pseudonyms, does not contain any
+  spec_text: "If the EAA contains attribute subject pseudonyms, does not contain
+    any attribute subject identifier, and does not contain the EAA subject
+    identifier, then the pseudonym of the EAA subject shall be one of the
+    aforementioned pseudonyms. 4.2.6.7 Requirements for EU Qualified EAA (QEAA)
+    QEAA -4.2.6.7-01: A QEAA shall include either the EAA subject identifier or
+    the pseudonym of the EAA subject."
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: QEAA-4.2.6.7-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.6.7
+    page: 20
+  modal_verb: shall
+  applies_to:
+    - qeaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: "All the attributes present within a QEAA shall refer to one
+    entity: the QEAA"
+  spec_text: 'All the attributes present within a QEAA shall refer to one entity:
+    the QEAA subject. NOTE: These requirements meet the requirement (c) in Annex
+    V of Regulation (EU) 2024/1183 [i.2] for QEAA, which requires the presence
+    of "(c) a set of data unambiguously representing the entity to which the
+    attested attributes refer; if a pseudonym is used, it shall be clearly
+    indicated" . 4.2.6.8 Requirements for EU EAA issued by or on behalf of a
+    public body responsible for an authentic source (PuB-EAA)'
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: PuB-EAA-4.2.6.8-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.6.8
+    page: 20
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: A PuB-EAA shall include either the EAA subject identifier or the pseudonym of
+  spec_text: A PuB-EAA shall include either the EAA subject identifier or the
+    pseudonym of the EAA subject.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: PuB-EAA-4.2.6.8-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.6.8
+    page: 20
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: "All the attributes present within PuB-EAA shall refer to one
+    entity: the EAA"
+  spec_text: 'All the attributes present within PuB-EAA shall refer to one entity:
+    the EAA subject. NOTE: These requirements meet the requirement (c) in Annex
+    VII of Regulation (EU) 2024/1183 [i.2] for PuB-EAA, which requires the
+    presence of "(c) a set of data unambiguously representing the entity to
+    which the attested attributes refer; if a pseudonym is used, it shall be
+    clearly indicated" . 4.2.7 EAA issuance 4.2.7.1 General requirements'
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.7.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.7.1
+    page: 20
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The EAA issuance data shall unambiguously identify either the date,
+    or the date
+  spec_text: The EAA issuance data shall unambiguously identify either the date,
+    or the date and time instant when the EAA was issued.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.7.1-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.7.1
+    page: 20
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may incorporate the EAA issuance data.
+  spec_text: An EAA may incorporate the EAA issuance data.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.7.1-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.7.1
+    page: 20
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The incorporation and placement of the EAA issuance data shall depend on the
+  spec_text: The incorporation and placement of the EAA issuance data shall depend
+    on the specific EAA implementation. ETSI ETSI TS 119 472 - 1 V1.2.1 (2026 -
+    02) 21 4.2.7.2 Time indication content
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.7.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.7.2
+    page: 21
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: "A time instant: 1) Shall be expressed as an instant time in Coordinated"
+  spec_text: "A time instant: 1) Shall be expressed as an instant time in
+    Coordinated Universal Time (UTC); 2) Shall include indication of seconds,
+    even when the number of seconds is zero; 3) Shall not include fractions of
+    seconds; and 4) Shall not use local offset from UTC. 4.2.8 EAA validity
+    periods 4.2.8.1 Introduction The present clause specifies requirements for
+    the two types of EAA validity periods, namely: the administrative validity
+    period, and the technical validity period. 4.2.8.2 Common requirements for
+    administrative and technical validity periods"
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.8.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.8.2
+    page: 21
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: A validity period shall be expressed by two instant times in Coordinated
+  spec_text: A validity period shall be expressed by two instant times in
+    Coordinated Universal Time (UTC).
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.8.2-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.8.2
+    page: 21
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The content of each instant time shall meet the requirements specified in
+  spec_text: The content of each instant time shall meet the requirements
+    specified in clause 4.2.7.2 of the present document.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.8.2-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.8.2
+    page: 21
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The incorporation and placement of the information on validity periods shall
+  spec_text: The incorporation and placement of the information on validity
+    periods shall depend on the specific EAA implementation. 4.2.8.3 Specific
+    requirements for the EAA technical validity period
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.8.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.8.3
+    page: 21
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: "An EAA shall incorporate the EAA technical validity period. NOTE 1: This"
+  spec_text: "An EAA shall incorporate the EAA technical validity period. NOTE 1:
+    This requirement meets the requirement (e) in Annex V of Regulation (EU)
+    2024/1183 [i.2] for QEAA, which requires the presence of \"(e) details of
+    the beginning and end of the attestation's period of validity\" . NOTE 2:
+    This requirement meets the requirement (e) in Annex VII of Regulation (EU)
+    2024/1183 [i.2] for PuB-EAA, which requires the presence of \"(e) details of
+    the beginning and end of the attestation's period of validity\" . 4.2.8.4
+    Specific requirements for the EAA administrative validity period"
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.8.4-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.8.4
+    page: 21
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may incorporate the EAA administrative validity period. 4.2.9 Data
+  spec_text: An EAA may incorporate the EAA administrative validity period. 4.2.9
+    Data constraining the usage of EAA 4.2.9.1 Introduction The present clause
+    specifies semantics for data providing details on the terms under which the
+    EAA has been issued and may be used by relying parties. 4.2.9.2 EAA audience
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.9.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.9.2
+    page: 21
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The EAA audience shall identify the set of relying parties the EAA
+    is intended
+  spec_text: "The EAA audience shall identify the set of relying parties the EAA
+    is intended for. NOTE 1: This restriction is added to the restrictions
+    imposed by any Embedded Disclosure Policy existing for the EAA and the
+    restrictions established for the Relying Parties during their registration."
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.9.2-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.9.2
+    page: 21
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may incorporate the EAA audience. ETSI ETSI TS 119 472 - 1
+    V1.2.1 (2026
+  spec_text: An EAA may incorporate the EAA audience. ETSI ETSI TS 119 472 - 1
+    V1.2.1 (2026 - 02) 22
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.9.2-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.9.2
+    page: 22
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Presence of the EAA audience shall mean that the EAA is intended only for the
+  spec_text: Presence of the EAA audience shall mean that the EAA is intended only
+    for the relying parties identified in it.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.9.2-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.9.2
+    page: 22
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: "The value of EAA audience shall be either: 1) a sequence of
+    relying parties'"
+  spec_text: "The value of EAA audience shall be either: 1) a sequence of relying
+    parties' identifiers (in this sequence it is not mandatory that all the
+    members in the mentioned sequence are of the same type; instead, they may be
+    of different types); or 2) a sequence of identifiers of groups of relying
+    parties (relying parties of a certain type, for instance); or 3) a
+    combination of both types of sequences mentioned in the previous bullets.
+    NOTE 2: The sequence in bullet 2) allows to identify a high number of
+    relying parties with one identifier, and also allows to extend its number as
+    new relying parties are incorporated to the group identified."
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.9.2-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.9.2
+    page: 22
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The values of the identifiers of the relying pa rties or the groups
+    of relying
+  spec_text: The values of the identifiers of the relying pa rties or the groups
+    of relying parties shall depend on the specific EAA implementation.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.9.2-06
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.9.2
+    page: 22
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The incorporation and placement of the EAA audience shall depend on the
+  spec_text: The incorporation and placement of the EAA audience shall depend on
+    the specific EAA implementation. 4.2.9.3 Signal of one-time use
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.9.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.9.3
+    page: 22
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may incorporate the signal of one-time-use within the EAA.
+  spec_text: An EAA may incorporate the signal of one-time-use within the EAA.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.9.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.9.3
+    page: 22
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The presence of this signal shall indicate that the EAA shall be used only
+  spec_text: The presence of this signal shall indicate that the EAA shall be used
+    only once, and that it shall not be retained for future use.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.9.3-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.9.3
+    page: 22
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Its absence shall indicate that the afor ementioned constraint
+    shall not apply
+  spec_text: Its absence shall indicate that the afor ementioned constraint shall
+    not apply to the EAA.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.9.3-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.9.3
+    page: 22
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The incorporation, value, and placement of this signal shall depend on the
+  spec_text: The incorporation, value, and placement of this signal shall depend
+    on the specific EAA implementation. 4.2.10 Attributes evidence
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.10-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.10
+    page: 22
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The attributes evidence shall contain a set of evidence from the EAA subject
+  spec_text: "The attributes evidence shall contain a set of evidence from the EAA
+    subject (and the attribute subjects when required) that the EAA issuer used
+    for completing the issuance of the EAA. NOTE 1: The attributes evidence can
+    be used by the relying party in asserting whether the EAA issuer met its
+    expectations for relying in the EAA."
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.10-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.10
+    page: 22
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may incorporate the attributes evidence.
+  spec_text: An EAA may incorporate the attributes evidence.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.10-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.10
+    page: 22
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The attributes evidence shall consist in a sequence of one or more evidence.
+  spec_text: The attributes evidence shall consist in a sequence of one or more evidence.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.10-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.10
+    page: 22
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: "Each evidence: • Shall include an identifier of its type, which
+    shall be a URI"
+  spec_text: "Each evidence: • Shall include an identifier of its type, which
+    shall be a URI Reference. • Shall include an identifier of the entity that
+    verified this evidence. NOTE 2: This entity may be either the EAA issuer or
+    other delegated trusted entity. • Shall include a collection of data items
+    that provide de tails that are particular to each type of evidence. • May
+    include an identifier which allows to externally make reference to this
+    evidence."
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.10-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.10
+    page: 22
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The incorporation and placement of attributes evidence shall depend on the
+  spec_text: The incorporation and placement of attributes evidence shall depend
+    on the specific EAA implementation. ETSI ETSI TS 119 472 - 1 V1.2.1 (2026 -
+    02) 23 4.2.11 EAA status service 4.2.11.1 General requirements
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.11.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.11.1
+    page: 23
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The EAA status service shall contain details of the services (including its
+  spec_text: The EAA status service shall contain details of the services
+    (including its location), that can be used to enquire about the validity
+    status of the EAA.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.11.1-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.11.1
+    page: 23
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may incorporate the EAA status service.
+  spec_text: An EAA may incorporate the EAA status service.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.11.1-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.11.1
+    page: 23
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA that incorporates the EAA short-lived component (clause 4.2.13 of the
+  spec_text: An EAA that incorporates the EAA short-lived component (clause 4.2.13
+    of the present document), shall not incorporate the EAA status service.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.11.1-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.11.1
+    page: 23
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: "The attestation status service: 1) Shall include a URI to the
+    service. 2) May"
+  spec_text: 'The attestation status service: 1) Shall include a URI to the
+    service. 2) May also include an identifier of the type of the status
+    information provided by the service. EXAMPLE: A service issuing Bitstring
+    Status Lists as specified in W3C Recommendation: "Bitstring Status List
+    v1.0" [24].'
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.11.1-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.11.1
+    page: 23
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The incorporation, value, and placement of the EAA status service
+    shall depend
+  spec_text: The incorporation, value, and placement of the EAA status service
+    shall depend on the specific EAA implementation. 4.2.11.2 Requirements for
+    EU Qualified EAA (QEAA)
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: QEAA-4.2.11.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.11.2
+    page: 23
+  modal_verb: shall
+  applies_to:
+    - qeaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If a QEAA does not contain the EAA short-lived component, it shall
+    include the
+  spec_text: 'If a QEAA does not contain the EAA short-lived component, it shall
+    include the EAA status service. NOTE: This requirement meets the requirement
+    (i) in Annex V of Regulation (EU) 2024/1183 [i.2] for QEAA, which requires
+    the presence of "(i) the information or location of the services that can be
+    used to enquire about the validity status of the qualified attestation" .
+    4.2.11.3 Requirements for EU EAA issued by or on behalf of a public body
+    responsible for an authentic source (PuB-EAA)'
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: PuB-EAA-4.2.11.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.11.3
+    page: 23
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If a PuB-EAA does not contain the EAA short-lived component, it shall include
+  spec_text: 'If a PuB-EAA does not contain the EAA short-lived component, it
+    shall include the EAA status service. NOTE: This requirement meets the
+    requirement (i) in Annex VII of Regulation (EU) 2024/1183 [i.2] for PuB-EAA,
+    which requires the presence of "(i) the information or location of the
+    services that can be used to enquire about the validity status of the
+    attestation" . 4.2.12 EAA renewal service'
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.12-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.12
+    page: 23
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The EAA renewal service shall contain details allowing to request
+    to renew the
+  spec_text: The EAA renewal service shall contain details allowing to request to
+    renew the EAA to a renewal service.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.12-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.12
+    page: 23
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may incorporate EAA renewal service data.
+  spec_text: An EAA may incorporate EAA renewal service data.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.12-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.12
+    page: 23
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: "The attestation renewal service data: 1) Shall include a URI to
+    the service. 2)"
+  spec_text: "The attestation renewal service data: 1) Shall include a URI to the
+    service. 2) May also include an identifier of the type of the renewal
+    service itself."
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.12-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.12
+    page: 23
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The incorporation and placement of the EAA renewal service shall
+    depend on the
+  spec_text: The incorporation and placement of the EAA renewal service shall
+    depend on the specific EAA implementation. 4.2.13 EAA short-lived
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.13-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.13
+    page: 23
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may contain the EAA short-lived component. ETSI ETSI TS 119 472 - 1
+  spec_text: An EAA may contain the EAA short-lived component. ETSI ETSI TS 119
+    472 - 1 V1.2.1 (2026 - 02) 24
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.2.13-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.13
+    page: 24
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The presence of the EAA short-lived component shall indicate that
+    the validity
+  spec_text: The presence of the EAA short-lived component shall indicate that the
+    validity period of the EAA is so short that it shall not be necessary to
+    check its revocation status. 4.3 Attested attributes
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.3"
+    page: 24
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Each attribute within an EAA shall have an attribute identifier,
+    which uniquely
+  spec_text: "Each attribute within an EAA shall have an attribute identifier,
+    which uniquely and unambiguously identifies the attribute itself within the
+    environment where the EAA is used. EXAMPLE: This can be, for instance, the
+    environment identified in the EAA context, if present, or implicitly known
+    for all the participants in this environment, if the EAA context is absent."
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.3"
+    page: 24
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Each attribute within an EAA shall have a value, whose semantics and inner
+  spec_text: Each attribute within an EAA shall have a value, whose semantics and
+    inner structure shall depend on the specific Attribute.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.3-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.3"
+    page: 24
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: "Each attribute within an EAA shall refer to one attribute subject.
+    NOTE: If all"
+  spec_text: "Each attribute within an EAA shall refer to one attribute subject.
+    NOTE: If all the attributes of the EAA refer to the same entity (the EAA
+    subject), this attribute subject is the same as the EAA subject."
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.3-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.3"
+    page: 24
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Each attribute within an EAA may have a compon ent indicating the format used
+  spec_text: Each attribute within an EAA may have a compon ent indicating the
+    format used by the attribute identifier.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.3-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.3"
+    page: 24
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Each attribute within an EAA may have a component identifying its type.
+  spec_text: Each attribute within an EAA may have a component identifying its type.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.3-06
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.3"
+    page: 24
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Each attribute within an EAA may have a component where a friendly identifier
+  spec_text: Each attribute within an EAA may have a component where a friendly
+    identifier of the attribute is available.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.3-07
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.3"
+    page: 24
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Each attribute within an EAA may have a component that allows to individually
+  spec_text: Each attribute within an EAA may have a component that allows to
+    individually reference the attribute.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.3-08
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.3"
+    page: 24
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The incorporation and placement of the attributes shall depend on
+    the specific
+  spec_text: "The incorporation and placement of the attributes shall depend on
+    the specific EAA implementation. 4.4 Attested attributes metadata 4.4.1
+    Introduction The present clause specifies the semantics of a set of data
+    that support the disclosure of attested attributes. 4.4.2 Support to
+    selective disclosure of attested attributes 4.4.2.1 Introduction Clause
+    4.4.2 specifies the semantics of: • The identifier of the selective
+    disclosure schema used in the EAA. This identifier may appear explicitly
+    within the EAA or be implicit (clause 4.4.2.2 of the present document). •
+    The disclosure, which is a structure that contains, among other data, the
+    attested attribute to be selectively disclosed (clause 4.4.2.3 of the
+    present document). • The disclosure reference, which is a data bound to on e
+    disclosure, built in a way that this binding can be ascertained using a
+    certain algorithm, and from which it is not computationally feasible to get
+    the value of the attested attribute (clause 4.4.2.4 of the present
+    document). • The identifier and any required parameter(s) of the algorithm
+    for computing the disclosure reference, based on the bound disclosure, and
+    ensure their binding (clause 4.4.2.5 of the present document). ETSI ETSI TS
+    119 472 - 1 V1.2.1 (2026 - 02) 25 4.4.2.2 Disclosure schema identifier"
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.4.2.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.4.2.2
+    page: 25
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may incorporate the disclosure schema.
+  spec_text: An EAA may incorporate the disclosure schema.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.4.2.2-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.4.2.2
+    page: 25
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: "This disclosure schema identifier: 1) Shall univocally identify
+    the mechanism"
+  spec_text: "This disclosure schema identifier: 1) Shall univocally identify the
+    mechanism used wi thin the EAA for making certain attested attributes
+    disclosable. 2) May also contain an identifier or reference to the
+    standard/specification that defines the mechanism itself."
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.4.2.2-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.4.2.2
+    page: 25
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The incorporation and placement of the disclosure schema identifier shall
+  spec_text: The incorporation and placement of the disclosure schema identifier
+    shall depend on the specific EAA implementation. 4.4.2.3 Disclosure
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.4.2.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.4.2.3
+    page: 25
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may have one or more disclosures.
+  spec_text: An EAA may have one or more disclosures.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.4.2.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.4.2.3
+    page: 25
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: "Each disclosure: 1) Shall contain the disclosed attested
+    attribute. 2) Shall"
+  spec_text: "Each disclosure: 1) Shall contain the disclosed attested attribute.
+    2) Shall contain additional data that allows to bind one disclosure with a
+    disclosure reference. 3) May include an identifier of its version."
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.4.2.3-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.4.2.3
+    page: 25
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The incorporation and placement of the disclosures shall depend on
+    the specific
+  spec_text: The incorporation and placement of the disclosures shall depend on
+    the specific EAA implementation. 4.4.2.4 Disclosure reference
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.4.2.4-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.4.2.4
+    page: 25
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Each disclosure reference sha ll be unambiguously bound to one disclosure.
+  spec_text: Each disclosure reference sha ll be unambiguously bound to one disclosure.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.4.2.4-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.4.2.4
+    page: 25
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Each disclosure reference shall be built in such a way that this
+    binding can be
+  spec_text: Each disclosure reference shall be built in such a way that this
+    binding can be ascertained using a certain algorithm.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.4.2.4-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.4.2.4
+    page: 25
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The EAA may include information on the validity of a set of disclosure
+  spec_text: The EAA may include information on the validity of a set of
+    disclosure references.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.4.2.4-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.4.2.4
+    page: 25
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: All the disclosure references present within an EAA shall be signed
+    by the EAA
+  spec_text: All the disclosure references present within an EAA shall be signed
+    by the EAA issuer.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.4.2.4-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.4.2.4
+    page: 25
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If an EAA has disclosures, then it shall have disclosure
+    references. If an EAA
+  spec_text: If an EAA has disclosures, then it shall have disclosure references.
+    If an EAA has not disclosures, then it shall not have disclosure references.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.4.2.4-06
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.4.2.4
+    page: 25
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The computation, incorporation and placement of the disclosure
+    references shall
+  spec_text: The computation, incorporation and placement of the disclosure
+    references shall depend on the specific EAA implementation. 4.4.2.5
+    Disclosure algorithm identifier
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.4.2.5-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.4.2.5
+    page: 25
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The disclosure algorithm identifier shall id entify the algorithm for
+  spec_text: The disclosure algorithm identifier shall id entify the algorithm for
+    ascertaining the binding between a disclosure reference and its bound
+    disclosure.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.4.2.5-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.4.2.5
+    page: 25
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may incorporate the disclosure algorithm identifier.
+  spec_text: An EAA may incorporate the disclosure algorithm identifier.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.4.2.5-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.4.2.5
+    page: 25
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: "The disclosure algorithm identifier: 1) Shall contain an identifier that"
+  spec_text: "The disclosure algorithm identifier: 1) Shall contain an identifier
+    that univocally identifies the algorithm. 2) May also contain any parameter
+    required for its operation."
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.4.2.5-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.4.2.5
+    page: 25
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The incorporation and placement of the disclosure algorithm identifier shall
+  spec_text: The incorporation and placement of the disclosure algorithm
+    identifier shall depend on the specific EAA implementation. ETSI ETSI TS 119
+    472 - 1 V1.2.1 (2026 - 02) 26 4.5 EAA data for key binding
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.5-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.5"
+    page: 26
+  modal_verb: should
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA should incorporate a component proving that a certain public key is in
+  spec_text: "An EAA should incorporate a component proving that a certain public
+    key is in possession of the EAA subject. NOTE 1: If this component is
+    present within the EAA, the EAA subject can use the private key
+    corresponding to this public key for signing an EAA presentation. NOTE 2: In
+    some specific cases, the EAA can bind the attested attributes to the EAA
+    subject using claim binding or a direct EAA subject identification data
+    binding, instead of public key binding."
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.5-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.5"
+    page: 26
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The value of this component may be either a public key, a certificate, or a
+  spec_text: The value of this component may be either a public key, a
+    certificate, or a reference to one of them.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.5-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.5"
+    page: 26
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If the value of this component is a pointer either to a public key or to a
+  spec_text: If the value of this component is a pointer either to a public key or
+    to a certificate, the EAA shall contain the digest of the referenced object.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.5-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.5"
+    page: 26
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: "It is recommended that this component is a public key. NOTE 3: This is for"
+  spec_text: "It is recommended that this component is a public key. NOTE 3: This
+    is for security and privacy reasons. 4.6 EAA digital signature 4.6.1 General
+    requirements"
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.6.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.6.1
+    page: 26
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA shall incorporate a digital signature generated by the EAA
+    issuer using
+  spec_text: An EAA shall incorporate a digital signature generated by the EAA
+    issuer using its private key.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.6.1-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.6.1
+    page: 26
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Where the syntax used for the digital signature makes it possible,
+    the digital
+  spec_text: Where the syntax used for the digital signature makes it possible,
+    the digital signature shall be an AdES- B-B digital signature in that
+    syntax.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.6.1-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.6.1
+    page: 26
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If the EAA includes selective disclosures, then the disclosures
+    shall be placed
+  spec_text: If the EAA includes selective disclosures, then the disclosures shall
+    be placed in the container for unsigned attributes.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.6.1-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.6.1
+    page: 26
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: If the digital signature is an AdES-B-B digital signature, and the
+    EAA includes
+  spec_text: "If the digital signature is an AdES-B-B digital signature, and the
+    EAA includes selective disclosures, then the disclosures shall be placed, if
+    the serialization rules allow it, in the container for unsigned attributes
+    specified i n the corresponding AdES specification. NOTE: The compact
+    serialization for SD-JWT (IETF RFC 7519 [4]) defines its own mechanism for
+    incorporating the disclosures."
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.6.1-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.6.1
+    page: 26
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The EAA signature may include the signing certificate.
+  spec_text: The EAA signature may include the signing certificate.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.6.1-06
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.6.1
+    page: 26
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The EAA signature may include certificates in the certification path, except
+  spec_text: The EAA signature may include certificates in the certification path,
+    except the trust anchor.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: EAA-4.6.1-07
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.6.1
+    page: 26
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The signing certificate shall meet the requirements of the profile EAA
+  spec_text: The signing certificate shall meet the requirements of the profile
+    EAA specified in ETSI TS 119 412-6 [17]. 4.6.2 Requirements for EU Qualified
+    EAA (QEAA)
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: QEAA-4.6.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.6.2
+    page: 26
+  modal_verb: shall
+  applies_to:
+    - qeaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The QEAA digital signature shall be a qual ified electronic signature or a
+  spec_text: 'The QEAA digital signature shall be a qual ified electronic
+    signature or a qualified electronic seal. NOTE 1: This requirement meets
+    requirement (g) in Annex V of Regulation (EU) 2024/1183 [i.2] for QEAA,
+    which requires the presence of "(g) the qualified electronic signature or
+    qualified electronic seal of the issuing qualified trust service provider"
+    .'
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: QEAA-4.6.2-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.6.2
+    page: 26
+  modal_verb: shall
+  applies_to:
+    - qeaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The QEAA digital signature shall contain a signed attribute whose value is a
+  spec_text: 'The QEAA digital signature shall contain a signed attribute whose
+    value is a reference to the place from where the qualified certificate
+    supporting the QEAA digital signature can be downloaded from, and a signed
+    attribute containing the digest of the mentioned qualified certificate. NOTE
+    2: This requirement meets requirement (h) in Annex V of Regulation (EU)
+    2024/1183 [i.2] for QEAA, which requires the presence of "(h) the location
+    where the certifi cate supporting the qualified electronic signature or
+    qualified electronic seal referred to in point (g) is available free of
+    charge" . ETSI ETSI TS 119 472 - 1 V1.2 .1 (2026 - 02) 27'
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: QEAA-4.6.2-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.6.2
+    page: 27
+  modal_verb: should
+  applies_to:
+    - qeaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The QEAA digital signature should contain the qualified certificate
+    supporting
+  spec_text: The QEAA digital signature should contain the qualified certificate
+    supporting the QEAA digital signature.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: QEAA-4.6.2-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.6.2
+    page: 27
+  modal_verb: shall
+  applies_to:
+    - qeaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The signing certificate shall meet the requirements of the profile QEAA
+  spec_text: The signing certificate shall meet the requirements of the profile
+    QEAA specified in ETSI TS 119 412-6 [17]. 4.6.3 Requirements for EU EAA
+    issued by or on behalf of a public body responsible for an authentic source
+    (PuB-EAA)
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: PuB-EAA-4.6.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.6.3
+    page: 27
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The PuB-EAA digital signature shall be a qualified electronic signature or a
+  spec_text: 'The PuB-EAA digital signature shall be a qualified electronic
+    signature or a qualified electronic seal. NOTE 1: These requirements meet
+    requirement (g) in Annex VII of Regulation (EU) 2024/1183 [i.2] for PuB-EAA,
+    which requires the presence of "(g) the qualified electronic si gnature or
+    qualified electronic seal of the issuing body" .'
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: PuB-EAA-4.6.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.6.3
+    page: 27
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The PuB-EAA digital signature shall contain a signed attribute
+    whose value is a
+  spec_text: 'The PuB-EAA digital signature shall contain a signed attribute whose
+    value is a reference to the place from where the qualified certificate
+    supporting the PuB- EAA digital signature can be downloaded from, and a
+    signed attribute containing the digest of the mentioned qualified
+    certificate. NOTE 2: This requirement meets requirement (h) in Annex VII of
+    Regulation (EU) 2024/1183 [i.2]for QEAA, which requires the presence of "(h)
+    the location where the certific ate supporting the qualified electronic
+    signature or qualified electronic seal referred to in point (g) is available
+    free of charge" .'
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: PuB-EAA-4.6.2-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.6.2
+    page: 27
+  modal_verb: should
+  applies_to:
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The PuB-EAA digital signature should contain the qualified certificate
+  spec_text: The PuB-EAA digital signature should contain the qualified
+    certificate supporting the PuB-EAA digital signature.
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []
+- id: PuB-EAA-4.6.2-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.6.2
+    page: 27
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: The signing certificate shall meet the requirements of the profile PSB
+  spec_text: The signing certificate shall meet the requirements of the profile
+    PSB specified in ETSI TS 119 412-6 [17].
+  plain_english: "TODO: hand-write this explanation"
+  common_mistakes: []
+  related_controls: []

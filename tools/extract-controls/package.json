@@ -7,9 +7,19 @@
   "types": "./src/index.ts",
   "scripts": {
     "typecheck": "tsc --noEmit",
+    "extract": "tsx src/extract.ts",
     "test": "echo \"(no tests configured)\""
   },
+  "dependencies": {
+    "@iwc/controls": "workspace:*",
+    "pdf-parse": "^1.1.1",
+    "yaml": "^2.6.0",
+    "zod": "^4.0.0"
+  },
   "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/pdf-parse": "^1.1.4",
+    "tsx": "^4.0.0",
     "typescript": "^5.9.0"
   }
 }
