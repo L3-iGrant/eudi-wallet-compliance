@@ -199,26 +199,37 @@ export function SearchOverlay() {
     el?.scrollIntoView({ block: 'nearest' });
   }, [activeIndex]);
 
-  if (!mounted || !open) return null;
+  if (!mounted) return null;
 
+  // Stays mounted so the close transition can play. `open` drives the
+  // translate + opacity classes; pointer-events-none on the wrapper lets
+  // the rest of the page receive clicks while the panel is parked
+  // off-screen on the right.
   return (
     <div
       role="dialog"
-      aria-modal="true"
+      aria-modal={open}
       aria-label="Search EUDI Wallet Compliance"
-      className="fixed inset-0 z-50 flex justify-end"
+      aria-hidden={!open}
+      className={`fixed inset-0 z-50 flex justify-end ${open ? '' : 'pointer-events-none'}`}
     >
       {/* Backdrop */}
       <button
         type="button"
         aria-label="Close search"
         onClick={close}
-        className="absolute inset-0 cursor-default bg-zinc-950/30 backdrop-blur-sm"
+        className={`absolute inset-0 cursor-default bg-zinc-950/30 backdrop-blur-sm transition-opacity duration-300 ease-out ${
+          open ? 'opacity-100' : 'opacity-0'
+        }`}
         tabIndex={-1}
       />
 
       {/* Right panel */}
-      <aside className="relative flex h-full w-full max-w-[480px] flex-col border-l border-zinc-200 bg-white shadow-2xl dark:border-zinc-800 dark:bg-zinc-950">
+      <aside
+        className={`relative flex h-full w-full max-w-[480px] transform flex-col border-l border-zinc-200 bg-white shadow-2xl transition-transform duration-300 ease-out dark:border-zinc-800 dark:bg-zinc-950 ${
+          open ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
         {/* Header */}
         <header className="flex items-center justify-between border-b border-zinc-200 px-5 py-4 dark:border-zinc-800">
           <h2 className="text-base font-semibold text-zinc-950 dark:text-white">
