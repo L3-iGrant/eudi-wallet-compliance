@@ -331,7 +331,7 @@ function ClosingPage({
       <View style={styles.cta}>
         <Text style={styles.ctaText}>
           {"Want help closing these gaps? Contact iGrant.io's solutions team at "}
-          <Text style={styles.ctaEmail}>compliance@igrant.io</Text>.
+          <Text style={styles.ctaEmail}>support@igrant.io</Text>.
         </Text>
       </View>
 
