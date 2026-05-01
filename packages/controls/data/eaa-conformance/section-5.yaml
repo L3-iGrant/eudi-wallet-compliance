@@ -1,0 +1,2171 @@
+# Canonical SD-JWT VC controls promoted from _draft-section-5.yaml.
+# All entries here have been hand-refined: applies_to, role, evidence_type,
+# short_title, and modal_verb verified against the spec text.
+# plain_english is left as "TODO" placeholder; it is hand-written in a later pass.
+
+- id: PuB-EAA-5.2.4.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.4.3
+    page: 30
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - issuer-cert
+  short_title: PuB-EAA must declare the issuer's country of establishment
+  spec_text: >-
+    A SD-JWT VC PuB-EAA shall include the identifier of the country where its
+    Issuer is established either within the issuing_country claim or within the
+    qualified certificate supporting its signature.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls: []
+
+- id: PuB-EAA-5.2.4.3-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.4.3
+    page: 30
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - issuer-cert
+  short_title: Legal-person PuB-EAA includes a registration identifier
+  spec_text: >-
+    If the issuer of the SD-JWT VC PuB-EAA is a legal person and if a
+    registration identifier is applicable, then the SD-JWT VC PuB-EAA shall
+    include the registration identifier either in the iss_reg_id claim or
+    within the qualified certificate supporting its signature.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - PuB-EAA-5.2.4.3-04
+
+- id: PuB-EAA-5.2.4.3-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.4.3
+    page: 30
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: iss_reg_id follows ETSI organisation-identifier rules
+  spec_text: >-
+    The value of the iss_reg_id claim shall be built according to the rules
+    defined in clause 5.1.4 of ETSI EN 319 412-1 to build the value of the
+    organizationIdentifier attribute in the subject field of an X.509
+    certificate.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - PuB-EAA-5.2.4.3-03
+
+- id: EAA-5.2.5.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.5.1
+    page: 30
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: sub claim implements the EAA subject identifier semantics
+  spec_text: >-
+    The sub claim specified in IETF RFC 7519 clause 4.1.2, and further profiled
+    in clause 3.2.2.2 of IETF SD-JWT VC, shall implement the semantics specified
+    in clause 4.2.6.2 of the present document.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.5.1-02
+
+- id: EAA-5.2.5.1-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.5.1
+    page: 30
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+  evidence_type:
+    - eaa-payload
+  short_title: EAA may include sub, also_known_as, or neither
+  spec_text: >-
+    A SD-JWT VC EAA may include the sub claim, or the also_known_as claim, or
+    none of them.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.5.2-01
+
+- id: EAA-5.2.5.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.5.2
+    page: 30
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: also_known_as claim implements subject pseudonym semantics
+  spec_text: >-
+    The also_known_as claim shall implement the semantics specified in
+    clause 4.2.6.3 of the present document.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.5.2-02
+
+- id: EAA-5.2.5.2-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.5.2
+    page: 30
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: also_known_as claim must be a JSON String
+  spec_text: The also_known_as claim shall be a JSON String.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.5.2-01
+
+- id: EAA-5.2.5.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.5.3
+    page: 30
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+  evidence_type:
+    - eaa-payload
+  short_title: EAA may contain attributes referring to different entities
+  spec_text: A SD-JWT VC EAA may contain attributes referring to different entities.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.5.3-02
+
+- id: EAA-5.2.5.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.5.3
+    page: 30
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Non-subject attributes need an attribute-subject identifier or pseudonym
+  spec_text: >-
+    In a SD-JWT VC EAA each attribute not associated to the EAA subject shall be
+    associated either to an attribute subject identifier or to an attribute
+    subject pseudonym.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.3-02
+    - EAA-5.3-04
+    - EAA-5.3-05
+
+- id: EAA-5.2.5.3-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.5.3
+    page: 30
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+  evidence_type:
+    - eaa-payload
+  short_title: EAA may associate attributes to a non-subject identifier
+  spec_text: >-
+    An SD-JWT VC EAA may associate a set of attributes to the identifier of an
+    entity different than the EAA subject using the type specified in clause 5.3
+    of the present document.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.5.4-01
+    - EAA-5.3-02
+
+- id: EAA-5.2.5.4-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.5.4
+    page: 30
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+  evidence_type:
+    - eaa-payload
+  short_title: EAA may associate attributes to a non-subject pseudonym
+  spec_text: >-
+    A SD-JWT VC EAA may associate a set of attributes to the pseudonym of an
+    entity different than the EAA subject using the type specified in clause 5.3
+    of the present document.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.5.3-03
+    - EAA-5.3-05
+
+- id: QEAA-5.2.5.5-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.5.5
+    page: 30
+  modal_verb: shall
+  applies_to:
+    - qeaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: QEAA attributes must all refer to the EAA subject
+  spec_text: In a SD-JWT VC QEAA all the attributes shall refer to the EAA subject.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - PuB-EAA-5.2.5.6-01
+
+- id: PuB-EAA-5.2.5.6-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.5.6
+    page: 30
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: PuB-EAA attributes must all refer to the EAA subject
+  spec_text: In a SD-JWT PuB-EAA all the attributes shall refer to the EAA subject.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - QEAA-5.2.5.5-01
+
+- id: EAA-5.2.6-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.6
+    page: 30
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: iat claim implements EAA issuance-time semantics
+  spec_text: >-
+    The iat claim, specified in IETF RFC 7519 clause 4.1.6, and further profiled
+    in IETF SD-JWT VC clause 3.2.2.2, shall implement semantics specified in
+    clause 4.2.7 of the present document.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.6-02
+
+- id: EAA-5.2.6-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.6
+    page: 30
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+  evidence_type:
+    - eaa-payload
+  short_title: EAA may incorporate the iat claim
+  spec_text: >-
+    A SD-JWT VC EAA may incorporate the iat claim. (Note: the NumericDate value
+    of the iat claim, specified in IETF RFC 7519, meets the requirements
+    specified in clause 4.2.7.2 of the present document.)
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.6-01
+
+- id: EAA-5.2.7.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.7.1
+    page: 31
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: EAA includes the nbf claim for technical-validity start
+  spec_text: >-
+    A SD-JWT VC EAA shall include the nbf claim specified in IETF RFC 7519
+    clause 4.1.5, and further profiled in IETF SD-JWT VC clause 3.2.2.2.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.7.1-02
+    - EAA-5.2.7.1-03
+
+- id: EAA-5.2.7.1-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.7.1
+    page: 31
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: nbf marks the start of the technical-validity period
+  spec_text: >-
+    The nbf claim shall implement the semantics of the first time instant of the
+    SD-JWT VC EAA technical validity period.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.7.1-01
+    - EAA-5.2.7.1-04
+
+- id: EAA-5.2.7.1-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.7.1
+    page: 31
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: EAA includes the exp claim for technical-validity end
+  spec_text: >-
+    A SD-JWT VC EAA shall include the exp claim specified in IETF RFC 7519
+    clause 4.1.5, and further profiled in IETF SD-JWT VC clause 3.2.2.2.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.7.1-01
+    - EAA-5.2.7.1-04
+
+- id: EAA-5.2.7.1-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.7.1
+    page: 31
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: exp marks the end of the technical-validity period
+  spec_text: >-
+    The exp claim shall implement the semantics of the second time instant of
+    the SD-JWT VC EAA technical validity period.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.7.1-02
+    - EAA-5.2.7.1-03
+
+- id: EAA-5.2.7.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.7.2
+    page: 31
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+  evidence_type:
+    - eaa-payload
+  short_title: EAA may include the adm_nbf administrative-validity claim
+  spec_text: >-
+    A SD-JWT VC EAA may include the adm_nbf claim specified in IETF RFC 7519
+    clause 4.1.5, and further profiled in IETF SD-JWT VC clause 3.2.2.2.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.7.2-02
+    - EAA-5.2.7.2-05
+
+- id: EAA-5.2.7.2-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.7.2
+    page: 31
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: adm_nbf marks the start of the administrative-validity period
+  spec_text: >-
+    The adm_nbf claim shall implement the semantics of the first time instant of
+    the SD-JWT VC EAA administrative validity period.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.7.2-01
+    - EAA-5.2.7.2-04
+
+- id: EAA-5.2.7.2-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.7.2
+    page: 31
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+  evidence_type:
+    - eaa-payload
+  short_title: EAA may include the adm_exp administrative-validity claim
+  spec_text: >-
+    A SD-JWT VC EAA may include the adm_exp claim specified in IETF RFC 7519
+    clause 4.1.5, and further profiled in IETF SD-JWT VC clause 3.2.2.2.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.7.2-04
+    - EAA-5.2.7.2-05
+
+- id: EAA-5.2.7.2-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.7.2
+    page: 31
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: adm_exp marks the end of the administrative-validity period
+  spec_text: >-
+    The adm_exp claim shall implement the semantics of the second time instant
+    of the SD-JWT VC EAA administrative validity period (the expiration time).
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.7.2-02
+    - EAA-5.2.7.2-03
+
+- id: EAA-5.2.7.2-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.7.2
+    page: 31
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: adm_nbf and adm_exp must appear together or not at all
+  spec_text: >-
+    A SD-JWT VC EAA either shall contain both the adm_nbf and the adm_exp
+    claims, or shall not contain any of them.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.7.2-01
+    - EAA-5.2.7.2-03
+
+- id: EAA-5.2.7.2-06
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.7.2
+    page: 31
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: adm_nbf and adm_exp must use the NumericDate format
+  spec_text: >-
+    The content of adm_nbf and adm_exp claims shall be a NumericDate, specified
+    in IETF RFC 7519.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.7.2-02
+    - EAA-5.2.7.2-04
+
+- id: EAA-5.2.8.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.8.1
+    page: 31
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: SD-JWT VC EAA must not encode an audience constraint
+  spec_text: >-
+    A SD-JWT VC EAA shall not incorporate any component implementing the
+    semantics specified in clause 4.2.9.2 of the present document. (Note: the
+    restrictions mentioned in clause 4.2.9.2 can be imposed by an Embedded
+    Disclosure Policy existing for the EAA and the restrictions established for
+    the Relying Parties during their registration.)
+  plain_english: TODO
+  common_mistakes: []
+  related_controls: []
+
+- id: EAA-5.2.8.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.8.2
+    page: 31
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: oneTime claim implements the one-time-use semantics
+  spec_text: >-
+    The oneTime claim shall implement the semantics specified in clause 4.2.9.3
+    of the present document.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.8.2-02
+    - EAA-5.2.8.2-03
+
+- id: EAA-5.2.8.2-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.8.2
+    page: 31
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+  evidence_type:
+    - eaa-payload
+  short_title: EAA may incorporate the oneTime claim
+  spec_text: A SD-JWT VC EAA may incorporate the oneTime claim.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.8.2-03
+    - EAA-5.2.8.2-05
+
+- id: EAA-5.2.8.2-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.8.2
+    page: 31
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Presence of oneTime claim restricts the EAA to single use
+  spec_text: >-
+    The presence of the oneTime claim shall indicate that the EAA shall be used
+    only once, and that it shall not be retained for future use.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.8.2-04
+
+- id: EAA-5.2.8.2-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.8.2
+    page: 31
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Absence of oneTime claim removes the single-use constraint
+  spec_text: >-
+    Its absence shall indicate that the aforementioned constraint shall not
+    apply to the EAA.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.8.2-03
+
+- id: EAA-5.2.8.2-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.8.2
+    page: 32
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: oneTime claim must use the JSON null primitive type
+  spec_text: The oneTime claim shall have the null JSON primitive type.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.8.2-01
+
+- id: EAA-5.2.9-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.9
+    page: 32
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+  evidence_type:
+    - eaa-payload
+  short_title: EAA may incorporate the evidence claim
+  spec_text: >-
+    A SD-JWT VC EAA may incorporate the evidence claim implementing the
+    semantics specified in clause 4.2.10 of the present document.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls: []
+
+- id: EAA-5.2.10.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.10.1
+    page: 32
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: status component implements the EAA status semantics
+  spec_text: >-
+    The status component shall implement the semantics specified in clause
+    4.2.11 of the present document.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.10.1-02
+    - EAA-4.2.11.1-03
+
+- id: EAA-5.2.10.1-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.10.1
+    page: 32
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: EAA may incorporate the status component
+  spec_text: A SD-JWT VC EAA may incorporate the status component.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.10.1-01
+    - QEAA-5.2.10.2-01
+    - PuB-EAA-5.2.10.3-01
+
+- id: EAA-5.2.10.1-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.10.1
+    page: 32
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: status component must be a JSON Object
+  spec_text: The status component shall be a JSON Object.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.10.1-04
+
+- id: EAA-5.2.10.1-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.10.1
+    page: 32
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: Status JSON Object must include the type member
+  spec_text: The status JSON Object shall have the type member.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.10.1-05
+
+- id: EAA-5.2.10.1-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.10.1
+    page: 32
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: status type member must be a JSON String, e.g. TokenStatusList
+  spec_text: >-
+    The status JSON Object's type member shall be a JSON String. The following
+    string value is defined for the type member of status: "TokenStatusList"
+    for Token Status List as specified in IETF draft-ietf-oauth-status-list-13.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.10.1-04
+
+- id: EAA-5.2.10.1-06
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.10.1
+    page: 32
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: Status JSON Object must include the purpose member
+  spec_text: The status JSON Object shall have the purpose member.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.10.1-07
+
+- id: EAA-5.2.10.1-07
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.10.1
+    page: 32
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: status purpose member must be a JSON String
+  spec_text: >-
+    The status JSON Object's purpose member shall be a JSON String, indicating
+    the purpose of the status list.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.10.1-06
+
+- id: EAA-5.2.10.1-08
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.10.1
+    page: 32
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: Status JSON Object must include the index member
+  spec_text: The status JSON Object shall have the index member.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.10.1-09
+
+- id: EAA-5.2.10.1-09
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.10.1
+    page: 32
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: status index member must be a JSON Integer
+  spec_text: >-
+    The status JSON Object's index member shall be a JSON Integer, indicating
+    an index in the status list.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.10.1-08
+
+- id: EAA-5.2.10.1-10
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.10.1
+    page: 32
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: Status JSON Object must include the uri member
+  spec_text: The status JSON Object shall have the uri member.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.10.1-11
+    - EAA-4.2.11.1-04
+
+- id: EAA-5.2.10.1-11
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.10.1
+    page: 32
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: status uri member must point to the status list URL
+  spec_text: >-
+    The status JSON Object's uri member shall be a JSON String, whose value
+    shall be an URL pointing to the status list.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.10.1-10
+
+- id: EAA-5.2.10.1-12
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.10.1
+    page: 32
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: status object may include additional members
+  spec_text: The status JSON Object may have other members.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls: []
+
+- id: QEAA-5.2.10.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.10.2
+    page: 32
+  modal_verb: shall
+  applies_to:
+    - qeaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: QEAA without shortLived must carry a status claim
+  spec_text: >-
+    If a SD-JWT VC QEAA does not contain the shortLived claim, it shall include
+    the EAA status claim.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.11.1-03
+    - PuB-EAA-5.2.10.3-01
+    - EAA-5.2.12-01
+
+- id: PuB-EAA-5.2.10.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.10.3
+    page: 32
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: PuB-EAA without shortLived must carry a status claim
+  spec_text: >-
+    If a SD-JWT VC PuB-EAA does not contain the shortLived claim, it shall
+    include the EAA status claim.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.11.1-03
+    - QEAA-5.2.10.2-01
+    - EAA-5.2.12-01
+
+- id: EAA-5.2.11-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.11
+    page: 32
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: SD-JWT VC EAA must not encode renewal-service semantics
+  spec_text: >-
+    A SD-JWT VC EAA shall not incorporate any component implementing the
+    semantics specified in clause 4.2.12 of the present document.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls: []
+
+- id: EAA-5.2.12-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.12
+    page: 33
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+  evidence_type:
+    - eaa-payload
+  short_title: EAA may incorporate the shortLived claim
+  spec_text: >-
+    A SD-JWT VC EAA may incorporate the shortLived claim implementing the
+    semantics specified in clause 4.2.13 of the present document.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.12-02
+    - EAA-4.2.11.1-03
+    - QEAA-5.2.10.2-01
+    - PuB-EAA-5.2.10.3-01
+
+- id: EAA-5.2.12-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.12
+    page: 33
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: shortLived claim must use the JSON null primitive type
+  spec_text: The shortLived claim shall have the null JSON primitive type.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.12-01
+
+- id: EAA-5.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "5.3"
+    page: 33
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Disclosable attributes require corresponding SD-JWT disclosures
+  spec_text: >-
+    If disclosure of attributes are required, the SD-JWT VC EAA shall
+    incorporate the corresponding disclosures as specified in clause 5.4.1 of
+    the present document.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.4.1.3-01
+    - EAA-5.4.1.3-02
+
+- id: EAA-5.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "5.3"
+    page: 33
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Non-subject attribute groupings require the subAttrs claim
+  spec_text: >-
+    For associating a set of attributes to one entity different than the EAA
+    subject, the SD-JWT VC EAA shall include the subAttrs claim.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.3-03
+    - EAA-5.3-06
+
+- id: EAA-5.3-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "5.3"
+    page: 33
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: subAttrs must have either sub_id or sub_aka
+  spec_text: >-
+    The subAttrs claim shall have either the sub_id member or the sub_aka
+    member.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.3-04
+    - EAA-5.3-05
+
+- id: EAA-5.3-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "5.3"
+    page: 33
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: sub_id is a JSON String identifying the attribute subject
+  spec_text: >-
+    The sub_id member shall be a JSON String whose value shall be the identifier
+    of the attribute subject, which shall associate the attributes to this
+    attribute subject.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.3-03
+    - EAA-5.3-05
+
+- id: EAA-5.3-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "5.3"
+    page: 33
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: sub_aka is a JSON String holding the attribute-subject pseudonym
+  spec_text: >-
+    The sub_aka member shall be a JSON String whose value shall be the pseudonym
+    of an attribute subject which shall associate the attributes to this
+    attribute subject.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.3-03
+    - EAA-5.3-04
+
+- id: EAA-5.3-06
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "5.3"
+    page: 33
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: subAttrs must include the attrs member
+  spec_text: The subAttrs claim shall have the attrs member.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.3-07
+
+- id: EAA-5.3-07
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "5.3"
+    page: 33
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: attrs is a JSON Array of attributes for the named subject
+  spec_text: >-
+    The attrs member shall be a JSON Array whose elements shall be the
+    attributes associated to the attribute subject whose identifier appears in
+    the sub_id member or whose pseudonym appears in the sub_aka member.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.3-04
+    - EAA-5.3-05
+    - EAA-5.3-06
+
+- id: EAA-5.4.1.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.4.1.1
+    page: 33
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: EAA must support SD-JWT selective disclosure
+  spec_text: >-
+    A SD-JWT VC EAA shall support the selective disclosure of attributes using
+    components specified in IETF SD-JWT VC and IETF SD-JWT.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.4.1.3-01
+    - EAA-5.4.1.4-01
+    - EAA-5.4.1.5-01
+
+- id: EAA-5.4.1.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.4.1.2
+    page: 33
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Disclosure schema is implicit; no identifier in the EAA
+  spec_text: >-
+    A SD-JWT VC EAA shall not incorporate any component for identifying the
+    disclosure schema. (Note: the information about the schema used for
+    implementing selective disclosure of attested attributes is implicit in the
+    media type of the SD-JWT.)
+  plain_english: TODO
+  common_mistakes: []
+  related_controls: []
+
+- id: EAA-5.4.1.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.4.1.3
+    page: 33
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: One disclosure per selectively-disclosable attribute
+  spec_text: >-
+    A SD-JWT VC EAA shall contain one disclosure for each selectively
+    disclosable attested attribute.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.4.1.3-02
+    - EAA-5.4.1.4-01
+
+- id: EAA-5.4.1.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.4.1.3
+    page: 33
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Serialised EAA must carry its disclosures per IETF SD-JWT
+  spec_text: >-
+    When a SD-JWT VC EAA is serialized, the disclosures shall be incorporated in
+    the SD-JWT VC EAA as specified in IETF SD-JWT.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.4.1.3-01
+
+- id: EAA-5.4.1.4-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.4.1.4
+    page: 33
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Selectively-disclosable JSON properties require the _sd component
+  spec_text: >-
+    A SD-JWT VC EAA containing one or more selectively disclosable attested
+    attributes that are JSON Properties (clause 4.2.1 of IETF SD-JWT), shall
+    include the _sd component containing their disclosure digests computed as
+    specified in clause 5.2.4.1 of IETF SD-JWT.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.4.1.4-02
+    - EAA-5.4.1.5-01
+
+- id: EAA-5.4.1.4-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.4.1.4
+    page: 34
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Selectively-disclosable array elements replaced by disclosure digests
+  spec_text: >-
+    A SD-JWT VC EAA requiring that one or more individual elements of JSON
+    arrays are selectively disclosable (clause 4.2.2 of IETF SD-JWT), shall
+    incorporate in the payload the mentioned JSON arrays where the individual
+    elements that are selectively disclosable have been replaced by their
+    corresponding disclosure digests computed as specified in clause 5.2.4.2 of
+    IETF SD-JWT.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.4.1.4-01
+
+- id: EAA-5.4.1.5-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.4.1.5
+    page: 34
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: _sd_alg implements the disclosure-algorithm-identifier semantics
+  spec_text: >-
+    The _sd_alg component, specified in IETF SD-JWT, and further profiled in
+    IETF SD-JWT VC, shall implement the semantics specified in clause 4.4.2.5
+    of the present document.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.4.1.5-02
+
+- id: EAA-5.4.1.5-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.4.1.5
+    page: 34
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: _sd_alg must be present when disclosures exist
+  spec_text: >-
+    If the SD-JWT VC EAA contains one or more disclosures, then the _sd_alg
+    component shall be present.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.4.1.4-01
+    - EAA-5.4.1.5-01
+
+- id: EAA-5.5-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "5.5"
+    page: 34
+  modal_verb: should
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: EAA should incorporate the cnf claim for key binding
+  spec_text: >-
+    A SD-JWT VC EAA should incorporate the cnf claim as specified in IETF
+    SD-JWT, implementing the semantics specified in clause 4.5 of the present
+    document.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.5-02
+    - EAA-5.5-06
+
+- id: EAA-5.5-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "5.5"
+    page: 34
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: cnf carries the subject public key or subject certificate only
+  spec_text: >-
+    The cnf claim may only contain either a representation of the EAA subject
+    public key or a representation of the EAA subject certificate as specified
+    in IETF RFC 7800.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.5-03
+    - EAA-5.5-06
+
+- id: EAA-5.5-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "5.5"
+    page: 34
+  modal_verb: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Subject certificate in cnf via x5c, x5t#S256, or x5u
+  spec_text: >-
+    For representing the EAA subject certificate, the cnf claim may contain the
+    x5c parameter containing only the certificate itself, or the x5t#S256
+    parameter, or the x5u parameter as specified in IETF RFC 7517.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.5-04
+    - EAA-5.5-05
+
+- id: EAA-5.5-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "5.5"
+    page: 34
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: x5u in cnf must be paired with x5t#S256
+  spec_text: >-
+    If the EAA subject certificate is represented by the x5u parameter, the
+    x5t#S256 parameter shall also be present.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.5-03
+    - EAA-5.5-05
+
+- id: EAA-5.5-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "5.5"
+    page: 34
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: x5c in cnf excludes x5u and x5t#S256
+  spec_text: >-
+    If the EAA subject certificate is represented by the x5c parameter, neither
+    the x5u parameter, nor the x5t#S256 parameter shall be present.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.5-03
+    - EAA-5.5-04
+
+- id: EAA-5.5-06
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "5.5"
+    page: 34
+  modal_verb: should
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: cnf should carry the subject public key, not certificate
+  spec_text: >-
+    The cnf claim should contain a representation of the EAA subject public key.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.5-01
+    - EAA-5.5-02
+
+- id: EAA-5.6.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.6.1
+    page: 34
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-header
+    - issuer-cert
+  short_title: Non-compact EAA signatures must be JAdES
+  spec_text: >-
+    If the SD-JWT VC EAA is not serialized using compact serialization, its
+    digital signature shall be a JAdES digital signature as specified in ETSI TS
+    119 182-1.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls: []
+
+- id: QEAA-5.6.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.6.2
+    page: 34
+  modal_verb: shall
+  applies_to:
+    - qeaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-header
+    - issuer-cert
+  short_title: QEAA signature must be a qualified signature or qualified seal
+  spec_text: >-
+    The digital signature signing a SD-JWT VC QEAA shall be a qualified
+    electronic signature or a qualified electronic seal.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - QEAA-5.6.2-02
+    - QEAA-5.6.2-03
+
+- id: QEAA-5.6.2-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.6.2
+    page: 34
+  modal_verb: shall
+  applies_to:
+    - qeaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-header
+    - issuer-cert
+  short_title: QEAA protected header must include x5u and x5t#S256
+  spec_text: >-
+    The Protected Header of the digital signature signing a SD-JWT VC QEAA
+    shall contain the x5u and the x5t#S256 header parameters, specified in IETF
+    RFC 7515. (Note: this requirement meets requirement (h) in Annex V of
+    Regulation (EU) 2024/1183 for QEAA, which requires the location where the
+    certificate supporting the qualified electronic signature or qualified
+    electronic seal is available free of charge. The x5t#S256 header parameter
+    is required for security reasons.)
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - QEAA-5.6.2-01
+    - QEAA-5.6.2-03
+
+- id: QEAA-5.6.2-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.6.2
+    page: 34
+  modal_verb: should
+  applies_to:
+    - qeaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-header
+    - issuer-cert
+  short_title: QEAA protected header should include x5c
+  spec_text: >-
+    The Protected Header of the digital signature signing a SD-JWT VC QEAA
+    should contain the x5c header parameter, specified in IETF RFC 7515.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - QEAA-5.6.2-02
+
+- id: PuB-EAA-5.6.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.6.3
+    page: 35
+  modal_verb: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-header
+    - issuer-cert
+  short_title: PuB-EAA protected header must include x5u and x5t#S256
+  spec_text: >-
+    The Protected Header of the digital signature signing a SD-JWT VC PuB-EAA
+    shall contain the x5u and the x5t#S256 header parameters, specified in IETF
+    RFC 7515. (Note: this requirement meets requirement (h) in Annex VII of
+    Regulation (EU) 2024/1183 for PuB-EAA, which requires the location where
+    the certificate supporting the qualified electronic signature or qualified
+    electronic seal is available free of charge. The x5t#S256 header parameter
+    is required for security reasons.)
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - PuB-EAA-5.6.3-03
+    - QEAA-5.6.2-02
+
+- id: PuB-EAA-5.6.3-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.6.3
+    page: 35
+  modal_verb: should
+  applies_to:
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-header
+    - issuer-cert
+  short_title: PuB-EAA protected header should include x5c
+  spec_text: >-
+    The Protected Header of the digital signature signing a SD-JWT VC PuB-EAA
+    should contain the x5c header parameter, specified in IETF RFC 7515.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - PuB-EAA-5.6.3-02
+    - QEAA-5.6.2-03

@@ -15,6 +15,8 @@ export async function loadAllControls(dataDir: string): Promise<ControlsCatalogu
   async function walk(dir: string): Promise<void> {
     const entries = await readdir(dir, { withFileTypes: true });
     for (const entry of entries) {
+      // Skip dotfiles and draft files (basename starting with underscore).
+      if (entry.name.startsWith('.') || entry.name.startsWith('_')) continue;
       const full = join(dir, entry.name);
       if (entry.isDirectory()) {
         await walk(full);

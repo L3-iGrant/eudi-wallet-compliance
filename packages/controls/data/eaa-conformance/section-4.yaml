@@ -1,0 +1,128 @@
+# Section 4 cross-cutting controls promoted into the canonical catalogue.
+# Only those rules that the conformance engine must enforce on every EAA,
+# regardless of profile, are included here. Profile-specific re-statements
+# live in section-5.yaml (SD-JWT VC) and the future section-6.yaml (mdoc).
+
+- id: EAA-4.2.6.6-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.6.6
+    page: 20
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: One attribute subject identifier must be the EAA subject identifier
+  spec_text: >-
+    If the EAA contains several attribute subject identifiers, one of them shall
+    be the EAA subject identifier.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.6.6-02
+    - EAA-5.3-04
+
+- id: EAA-4.2.6.6-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.6.6
+    page: 20
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Subject pseudonym must appear when no subject identifier is present
+  spec_text: >-
+    If the EAA contains attribute subject pseudonyms, does not contain any
+    attribute subject identifier, and does not contain the EAA subject
+    identifier, then the pseudonym of the EAA subject shall be one of the
+    aforementioned pseudonyms.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.6.6-01
+    - EAA-5.3-05
+
+- id: EAA-4.2.11.1-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.11.1
+    page: 23
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: shortLived and status service are mutually exclusive
+  spec_text: >-
+    An EAA that incorporates the EAA short-lived component (clause 4.2.13 of the
+    present document), shall not incorporate the EAA status service.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.10.1-01
+    - EAA-5.2.12-01
+    - QEAA-5.2.10.2-01
+    - PuB-EAA-5.2.10.3-01
+
+- id: EAA-4.2.11.1-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.11.1
+    page: 23
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: Status service must include a URI and may include a type
+  spec_text: >-
+    The attestation status service shall include a URI to the service. It may
+    also include an identifier of the type of the status information provided by
+    the service. (Example: a service issuing Bitstring Status Lists as specified
+    in W3C Recommendation "Bitstring Status List v1.0".)
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-5.2.10.1-10
+    - EAA-5.2.10.1-11

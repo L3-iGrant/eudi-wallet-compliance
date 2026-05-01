@@ -34,7 +34,9 @@ export const EvidenceTypeSchema = z.enum([
   'trust-list',
 ]);
 
-const ID_PATTERN = /^[A-Z]+(-[A-Z]+)?-[\d.]+(-\d+)?$/;
+// Capitalised prefix(es), e.g. EAA, QEAA, PuB-EAA, then a clause and an
+// optional sequence number: EAA-5.2.1.2-01, QEAA-5.6.2-02, PuB-EAA-5.6.3-03.
+const ID_PATTERN = /^[A-Z][A-Za-z]*(-[A-Z][A-Za-z]*)?-[\d.]+(-\d+)?$/;
 
 export const ControlSchema = z.object({
   id: z.string().regex(ID_PATTERN, {
