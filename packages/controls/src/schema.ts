@@ -66,6 +66,18 @@ export const ControlSchema = z.object({
 
 export const ControlsCatalogueSchema = z.array(ControlSchema);
 
+export const ModuleStatusSchema = z.enum(['shipped', 'in-development', 'planned']);
+
+export const ModuleMetadataSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  status: ModuleStatusSchema,
+  short_description: z.string(),
+  spec_sources: z.array(z.string()),
+});
+
+export const ModulesCatalogueSchema = z.array(ModuleMetadataSchema);
+
 export type SpecSource = z.infer<typeof SpecSourceSchema>;
 export type Module = z.infer<typeof ModuleSchema>;
 export type ModalVerb = z.infer<typeof ModalVerbSchema>;
@@ -75,3 +87,6 @@ export type Role = z.infer<typeof RoleSchema>;
 export type EvidenceType = z.infer<typeof EvidenceTypeSchema>;
 export type Control = z.infer<typeof ControlSchema>;
 export type ControlsCatalogue = z.infer<typeof ControlsCatalogueSchema>;
+export type ModuleStatus = z.infer<typeof ModuleStatusSchema>;
+export type ModuleMetadata = z.infer<typeof ModuleMetadataSchema>;
+export type ModulesCatalogue = z.infer<typeof ModulesCatalogueSchema>;

@@ -1,7 +1,19 @@
 import { readFile, readdir } from 'node:fs/promises';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { parse as parseYaml } from 'yaml';
-import { ControlsCatalogueSchema, type ControlsCatalogue } from './schema';
+import {
+  ControlsCatalogueSchema,
+  ModulesCatalogueSchema,
+  type ControlsCatalogue,
+  type ModuleMetadata,
+} from './schema';
+
+// Resolves to the bundled `data/` directory next to this package's `src/`.
+// Lets callers do `loadModules()` and `loadAllControls()` without having to
+// know the package's filesystem layout.
+const here = dirname(fileURLToPath(import.meta.url));
+export const DEFAULT_DATA_DIR = join(here, '..', 'data');
 
 export async function loadControlsFromFile(filePath: string): Promise<ControlsCatalogue> {
   const raw = await readFile(filePath, 'utf8');
@@ -9,7 +21,9 @@ export async function loadControlsFromFile(filePath: string): Promise<ControlsCa
   return ControlsCatalogueSchema.parse(parsed);
 }
 
-export async function loadAllControls(dataDir: string): Promise<ControlsCatalogue> {
+export async function loadAllControls(
+  dataDir: string = DEFAULT_DATA_DIR,
+): Promise<ControlsCatalogue> {
   const yamlFiles: string[] = [];
 
   // Controls live inside per-module subdirectories of dataDir
@@ -33,6 +47,15 @@ export async function loadAllControls(dataDir: string): Promise<ControlsCatalogu
   await walk(dataDir, 0);
   const catalogues = await Promise.all(yamlFiles.map(loadControlsFromFile));
   return catalogues.flat();
+}
+
+export async function loadModules(
+  dataDir: string = DEFAULT_DATA_DIR,
+): Promise<ModuleMetadata[]> {
+  const file = join(dataDir, 'modules.yaml');
+  const raw = await readFile(file, 'utf8');
+  const parsed = parseYaml(raw);
+  return ModulesCatalogueSchema.parse(parsed);
 }
 
 export * from './schema';
