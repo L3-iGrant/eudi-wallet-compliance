@@ -98,13 +98,36 @@ function ReportInner() {
       .catch(() => setReport(null));
   }, [params]);
 
-  const groupedVerdicts = useMemo<VerdictGroup[]>(() => {
-    if (!report) return [];
-    const active = report.verdicts.filter(
-      (v) => v.status !== 'na' || v.notes !== 'No check implemented yet',
-    );
-    return groupByClause(active);
-  }, [report]);
+  const { groupedVerdicts, activeSummary, unimplementedCount, totalInScope } =
+    useMemo(() => {
+      if (!report) {
+        return {
+          groupedVerdicts: [] as VerdictGroup[],
+          activeSummary: { pass: 0, fail: 0, warn: 0, na: 0 },
+          unimplementedCount: 0,
+          totalInScope: 0,
+        };
+      }
+      const active = report.verdicts.filter(
+        (v) => v.status !== 'na' || v.notes !== 'No check implemented yet',
+      );
+      const summary = active.reduce(
+        (acc, v) => {
+          acc[v.status] += 1;
+          return acc;
+        },
+        { pass: 0, fail: 0, warn: 0, na: 0 } as Record<
+          'pass' | 'fail' | 'warn' | 'na',
+          number
+        >,
+      );
+      return {
+        groupedVerdicts: groupByClause(active),
+        activeSummary: summary,
+        unimplementedCount: report.verdicts.length - active.length,
+        totalInScope: report.verdicts.length,
+      };
+    }, [report]);
 
   if (report === undefined) {
     return (
@@ -133,7 +156,7 @@ function ReportInner() {
     );
   }
 
-  const totalRun = report.summary.pass + report.summary.fail + report.summary.warn;
+  const totalRun = activeSummary.pass + activeSummary.fail + activeSummary.warn;
 
   return (
     <article className="mx-auto max-w-4xl px-6 py-12 sm:py-16">
@@ -148,11 +171,16 @@ function ReportInner() {
       </p>
 
       <section className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <Stat label="Pass" value={report.summary.pass} accent="emerald" />
-        <Stat label="Fail" value={report.summary.fail} accent="red" />
-        <Stat label="Warn" value={report.summary.warn} accent="amber" />
-        <Stat label="N/A" value={report.summary.na} accent="zinc" />
+        <Stat label="Pass" value={activeSummary.pass} accent="emerald" />
+        <Stat label="Fail" value={activeSummary.fail} accent="red" />
+        <Stat label="Warn" value={activeSummary.warn} accent="amber" />
+        <Stat label="N/A" value={activeSummary.na} accent="zinc" />
       </section>
+      {unimplementedCount > 0 && (
+        <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-500">
+          {unimplementedCount} of {totalInScope} controls in scope have no engine check yet; only the {totalInScope - unimplementedCount} active checks are reflected in the counts above.
+        </p>
+      )}
 
       <section className="mt-10">
         <h2 className="text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
