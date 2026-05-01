@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { loadModules } from '@iwc/controls';
 import { SearchTrigger } from './SearchTrigger';
 import { ChevronRight } from './ChevronRight';
+import { ModulesDropdown } from './ModulesDropdown';
 
 const linkClass =
   'inline-flex items-center px-3 py-2 text-sm font-medium text-zinc-700 hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-white';
@@ -24,73 +25,7 @@ export async function SiteNav() {
             Self-Assessment
           </Link>
 
-          {/* CSS-only dropdown via :focus-within. No client JS in this nav. */}
-          <div className="group relative">
-            <button
-              type="button"
-              className={linkClass}
-              aria-haspopup="menu"
-              aria-expanded="false"
-            >
-              Modules
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 20 20"
-                className="ml-1 h-4 w-4 transition-transform duration-150 group-hover:rotate-180 group-focus-within:rotate-180"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 011.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
-
-            {/*
-              Outer wrapper sits flush against the button (top-full, no
-              margin) and uses pt-2 to create a transparent "hover bridge"
-              between the button and the visible menu. Without this bridge,
-              moving the cursor downward briefly leaves the .group element,
-              which closes the CSS-only dropdown before the cursor can
-              reach a menu item. The visible padding around items still
-              comes from the inner <ul>.
-            */}
-            <div
-              className="invisible absolute left-0 top-full z-50 pt-2 opacity-0 transition focus-within:visible focus-within:opacity-100 group-hover:visible group-hover:opacity-100"
-            >
-              <ul
-                role="menu"
-                className="w-72 rounded-md border border-zinc-200 bg-white py-1 shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
-              >
-                {modules.map((m) => (
-                  <li key={m.id} role="none">
-                    {m.status === 'shipped' ? (
-                      <Link
-                        href={`/modules/${m.id}/`}
-                        role="menuitem"
-                        className="flex flex-col px-3 py-2 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white"
-                      >
-                        <span>{m.name}</span>
-                        <span className="text-xs text-emerald-600 dark:text-emerald-400">
-                          Shipped
-                        </span>
-                      </Link>
-                    ) : (
-                      <span
-                        role="menuitem"
-                        aria-disabled="true"
-                        className="flex cursor-not-allowed flex-col px-3 py-2 text-sm text-zinc-400 dark:text-zinc-500"
-                      >
-                        <span>{m.name}</span>
-                        <span className="text-xs">Coming soon</span>
-                      </span>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <ModulesDropdown modules={modules} linkClass={linkClass} />
 
           <Link href="/modules/eaa-conformance/controls/" className={linkClass}>
             Control Catalogue
