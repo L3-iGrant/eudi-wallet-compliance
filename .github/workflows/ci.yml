@@ -32,6 +32,6 @@ jobs:
 
       - run: pnpm -r typecheck
 
-      - run: pnpm -r test --if-present
+      - run: pnpm -r --if-present run test
 
       - run: pnpm --filter @iwc/web build
