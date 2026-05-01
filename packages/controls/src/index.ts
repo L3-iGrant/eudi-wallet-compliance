@@ -59,3 +59,19 @@ export async function loadModules(
 }
 
 export * from './schema';
+
+// Browser-safe sync exports. These are pre-validated at bundle generation
+// time (`pnpm --filter @iwc/controls build:bundle`) and cached as a TS
+// module so the static-export site can ship the catalogue without
+// touching the filesystem at runtime.
+export { CONTROLS_BUNDLE, MODULES_BUNDLE } from './bundle/catalogue.gen';
+
+import { CONTROLS_BUNDLE, MODULES_BUNDLE } from './bundle/catalogue.gen';
+
+export function loadAllControlsSync(): ControlsCatalogue {
+  return CONTROLS_BUNDLE;
+}
+
+export function loadModulesSync(): ModuleMetadata[] {
+  return MODULES_BUNDLE;
+}
