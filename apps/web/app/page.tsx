@@ -268,11 +268,11 @@ export default async function Hub() {
               Plugtests companion
             </span>
             <p className="text-sm text-zinc-800 dark:text-zinc-200">
-              An open-source preparation companion to the official{' '}
+              An open-source companion to the official{' '}
               <span className="font-semibold">ETSI EAA Plugtests programme</span>.
-              Verify your EAA implementation against ETSI TS 119 472-1 ahead
-              of the interop event, then attend the Plugtests programme
-              itself.
+              We are building it in the open during the 2026 interop event
+              itself, so vendors can verify their EAA implementations against
+              ETSI TS 119 472-1 alongside the official programme.
             </p>
           </div>
           <a
