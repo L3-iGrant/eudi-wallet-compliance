@@ -2,8 +2,10 @@
 
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { Suspense, useEffect, useState } from 'react';
-import type { AssessmentResult } from '@iwc/engine';
+import { Suspense, useEffect, useMemo, useState } from 'react';
+import type { AssessmentResult, Verdict } from '@iwc/engine';
+import { loadAllControlsSync } from '@iwc/controls/sync';
+import { controlIdToSlug } from '@iwc/shared';
 import { reportStore } from '../../../../lib/storage';
 import { resolveTenant } from '../../../../lib/tenant';
 
@@ -13,6 +15,41 @@ const STATUS_STYLE: Record<string, string> = {
   warn: 'text-amber-700 dark:text-amber-400',
   na: 'text-zinc-500 dark:text-zinc-500',
 };
+
+interface VerdictGroup {
+  clause: string;
+  verdicts: Verdict[];
+}
+
+/**
+ * Top-level clause label, e.g. EAA-5.2.10.1-04 → "5.2", QEAA-5.6.2-01 →
+ * "5.6". Anything we cannot parse is bucketed under "Other".
+ */
+function clauseOf(controlId: string): string {
+  const match = controlId.match(/-(\d+\.\d+)/);
+  return match ? match[1] : 'Other';
+}
+
+function compareClause(a: string, b: string): number {
+  if (a === 'Other') return 1;
+  if (b === 'Other') return -1;
+  const [a1 = 0, a2 = 0] = a.split('.').map(Number);
+  const [b1 = 0, b2 = 0] = b.split('.').map(Number);
+  return a1 !== b1 ? a1 - b1 : a2 - b2;
+}
+
+function groupByClause(verdicts: Verdict[]): VerdictGroup[] {
+  const groups = new Map<string, Verdict[]>();
+  for (const v of verdicts) {
+    const c = clauseOf(v.controlId);
+    const list = groups.get(c) ?? [];
+    list.push(v);
+    groups.set(c, list);
+  }
+  return Array.from(groups.entries())
+    .sort(([a], [b]) => compareClause(a, b))
+    .map(([clause, vs]) => ({ clause, verdicts: vs }));
+}
 
 export default function ReportPage() {
   return (
@@ -34,6 +71,12 @@ function ReportInner() {
   const params = useSearchParams();
   const [report, setReport] = useState<AssessmentResult | null | undefined>(undefined);
 
+  const moduleByControlId = useMemo(() => {
+    const m = new Map<string, string>();
+    for (const c of loadAllControlsSync()) m.set(c.id, c.module);
+    return m;
+  }, []);
+
   useEffect(() => {
     const id = params.get('id');
     if (!id) {
@@ -46,6 +89,14 @@ function ReportInner() {
       .then((r) => setReport(r))
       .catch(() => setReport(null));
   }, [params]);
+
+  const groupedVerdicts = useMemo<VerdictGroup[]>(() => {
+    if (!report) return [];
+    const active = report.verdicts.filter(
+      (v) => v.status !== 'na' || v.notes !== 'No check implemented yet',
+    );
+    return groupByClause(active);
+  }, [report]);
 
   if (report === undefined) {
     return (
@@ -99,23 +150,57 @@ function ReportInner() {
         <h2 className="text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
           Verdicts ({totalRun} active checks)
         </h2>
-        <ul className="mt-4 divide-y divide-zinc-200 rounded-md border border-zinc-200 dark:divide-zinc-800 dark:border-zinc-800">
-          {report.verdicts
-            .filter((v) => v.status !== 'na' || v.notes !== 'No check implemented yet')
-            .map((v) => (
-              <li key={v.controlId} className="grid grid-cols-12 gap-3 p-3 text-sm">
-                <span className="col-span-3 font-mono text-xs text-zinc-700 dark:text-zinc-300">
-                  {v.controlId}
+        <div className="mt-4 space-y-3">
+          {groupedVerdicts.map((g) => (
+            <details
+              key={g.clause}
+              open
+              className="group rounded-md border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950"
+            >
+              <summary className="flex cursor-pointer items-center justify-between gap-3 p-3 text-sm font-medium text-zinc-950 dark:text-white">
+                <span>Clause {g.clause}</span>
+                <span className="text-xs text-zinc-500 dark:text-zinc-500">
+                  {g.verdicts.length} {g.verdicts.length === 1 ? 'check' : 'checks'}
                 </span>
-                <span
-                  className={`col-span-1 text-xs font-semibold uppercase tracking-wider ${STATUS_STYLE[v.status]}`}
-                >
-                  {v.status}
-                </span>
-                <span className="col-span-8 text-zinc-700 dark:text-zinc-300">{v.notes}</span>
-              </li>
-            ))}
-        </ul>
+              </summary>
+              <ul className="divide-y divide-zinc-200 border-t border-zinc-200 dark:divide-zinc-800 dark:border-zinc-800">
+                {g.verdicts.map((v) => {
+                  const moduleId = moduleByControlId.get(v.controlId);
+                  const slug = controlIdToSlug(v.controlId);
+                  const href = moduleId
+                    ? `/modules/${moduleId}/controls/${slug}/`
+                    : null;
+                  return (
+                    <li key={v.controlId} className="grid grid-cols-12 gap-3 p-3 text-sm">
+                      <span className="col-span-3 font-mono text-xs">
+                        {href ? (
+                          <Link
+                            href={href}
+                            className="text-blue-700 underline-offset-4 hover:underline dark:text-blue-400"
+                          >
+                            {v.controlId}
+                          </Link>
+                        ) : (
+                          <span className="text-zinc-700 dark:text-zinc-300">
+                            {v.controlId}
+                          </span>
+                        )}
+                      </span>
+                      <span
+                        className={`col-span-1 text-xs font-semibold uppercase tracking-wider ${STATUS_STYLE[v.status]}`}
+                      >
+                        {v.status}
+                      </span>
+                      <span className="col-span-8 text-zinc-700 dark:text-zinc-300">
+                        {v.notes}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </details>
+          ))}
+        </div>
       </section>
 
       <section className="mt-10 border-t border-zinc-200 pt-6 dark:border-zinc-800">

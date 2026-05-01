@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Link from 'next/link';
+import { loadModulesSync } from '@iwc/controls/sync';
 
 const ScopeSchema = z.object({
   module: z.literal('eaa-conformance'),
@@ -19,17 +20,16 @@ const ScopeSchema = z.object({
 
 type ScopeForm = z.infer<typeof ScopeSchema>;
 
-const FUTURE_MODULES: Array<{ id: string; name: string }> = [
-  { id: 'pid-lpid', name: 'PID / LPID' },
-  { id: 'wallet-attestation', name: 'Wallet Attestation' },
-  { id: 'oid4vci', name: 'OID4VCI' },
-  { id: 'oid4vp', name: 'OID4VP' },
-  { id: 'qtsp', name: 'QTSP' },
-  { id: 'trust-list', name: 'Trust List' },
-];
+const STATUS_LABEL: Record<string, string> = {
+  shipped: 'Available',
+  'in-development': 'In development',
+  planned: 'Planned',
+};
 
 export default function ScopePicker() {
   const router = useRouter();
+  const allModules = loadModulesSync();
+  const otherModules = allModules.filter((m) => m.id !== 'eaa-conformance');
   const {
     register,
     handleSubmit,
@@ -80,7 +80,7 @@ export default function ScopePicker() {
               Available
             </span>
           </label>
-          {FUTURE_MODULES.map((m) => (
+          {otherModules.map((m) => (
             <label
               key={m.id}
               className="flex cursor-not-allowed items-center gap-3 rounded-md border border-zinc-200 bg-zinc-50 p-3 text-sm opacity-60 dark:border-zinc-800 dark:bg-zinc-900/40"
@@ -88,7 +88,7 @@ export default function ScopePicker() {
               <input type="radio" disabled className="h-4 w-4" />
               <span className="text-zinc-700 dark:text-zinc-300">{m.name}</span>
               <span className="ml-auto text-xs font-medium uppercase tracking-wider text-zinc-500">
-                Planned
+                {STATUS_LABEL[m.status] ?? 'Planned'}
               </span>
             </label>
           ))}

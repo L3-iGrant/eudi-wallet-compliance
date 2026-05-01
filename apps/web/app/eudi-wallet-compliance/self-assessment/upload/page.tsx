@@ -95,6 +95,7 @@ function UploadInner() {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<EvidenceForm>({
     resolver: zodResolver(EvidenceSchema),
@@ -155,32 +156,32 @@ function UploadInner() {
       <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-8">
         <FieldGroup
           label="EAA payload"
-          hint="SD-JWT VC compact serialisation: header.payload.signature with optional ~disclosures."
+          hint="SD-JWT VC compact serialisation: header.payload.signature with optional ~disclosures. Drop a file or paste below."
           error={errors.eaaPayload?.message}
         >
-          <textarea
+          <DragDropTextarea
+            name="eaaPayload"
             rows={6}
-            spellCheck={false}
-            className="w-full rounded-md border border-zinc-200 bg-white px-3 py-2 font-mono text-xs text-zinc-900 shadow-sm focus:border-blue-300 focus:outline-2 focus:outline-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+            register={register}
+            setValue={setValue}
             placeholder="eyJhbGciOiJFUzI1NiIsImtpZCI6Imlzc3Vlci1rZXktMSIsInR5cCI6InZjK3NkLWp3dCIsIng1YyI6WyIuLi4iXX0..."
-            {...register('eaaPayload')}
           />
-          <FileLoader name="eaaPayload" register={register} />
+          <FileLoader name="eaaPayload" setValue={setValue} />
         </FieldGroup>
 
         <FieldGroup
           label="Issuer X.509 certificate"
-          hint="Optional. PEM format."
+          hint="Optional. PEM format. Drop a file or paste below."
           error={errors.issuerCert?.message}
         >
-          <textarea
+          <DragDropTextarea
+            name="issuerCert"
             rows={5}
-            spellCheck={false}
-            className="w-full rounded-md border border-zinc-200 bg-white px-3 py-2 font-mono text-xs text-zinc-900 shadow-sm focus:border-blue-300 focus:outline-2 focus:outline-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+            register={register}
+            setValue={setValue}
             placeholder="-----BEGIN CERTIFICATE-----..."
-            {...register('issuerCert')}
           />
-          <FileLoader name="issuerCert" register={register} />
+          <FileLoader name="issuerCert" setValue={setValue} />
         </FieldGroup>
 
         <FieldGroup
@@ -306,11 +307,10 @@ function FieldGroup({
 
 interface FileLoaderProps {
   name: 'eaaPayload' | 'issuerCert';
-  register: ReturnType<typeof useForm<EvidenceForm>>['register'];
+  setValue: ReturnType<typeof useForm<EvidenceForm>>['setValue'];
 }
 
-function FileLoader({ name, register }: FileLoaderProps) {
-  const { onChange } = register(name);
+function FileLoader({ name, setValue }: FileLoaderProps) {
   return (
     <label className="inline-flex cursor-pointer items-center gap-2 text-xs text-zinc-600 hover:text-blue-700 dark:text-zinc-400 dark:hover:text-blue-300">
       <input
@@ -320,14 +320,68 @@ function FileLoader({ name, register }: FileLoaderProps) {
           const file = e.target.files?.[0];
           if (!file) return;
           const text = await file.text();
-          const event = {
-            target: { value: text, name },
-          } as unknown as React.ChangeEvent<HTMLTextAreaElement>;
-          await onChange(event);
+          setValue(name, text, { shouldValidate: true });
         }}
       />
       Or load from file…
     </label>
+  );
+}
+
+interface DragDropTextareaProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  name: 'eaaPayload' | 'issuerCert';
+  register: ReturnType<typeof useForm<EvidenceForm>>['register'];
+  setValue: ReturnType<typeof useForm<EvidenceForm>>['setValue'];
+}
+
+function DragDropTextarea({
+  name,
+  register,
+  setValue,
+  ...textareaProps
+}: DragDropTextareaProps) {
+  const [isDragOver, setIsDragOver] = useState(false);
+  return (
+    <div
+      onDragEnter={(e) => {
+        e.preventDefault();
+        setIsDragOver(true);
+      }}
+      onDragOver={(e) => {
+        e.preventDefault();
+      }}
+      onDragLeave={(e) => {
+        e.preventDefault();
+        setIsDragOver(false);
+      }}
+      onDrop={async (e) => {
+        e.preventDefault();
+        setIsDragOver(false);
+        const file = e.dataTransfer.files?.[0];
+        if (!file) return;
+        const text = await file.text();
+        setValue(name, text, { shouldValidate: true });
+      }}
+      className={`relative rounded-md transition ${
+        isDragOver ? 'ring-2 ring-blue-500 ring-offset-2 dark:ring-offset-zinc-950' : ''
+      }`}
+    >
+      <textarea
+        spellCheck={false}
+        className="w-full rounded-md border border-zinc-200 bg-white px-3 py-2 font-mono text-xs text-zinc-900 shadow-sm focus:border-blue-300 focus:outline-2 focus:outline-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+        {...textareaProps}
+        {...register(name)}
+      />
+      {isDragOver && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-md bg-blue-50/85 text-sm font-semibold text-blue-700 dark:bg-blue-950/60 dark:text-blue-300"
+        >
+          Drop file to load
+        </div>
+      )}
+    </div>
   );
 }
 
