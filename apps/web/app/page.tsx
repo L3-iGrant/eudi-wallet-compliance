@@ -436,7 +436,7 @@ export default async function Hub() {
           <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-zinc-600 dark:text-zinc-400">
             <li className="flex items-center gap-2">
               <CheckMark />
-              Anchored in ETSI, IETF, ISO, and W3C specs
+              Anchored in ETSI, IETF, ISO, OpenID, and W3C specs
             </li>
             <li className="flex items-center gap-2">
               <CheckMark />

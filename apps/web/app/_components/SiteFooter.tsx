@@ -1,5 +1,4 @@
 const REPO_URL = 'https://github.com/L3-iGrant/eudi-wallet-compliance';
-const SPEC_LABEL = 'TS 119 472-1 v1.2.1';
 
 function buildDate(): string {
   const raw = process.env.BUILD_DATE;
@@ -23,7 +22,9 @@ export function SiteFooter() {
           <span aria-hidden="true" className="hidden sm:inline">·</span>
           <span>Maintained by iGrant.io</span>
           <span aria-hidden="true" className="hidden sm:inline">·</span>
-          <span>Built against {SPEC_LABEL}</span>
+          <span>
+            Anchored in EUDI Wallet specs from ETSI, IETF, ISO, OpenID, and W3C
+          </span>
         </div>
         <span className="text-xs text-zinc-500">Last build: {buildDate()}</span>
       </div>
