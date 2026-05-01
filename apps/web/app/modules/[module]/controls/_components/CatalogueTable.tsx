@@ -376,16 +376,17 @@ export function CatalogueTable({
   const [hydrated, setHydrated] = useState(false);
 
   // Hydrate filters from URL on mount and whenever search params change.
-  // Synchronising local state with an external system (the URL) is a
-  // legitimate use of setState-in-effect; the rule is overcautious here.
-  // eslint-disable-next-line react-hooks/set-state-in-effect
+  // Synchronising local state with an external system (the URL) is the
+  // intended use of setState-in-effect here; the rule is overcautious.
   useEffect(() => {
     const next = readFilters(
       new URLSearchParams(searchParams?.toString() ?? ''),
     );
+    /* eslint-disable react-hooks/set-state-in-effect */
     setFilters(next);
     setDebouncedText(next.text);
     setHydrated(true);
+    /* eslint-enable react-hooks/set-state-in-effect */
   }, [searchParams]);
 
   // Debounce text changes by 200 ms.
