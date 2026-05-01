@@ -10,7 +10,7 @@ const EVIDENCE_REF = 'eaa-payload';
  *
  * The spec uses "should", not "shall", so absence is a warn, not a fail.
  */
-export function check(evidence: Evidence, _scope: AssessmentScope): Verdict {
+export async function check(evidence: Evidence, _scope: AssessmentScope): Promise<Verdict> {
   if (!evidence.eaaPayload) {
     return {
       controlId: CONTROL_ID,

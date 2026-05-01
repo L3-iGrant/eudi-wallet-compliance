@@ -12,6 +12,7 @@
   "dependencies": {
     "@iwc/controls": "workspace:*",
     "@iwc/shared": "workspace:*",
+    "@iwc/status-list": "workspace:*",
     "yaml": "^2.6.0",
     "zod": "^4.0.0"
   },

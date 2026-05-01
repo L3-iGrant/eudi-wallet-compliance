@@ -9,7 +9,7 @@ const X5T_S256 = 'x5t#S256';
  * EAA-5.5-04: If the EAA subject certificate is represented in cnf by
  * the x5u parameter, the x5t#S256 parameter shall also be present.
  */
-export function check(evidence: Evidence, _scope: AssessmentScope): Verdict {
+export async function check(evidence: Evidence, _scope: AssessmentScope): Promise<Verdict> {
   if (!evidence.eaaPayload) {
     return {
       controlId: CONTROL_ID,

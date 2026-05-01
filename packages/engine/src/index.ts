@@ -59,18 +59,20 @@ export async function runAssessment(
 
   const inScope = filterControlsForScope(controls, scope);
 
-  const verdicts: Verdict[] = inScope.map((c) => {
-    const check = getCheck(c.id);
-    if (!check) {
-      return {
-        controlId: c.id,
-        status: 'na',
-        evidenceRef: '',
-        notes: 'No check implemented yet',
-      };
-    }
-    return check(evidence, scope);
-  });
+  const verdicts: Verdict[] = await Promise.all(
+    inScope.map(async (c): Promise<Verdict> => {
+      const check = getCheck(c.id);
+      if (!check) {
+        return {
+          controlId: c.id,
+          status: 'na',
+          evidenceRef: '',
+          notes: 'No check implemented yet',
+        };
+      }
+      return check(evidence, scope);
+    }),
+  );
 
   return {
     reportId: crypto.randomUUID(),

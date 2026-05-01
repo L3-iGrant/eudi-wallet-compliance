@@ -8,7 +8,7 @@ const EVIDENCE_REF = 'eaa-payload';
  * EAA-5.2.7.1-01: A SD-JWT VC EAA shall include the nbf claim, an integer
  * NumericDate per IETF RFC 7519.
  */
-export function check(evidence: Evidence, _scope: AssessmentScope): Verdict {
+export async function check(evidence: Evidence, _scope: AssessmentScope): Promise<Verdict> {
   if (!evidence.eaaPayload) {
     return {
       controlId: CONTROL_ID,

@@ -8,7 +8,7 @@ const INTEGRITY_CLAIM = 'vct#integrity';
 /**
  * EAA-5.2.1.2-03: A SD-JWT VC EAA shall incorporate the claim vct#integrity.
  */
-export function check(evidence: Evidence, _scope: AssessmentScope): Verdict {
+export async function check(evidence: Evidence, _scope: AssessmentScope): Promise<Verdict> {
   if (!evidence.eaaPayload) {
     return {
       controlId: CONTROL_ID,

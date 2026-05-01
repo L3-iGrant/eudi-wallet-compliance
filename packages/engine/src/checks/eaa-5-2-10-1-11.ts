@@ -20,7 +20,7 @@ function isUrl(value: string): boolean {
  * EAA-5.2.10.1-11: When the status component is present, status.uri shall
  * be a JSON string whose value is a URL pointing to the status list.
  */
-export function check(evidence: Evidence, _scope: AssessmentScope): Verdict {
+export async function check(evidence: Evidence, _scope: AssessmentScope): Promise<Verdict> {
   if (!evidence.eaaPayload) {
     return {
       controlId: CONTROL_ID,

@@ -5,14 +5,14 @@ import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample } from './he
 describe('EAA-5.2.10.1-03 (status component must be JSON object)', () => {
   it('passes when status is a JSON object', async () => {
     const sample = await loadSample('sjv-eaa-5');
-    const verdict = check({ eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
+    const verdict = await check({ eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
     expect(verdict.status).toBe('pass');
   });
 
   it('fails when status is a string instead of an object', async () => {
     const sample = await loadSample('sjv-eaa-1');
     const broken = { ...sample.payload_decoded, status: 'unrevoked' };
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: buildCompact(sample.header, broken) },
       DEFAULT_SCOPE,
     );
@@ -22,12 +22,12 @@ describe('EAA-5.2.10.1-03 (status component must be JSON object)', () => {
 
   it('returns na when status is absent', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const verdict = check({ eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
+    const verdict = await check({ eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 
-  it('returns na when no eaaPayload is supplied', () => {
-    const verdict = check({}, DEFAULT_SCOPE);
+  it('returns na when no eaaPayload is supplied', async () => {
+    const verdict = await check({}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 });

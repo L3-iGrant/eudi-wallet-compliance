@@ -1496,6 +1496,46 @@
   common_mistakes: []
   related_controls: []
 
+- id: EAA-5.2.10.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 5.2.10.1
+    page: 32
+  modal_verb: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - sd-jwt-vc
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: status URI must resolve to a parseable Token Status List
+  spec_text: >-
+    Runtime resolver check (IETF draft-ietf-oauth-status-list-13). When the
+    EAA carries a status component, the URI must dereference to a Token
+    Status List in the JWT or CWT serialisation, and the credential's index
+    must read out a registered status value.
+  plain_english: >-
+    The link the credential gives for revocation lookups must actually work
+    and return a valid status entry for the credential.
+  why_it_matters: >-
+    Verifiers cannot make trust decisions if the revocation list is
+    unreachable or unparseable; this gate confirms the resolver path is
+    live end to end.
+  common_mistakes:
+    - Publishing a status list behind authentication or with the wrong content-type.
+    - Index pointing past the end of the list.
+  related_controls:
+    - EAA-5.2.10.1-10
+    - EAA-5.2.10.1-11
+
 - id: QEAA-5.2.10.2-01
   module: eaa-conformance
   spec_source:

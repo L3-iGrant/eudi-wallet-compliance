@@ -5,7 +5,7 @@ import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample } from './he
 describe('EAA-5.2.10.1-11 (status.uri is a non-empty URL string)', () => {
   it('passes when status.uri is a valid https URL', async () => {
     const sample = await loadSample('sjv-eaa-5');
-    const verdict = check({ eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
+    const verdict = await check({ eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
     expect(verdict.status).toBe('pass');
     expect(verdict.notes).toContain('valid URL');
   });
@@ -16,7 +16,7 @@ describe('EAA-5.2.10.1-11 (status.uri is a non-empty URL string)', () => {
       ...sample.payload_decoded,
       status: { ...(sample.payload_decoded.status as object), uri: 'not-a-url' },
     };
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: buildCompact(sample.header, broken) },
       DEFAULT_SCOPE,
     );
@@ -30,7 +30,7 @@ describe('EAA-5.2.10.1-11 (status.uri is a non-empty URL string)', () => {
       ...sample.payload_decoded,
       status: { ...(sample.payload_decoded.status as object), uri: 42 },
     };
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: buildCompact(sample.header, broken) },
       DEFAULT_SCOPE,
     );
@@ -38,8 +38,8 @@ describe('EAA-5.2.10.1-11 (status.uri is a non-empty URL string)', () => {
     expect(verdict.notes).toContain('not a non-empty JSON string');
   });
 
-  it('returns na when no eaaPayload is supplied', () => {
-    const verdict = check({}, DEFAULT_SCOPE);
+  it('returns na when no eaaPayload is supplied', async () => {
+    const verdict = await check({}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 });

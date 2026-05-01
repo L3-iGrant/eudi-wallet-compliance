@@ -8,7 +8,7 @@ const EVIDENCE_REF = 'eaa-payload';
  * EAA-5.2.10.1-10: When the status component is present, the status JSON
  * Object shall have the uri member.
  */
-export function check(evidence: Evidence, _scope: AssessmentScope): Verdict {
+export async function check(evidence: Evidence, _scope: AssessmentScope): Promise<Verdict> {
   if (!evidence.eaaPayload) {
     return {
       controlId: CONTROL_ID,

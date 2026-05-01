@@ -8,7 +8,7 @@ const EVIDENCE_REF = 'eaa-payload';
  * EAA-5.2.10.1-03: When the status component is present, it shall be a
  * JSON Object. Absent status is N/A (status itself is optional).
  */
-export function check(evidence: Evidence, _scope: AssessmentScope): Verdict {
+export async function check(evidence: Evidence, _scope: AssessmentScope): Promise<Verdict> {
   if (!evidence.eaaPayload) {
     return {
       controlId: CONTROL_ID,

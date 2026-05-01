@@ -9,7 +9,7 @@ const EVIDENCE_REF = 'eaa-payload';
  * Object must have a 'type' member that is a JSON string. When status is
  * absent, the rule is N/A.
  */
-export function check(evidence: Evidence, _scope: AssessmentScope): Verdict {
+export async function check(evidence: Evidence, _scope: AssessmentScope): Promise<Verdict> {
   if (!evidence.eaaPayload) {
     return {
       controlId: CONTROL_ID,

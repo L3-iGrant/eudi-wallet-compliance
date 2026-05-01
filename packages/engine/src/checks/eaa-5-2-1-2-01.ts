@@ -7,7 +7,7 @@ const EVIDENCE_REF = 'eaa-payload';
 /**
  * EAA-5.2.1.2-01: A SD-JWT VC EAA shall include the vct claim.
  */
-export function check(evidence: Evidence, _scope: AssessmentScope): Verdict {
+export async function check(evidence: Evidence, _scope: AssessmentScope): Promise<Verdict> {
   if (!evidence.eaaPayload) {
     return {
       controlId: CONTROL_ID,

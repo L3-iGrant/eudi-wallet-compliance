@@ -5,7 +5,7 @@ import { DEFAULT_SCOPE, compactFromSample, loadSample } from './helpers';
 describe('EAA-5.1-01 (SD-JWT VC compact serialisation parses)', () => {
   it('passes on a well-formed compact serialisation built from sjv-eaa-1', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -14,8 +14,8 @@ describe('EAA-5.1-01 (SD-JWT VC compact serialisation parses)', () => {
     expect(verdict.evidenceRef).toBe('eaa-payload');
   });
 
-  it('fails on a malformed compact (missing tilde separator)', () => {
-    const verdict = check(
+  it('fails on a malformed compact (missing tilde separator)', async () => {
+    const verdict = await check(
       { eaaPayload: 'aGVsbG8.aGVsbG8.bWFkZXVw' },
       DEFAULT_SCOPE,
     );
@@ -23,8 +23,8 @@ describe('EAA-5.1-01 (SD-JWT VC compact serialisation parses)', () => {
     expect(verdict.notes).toContain('does not parse');
   });
 
-  it('returns na when no eaaPayload is supplied', () => {
-    const verdict = check({}, DEFAULT_SCOPE);
+  it('returns na when no eaaPayload is supplied', async () => {
+    const verdict = await check({}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
     expect(verdict.evidenceRef).toBe('');
     expect(verdict.notes).toContain('No EAA payload supplied');

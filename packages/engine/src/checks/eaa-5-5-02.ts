@@ -55,7 +55,7 @@ function validateJwk(jwk: Record<string, unknown>): JwkValidation {
  * certificate reference (x5c, x5t#S256, x5u). When cnf is absent, the
  * rule is N/A (EAA-5.5-01 already flags absence).
  */
-export function check(evidence: Evidence, _scope: AssessmentScope): Verdict {
+export async function check(evidence: Evidence, _scope: AssessmentScope): Promise<Verdict> {
   if (!evidence.eaaPayload) {
     return {
       controlId: CONTROL_ID,

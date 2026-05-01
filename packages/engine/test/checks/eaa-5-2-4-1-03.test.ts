@@ -10,7 +10,7 @@ describe('EAA-5.2.4.1-03 (issuing_authority must not coexist with x5c qualified 
       ...sample.payload_decoded,
       issuing_authority: 'Example Issuing Authority',
     };
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: buildCompact(sample.header, broken) },
       DEFAULT_SCOPE,
     );
@@ -20,7 +20,7 @@ describe('EAA-5.2.4.1-03 (issuing_authority must not coexist with x5c qualified 
 
   it('passes when x5c is present without issuing_authority (sjv-eaa-5)', async () => {
     const sample = await loadSample('sjv-eaa-5');
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -30,7 +30,7 @@ describe('EAA-5.2.4.1-03 (issuing_authority must not coexist with x5c qualified 
 
   it('passes when issuing_authority is present without x5c (sjv-eaa-1)', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -38,8 +38,8 @@ describe('EAA-5.2.4.1-03 (issuing_authority must not coexist with x5c qualified 
     expect(verdict.notes).toContain('issuing_authority present');
   });
 
-  it('returns na when no eaaPayload is supplied', () => {
-    const verdict = check({}, DEFAULT_SCOPE);
+  it('returns na when no eaaPayload is supplied', async () => {
+    const verdict = await check({}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 });

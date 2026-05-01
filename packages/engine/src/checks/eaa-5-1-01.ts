@@ -11,7 +11,7 @@ const EVIDENCE_REF = 'eaa-payload';
  * Pass = compact serialisation parses cleanly into header.payload.signature
  * with the optional disclosures and key-binding tail.
  */
-export function check(evidence: Evidence, _scope: AssessmentScope): Verdict {
+export async function check(evidence: Evidence, _scope: AssessmentScope): Promise<Verdict> {
   if (!evidence.eaaPayload) {
     return {
       controlId: CONTROL_ID,

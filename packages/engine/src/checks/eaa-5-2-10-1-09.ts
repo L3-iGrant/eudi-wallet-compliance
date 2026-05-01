@@ -8,7 +8,7 @@ const EVIDENCE_REF = 'eaa-payload';
  * EAA-5.2.10.1-09: When the status component is present, status.index
  * shall be a JSON integer.
  */
-export function check(evidence: Evidence, _scope: AssessmentScope): Verdict {
+export async function check(evidence: Evidence, _scope: AssessmentScope): Promise<Verdict> {
   if (!evidence.eaaPayload) {
     return {
       controlId: CONTROL_ID,

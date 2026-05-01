@@ -140,7 +140,7 @@ describe('runAssessment', () => {
   });
 
   it('uses a registered check function when one is available', async () => {
-    registerCheck('EAA-5.1-01', () => ({
+    registerCheck('EAA-5.1-01', async () => ({
       controlId: 'EAA-5.1-01',
       status: 'pass',
       evidenceRef: 'eaa-payload',

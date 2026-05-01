@@ -5,7 +5,7 @@ import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample } from './he
 describe('EAA-5.2.10.1-04 (status JSON Object type member)', () => {
   it('passes when status is present with a string type member (sjv-eaa-5)', async () => {
     const sample = await loadSample('sjv-eaa-5');
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -18,7 +18,7 @@ describe('EAA-5.2.10.1-04 (status JSON Object type member)', () => {
     const status = { ...(sample.payload_decoded.status as Record<string, unknown>) };
     delete status.type;
     const broken = { ...sample.payload_decoded, status };
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: buildCompact(sample.header, broken) },
       DEFAULT_SCOPE,
     );
@@ -32,7 +32,7 @@ describe('EAA-5.2.10.1-04 (status JSON Object type member)', () => {
       ...sample.payload_decoded,
       status: { ...(sample.payload_decoded.status as object), type: 42 },
     };
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: buildCompact(sample.header, broken) },
       DEFAULT_SCOPE,
     );
@@ -42,7 +42,7 @@ describe('EAA-5.2.10.1-04 (status JSON Object type member)', () => {
 
   it('returns na when status is absent (sjv-eaa-1)', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -50,8 +50,8 @@ describe('EAA-5.2.10.1-04 (status JSON Object type member)', () => {
     expect(verdict.notes).toContain('status component absent');
   });
 
-  it('returns na when no eaaPayload is supplied', () => {
-    const verdict = check({}, DEFAULT_SCOPE);
+  it('returns na when no eaaPayload is supplied', async () => {
+    const verdict = await check({}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 });

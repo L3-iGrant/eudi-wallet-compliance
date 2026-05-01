@@ -10,7 +10,7 @@ const EVIDENCE_REF = 'eaa-payload';
  * present, exp must be strictly greater than nbf (otherwise the EAA has a
  * never-valid window).
  */
-export function check(evidence: Evidence, _scope: AssessmentScope): Verdict {
+export async function check(evidence: Evidence, _scope: AssessmentScope): Promise<Verdict> {
   if (!evidence.eaaPayload) {
     return {
       controlId: CONTROL_ID,

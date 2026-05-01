@@ -5,7 +5,7 @@ import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample } from './he
 describe('EAA-5.2.1.2-03 (vct#integrity claim present)', () => {
   it('passes when the payload includes a non-empty vct#integrity claim', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -17,7 +17,7 @@ describe('EAA-5.2.1.2-03 (vct#integrity claim present)', () => {
     const sample = await loadSample('sjv-eaa-1');
     const broken = { ...sample.payload_decoded };
     delete broken['vct#integrity'];
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: buildCompact(sample.header, broken) },
       DEFAULT_SCOPE,
     );
@@ -25,8 +25,8 @@ describe('EAA-5.2.1.2-03 (vct#integrity claim present)', () => {
     expect(verdict.notes).toContain('vct#integrity');
   });
 
-  it('returns na when no eaaPayload is supplied', () => {
-    const verdict = check({}, DEFAULT_SCOPE);
+  it('returns na when no eaaPayload is supplied', async () => {
+    const verdict = await check({}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 });

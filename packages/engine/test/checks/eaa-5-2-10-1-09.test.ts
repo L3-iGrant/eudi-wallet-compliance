@@ -5,7 +5,7 @@ import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample } from './he
 describe('EAA-5.2.10.1-09 (status.index is a JSON integer)', () => {
   it('passes when status.index is a non-negative integer', async () => {
     const sample = await loadSample('sjv-eaa-5');
-    const verdict = check({ eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
+    const verdict = await check({ eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
     expect(verdict.status).toBe('pass');
     expect(verdict.notes).toMatch(/JSON integer: \d+/);
   });
@@ -16,7 +16,7 @@ describe('EAA-5.2.10.1-09 (status.index is a JSON integer)', () => {
       ...sample.payload_decoded,
       status: { ...(sample.payload_decoded.status as object), index: '42' },
     };
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: buildCompact(sample.header, broken) },
       DEFAULT_SCOPE,
     );
@@ -26,12 +26,12 @@ describe('EAA-5.2.10.1-09 (status.index is a JSON integer)', () => {
 
   it('returns na when status is absent', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const verdict = check({ eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
+    const verdict = await check({ eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 
-  it('returns na when no eaaPayload is supplied', () => {
-    const verdict = check({}, DEFAULT_SCOPE);
+  it('returns na when no eaaPayload is supplied', async () => {
+    const verdict = await check({}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 });

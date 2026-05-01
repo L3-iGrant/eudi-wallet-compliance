@@ -10,7 +10,7 @@ const EVIDENCE_REF = 'eaa-payload';
  * sensitive: QEAA and PuB-EAA require exactly one revocation strategy
  * (status service or shortLived). Ordinary EAA may have neither.
  */
-export function check(evidence: Evidence, scope: AssessmentScope): Verdict {
+export async function check(evidence: Evidence, scope: AssessmentScope): Promise<Verdict> {
   if (!evidence.eaaPayload) {
     return {
       controlId: CONTROL_ID,

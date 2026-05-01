@@ -14,7 +14,7 @@ const EVIDENCE_REF = 'eaa-payload';
  * x5c and issuing_authority are present, we warn and explain the
  * approximation. Otherwise we pass.
  */
-export function check(evidence: Evidence, _scope: AssessmentScope): Verdict {
+export async function check(evidence: Evidence, _scope: AssessmentScope): Promise<Verdict> {
   if (!evidence.eaaPayload) {
     return {
       controlId: CONTROL_ID,

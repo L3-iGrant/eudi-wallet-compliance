@@ -5,7 +5,7 @@ import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample } from './he
 describe('EAA-5.2.7.1-03 (exp claim present, integer, exp > nbf)', () => {
   it('passes when exp is an integer NumericDate strictly greater than nbf', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -20,7 +20,7 @@ describe('EAA-5.2.7.1-03 (exp claim present, integer, exp > nbf)', () => {
       nbf: 1735689600,
       exp: 1735689600, // equal to nbf, must be strictly greater
     };
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: buildCompact(sample.header, broken) },
       DEFAULT_SCOPE,
     );
@@ -28,8 +28,8 @@ describe('EAA-5.2.7.1-03 (exp claim present, integer, exp > nbf)', () => {
     expect(verdict.notes).toContain('strictly greater than nbf');
   });
 
-  it('returns na when no eaaPayload is supplied', () => {
-    const verdict = check({}, DEFAULT_SCOPE);
+  it('returns na when no eaaPayload is supplied', async () => {
+    const verdict = await check({}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 });

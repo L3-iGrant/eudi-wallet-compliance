@@ -5,7 +5,7 @@ import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample } from './he
 describe('EAA-5.5-02 (cnf must contain JWK or certificate reference)', () => {
   it('passes when cnf carries a well-formed EC JWK (sjv-eaa-2)', async () => {
     const sample = await loadSample('sjv-eaa-2');
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -19,7 +19,7 @@ describe('EAA-5.5-02 (cnf must contain JWK or certificate reference)', () => {
       ...sample.payload_decoded,
       cnf: { x5c: ['BASE64-CERT-FIRST-LINE'] },
     };
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: buildCompact(sample.header, broken) },
       DEFAULT_SCOPE,
     );
@@ -33,7 +33,7 @@ describe('EAA-5.5-02 (cnf must contain JWK or certificate reference)', () => {
       ...sample.payload_decoded,
       cnf: { kid: 'some-key-id' },
     };
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: buildCompact(sample.header, broken) },
       DEFAULT_SCOPE,
     );
@@ -47,7 +47,7 @@ describe('EAA-5.5-02 (cnf must contain JWK or certificate reference)', () => {
       ...sample.payload_decoded,
       cnf: { jwk: { crv: 'P-256', x: 'x', y: 'y' } },
     };
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: buildCompact(sample.header, broken) },
       DEFAULT_SCOPE,
     );
@@ -61,7 +61,7 @@ describe('EAA-5.5-02 (cnf must contain JWK or certificate reference)', () => {
       ...sample.payload_decoded,
       cnf: { jwk: { kty: 'EC', crv: 'P-256', x: 'x' } },
     };
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: buildCompact(sample.header, broken) },
       DEFAULT_SCOPE,
     );
@@ -71,15 +71,15 @@ describe('EAA-5.5-02 (cnf must contain JWK or certificate reference)', () => {
 
   it('returns na when cnf is absent', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('na');
   });
 
-  it('returns na when no eaaPayload is supplied', () => {
-    const verdict = check({}, DEFAULT_SCOPE);
+  it('returns na when no eaaPayload is supplied', async () => {
+    const verdict = await check({}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 });

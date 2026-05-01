@@ -5,7 +5,7 @@ import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample } from './he
 describe('EAA-5.2.7.1-01 (nbf claim present, integer NumericDate)', () => {
   it('passes when the payload includes an integer nbf claim', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -16,7 +16,7 @@ describe('EAA-5.2.7.1-01 (nbf claim present, integer NumericDate)', () => {
   it('fails when the payload nbf is a non-integer string', async () => {
     const sample = await loadSample('sjv-eaa-1');
     const broken = { ...sample.payload_decoded, nbf: '2026-05-01' };
-    const verdict = check(
+    const verdict = await check(
       { eaaPayload: buildCompact(sample.header, broken) },
       DEFAULT_SCOPE,
     );
@@ -24,8 +24,8 @@ describe('EAA-5.2.7.1-01 (nbf claim present, integer NumericDate)', () => {
     expect(verdict.notes).toContain('NumericDate');
   });
 
-  it('returns na when no eaaPayload is supplied', () => {
-    const verdict = check({}, DEFAULT_SCOPE);
+  it('returns na when no eaaPayload is supplied', async () => {
+    const verdict = await check({}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 });
