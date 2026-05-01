@@ -21,7 +21,7 @@ const ScopeSchema = z.object({
 type ScopeForm = z.infer<typeof ScopeSchema>;
 
 const STATUS_LABEL: Record<string, string> = {
-  shipped: 'Available',
+  shipped: 'Live',
   'in-development': 'In development',
   planned: 'Planned',
 };

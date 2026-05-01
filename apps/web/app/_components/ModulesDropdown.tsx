@@ -88,8 +88,12 @@ export function ModulesDropdown({ modules, linkClass }: ModulesDropdownProps) {
                     className="flex flex-col px-3 py-2 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white"
                   >
                     <span>{m.name}</span>
-                    <span className="text-xs text-emerald-600 dark:text-emerald-400">
-                      Shipped
+                    <span className="inline-flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400">
+                      <span
+                        aria-hidden="true"
+                        className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400"
+                      />
+                      Live
                     </span>
                   </Link>
                 ) : (

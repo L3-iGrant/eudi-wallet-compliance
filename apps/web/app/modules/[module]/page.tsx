@@ -276,7 +276,17 @@ export default async function ModulePage({ params }: PageProps) {
       {/* Header */}
       <header className="border-b border-zinc-200 pb-10 dark:border-zinc-800">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700 dark:text-blue-400">
-          Module · Shipped
+          Module
+          <span aria-hidden="true" className="mx-2 text-zinc-400 dark:text-zinc-600">
+            ·
+          </span>
+          <span className="inline-flex items-center gap-1.5 text-emerald-700 dark:text-emerald-400">
+            <span
+              aria-hidden="true"
+              className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400"
+            />
+            Live
+          </span>
         </p>
         <h1 className="mt-4 text-balance text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl lg:text-5xl dark:text-white">
           {m.name}
