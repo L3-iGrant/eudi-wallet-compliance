@@ -6,7 +6,7 @@ import {
   type Resource,
 } from '../permissions';
 
-const RESOURCES: Resource[] = ['report', 'project', 'tenant'];
+const RESOURCES: Resource[] = ['report', 'project', 'tenant', 'lead'];
 const ACTIONS: Action[] = ['read', 'write', 'delete'];
 
 describe('checkPermission', () => {

@@ -10,7 +10,7 @@
  */
 
 export type Action = 'read' | 'write' | 'delete';
-export type Resource = 'report' | 'project' | 'tenant';
+export type Resource = 'report' | 'project' | 'tenant' | 'lead';
 
 export function checkPermission(
   tenantId: string,
