@@ -486,15 +486,22 @@ function UpcomingModule({ module: m }: { module: ModuleMetadata }) {
           reach out to the iGrant.io team if you want to pilot this module
           ahead of public release.
         </p>
-        <a
-          href="https://igrant.io/contact"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-4 inline-flex items-center justify-center rounded-md bg-zinc-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
-        >
-          Talk to iGrant.io
-          <ChevronRight className="ml-1.5" />
-        </a>
+        <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+          <a
+            href="https://wa.me/+46725082200"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-md bg-zinc-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+          >
+            Chat on WhatsApp
+          </a>
+          <a
+            href="mailto:support@igrant.io"
+            className="inline-flex items-center justify-center rounded-md border border-zinc-300 bg-white px-4 py-2.5 text-sm font-semibold text-zinc-900 hover:border-blue-300 hover:text-blue-700 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:hover:border-blue-700 dark:hover:text-blue-300"
+          >
+            Email support@igrant.io
+          </a>
+        </div>
       </section>
 
       <section className="mt-12 border-t border-zinc-200 pt-6 dark:border-zinc-800">
