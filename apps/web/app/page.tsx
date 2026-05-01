@@ -265,21 +265,23 @@ export default async function Hub() {
             <span
               className="inline-flex shrink-0 items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800 dark:bg-blue-900/40 dark:text-blue-200"
             >
-              First public use
+              Plugtests companion
             </span>
             <p className="text-sm text-zinc-800 dark:text-zinc-200">
-              <span className="font-semibold">ETSI EAA Plugtests preparation.</span>{' '}
-              Vendors building EAA issuers and verifiers can pre-flight their
-              implementation against this toolkit before the interop event.
+              An open-source preparation companion to the official{' '}
+              <span className="font-semibold">ETSI EAA Plugtests programme</span>.
+              Verify your EAA implementation against ETSI TS 119 472-1 ahead
+              of the interop event, then attend the Plugtests programme
+              itself.
             </p>
           </div>
           <a
-            href="https://signature-plugtests.etsi.org/homeview"
+            href="https://signature-plugtests.etsi.org/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex shrink-0 items-center text-sm font-semibold text-blue-700 hover:underline dark:text-blue-300"
           >
-            ETSI Plugtests homepage{' '}
+            ETSI Plugtests programme{' '}
             <span aria-hidden="true" className="ml-1">↗</span>
           </a>
         </div>
