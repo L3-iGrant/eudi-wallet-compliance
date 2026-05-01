@@ -69,7 +69,7 @@ export async function runAssessment(
         notes: 'No check implemented yet',
       };
     }
-    return check(evidence);
+    return check(evidence, scope);
   });
 
   return {

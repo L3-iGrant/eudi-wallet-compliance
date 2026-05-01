@@ -1,11 +1,14 @@
 import { parseSdJwtVc, ParseError } from '@iwc/shared';
 import type { AssessmentScope, Evidence, Verdict } from '../types';
 
-const CONTROL_ID = 'EAA-5.2.1.2-01';
+const CONTROL_ID = 'EAA-5.5-01';
 const EVIDENCE_REF = 'eaa-payload';
 
 /**
- * EAA-5.2.1.2-01: A SD-JWT VC EAA shall include the vct claim.
+ * EAA-5.5-01: A SD-JWT VC EAA should incorporate the cnf claim for
+ * holder key binding (see EAA-5.5-02 for the cnf shape rules).
+ *
+ * The spec uses "should", not "shall", so absence is a warn, not a fail.
  */
 export function check(evidence: Evidence, _scope: AssessmentScope): Verdict {
   if (!evidence.eaaPayload) {
@@ -28,20 +31,28 @@ export function check(evidence: Evidence, _scope: AssessmentScope): Verdict {
       notes: `EAA payload could not be parsed: ${message}`,
     };
   }
-  const vct = payload['vct'];
-  if (typeof vct !== 'string' || vct.length === 0) {
+  const cnf = payload['cnf'];
+  if (cnf === undefined || cnf === null) {
+    return {
+      controlId: CONTROL_ID,
+      status: 'warn',
+      evidenceRef: EVIDENCE_REF,
+      notes: 'cnf claim absent. Recommended for key-bound EAAs.',
+    };
+  }
+  if (typeof cnf !== 'object' || Array.isArray(cnf)) {
     return {
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'Payload is missing the vct claim, or the vct claim is not a non-empty string.',
+      notes: 'cnf claim is present but not a JSON object.',
     };
   }
   return {
     controlId: CONTROL_ID,
     status: 'pass',
     evidenceRef: EVIDENCE_REF,
-    notes: `vct claim present: ${vct}`,
+    notes: 'cnf claim present.',
   };
 }
 

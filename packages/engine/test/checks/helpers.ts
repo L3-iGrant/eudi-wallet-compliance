@@ -1,6 +1,19 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { DEFAULT_DATA_DIR } from '@iwc/controls';
+import type { AssessmentScope } from '../../src/types';
+
+/**
+ * Sensible default scope for tests that do not exercise scope-aware
+ * behaviour. Tier 'ordinary' so most rules treat the EAA as the baseline
+ * tier. Override fields per test as needed.
+ */
+export const DEFAULT_SCOPE: AssessmentScope = {
+  module: 'eaa-conformance',
+  profile: ['sd-jwt-vc'],
+  role: ['issuer', 'verifier'],
+  tier: 'ordinary',
+};
 
 export interface ReferenceSample {
   sample_id: string;

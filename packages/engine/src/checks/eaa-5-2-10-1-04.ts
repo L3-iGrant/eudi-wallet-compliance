@@ -1,14 +1,13 @@
 import { parseSdJwtVc, ParseError } from '@iwc/shared';
 import type { AssessmentScope, Evidence, Verdict } from '../types';
 
-const CONTROL_ID = 'EAA-5.2.7.1-03';
+const CONTROL_ID = 'EAA-5.2.10.1-04';
 const EVIDENCE_REF = 'eaa-payload';
 
 /**
- * EAA-5.2.7.1-03: A SD-JWT VC EAA shall include the exp claim, an integer
- * NumericDate per IETF RFC 7519. Additionally, when both nbf and exp are
- * present, exp must be strictly greater than nbf (otherwise the EAA has a
- * never-valid window).
+ * EAA-5.2.10.1-04: When the status component is present, the status JSON
+ * Object must have a 'type' member that is a JSON string. When status is
+ * absent, the rule is N/A.
  */
 export function check(evidence: Evidence, _scope: AssessmentScope): Verdict {
   if (!evidence.eaaPayload) {
@@ -31,29 +30,46 @@ export function check(evidence: Evidence, _scope: AssessmentScope): Verdict {
       notes: `EAA payload could not be parsed: ${message}`,
     };
   }
-  const exp = payload['exp'];
-  if (typeof exp !== 'number' || !Number.isInteger(exp) || exp < 0) {
+  const status = payload['status'];
+  if (status === undefined || status === null) {
     return {
       controlId: CONTROL_ID,
-      status: 'fail',
+      status: 'na',
       evidenceRef: EVIDENCE_REF,
-      notes: 'exp claim missing or not a non-negative integer NumericDate.',
+      notes: 'status component absent; rule applies only when status is present.',
     };
   }
-  const nbf = payload['nbf'];
-  if (typeof nbf === 'number' && Number.isInteger(nbf) && exp <= nbf) {
+  if (typeof status !== 'object' || Array.isArray(status)) {
     return {
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: `exp (${exp}) must be strictly greater than nbf (${nbf}).`,
+      notes: 'status component is present but not a JSON object.',
+    };
+  }
+  const statusObj = status as Record<string, unknown>;
+  if (!('type' in statusObj)) {
+    return {
+      controlId: CONTROL_ID,
+      status: 'fail',
+      evidenceRef: EVIDENCE_REF,
+      notes: 'status JSON Object is missing the type member.',
+    };
+  }
+  const typeMember = statusObj['type'];
+  if (typeof typeMember !== 'string' || typeMember.length === 0) {
+    return {
+      controlId: CONTROL_ID,
+      status: 'fail',
+      evidenceRef: EVIDENCE_REF,
+      notes: 'status.type member is present but not a non-empty string.',
     };
   }
   return {
     controlId: CONTROL_ID,
     status: 'pass',
     evidenceRef: EVIDENCE_REF,
-    notes: `exp claim present: ${exp}`,
+    notes: `status.type member present: "${typeMember}".`,
   };
 }
 

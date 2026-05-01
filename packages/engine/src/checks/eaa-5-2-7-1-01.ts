@@ -1,5 +1,5 @@
 import { parseSdJwtVc, ParseError } from '@iwc/shared';
-import type { Evidence, Verdict } from '../types';
+import type { AssessmentScope, Evidence, Verdict } from '../types';
 
 const CONTROL_ID = 'EAA-5.2.7.1-01';
 const EVIDENCE_REF = 'eaa-payload';
@@ -8,7 +8,7 @@ const EVIDENCE_REF = 'eaa-payload';
  * EAA-5.2.7.1-01: A SD-JWT VC EAA shall include the nbf claim, an integer
  * NumericDate per IETF RFC 7519.
  */
-export function check(evidence: Evidence): Verdict {
+export function check(evidence: Evidence, _scope: AssessmentScope): Verdict {
   if (!evidence.eaaPayload) {
     return {
       controlId: CONTROL_ID,

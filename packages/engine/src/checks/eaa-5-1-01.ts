@@ -1,5 +1,5 @@
 import { parseSdJwtVc, ParseError } from '@iwc/shared';
-import type { Evidence, Verdict } from '../types';
+import type { AssessmentScope, Evidence, Verdict } from '../types';
 
 const CONTROL_ID = 'EAA-5.1-01';
 const EVIDENCE_REF = 'eaa-payload';
@@ -11,7 +11,7 @@ const EVIDENCE_REF = 'eaa-payload';
  * Pass = compact serialisation parses cleanly into header.payload.signature
  * with the optional disclosures and key-binding tail.
  */
-export function check(evidence: Evidence): Verdict {
+export function check(evidence: Evidence, _scope: AssessmentScope): Verdict {
   if (!evidence.eaaPayload) {
     return {
       controlId: CONTROL_ID,
