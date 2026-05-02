@@ -67,31 +67,17 @@ export default function ScopePicker() {
 
       <form onSubmit={handleSubmit(onSubmit)} className="mt-10 space-y-8">
         <Fieldset legend="Module">
-          <label className="flex items-center gap-3 rounded-md border border-blue-300 bg-blue-50/40 p-3 text-sm dark:border-blue-700 dark:bg-blue-950/30">
-            <input
-              type="radio"
-              value="eaa-conformance"
-              defaultChecked
-              {...register('module')}
-              className="h-4 w-4"
-            />
-            <span className="font-medium text-zinc-950 dark:text-white">EAA Conformance</span>
-            <span className="ml-auto text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
-              Available
-            </span>
-          </label>
-          {otherModules.map((m) => (
-            <label
-              key={m.id}
-              className="flex cursor-not-allowed items-center gap-3 rounded-md border border-zinc-200 bg-zinc-50 p-3 text-sm opacity-60 dark:border-zinc-800 dark:bg-zinc-900/40"
-            >
-              <input type="radio" disabled className="h-4 w-4" />
-              <span className="text-zinc-700 dark:text-zinc-300">{m.name}</span>
-              <span className="ml-auto text-xs font-medium uppercase tracking-wider text-zinc-500">
-                {STATUS_LABEL[m.status] ?? 'Planned'}
-              </span>
-            </label>
-          ))}
+          <select
+            {...register('module')}
+            className="w-full rounded-md border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 shadow-sm focus:border-blue-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-600 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:[color-scheme:dark]"
+          >
+            <option value="eaa-conformance">EAA Conformance · Live</option>
+            {otherModules.map((m) => (
+              <option key={m.id} value={m.id} disabled>
+                {m.name} · {STATUS_LABEL[m.status] ?? 'Planned'}
+              </option>
+            ))}
+          </select>
         </Fieldset>
 
         <Fieldset legend="Role" error={errors.role?.message}>
@@ -121,9 +107,14 @@ export default function ScopePicker() {
         </Fieldset>
 
         <Fieldset legend="Tier">
-          <RadioRow label="Ordinary EAA" value="ordinary" {...register('tier')} />
-          <RadioRow label="QEAA" value="qeaa" {...register('tier')} />
-          <RadioRow label="PuB-EAA" value="pub-eaa" {...register('tier')} />
+          <select
+            {...register('tier')}
+            className="w-full rounded-md border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 shadow-sm focus:border-blue-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-600 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:[color-scheme:dark]"
+          >
+            <option value="ordinary">Ordinary EAA</option>
+            <option value="qeaa">QEAA</option>
+            <option value="pub-eaa">PuB-EAA</option>
+          </select>
         </Fieldset>
 
         <div className="flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800">
@@ -174,16 +165,6 @@ const CheckboxRow = ({
 }: { label: string } & React.InputHTMLAttributes<HTMLInputElement>) => (
   <label className="flex items-center gap-3 rounded-md border border-zinc-200 bg-white p-3 text-sm has-checked:border-blue-300 has-checked:bg-blue-50/40 dark:border-zinc-800 dark:bg-zinc-950 dark:has-checked:border-blue-700 dark:has-checked:bg-blue-950/30">
     <input type="checkbox" className="h-4 w-4" {...props} />
-    <span className="text-zinc-950 dark:text-white">{label}</span>
-  </label>
-);
-
-const RadioRow = ({
-  label,
-  ...props
-}: { label: string } & React.InputHTMLAttributes<HTMLInputElement>) => (
-  <label className="flex items-center gap-3 rounded-md border border-zinc-200 bg-white p-3 text-sm has-checked:border-blue-300 has-checked:bg-blue-50/40 dark:border-zinc-800 dark:bg-zinc-950 dark:has-checked:border-blue-700 dark:has-checked:bg-blue-950/30">
-    <input type="radio" className="h-4 w-4" {...props} />
     <span className="text-zinc-950 dark:text-white">{label}</span>
   </label>
 );
