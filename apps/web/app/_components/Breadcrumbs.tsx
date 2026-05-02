@@ -174,15 +174,23 @@ function BreadcrumbsInner({ controls }: BreadcrumbsProps) {
   return (
     <nav aria-label="Breadcrumb" className="border-b border-zinc-100 bg-zinc-50/60 dark:border-zinc-800 dark:bg-zinc-900/40">
       <ol className="mx-auto flex max-w-7xl flex-wrap items-center gap-1 px-4 py-2 text-sm text-zinc-600 dark:text-zinc-400">
+        <li className="flex items-center gap-1">
+          <Link
+            href="/eudi-wallet-compliance/"
+            aria-label="Home"
+            title="EUDI Wallet Compliance"
+            className="inline-flex h-6 w-6 items-center justify-center rounded text-zinc-500 transition hover:bg-zinc-200/60 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/60 dark:hover:text-white"
+          >
+            <HomeIcon className="h-3.5 w-3.5" />
+          </Link>
+        </li>
         {crumbs.map((c, idx) => {
           const isLast = idx === crumbs.length - 1;
           return (
             <li key={c.href} className="flex items-center gap-1">
-              {idx > 0 && (
-                <span aria-hidden="true" className="text-zinc-400 dark:text-zinc-600">
-                  /
-                </span>
-              )}
+              <span aria-hidden="true" className="text-zinc-400 dark:text-zinc-600">
+                /
+              </span>
               {isLast ? (
                 <span aria-current="page" className="font-medium text-zinc-800 dark:text-zinc-200">
                   {c.label}
@@ -212,5 +220,24 @@ export function Breadcrumbs(props: BreadcrumbsProps) {
     <Suspense fallback={null}>
       <BreadcrumbsInner {...props} />
     </Suspense>
+  );
+}
+
+function HomeIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M3 11l9-8 9 8" />
+      <path d="M5 10v10h14V10" />
+      <path d="M9 20v-6h6v6" />
+    </svg>
   );
 }
