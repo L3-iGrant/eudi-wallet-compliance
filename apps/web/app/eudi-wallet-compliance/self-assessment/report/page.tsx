@@ -239,6 +239,8 @@ function ReportInner() {
         </div>
       </section>
 
+      <GapAnalysisSection report={report} moduleByControlId={moduleByControlId} />
+
       <DownloadSection
         report={report}
         lead={lead}
@@ -253,6 +255,126 @@ function ReportInner() {
           Run another assessment
         </Link>
       </section>
+    </article>
+  );
+}
+
+const TIER_LABEL: Record<string, string> = {
+  ordinary: 'Ordinary EAA',
+  qeaa: 'QEAA',
+  'pub-eaa': 'PuB-EAA',
+};
+
+function GapAnalysisSection({
+  report,
+  moduleByControlId,
+}: {
+  report: AssessmentResult;
+  moduleByControlId: Map<string, string>;
+}) {
+  const gaps: Array<{
+    label: string;
+    canBe: boolean;
+    missing: string[];
+  }> = [];
+  // Only show tiers above (or matching) the chosen tier. PuB-EAA is the
+  // top, so chosen=pub-eaa hides everything (already at the top).
+  if (report.scope.tier === 'ordinary' || report.scope.tier === 'qeaa') {
+    if (report.scope.tier === 'ordinary') {
+      gaps.push({
+        label: TIER_LABEL.qeaa!,
+        canBe: report.gapAnalysis.canBeQeaa,
+        missing: report.gapAnalysis.missingForQeaa,
+      });
+    }
+    gaps.push({
+      label: TIER_LABEL['pub-eaa']!,
+      canBe: report.gapAnalysis.canBePubEaa,
+      missing: report.gapAnalysis.missingForPubEaa,
+    });
+  }
+  if (gaps.length === 0) return null;
+
+  return (
+    <section className="mt-10">
+      <h2 className="text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
+        Gap analysis
+      </h2>
+      <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+        Would this credential pass at a higher tier? Each card shows the
+        controls that would block promotion.
+      </p>
+      <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        {gaps.map((g) => (
+          <GapCard key={g.label} gap={g} moduleByControlId={moduleByControlId} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function GapCard({
+  gap,
+  moduleByControlId,
+}: {
+  gap: { label: string; canBe: boolean; missing: string[] };
+  moduleByControlId: Map<string, string>;
+}) {
+  const accent = gap.canBe
+    ? 'border-emerald-200 bg-emerald-50/40 dark:border-emerald-900 dark:bg-emerald-950/30'
+    : 'border-amber-200 bg-amber-50/40 dark:border-amber-900 dark:bg-amber-950/30';
+  return (
+    <article className={`rounded-md border p-4 ${accent}`}>
+      <header className="flex items-center justify-between gap-3">
+        <h3 className="text-base font-semibold text-zinc-950 dark:text-white">
+          {gap.label}
+        </h3>
+        {gap.canBe ? (
+          <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 dark:text-emerald-400">
+            <span
+              aria-hidden="true"
+              className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500"
+            />
+            Would pass
+          </span>
+        ) : (
+          <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-700 dark:text-amber-400">
+            <span
+              aria-hidden="true"
+              className="inline-block h-1.5 w-1.5 rounded-full bg-amber-500"
+            />
+            {gap.missing.length} blocker{gap.missing.length === 1 ? '' : 's'}
+          </span>
+        )}
+      </header>
+      {gap.canBe ? (
+        <p className="mt-2 text-xs text-zinc-600 dark:text-zinc-400">
+          No control fails at this tier with the supplied evidence.
+        </p>
+      ) : (
+        <ul className="mt-3 space-y-1">
+          {gap.missing.map((cid) => {
+            const moduleId = moduleByControlId.get(cid);
+            const href = moduleId
+              ? `/modules/${moduleId}/controls/${controlIdToSlug(cid)}/`
+              : null;
+            return (
+              <li key={cid} className="font-mono text-xs">
+                {href ? (
+                  <Link
+                    href={href}
+                    className="text-blue-700 underline-offset-4 hover:underline dark:text-blue-400"
+                  >
+                    {cid}
+                  </Link>
+                ) : (
+                  <span className="text-zinc-700 dark:text-zinc-300">{cid}</span>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </article>
   );
 }

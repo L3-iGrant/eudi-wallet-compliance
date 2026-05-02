@@ -183,12 +183,14 @@ describe('runAssessment', () => {
     expect(result.evidenceRefs).not.toContain('statusListUrl');
   });
 
-  it('returns a placeholder gapAnalysis stub in v0', async () => {
+  it('populates gapAnalysis with QEAA and PuB-EAA tier projections', async () => {
     const result = await runAssessment(sampleControls, {}, sdJwtScope);
+    // With no evidence, every check returns na, so no fails at any tier.
+    // Both tier passes succeed vacuously.
     expect(result.gapAnalysis).toEqual({
-      canBeQeaa: false,
+      canBeQeaa: true,
       missingForQeaa: [],
-      canBePubEaa: false,
+      canBePubEaa: true,
       missingForPubEaa: [],
     });
   });

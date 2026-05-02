@@ -34,32 +34,24 @@ function summarise(verdicts: Verdict[]): AssessmentSummary {
   return summary;
 }
 
-function emptyGapAnalysis(): GapAnalysis {
-  return {
-    canBeQeaa: false,
-    missingForQeaa: [],
-    canBePubEaa: false,
-    missingForPubEaa: [],
-  };
-}
-
 function listEvidenceRefs(evidence: Evidence): string[] {
   return Object.entries(evidence)
     .filter(([, value]) => value !== undefined && value !== null)
     .map(([key]) => key);
 }
 
-export async function runAssessment(
+/**
+ * Run every applicable control's check against the supplied evidence and
+ * scope, returning the verdict list. Pure helper, used both for the main
+ * assessment and for tier-comparison passes inside computeGapAnalysis.
+ */
+async function runVerdicts(
   controls: Control[],
   evidence: Evidence,
   scope: AssessmentScope,
-  options?: RunAssessmentOptions,
-): Promise<AssessmentResult> {
-  const tenantId = options?.tenantId ?? DEFAULT_TENANT_ID;
-
+): Promise<Verdict[]> {
   const inScope = filterControlsForScope(controls, scope);
-
-  const verdicts: Verdict[] = await Promise.all(
+  return Promise.all(
     inScope.map(async (c): Promise<Verdict> => {
       const check = getCheck(c.id);
       if (!check) {
@@ -73,6 +65,53 @@ export async function runAssessment(
       return check(evidence, scope);
     }),
   );
+}
+
+/**
+ * Re-runs the same evidence at QEAA and PuB-EAA tiers (in parallel)
+ * and reports which controls fail at each. The chosen tier's own
+ * verdicts already live in the main result; gap analysis exists to
+ * answer "could this credential pass at a higher tier?".
+ *
+ * If the chosen tier already matches a higher tier (e.g. chosen=qeaa
+ * and we're computing canBeQeaa), the result is consistent with the
+ * main verdicts but recomputed for clarity. Cheap.
+ */
+async function computeGapAnalysis(
+  controls: Control[],
+  evidence: Evidence,
+  scope: AssessmentScope,
+): Promise<GapAnalysis> {
+  const [qeaaVerdicts, pubEaaVerdicts] = await Promise.all([
+    runVerdicts(controls, evidence, { ...scope, tier: 'qeaa' }),
+    runVerdicts(controls, evidence, { ...scope, tier: 'pub-eaa' }),
+  ]);
+  const failingForQeaa = qeaaVerdicts
+    .filter((v) => v.status === 'fail')
+    .map((v) => v.controlId);
+  const failingForPubEaa = pubEaaVerdicts
+    .filter((v) => v.status === 'fail')
+    .map((v) => v.controlId);
+  return {
+    canBeQeaa: failingForQeaa.length === 0,
+    missingForQeaa: failingForQeaa,
+    canBePubEaa: failingForPubEaa.length === 0,
+    missingForPubEaa: failingForPubEaa,
+  };
+}
+
+export async function runAssessment(
+  controls: Control[],
+  evidence: Evidence,
+  scope: AssessmentScope,
+  options?: RunAssessmentOptions,
+): Promise<AssessmentResult> {
+  const tenantId = options?.tenantId ?? DEFAULT_TENANT_ID;
+
+  const [verdicts, gapAnalysis] = await Promise.all([
+    runVerdicts(controls, evidence, scope),
+    computeGapAnalysis(controls, evidence, scope),
+  ]);
 
   return {
     reportId: crypto.randomUUID(),
@@ -81,7 +120,7 @@ export async function runAssessment(
     evidenceRefs: listEvidenceRefs(evidence),
     verdicts,
     summary: summarise(verdicts),
-    gapAnalysis: emptyGapAnalysis(),
+    gapAnalysis,
     createdAt: new Date().toISOString(),
   };
 }
