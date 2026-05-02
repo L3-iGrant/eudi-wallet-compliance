@@ -21,7 +21,7 @@ the ones that do not apply.
 
 - [ ] Spec citation: `spec_source.document`, `spec_source.version`, and `spec_source.clause` are filled and match the published spec.
 - [ ] `spec_text` is reproduced verbatim from the spec (capitalisation preserved).
-- [ ] `modal_verb` matches the spec's exact word (`shall` / `should` / `may`).
+- [ ] `requirement_level` matches the spec's exact RFC 2119 keyword (`shall` / `should` / `may`).
 - [ ] `applies_to`, `profile`, `role`, `evidence_type` are correct for this rule.
 - [ ] `related_controls` resolve to real catalogue ids (no orphan references).
 - [ ] Ran `pnpm --filter @iwc/controls build:bundle` and committed the regenerated bundle.

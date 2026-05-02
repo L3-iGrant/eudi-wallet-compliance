@@ -18,7 +18,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "4.2.6.6",
       "page": 20
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -52,7 +52,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "4.2.6.6",
       "page": 20
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -86,7 +86,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "4.2.11.1",
       "page": 23
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -128,7 +128,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "4.2.11.1",
       "page": 23
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -163,7 +163,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.1",
       "page": 27
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -204,7 +204,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.1.2",
       "page": 27
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -245,7 +245,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.1.2",
       "page": 28
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -285,7 +285,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.4.1",
       "page": 28
     },
-    "modal_verb": "may",
+    "requirement_level": "may",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -324,7 +324,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.4.1",
       "page": 28
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -366,7 +366,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.4.3",
       "page": 30
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "pub-eaa"
     ],
@@ -396,7 +396,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.4.3",
       "page": 30
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "pub-eaa"
     ],
@@ -428,7 +428,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.4.3",
       "page": 30
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "pub-eaa"
     ],
@@ -459,7 +459,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.5.1",
       "page": 30
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -492,7 +492,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.5.1",
       "page": 30
     },
-    "modal_verb": "may",
+    "requirement_level": "may",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -524,7 +524,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.5.2",
       "page": 30
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -557,7 +557,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.5.2",
       "page": 30
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -590,7 +590,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.5.3",
       "page": 30
     },
-    "modal_verb": "may",
+    "requirement_level": "may",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -622,7 +622,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.5.3",
       "page": 30
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -657,7 +657,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.5.3",
       "page": 30
     },
-    "modal_verb": "may",
+    "requirement_level": "may",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -690,7 +690,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.5.4",
       "page": 30
     },
-    "modal_verb": "may",
+    "requirement_level": "may",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -723,7 +723,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.5.5",
       "page": 30
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "qeaa"
     ],
@@ -754,7 +754,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.5.6",
       "page": 30
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "pub-eaa"
     ],
@@ -785,7 +785,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.6",
       "page": 30
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -818,7 +818,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.6",
       "page": 30
     },
-    "modal_verb": "may",
+    "requirement_level": "may",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -850,7 +850,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.7.1",
       "page": 31
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -891,7 +891,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.7.1",
       "page": 31
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -925,7 +925,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.7.1",
       "page": 31
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -966,7 +966,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.7.1",
       "page": 31
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1000,7 +1000,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.7.2",
       "page": 31
     },
-    "modal_verb": "may",
+    "requirement_level": "may",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1033,7 +1033,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.7.2",
       "page": 31
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1067,7 +1067,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.7.2",
       "page": 31
     },
-    "modal_verb": "may",
+    "requirement_level": "may",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1100,7 +1100,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.7.2",
       "page": 31
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1134,7 +1134,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.7.2",
       "page": 31
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1168,7 +1168,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.7.2",
       "page": 31
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1202,7 +1202,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.8.1",
       "page": 31
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1233,7 +1233,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.8.2",
       "page": 31
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1267,7 +1267,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.8.2",
       "page": 31
     },
-    "modal_verb": "may",
+    "requirement_level": "may",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1300,7 +1300,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.8.2",
       "page": 31
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1333,7 +1333,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.8.2",
       "page": 31
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1366,7 +1366,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.8.2",
       "page": 32
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1399,7 +1399,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.9",
       "page": 32
     },
-    "modal_verb": "may",
+    "requirement_level": "may",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1429,7 +1429,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.10.1",
       "page": 32
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1464,7 +1464,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.10.1",
       "page": 32
     },
-    "modal_verb": "may",
+    "requirement_level": "may",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1499,7 +1499,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.10.1",
       "page": 32
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1533,7 +1533,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.10.1",
       "page": 32
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1577,7 +1577,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.10.1",
       "page": 32
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1611,7 +1611,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.10.1",
       "page": 32
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1645,7 +1645,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.10.1",
       "page": 32
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1679,7 +1679,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.10.1",
       "page": 32
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1713,7 +1713,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.10.1",
       "page": 32
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1747,7 +1747,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.10.1",
       "page": 32
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1782,7 +1782,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.10.1",
       "page": 32
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1816,7 +1816,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.10.1",
       "page": 32
     },
-    "modal_verb": "may",
+    "requirement_level": "may",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1847,7 +1847,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.10.1",
       "page": 32
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1886,7 +1886,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.10.2",
       "page": 32
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "qeaa"
     ],
@@ -1920,7 +1920,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.10.3",
       "page": 32
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "pub-eaa"
     ],
@@ -1954,7 +1954,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.11",
       "page": 32
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -1985,7 +1985,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.12",
       "page": 33
     },
-    "modal_verb": "may",
+    "requirement_level": "may",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2020,7 +2020,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.2.12",
       "page": 33
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2053,7 +2053,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.3",
       "page": 33
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2087,7 +2087,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.3",
       "page": 33
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2121,7 +2121,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.3",
       "page": 33
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2155,7 +2155,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.3",
       "page": 33
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2189,7 +2189,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.3",
       "page": 33
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2223,7 +2223,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.3",
       "page": 33
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2256,7 +2256,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.3",
       "page": 33
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2291,7 +2291,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.4.1.1",
       "page": 33
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2326,7 +2326,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.4.1.2",
       "page": 33
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2357,7 +2357,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.4.1.3",
       "page": 33
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2391,7 +2391,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.4.1.3",
       "page": 33
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2424,7 +2424,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.4.1.4",
       "page": 33
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2458,7 +2458,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.4.1.4",
       "page": 34
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2491,7 +2491,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.4.1.5",
       "page": 34
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2524,7 +2524,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.4.1.5",
       "page": 34
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2558,7 +2558,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.5",
       "page": 34
     },
-    "modal_verb": "should",
+    "requirement_level": "should",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2598,7 +2598,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.5",
       "page": 34
     },
-    "modal_verb": "may",
+    "requirement_level": "may",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2632,7 +2632,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.5",
       "page": 34
     },
-    "modal_verb": "may",
+    "requirement_level": "may",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2666,7 +2666,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.5",
       "page": 34
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2700,7 +2700,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.5",
       "page": 34
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2734,7 +2734,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.5",
       "page": 34
     },
-    "modal_verb": "should",
+    "requirement_level": "should",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2768,7 +2768,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.6.1",
       "page": 34
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "ordinary-eaa",
       "qeaa",
@@ -2800,7 +2800,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.6.2",
       "page": 34
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "qeaa"
     ],
@@ -2833,7 +2833,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.6.2",
       "page": 34
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "qeaa"
     ],
@@ -2866,7 +2866,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.6.2",
       "page": 34
     },
-    "modal_verb": "should",
+    "requirement_level": "should",
     "applies_to": [
       "qeaa"
     ],
@@ -2898,7 +2898,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.6.3",
       "page": 35
     },
-    "modal_verb": "shall",
+    "requirement_level": "shall",
     "applies_to": [
       "pub-eaa"
     ],
@@ -2931,7 +2931,7 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "clause": "5.6.3",
       "page": 35
     },
-    "modal_verb": "should",
+    "requirement_level": "should",
     "applies_to": [
       "pub-eaa"
     ],

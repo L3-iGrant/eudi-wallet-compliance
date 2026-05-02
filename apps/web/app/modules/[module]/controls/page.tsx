@@ -50,7 +50,7 @@ export default async function ControlsCataloguePage({ params }: PageProps) {
       id: c.id,
       slug: controlIdToSlug(c.id),
       short_title: c.short_title,
-      modal_verb: c.modal_verb,
+      requirement_level: c.requirement_level,
       applies_to: c.applies_to,
       profile: c.profile,
       role: c.role,
@@ -68,7 +68,7 @@ export default async function ControlsCataloguePage({ params }: PageProps) {
           Controls catalogue
         </h1>
         <p className="mt-3 max-w-3xl text-base text-zinc-600 dark:text-zinc-400">
-          Filter by profile, role, tier, or modal verb. Search by ID or title.
+          Filter by profile, role, tier, or requirement level. Search by ID or title.
           Export the filtered set as CSV, JSON, or YAML. Filter state lives in
           the URL, so a configured view is shareable.
         </p>

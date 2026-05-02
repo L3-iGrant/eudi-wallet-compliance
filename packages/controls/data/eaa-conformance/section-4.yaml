@@ -10,7 +10,7 @@
     version: v1.2.1
     clause: 4.2.6.6
     page: 20
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
     - qeaa
@@ -39,7 +39,7 @@
     version: v1.2.1
     clause: 4.2.6.6
     page: 20
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
     - qeaa
@@ -70,7 +70,7 @@
     version: v1.2.1
     clause: 4.2.11.1
     page: 23
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
     - qeaa
@@ -115,7 +115,7 @@
     version: v1.2.1
     clause: 4.2.11.1
     page: 23
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
     - qeaa

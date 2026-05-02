@@ -12,7 +12,7 @@ function makeControl(overrides: Partial<Control> & Pick<Control, 'id'>): Control
   return {
     module: 'eaa-conformance',
     spec_source: { document: 'ETSI TS X', version: 'v1', clause: '1' },
-    modal_verb: 'shall',
+    requirement_level: 'shall',
     applies_to: ['ordinary-eaa', 'qeaa', 'pub-eaa'],
     profile: ['sd-jwt-vc'],
     role: ['issuer', 'verifier'],

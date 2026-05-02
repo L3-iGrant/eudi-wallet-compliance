@@ -222,7 +222,7 @@ export default async function Hub() {
     document: `}<span className="text-zinc-500">ETSI TS 119 472-1</span>{`
     version: `}<span className="text-zinc-500">v1.2.1</span>{`
     clause: `}<span className="text-zinc-500">5.2.10.1</span>{`
-  modal_verb: `}<span className="text-amber-700 dark:text-amber-400">shall</span>{`
+  requirement_level: `}<span className="text-amber-700 dark:text-amber-400">shall</span>{`
   applies_to: [ordinary-eaa, qeaa, pub-eaa]
   spec_text: >-
     The status JSON Object shall

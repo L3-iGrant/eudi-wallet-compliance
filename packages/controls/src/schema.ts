@@ -17,7 +17,7 @@ export const ModuleSchema = z.enum([
   'trust-list',
 ]);
 
-export const ModalVerbSchema = z.enum(['shall', 'should', 'may']);
+export const RequirementLevelSchema = z.enum(['shall', 'should', 'may']);
 
 export const AppliesToSchema = z.enum(['ordinary-eaa', 'qeaa', 'pub-eaa', 'all']);
 
@@ -44,7 +44,7 @@ export const ControlSchema = z.object({
   }),
   module: ModuleSchema,
   spec_source: SpecSourceSchema,
-  modal_verb: ModalVerbSchema,
+  requirement_level: RequirementLevelSchema,
   applies_to: z.array(AppliesToSchema).default(['all']),
   profile: z.array(ProfileSchema),
   role: z.array(RoleSchema),
@@ -99,7 +99,7 @@ export const ReferenceSamplesCatalogueSchema = z.array(ReferenceSampleSchema);
 
 export type SpecSource = z.infer<typeof SpecSourceSchema>;
 export type Module = z.infer<typeof ModuleSchema>;
-export type ModalVerb = z.infer<typeof ModalVerbSchema>;
+export type RequirementLevel = z.infer<typeof RequirementLevelSchema>;
 export type AppliesTo = z.infer<typeof AppliesToSchema>;
 export type Profile = z.infer<typeof ProfileSchema>;
 export type Role = z.infer<typeof RoleSchema>;

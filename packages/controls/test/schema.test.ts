@@ -31,7 +31,7 @@ describe('controls catalogue schema', () => {
         id: 'lowercase-id-01',
         module: 'eaa-conformance',
         spec_source: { document: 'X', version: '1', clause: '1' },
-        modal_verb: 'shall',
+        requirement_level: 'shall',
         profile: ['abstract'],
         role: ['issuer'],
         evidence_type: ['eaa-payload'],

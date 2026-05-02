@@ -24,7 +24,7 @@ export default async function OG({
   const c = controls.find((x) => x.id === canonicalId);
   const controlId = c?.id ?? id.toUpperCase();
   const shortTitle = c?.short_title ?? '';
-  const modal = c?.modal_verb ?? '';
+  const modal = c?.requirement_level ?? '';
   const clauseRef = c
     ? `${c.spec_source.document} ${c.spec_source.version} clause ${c.spec_source.clause}`
     : '';

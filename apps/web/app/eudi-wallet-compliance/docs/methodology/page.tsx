@@ -35,7 +35,7 @@ export default function Methodology() {
       <p>
         Per-entry, the YAML record carries the canonical id (e.g.{' '}
         <code>EAA-5.2.10.1-04</code>), the spec source citation (document,
-        version, clause, page), the modal verb (shall / should / may), the
+        version, clause, page), the requirement level (shall / should / may), the
         applicable tiers, the applicable profiles, the role(s) it binds, the
         kinds of evidence needed to evaluate it, the verbatim spec text, and
         a hand-written plain-English explanation.

@@ -12,7 +12,7 @@ function ctrl(
     id,
     module: 'eaa-conformance',
     spec_source: { document: 'ETSI TS 119 472-1', version: 'v1.2.1', clause: '5' },
-    modal_verb: 'shall',
+    requirement_level: 'shall',
     applies_to: appliesTo,
     profile: ['sd-jwt-vc'],
     role: ['issuer'],

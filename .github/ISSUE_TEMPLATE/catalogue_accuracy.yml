@@ -1,5 +1,5 @@
 name: Catalogue accuracy issue
-description: A control's text, modal verb, profile, role, applies-to, or other field is wrong relative to the spec.
+description: A control's text, requirement level, profile, role, applies-to, or other field is wrong relative to the spec.
 title: "[Catalogue] "
 labels: ["catalogue", "accuracy"]
 body:
@@ -33,7 +33,7 @@ body:
     id: should_say
     attributes:
       label: What it should say
-      description: Quote the spec verbatim where possible. If the issue is a missing or wrong field (e.g. wrong modal verb), state the correct value.
+      description: Quote the spec verbatim where possible. If the issue is a missing or wrong field (e.g. wrong requirement level), state the correct value.
     validations:
       required: true
 

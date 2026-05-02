@@ -3,7 +3,7 @@ import { dirname, resolve } from 'node:path';
 import { parseArgs } from 'node:util';
 import { stringify as stringifyYaml } from 'yaml';
 import pdfParse from 'pdf-parse/lib/pdf-parse.js';
-import type { Control, Profile, AppliesTo, ModalVerb } from '@iwc/controls';
+import type { Control, Profile, AppliesTo, RequirementLevel } from '@iwc/controls';
 
 interface CliArgs {
   pdf: string;
@@ -126,10 +126,10 @@ function clauseFromId(id: string): string {
   return withoutPrefix.replace(/-\d+$/, '');
 }
 
-function detectModalVerb(text: string): ModalVerb {
+function detectRequirementLevel(text: string): RequirementLevel {
   const m = /\b(shall|should|may)\b/i.exec(text);
   if (!m || !m[1]) return 'shall';
-  return m[1].toLowerCase() as ModalVerb;
+  return m[1].toLowerCase() as RequirementLevel;
 }
 
 function buildShortTitle(specText: string, fallback: string): string {
@@ -186,7 +186,7 @@ function buildDraftControl(
       clause: clauseFromId(match.id),
       page,
     },
-    modal_verb: detectModalVerb(trimmedBody),
+    requirement_level: detectRequirementLevel(trimmedBody),
     applies_to: appliesToForId(match.id),
     profile: profileForSection(sectionNum),
     role: ['issuer', 'verifier'],

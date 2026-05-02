@@ -5,7 +5,7 @@
     version: v1.2.1
     clause: 4.2.1.2
     page: 15
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -27,7 +27,7 @@
     version: v1.2.1
     clause: 4.2.1.4
     page: 15
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -49,7 +49,7 @@
     version: v1.2.1
     clause: 4.2.1.2
     page: 15
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -72,7 +72,7 @@
     version: v1.2.1
     clause: 4.2.1.3
     page: 15
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -96,7 +96,7 @@
     version: v1.2.1
     clause: 4.2.1.3
     page: 16
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -120,7 +120,7 @@
     version: v1.2.1
     clause: 4.2.1.3
     page: 16
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -144,7 +144,7 @@
     version: v1.2.1
     clause: 4.2.1.4
     page: 16
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -169,7 +169,7 @@
     version: v1.2.1
     clause: 4.2.1.4
     page: 16
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -192,7 +192,7 @@
     version: v1.2.1
     clause: 4.2.1.4
     page: 16
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -216,7 +216,7 @@
     version: v1.2.1
     clause: 4.2.1.4
     page: 16
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -241,7 +241,7 @@
     version: v1.2.1
     clause: 4.2.2
     page: 16
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -264,7 +264,7 @@
     version: v1.2.1
     clause: 4.2.2
     page: 16
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -288,7 +288,7 @@
     version: v1.2.1
     clause: 4.2.2.2
     page: 16
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - qeaa
   profile:
@@ -310,7 +310,7 @@
     version: v1.2.1
     clause: 4.2.2.2
     page: 16
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - qeaa
   profile:
@@ -340,7 +340,7 @@
     version: v1.2.1
     clause: 4.2.2.3
     page: 16
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - pub-eaa
   profile:
@@ -362,7 +362,7 @@
     version: v1.2.1
     clause: 4.2.2.3
     page: 16
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - pub-eaa
   profile:
@@ -392,7 +392,7 @@
     version: v1.2.1
     clause: 4.2.3
     page: 16
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -416,7 +416,7 @@
     version: v1.2.1
     clause: 4.2.3
     page: 16
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -439,7 +439,7 @@
     version: v1.2.1
     clause: 4.2.3
     page: 17
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -470,7 +470,7 @@
     version: v1.2.1
     clause: 4.2.4.1
     page: 17
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -494,7 +494,7 @@
     version: v1.2.1
     clause: 4.2.4.1
     page: 17
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -516,7 +516,7 @@
     version: v1.2.1
     clause: 4.2.4.1
     page: 17
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -539,7 +539,7 @@
     version: v1.2.1
     clause: 4.2.4.1
     page: 17
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -562,7 +562,7 @@
     version: v1.2.1
     clause: 4.2.4.1
     page: 17
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -586,7 +586,7 @@
     version: v1.2.1
     clause: 4.2.4.1
     page: 17
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -611,7 +611,7 @@
     version: v1.2.1
     clause: 4.2.4.1
     page: 17
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -642,7 +642,7 @@
     version: v1.2.1
     clause: 4.2.4.1
     page: 17
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -665,7 +665,7 @@
     version: v1.2.1
     clause: 4.2.4.1
     page: 17
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -689,7 +689,7 @@
     version: v1.2.1
     clause: 4.2.4.1
     page: 17
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -713,7 +713,7 @@
     version: v1.2.1
     clause: 4.2.4.2
     page: 17
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - qeaa
   profile:
@@ -735,7 +735,7 @@
     version: v1.2.1
     clause: 4.2.4.2
     page: 17
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - qeaa
   profile:
@@ -758,7 +758,7 @@
     version: v1.2.1
     clause: 4.2.4.2
     page: 17
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - qeaa
   profile:
@@ -781,7 +781,7 @@
     version: v1.2.1
     clause: 4.2.4.2
     page: 17
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - qeaa
   profile:
@@ -805,7 +805,7 @@
     version: v1.2.1
     clause: 4.2.4.2
     page: 17
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - qeaa
   profile:
@@ -831,7 +831,7 @@
     version: v1.2.1
     clause: 4.2.4.2
     page: 17
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - qeaa
   profile:
@@ -856,7 +856,7 @@
     version: v1.2.1
     clause: 4.2.4.2
     page: 18
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - qeaa
   profile:
@@ -887,7 +887,7 @@
     version: v1.2.1
     clause: 4.2.4.2
     page: 18
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - qeaa
   profile:
@@ -917,7 +917,7 @@
     version: v1.2.1
     clause: 4.2.4.3
     page: 18
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - pub-eaa
   profile:
@@ -939,7 +939,7 @@
     version: v1.2.1
     clause: 4.2.4.3
     page: 18
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - pub-eaa
   profile:
@@ -962,7 +962,7 @@
     version: v1.2.1
     clause: 4.2.4.3
     page: 18
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - pub-eaa
   profile:
@@ -985,7 +985,7 @@
     version: v1.2.1
     clause: 4.2.4.3
     page: 18
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - pub-eaa
   profile:
@@ -1010,7 +1010,7 @@
     version: v1.2.1
     clause: 4.2.4.3
     page: 18
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - pub-eaa
   profile:
@@ -1035,7 +1035,7 @@
     version: v1.2.1
     clause: 4.2.4.3
     page: 18
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - pub-eaa
   profile:
@@ -1063,7 +1063,7 @@
     version: v1.2.1
     clause: 4.2.4.3
     page: 18
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - pub-eaa
   profile:
@@ -1091,7 +1091,7 @@
     version: v1.2.1
     clause: 4.2.5
     page: 18
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -1114,7 +1114,7 @@
     version: v1.2.1
     clause: 4.2.5
     page: 18
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1138,7 +1138,7 @@
     version: v1.2.1
     clause: 4.2.5
     page: 18
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -1162,7 +1162,7 @@
     version: v1.2.1
     clause: 4.2.5
     page: 18
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -1186,7 +1186,7 @@
     version: v1.2.1
     clause: 4.2.5
     page: 18
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -1211,7 +1211,7 @@
     version: v1.2.1
     clause: 4.2.5
     page: 19
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -1240,7 +1240,7 @@
     version: v1.2.1
     clause: 4.2.6.2
     page: 19
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -1279,7 +1279,7 @@
     version: v1.2.1
     clause: 4.2.6.2
     page: 19
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1303,7 +1303,7 @@
     version: v1.2.1
     clause: 4.2.6.3
     page: 19
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1327,7 +1327,7 @@
     version: v1.2.1
     clause: 4.2.6.3
     page: 19
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1352,7 +1352,7 @@
     version: v1.2.1
     clause: 4.2.6.4
     page: 19
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -1385,7 +1385,7 @@
     version: v1.2.1
     clause: 4.2.6.4
     page: 19
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1414,7 +1414,7 @@
     version: v1.2.1
     clause: 4.2.6.5
     page: 20
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -1436,7 +1436,7 @@
     version: v1.2.1
     clause: 4.2.6.5
     page: 20
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1460,7 +1460,7 @@
     version: v1.2.1
     clause: 4.2.6.5
     page: 20
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1484,7 +1484,7 @@
     version: v1.2.1
     clause: 4.2.6.5
     page: 20
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1508,7 +1508,7 @@
     version: v1.2.1
     clause: 4.2.6.6
     page: 20
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1532,7 +1532,7 @@
     version: v1.2.1
     clause: 4.2.6.6
     page: 20
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1559,7 +1559,7 @@
     version: v1.2.1
     clause: 4.2.6.7
     page: 20
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - qeaa
   profile:
@@ -1588,7 +1588,7 @@
     version: v1.2.1
     clause: 4.2.6.8
     page: 20
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - pub-eaa
   profile:
@@ -1611,7 +1611,7 @@
     version: v1.2.1
     clause: 4.2.6.8
     page: 20
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - pub-eaa
   profile:
@@ -1639,7 +1639,7 @@
     version: v1.2.1
     clause: 4.2.7.1
     page: 20
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1663,7 +1663,7 @@
     version: v1.2.1
     clause: 4.2.7.1
     page: 20
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -1685,7 +1685,7 @@
     version: v1.2.1
     clause: 4.2.7.1
     page: 20
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1709,7 +1709,7 @@
     version: v1.2.1
     clause: 4.2.7.2
     page: 21
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1738,7 +1738,7 @@
     version: v1.2.1
     clause: 4.2.8.2
     page: 21
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1761,7 +1761,7 @@
     version: v1.2.1
     clause: 4.2.8.2
     page: 21
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1784,7 +1784,7 @@
     version: v1.2.1
     clause: 4.2.8.2
     page: 21
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1808,7 +1808,7 @@
     version: v1.2.1
     clause: 4.2.8.3
     page: 21
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1837,7 +1837,7 @@
     version: v1.2.1
     clause: 4.2.8.4
     page: 21
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -1862,7 +1862,7 @@
     version: v1.2.1
     clause: 4.2.9.2
     page: 21
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1888,7 +1888,7 @@
     version: v1.2.1
     clause: 4.2.9.2
     page: 21
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -1912,7 +1912,7 @@
     version: v1.2.1
     clause: 4.2.9.2
     page: 22
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1935,7 +1935,7 @@
     version: v1.2.1
     clause: 4.2.9.2
     page: 22
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1966,7 +1966,7 @@
     version: v1.2.1
     clause: 4.2.9.2
     page: 22
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -1990,7 +1990,7 @@
     version: v1.2.1
     clause: 4.2.9.2
     page: 22
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2013,7 +2013,7 @@
     version: v1.2.1
     clause: 4.2.9.3
     page: 22
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -2035,7 +2035,7 @@
     version: v1.2.1
     clause: 4.2.9.3
     page: 22
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2058,7 +2058,7 @@
     version: v1.2.1
     clause: 4.2.9.3
     page: 22
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2082,7 +2082,7 @@
     version: v1.2.1
     clause: 4.2.9.3
     page: 22
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2105,7 +2105,7 @@
     version: v1.2.1
     clause: 4.2.10
     page: 22
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2131,7 +2131,7 @@
     version: v1.2.1
     clause: 4.2.10
     page: 22
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -2153,7 +2153,7 @@
     version: v1.2.1
     clause: 4.2.10
     page: 22
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2175,7 +2175,7 @@
     version: v1.2.1
     clause: 4.2.10
     page: 22
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2204,7 +2204,7 @@
     version: v1.2.1
     clause: 4.2.10
     page: 22
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2228,7 +2228,7 @@
     version: v1.2.1
     clause: 4.2.11.1
     page: 23
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2252,7 +2252,7 @@
     version: v1.2.1
     clause: 4.2.11.1
     page: 23
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -2274,7 +2274,7 @@
     version: v1.2.1
     clause: 4.2.11.1
     page: 23
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2297,7 +2297,7 @@
     version: v1.2.1
     clause: 4.2.11.1
     page: 23
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2324,7 +2324,7 @@
     version: v1.2.1
     clause: 4.2.11.1
     page: 23
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2349,7 +2349,7 @@
     version: v1.2.1
     clause: 4.2.11.2
     page: 23
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - qeaa
   profile:
@@ -2378,7 +2378,7 @@
     version: v1.2.1
     clause: 4.2.11.3
     page: 23
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - pub-eaa
   profile:
@@ -2405,7 +2405,7 @@
     version: v1.2.1
     clause: 4.2.12
     page: 23
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2429,7 +2429,7 @@
     version: v1.2.1
     clause: 4.2.12
     page: 23
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -2451,7 +2451,7 @@
     version: v1.2.1
     clause: 4.2.12
     page: 23
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2476,7 +2476,7 @@
     version: v1.2.1
     clause: 4.2.12
     page: 23
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2500,7 +2500,7 @@
     version: v1.2.1
     clause: 4.2.13
     page: 23
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -2523,7 +2523,7 @@
     version: v1.2.1
     clause: 4.2.13
     page: 24
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2548,7 +2548,7 @@
     version: v1.2.1
     clause: "4.3"
     page: 24
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2575,7 +2575,7 @@
     version: v1.2.1
     clause: "4.3"
     page: 24
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2598,7 +2598,7 @@
     version: v1.2.1
     clause: "4.3"
     page: 24
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2623,7 +2623,7 @@
     version: v1.2.1
     clause: "4.3"
     page: 24
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -2646,7 +2646,7 @@
     version: v1.2.1
     clause: "4.3"
     page: 24
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -2668,7 +2668,7 @@
     version: v1.2.1
     clause: "4.3"
     page: 24
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -2691,7 +2691,7 @@
     version: v1.2.1
     clause: "4.3"
     page: 24
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -2714,7 +2714,7 @@
     version: v1.2.1
     clause: "4.3"
     page: 24
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2754,7 +2754,7 @@
     version: v1.2.1
     clause: 4.4.2.2
     page: 25
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -2776,7 +2776,7 @@
     version: v1.2.1
     clause: 4.4.2.2
     page: 25
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2802,7 +2802,7 @@
     version: v1.2.1
     clause: 4.4.2.2
     page: 25
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2825,7 +2825,7 @@
     version: v1.2.1
     clause: 4.4.2.3
     page: 25
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -2847,7 +2847,7 @@
     version: v1.2.1
     clause: 4.4.2.3
     page: 25
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2872,7 +2872,7 @@
     version: v1.2.1
     clause: 4.4.2.3
     page: 25
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2896,7 +2896,7 @@
     version: v1.2.1
     clause: 4.4.2.4
     page: 25
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2918,7 +2918,7 @@
     version: v1.2.1
     clause: 4.4.2.4
     page: 25
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2942,7 +2942,7 @@
     version: v1.2.1
     clause: 4.4.2.4
     page: 25
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -2965,7 +2965,7 @@
     version: v1.2.1
     clause: 4.4.2.4
     page: 25
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -2989,7 +2989,7 @@
     version: v1.2.1
     clause: 4.4.2.4
     page: 25
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -3013,7 +3013,7 @@
     version: v1.2.1
     clause: 4.4.2.4
     page: 25
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -3038,7 +3038,7 @@
     version: v1.2.1
     clause: 4.4.2.5
     page: 25
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -3062,7 +3062,7 @@
     version: v1.2.1
     clause: 4.4.2.5
     page: 25
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -3084,7 +3084,7 @@
     version: v1.2.1
     clause: 4.4.2.5
     page: 25
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -3108,7 +3108,7 @@
     version: v1.2.1
     clause: 4.4.2.5
     page: 25
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -3132,7 +3132,7 @@
     version: v1.2.1
     clause: "4.5"
     page: 26
-  modal_verb: should
+  requirement_level: should
   applies_to:
     - ordinary-eaa
   profile:
@@ -3160,7 +3160,7 @@
     version: v1.2.1
     clause: "4.5"
     page: 26
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -3183,7 +3183,7 @@
     version: v1.2.1
     clause: "4.5"
     page: 26
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -3206,7 +3206,7 @@
     version: v1.2.1
     clause: "4.5"
     page: 26
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -3230,7 +3230,7 @@
     version: v1.2.1
     clause: 4.6.1
     page: 26
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -3254,7 +3254,7 @@
     version: v1.2.1
     clause: 4.6.1
     page: 26
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -3279,7 +3279,7 @@
     version: v1.2.1
     clause: 4.6.1
     page: 26
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -3303,7 +3303,7 @@
     version: v1.2.1
     clause: 4.6.1
     page: 26
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -3331,7 +3331,7 @@
     version: v1.2.1
     clause: 4.6.1
     page: 26
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -3353,7 +3353,7 @@
     version: v1.2.1
     clause: 4.6.1
     page: 26
-  modal_verb: may
+  requirement_level: may
   applies_to:
     - ordinary-eaa
   profile:
@@ -3376,7 +3376,7 @@
     version: v1.2.1
     clause: 4.6.1
     page: 26
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
   profile:
@@ -3400,7 +3400,7 @@
     version: v1.2.1
     clause: 4.6.2
     page: 26
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - qeaa
   profile:
@@ -3427,7 +3427,7 @@
     version: v1.2.1
     clause: 4.6.2
     page: 26
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - qeaa
   profile:
@@ -3457,7 +3457,7 @@
     version: v1.2.1
     clause: 4.6.2
     page: 27
-  modal_verb: should
+  requirement_level: should
   applies_to:
     - qeaa
   profile:
@@ -3481,7 +3481,7 @@
     version: v1.2.1
     clause: 4.6.2
     page: 27
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - qeaa
   profile:
@@ -3506,7 +3506,7 @@
     version: v1.2.1
     clause: 4.6.3
     page: 27
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - pub-eaa
   profile:
@@ -3532,7 +3532,7 @@
     version: v1.2.1
     clause: 4.6.3
     page: 27
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - pub-eaa
   profile:
@@ -3563,7 +3563,7 @@
     version: v1.2.1
     clause: 4.6.2
     page: 27
-  modal_verb: should
+  requirement_level: should
   applies_to:
     - pub-eaa
   profile:
@@ -3586,7 +3586,7 @@
     version: v1.2.1
     clause: 4.6.2
     page: 27
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - pub-eaa
   profile:

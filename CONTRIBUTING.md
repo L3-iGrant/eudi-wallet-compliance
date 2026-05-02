@@ -16,7 +16,7 @@ Thank you for considering a contribution. This toolkit only earns its keep when 
 
 You do not need to clone the repo to contribute a catalogue entry or fix a typo.
 
-**GitHub web UI (no clone, no install).** Best for subject-matter contributors who want to edit a YAML field, fix a `spec_text` quote, or correct a `modal_verb`. Steps:
+**GitHub web UI (no clone, no install).** Best for subject-matter contributors who want to edit a YAML field, fix a `spec_text` quote, or correct a `requirement_level`. Steps:
 
 1. Open the file on github.com.
 2. Click the pencil icon to edit. GitHub forks the repo automatically into your account.
@@ -89,7 +89,7 @@ Append a new entry. Every field is validated by the Zod schema in `packages/cont
     version: v1.2.1
     clause: "5.2.1.2"
     page: 23
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - ordinary-eaa
     - qeaa
@@ -124,7 +124,7 @@ Field reference:
 - `id` (required). Capitalised prefix(es) plus a clause and an optional sequence number. Pattern: `^[A-Z][A-Za-z]*(-[A-Z][A-Za-z]*)?-[\d.]+(-\d+)?$`. Examples: `EAA-5.2.1.2-01`, `QEAA-5.6.2-02`, `PuB-EAA-5.6.3-03`.
 - `module` (required). One of `eaa-conformance`, `pid-lpid`, `wallet-attestation`, `oid4vci`, `oid4vp`, `qtsp`, `trust-list`.
 - `spec_source` (required). `document`, `version`, `clause`, optional `page`. The clause should be a string (e.g. `"5.2.1.2"`).
-- `modal_verb` (required). One of `shall`, `should`, `may`.
+- `requirement_level` (required). The RFC 2119 / ISO Directives Part 2 keyword for the rule. One of `shall`, `should`, `may`.
 - `applies_to` (required). Array of `ordinary-eaa`, `qeaa`, `pub-eaa`, `all`. Use `all` for blanket rules; use specific tier names when the rule binds only to a higher tier (drives the tier gap analysis).
 - `profile` (required). Array of `sd-jwt-vc`, `mdoc`, `abstract`. Use `abstract` for cross-cutting rules that apply regardless of profile.
 - `role` (required). Array of `issuer`, `verifier`, `wallet`, `rp`, `qtsp`, `all`.
@@ -311,7 +311,7 @@ Catalogue contributions:
 
 - Spec citation is filled and accurate (`document`, `version`, `clause`).
 - `spec_text` matches the spec verbatim, capitalisation preserved.
-- `modal_verb` is the exact word from the spec (`shall` / `should` / `may`).
+- `requirement_level` is the exact RFC 2119 keyword from the spec (`shall` / `should` / `may`).
 - `applies_to`, `profile`, `role`, `evidence_type` reflect the rule's actual scope.
 - `plain_english` is either real prose (≥20 chars) or the literal `TODO` placeholder.
 - `related_controls` ids resolve to real entries.

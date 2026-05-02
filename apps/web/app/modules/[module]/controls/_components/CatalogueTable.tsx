@@ -14,7 +14,7 @@ export interface CatalogueRow {
   id: string;
   slug: string;
   short_title: string;
-  modal_verb: 'shall' | 'should' | 'may';
+  requirement_level: 'shall' | 'should' | 'may';
   applies_to: string[];
   profile: string[];
   role: string[];
@@ -87,7 +87,7 @@ interface FiltersState {
   profiles: string[];
   roles: string[];
   tiers: string[];
-  modals: string[];
+  levels: string[];
   text: string;
 }
 
@@ -95,7 +95,7 @@ const EMPTY_FILTERS: FiltersState = {
   profiles: [],
   roles: [],
   tiers: [],
-  modals: [],
+  levels: [],
   text: '',
 };
 
@@ -108,7 +108,7 @@ function readFilters(params: URLSearchParams): FiltersState {
     profiles: csv('profile'),
     roles: csv('role'),
     tiers: csv('tier'),
-    modals: csv('modal'),
+    levels: csv('level'),
     text: params.get('q') ?? '',
   };
 }
@@ -118,18 +118,21 @@ function buildSearchString(filters: FiltersState): string {
   if (filters.profiles.length) params.set('profile', filters.profiles.join(','));
   if (filters.roles.length) params.set('role', filters.roles.join(','));
   if (filters.tiers.length) params.set('tier', filters.tiers.join(','));
-  if (filters.modals.length) params.set('modal', filters.modals.join(','));
+  if (filters.levels.length) params.set('level', filters.levels.join(','));
   if (filters.text) params.set('q', filters.text);
   return params.toString();
 }
 
-type SortKey = 'id' | 'clause' | 'modal_verb';
+type SortKey = 'id' | 'clause' | 'requirement_level';
 type SortDir = 'asc' | 'desc';
-const MODAL_RANK: Record<string, number> = { shall: 0, should: 1, may: 2 };
+const LEVEL_RANK: Record<string, number> = { shall: 0, should: 1, may: 2 };
 
 function compareRows(a: CatalogueRow, b: CatalogueRow, key: SortKey): number {
-  if (key === 'modal_verb') {
-    return (MODAL_RANK[a.modal_verb] ?? 99) - (MODAL_RANK[b.modal_verb] ?? 99);
+  if (key === 'requirement_level') {
+    return (
+      (LEVEL_RANK[a.requirement_level] ?? 99) -
+      (LEVEL_RANK[b.requirement_level] ?? 99)
+    );
   }
   return a[key].localeCompare(b[key]);
 }
@@ -258,7 +261,7 @@ function toCsv(rows: CatalogueRow[]): string {
   const headers = [
     'id',
     'short_title',
-    'modal_verb',
+    'requirement_level',
     'clause',
     'applies_to',
     'profile',
@@ -270,7 +273,7 @@ function toCsv(rows: CatalogueRow[]): string {
     const cells = [
       r.id,
       r.short_title,
-      r.modal_verb,
+      r.requirement_level,
       r.clause,
       r.applies_to.join(';'),
       r.profile.join(';'),
@@ -299,7 +302,7 @@ function toYaml(rows: CatalogueRow[]): string {
       const lines: string[] = [];
       lines.push(`- id: ${yamlEscape(r.id)}`);
       lines.push(`  short_title: ${yamlEscape(r.short_title)}`);
-      lines.push(`  modal_verb: ${yamlEscape(r.modal_verb)}`);
+      lines.push(`  requirement_level: ${yamlEscape(r.requirement_level)}`);
       lines.push(`  clause: ${yamlEscape(r.clause)}`);
       const arrFields: Array<keyof CatalogueRow> = [
         'applies_to',
@@ -408,7 +411,7 @@ export function CatalogueTable({
     filters.profiles,
     filters.roles,
     filters.tiers,
-    filters.modals,
+    filters.levels,
     debouncedText,
     hydrated,
     pathname,
@@ -436,8 +439,8 @@ export function CatalogueTable({
       )
         return false;
       if (
-        filters.modals.length > 0 &&
-        !filters.modals.includes(r.modal_verb)
+        filters.levels.length > 0 &&
+        !filters.levels.includes(r.requirement_level)
       )
         return false;
       if (text) {
@@ -446,7 +449,7 @@ export function CatalogueTable({
       }
       return true;
     });
-  }, [rows, filters.profiles, filters.roles, filters.tiers, filters.modals, debouncedText]);
+  }, [rows, filters.profiles, filters.roles, filters.tiers, filters.levels, debouncedText]);
 
   const sorted = useMemo(() => {
     const out = [...filtered];
@@ -528,14 +531,14 @@ export function CatalogueTable({
         ),
     });
   }
-  for (const v of filters.modals) {
+  for (const v of filters.levels) {
     activeChips.push({
-      key: `modal:${v}`,
-      label: `Verb: ${v}`,
+      key: `level:${v}`,
+      label: `Level: ${v}`,
       remove: () =>
         update(
-          'modals',
-          filters.modals.filter((x) => x !== v),
+          'levels',
+          filters.levels.filter((x) => x !== v),
         ),
     });
   }
@@ -580,10 +583,10 @@ export function CatalogueTable({
           onChange={(v) => update('tiers', v)}
         />
         <MultiSelect
-          label="Verb"
+          label="Level"
           options={MODAL_OPTIONS}
-          selected={filters.modals}
-          onChange={(v) => update('modals', v)}
+          selected={filters.levels}
+          onChange={(v) => update('levels', v)}
         />
       </div>
 
@@ -685,8 +688,8 @@ export function CatalogueTable({
                     Short title
                   </th>
                   <SortHeader
-                    label="Verb"
-                    sortKey="modal_verb"
+                    label="Level"
+                    sortKey="requirement_level"
                     activeKey={sortBy}
                     dir={sortDir}
                     onClick={onHeaderClick}
@@ -729,9 +732,10 @@ export function CatalogueTable({
                     </td>
                     <td className="whitespace-nowrap px-4 py-3 align-top">
                       <span
-                        className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold uppercase tracking-wider ${MODAL_STYLES[r.modal_verb]}`}
+                        title="Requirement level (RFC 2119)"
+                        className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold uppercase tracking-wider ${MODAL_STYLES[r.requirement_level]}`}
                       >
-                        {r.modal_verb}
+                        {r.requirement_level}
                       </span>
                     </td>
                     <td className="px-4 py-3 align-top">

@@ -126,7 +126,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-function ModalVerbBadge({ verb }: { verb: Control['modal_verb'] }) {
+function RequirementLevelBadge({ level }: { level: Control['requirement_level'] }) {
   const styles = {
     shall:
       'bg-rose-100 text-rose-800 dark:bg-rose-900/40 dark:text-rose-300',
@@ -136,9 +136,10 @@ function ModalVerbBadge({ verb }: { verb: Control['modal_verb'] }) {
   } as const;
   return (
     <span
-      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider ${styles[verb]}`}
+      title="Requirement level (RFC 2119)"
+      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider ${styles[level]}`}
     >
-      {verb}
+      {level}
     </span>
   );
 }
@@ -215,7 +216,7 @@ export default async function ControlPage({ params }: PageProps) {
         <span
           data-pagefind-meta={`title:${control.id}: ${control.short_title}`}
         />
-        <span data-pagefind-filter={`modal_verb:${control.modal_verb}`} />
+        <span data-pagefind-filter={`requirement_level:${control.requirement_level}`} />
         {control.applies_to.map((t) => (
           <span key={`f-tier-${t}`} data-pagefind-filter={`applies_to:${t}`} />
         ))}
@@ -249,7 +250,7 @@ export default async function ControlPage({ params }: PageProps) {
         {/* Facet badges */}
         <ul className="mt-6 flex flex-wrap items-center gap-2">
           <li>
-            <ModalVerbBadge verb={control.modal_verb} />
+            <RequirementLevelBadge level={control.requirement_level} />
           </li>
           {control.applies_to.map((tier) => (
             <li key={`tier-${tier}`}>

@@ -98,7 +98,7 @@ export function ControlsTable({
               scope="col"
               className="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400"
             >
-              Verb
+              <abbr title="Requirement level (RFC 2119)" className="cursor-help no-underline">Level</abbr>
             </th>
             <th
               scope="col"
@@ -138,9 +138,9 @@ export function ControlsTable({
               </td>
               <td className="whitespace-nowrap px-4 py-3 align-top">
                 <span
-                  className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold uppercase tracking-wider ${MODAL_STYLES[c.modal_verb]}`}
+                  className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold uppercase tracking-wider ${MODAL_STYLES[c.requirement_level]}`}
                 >
-                  {c.modal_verb}
+                  {c.requirement_level}
                 </span>
               </td>
               <td className="px-4 py-3 align-top">

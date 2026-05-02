@@ -121,7 +121,7 @@ interface CountsByFacet {
   byProfile: Map<string, number>;
   byRole: Map<string, number>;
   byTier: Map<string, number>;
-  byModalVerb: Map<string, number>;
+  byRequirementLevel: Map<string, number>;
 }
 
 function tally(controls: Control[]): CountsByFacet {
@@ -130,12 +130,12 @@ function tally(controls: Control[]): CountsByFacet {
     byProfile: new Map(),
     byRole: new Map(),
     byTier: new Map(),
-    byModalVerb: new Map(),
+    byRequirementLevel: new Map(),
   };
   for (const c of controls) {
-    counts.byModalVerb.set(
-      c.modal_verb,
-      (counts.byModalVerb.get(c.modal_verb) ?? 0) + 1,
+    counts.byRequirementLevel.set(
+      c.requirement_level,
+      (counts.byRequirementLevel.get(c.requirement_level) ?? 0) + 1,
     );
     for (const p of c.profile) {
       counts.byProfile.set(p, (counts.byProfile.get(p) ?? 0) + 1);
@@ -355,7 +355,7 @@ export default async function ModulePage({ params }: PageProps) {
           </h2>
           <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
             Each row in the catalogue links to a public, stable URL. Filter by
-            profile, role, tier, or modal verb below, or open the full
+            profile, role, tier, or requirement level below, or open the full
             catalogue.
           </p>
         </div>
@@ -364,17 +364,17 @@ export default async function ModulePage({ params }: PageProps) {
           <StatBlock label="Total controls" value={counts.total} />
           <StatBlock
             label="Shall"
-            value={counts.byModalVerb.get('shall') ?? 0}
+            value={counts.byRequirementLevel.get('shall') ?? 0}
             hint="Mandatory"
           />
           <StatBlock
             label="Should"
-            value={counts.byModalVerb.get('should') ?? 0}
+            value={counts.byRequirementLevel.get('should') ?? 0}
             hint="Recommended"
           />
           <StatBlock
             label="May"
-            value={counts.byModalVerb.get('may') ?? 0}
+            value={counts.byRequirementLevel.get('may') ?? 0}
             hint="Optional"
           />
         </div>

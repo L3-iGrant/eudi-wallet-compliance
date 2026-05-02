@@ -28,9 +28,9 @@ body:
       required: true
 
   - type: dropdown
-    id: modal_verb
+    id: requirement_level
     attributes:
-      label: Modal verb
+      label: Requirement level (RFC 2119)
       options:
         - shall
         - should

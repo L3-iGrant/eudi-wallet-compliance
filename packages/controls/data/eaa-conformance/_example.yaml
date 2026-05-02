@@ -8,7 +8,7 @@
     version: "1.0.0"
     clause: "5.2.1.2"
     page: 23
-  modal_verb: shall
+  requirement_level: shall
   applies_to:
     - all
   profile:
