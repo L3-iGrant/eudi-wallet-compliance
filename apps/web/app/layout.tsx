@@ -16,10 +16,41 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://eudi-wallet-compliance.igrant.io';
+
 export const metadata: Metadata = {
-  title: 'EUDI Wallet Compliance · iGrant.io',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'EUDI Wallet Compliance · iGrant.io',
+    template: '%s · EUDI Wallet Compliance · iGrant.io',
+  },
   description:
-    'The reference conformance toolkit for EUDI Wallet infrastructure providers. Maintained by iGrant.io.',
+    'The reference conformance toolkit for EUDI Wallet infrastructure providers. Free, open-source, anchored in EUDI Wallet specs from ETSI, IETF, ISO, OpenID, and W3C. Maintained by iGrant.io.',
+  applicationName: 'EUDI Wallet Compliance',
+  authors: [{ name: 'iGrant.io', url: 'https://igrant.io' }],
+  creator: 'iGrant.io',
+  publisher: 'iGrant.io',
+  openGraph: {
+    type: 'website',
+    locale: 'en_GB',
+    siteName: 'EUDI Wallet Compliance',
+    title: 'EUDI Wallet Compliance · iGrant.io',
+    description:
+      'The reference conformance toolkit for EUDI Wallet infrastructure providers, anchored in EUDI Wallet specs from ETSI, IETF, ISO, OpenID, and W3C.',
+    url: SITE_URL,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'EUDI Wallet Compliance · iGrant.io',
+    description:
+      'The reference conformance toolkit for EUDI Wallet infrastructure providers.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+  },
 };
 
 export default function RootLayout({

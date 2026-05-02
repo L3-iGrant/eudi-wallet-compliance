@@ -31,13 +31,9 @@ export async function SiteNav() {
             Control Catalogue
           </Link>
 
-          <span
-            className={`${linkClass} cursor-not-allowed opacity-60`}
-            aria-disabled="true"
-            title="Coming soon"
-          >
+          <Link href="/eudi-wallet-compliance/reference-samples/" className={linkClass}>
             Reference Samples
-          </span>
+          </Link>
 
           <Link href="/docs/" className={linkClass}>
             Docs

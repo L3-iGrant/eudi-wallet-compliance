@@ -163,11 +163,22 @@ export default async function ControlPage({ params }: PageProps) {
     .map((rid) => controls.find((c) => c.id === rid))
     .filter((c): c is Control => Boolean(c));
 
+  const description = (isStub ? control.spec_text : control.plain_english).slice(
+    0,
+    160,
+  );
+  const moduleUrl = `https://eudi-wallet-compliance.igrant.io/modules/${control.module}/`;
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'TechArticle',
     headline: `${control.id}: ${control.short_title}`,
+    description,
     author: {
+      '@type': 'Organization',
+      name: 'iGrant.io',
+      url: 'https://igrant.io',
+    },
+    publisher: {
       '@type': 'Organization',
       name: 'iGrant.io',
       url: 'https://igrant.io',
@@ -175,6 +186,11 @@ export default async function ControlPage({ params }: PageProps) {
     datePublished: REVIEW_DATE,
     dateModified: REVIEW_DATE,
     articleBody: isStub ? control.spec_text : control.plain_english,
+    about: {
+      '@type': 'Thing',
+      name: `${control.spec_source.document} ${control.spec_source.version} clause ${control.spec_source.clause}`,
+    },
+    isPartOf: { '@type': 'WebSite', name: 'EUDI Wallet Compliance', url: moduleUrl },
   };
 
   const moduleName = MODULE_LABEL[control.module] ?? control.module;
