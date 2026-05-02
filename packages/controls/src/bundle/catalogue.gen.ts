@@ -7714,8 +7714,7 @@ export const MODULES_BUNDLE: ModuleMetadata[] = [
     "status": "shipped",
     "short_description": "Conformance for Electronic Attestations of Attributes (EAA) covering SD-JWT VC and ISO/IEC mdoc profiles, ordinary EAA, QEAA, and PuB-EAA tiers.",
     "spec_sources": [
-      "ETSI TS 119 472-1 (v1.2.1)",
-      "ETSI TS 119 412-6"
+      "ETSI TS 119 472-1 (v1.2.1)"
     ]
   },
   {
