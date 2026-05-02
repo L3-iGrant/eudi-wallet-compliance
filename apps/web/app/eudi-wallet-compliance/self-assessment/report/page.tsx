@@ -75,6 +75,12 @@ function ReportInner() {
   const [report, setReport] = useState<AssessmentResult | null | undefined>(undefined);
   const [lead, setLead] = useState<Lead | null>(null);
   const [statusFilter, setStatusFilter] = useState<StatusFilter | null>(null);
+  // ?focus=<control_id> drops the user onto a single-rule view of the
+  // report. Set when arriving from the per-control CTA on a control
+  // detail page; cleared by the user clicking "Show all controls".
+  const [focusedControlId, setFocusedControlId] = useState<string | null>(
+    () => params.get('focus'),
+  );
 
   const moduleByControlId = useMemo(() => {
     const m = new Map<string, string>();
@@ -136,14 +142,32 @@ function ReportInner() {
   // above the conditional early returns below so the hook count is stable
   // between the report-undefined and report-loaded renders.
   const filteredGroups = useMemo(() => {
-    if (statusFilter === null) return groupedVerdicts;
+    if (focusedControlId === null && statusFilter === null) return groupedVerdicts;
     return groupedVerdicts
       .map((g) => ({
         ...g,
-        verdicts: g.verdicts.filter((v) => v.status === statusFilter),
+        verdicts: g.verdicts.filter((v) => {
+          if (focusedControlId !== null && v.controlId !== focusedControlId)
+            return false;
+          if (statusFilter !== null && v.status !== statusFilter) return false;
+          return true;
+        }),
       }))
       .filter((g) => g.verdicts.length > 0);
-  }, [groupedVerdicts, statusFilter]);
+  }, [groupedVerdicts, statusFilter, focusedControlId]);
+  // The focused verdict, if any. Surfaces in the banner so the user
+  // sees the result for the rule they came here to check, before
+  // scrolling through anything else.
+  const focusedVerdict = useMemo(() => {
+    if (focusedControlId === null) return null;
+    for (const g of groupedVerdicts) {
+      const match = g.verdicts.find((v) => v.controlId === focusedControlId);
+      if (match) return match;
+    }
+    return null;
+  }, [groupedVerdicts, focusedControlId]);
+  const focusedNotInScope =
+    focusedControlId !== null && focusedVerdict === null;
 
   if (report === undefined) {
     return (
@@ -233,19 +257,71 @@ function ReportInner() {
         </p>
       )}
 
+      {focusedControlId !== null && (
+        <div className="mt-6 rounded-lg border border-blue-200 bg-blue-50/60 p-4 dark:border-blue-900 dark:bg-blue-950/30">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p className="text-xs font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-400">
+              Verdict for this control
+            </p>
+            <button
+              type="button"
+              onClick={() => setFocusedControlId(null)}
+              className="text-xs font-semibold text-blue-700 underline-offset-4 hover:underline dark:text-blue-400"
+            >
+              Show all controls
+            </button>
+          </div>
+          {focusedVerdict ? (
+            <div className="mt-3 flex flex-wrap items-baseline gap-3">
+              <span
+                className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider ${
+                  focusedVerdict.status === 'pass'
+                    ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300'
+                    : focusedVerdict.status === 'fail'
+                      ? 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300'
+                      : focusedVerdict.status === 'warn'
+                        ? 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300'
+                        : 'bg-zinc-200 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300'
+                }`}
+              >
+                {focusedVerdict.status}
+              </span>
+              <span className="font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">
+                {focusedControlId}
+              </span>
+              <p className="basis-full text-sm text-zinc-700 dark:text-zinc-300">
+                {focusedVerdict.notes || '(no engine notes)'}
+              </p>
+            </div>
+          ) : (
+            <p className="mt-3 text-sm text-zinc-700 dark:text-zinc-300">
+              <span className="font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">
+                {focusedControlId}
+              </span>{' '}
+              {focusedNotInScope
+                ? "isn't in scope for the current assessment, so it has no verdict. Try clearing the focus and re-running with a different scope."
+                : 'has no verdict yet.'}
+            </p>
+          )}
+        </div>
+      )}
+
       <section className="mt-10">
         <div className="flex items-baseline justify-between gap-3">
           <h2 className="text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
             Verdicts (
-            {statusFilter === null
+            {statusFilter === null && focusedControlId === null
               ? `${totalActive} active checks`
-              : `${filteredVerdictCount} of ${totalActive}, filtered to ${statusFilter.toUpperCase()}`}
+              : `${filteredVerdictCount} of ${totalActive}${focusedControlId ? `, focused on ${focusedControlId}` : ''}${statusFilter ? `, filtered to ${statusFilter.toUpperCase()}` : ''}`}
             )
           </h2>
-          {statusFilter !== null && (
+          {(statusFilter !== null || focusedControlId !== null) && (
             <button
               type="button"
-              onClick={() => setStatusFilter(null)}
+              onClick={() => {
+                setStatusFilter(null);
+                setFocusedControlId(null);
+              }}
               className="text-xs font-semibold text-blue-700 underline-offset-4 hover:underline dark:text-blue-400"
             >
               Clear filter
@@ -255,7 +331,9 @@ function ReportInner() {
         <div className="mt-4 space-y-3">
           {filteredGroups.length === 0 && (
             <p className="rounded-md border border-dashed border-zinc-300 bg-zinc-50 p-6 text-center text-sm text-zinc-600 dark:border-zinc-700 dark:bg-zinc-900/40 dark:text-zinc-400">
-              No verdicts with status {statusFilter?.toUpperCase()} in this report.
+              {focusedNotInScope
+                ? `${focusedControlId} is not in scope for the current assessment.`
+                : `No verdicts with status ${statusFilter?.toUpperCase()} in this report.`}
             </p>
           )}
           {filteredGroups.map((g) => (

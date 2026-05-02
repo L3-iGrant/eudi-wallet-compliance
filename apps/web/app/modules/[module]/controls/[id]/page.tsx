@@ -10,7 +10,9 @@ import { HoverTooltip } from '../../../../_components/HoverTooltip';
 /**
  * Build a deep-link to the Self-Assessment upload flow with the scope
  * pre-filled from the catalogue entry. Tier maps from the catalogue's
- * "ordinary-eaa" form to the engine's "ordinary" form.
+ * "ordinary-eaa" form to the engine's "ordinary" form. The focus param
+ * follows the user through to the report page so they land directly on
+ * this single rule's verdict.
  */
 function buildAssessmentLink(control: Control): string {
   const tierMap: Record<string, string> = {
@@ -25,6 +27,7 @@ function buildAssessmentLink(control: Control): string {
     role: control.role[0] ?? 'issuer',
     profile: control.profile[0] ?? 'sd-jwt-vc',
     tier,
+    focus: control.id,
   });
   return `/eudi-wallet-compliance/self-assessment/upload/?${params.toString()}`;
 }

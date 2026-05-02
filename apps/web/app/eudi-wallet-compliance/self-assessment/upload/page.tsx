@@ -153,24 +153,42 @@ function UploadInner() {
     };
     try {
       const { reportId } = await runAssessmentAction(scope, evidence);
+      const reportParams = new URLSearchParams({ id: reportId });
+      // Forward an optional ?focus=<control_id> through to the report so
+      // the user lands on a single-control filter when they came here
+      // from the per-control CTA on a control detail page.
+      const focus = params.get('focus');
+      if (focus) reportParams.set('focus', focus);
       router.push(
-        `/eudi-wallet-compliance/self-assessment/report/?id=${encodeURIComponent(reportId)}`,
+        `/eudi-wallet-compliance/self-assessment/report/?${reportParams.toString()}`,
       );
     } catch (err) {
       setSubmitError((err as Error).message);
     }
   };
 
+  // When the user arrives via the per-control "Run an assessment" CTA on
+  // a control detail page, the scope is fully pre-selected and step 1 is
+  // effectively skipped. Rephrase the kicker so the page doesn't claim
+  // to be "Step 2 of 2" of a flow the user never touched the first step
+  // of.
+  const focusedControl = params.get('focus');
+  const arrivedFromControl = Boolean(focusedControl);
+
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 sm:py-16">
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700 dark:text-blue-400">
-        Self-Assessment · Step 2 of 2
+        {arrivedFromControl
+          ? `Self-Assessment · Testing ${focusedControl}`
+          : 'Self-Assessment · Step 2 of 2'}
       </p>
       <h1 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-white">
         Upload your evidence
       </h1>
       <p className="mt-4 max-w-2xl text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-        Paste your EAA artefacts below. Everything stays in your browser; nothing is sent to a server.
+        {arrivedFromControl
+          ? `Paste your EAA below to see how it scores against ${focusedControl} and the rest of the controls in this scope. Everything stays in your browser; nothing is sent to a server.`
+          : 'Paste your EAA artefacts below. Everything stays in your browser; nothing is sent to a server.'}
       </p>
 
       <ScopeSummary scope={scope} />
