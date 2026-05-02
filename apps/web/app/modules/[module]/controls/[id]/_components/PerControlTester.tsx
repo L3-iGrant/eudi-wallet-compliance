@@ -69,12 +69,16 @@ export function PerControlTester({ control }: PerControlTesterProps) {
   const restored = useRef(false);
 
   // Restore the last-pasted EAA once on mount so iterating on the same
-  // control keeps your input across reloads.
+  // control keeps your input across reloads. Reading sessionStorage during
+  // render or in a useState initializer would cause a hydration mismatch
+  // (server has no sessionStorage); a post-mount one-shot setState is the
+  // legitimate pattern here.
   useEffect(() => {
     if (restored.current) return;
     restored.current = true;
     try {
       const saved = sessionStorage.getItem(storageKey);
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing external sessionStorage state into local state on mount
       if (saved) setEaaPayload(saved);
     } catch {
       // sessionStorage may be unavailable (private mode etc.); ignore.
