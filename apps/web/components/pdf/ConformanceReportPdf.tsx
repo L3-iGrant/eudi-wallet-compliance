@@ -9,6 +9,15 @@ import {
 } from '@react-pdf/renderer';
 import type { AssessmentResult, Verdict } from '@iwc/engine';
 
+// react-pdf v4.x ships CircleProps without strokeDashoffset, even though
+// the underlying renderer honours the attribute. Module-augment instead
+// of casting at every call site so the donut math reads naturally.
+declare module '@react-pdf/renderer' {
+  interface CircleProps {
+    strokeDashoffset?: number | string;
+  }
+}
+
 // Brand palette mirrors the web report.
 const BLUE = '#1d4ed8';
 const EMERALD = '#047857';
@@ -373,6 +382,22 @@ function VerdictDonutPdf({
           transform="rotate(-90)"
         />
       ))}
+      <Text
+        x={0}
+        y={3}
+        textAnchor="middle"
+        style={{ fontSize: 14, fontFamily: 'Helvetica-Bold', color: ZINC_950 }}
+      >
+        {String(total)}
+      </Text>
+      <Text
+        x={0}
+        y={14}
+        textAnchor="middle"
+        style={{ fontSize: 6, fontFamily: 'Helvetica', color: ZINC_500 }}
+      >
+        {total === 1 ? 'VERDICT' : 'VERDICTS'}
+      </Text>
     </Svg>
   );
 }
