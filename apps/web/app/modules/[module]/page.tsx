@@ -152,25 +152,37 @@ function tally(controls: Control[]): CountsByFacet {
   return counts;
 }
 
+// Accent palette matches the requirement-level badges in the catalogue table
+// (rose for shall, amber for should, zinc for may) so the totals on this page
+// read in the same visual language as the rows they roll up.
+const STATBLOCK_ACCENT = {
+  rose: 'text-rose-700 dark:text-rose-400',
+  amber: 'text-amber-700 dark:text-amber-400',
+  zinc: 'text-zinc-700 dark:text-zinc-300',
+} as const;
+
 function StatBlock({
   label,
   value,
   hint,
   tooltip,
+  accent,
 }: {
   label: string;
   value: number | string;
   hint?: string;
   tooltip?: string;
+  accent?: keyof typeof STATBLOCK_ACCENT;
 }) {
+  const valueClass = accent
+    ? STATBLOCK_ACCENT[accent]
+    : 'text-zinc-950 dark:text-white';
   const card = (
     <div className="block w-full rounded-lg border border-zinc-200 bg-white p-4 text-left dark:border-zinc-800 dark:bg-zinc-950">
       <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
         {label}
       </p>
-      <p className="mt-1 text-2xl font-semibold text-zinc-950 dark:text-white">
-        {value}
-      </p>
+      <p className={`mt-1 text-2xl font-semibold ${valueClass}`}>{value}</p>
       {hint && (
         <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-500">{hint}</p>
       )}
@@ -377,18 +389,21 @@ export default async function ModulePage({ params }: PageProps) {
             value={counts.byRequirementLevel.get('shall') ?? 0}
             hint="Mandatory"
             tooltip={requirementLevelTooltip('shall')}
+            accent="rose"
           />
           <StatBlock
             label="Should"
             value={counts.byRequirementLevel.get('should') ?? 0}
             hint="Recommended"
             tooltip={requirementLevelTooltip('should')}
+            accent="amber"
           />
           <StatBlock
             label="May"
             value={counts.byRequirementLevel.get('may') ?? 0}
             hint="Optional"
             tooltip={requirementLevelTooltip('may')}
+            accent="zinc"
           />
         </div>
 
