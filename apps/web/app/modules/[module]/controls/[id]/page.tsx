@@ -6,7 +6,28 @@ import { AUTO_TESTED_IDS } from '@iwc/controls/sync';
 import { controlIdToSlug, slugToControlId } from '@iwc/shared';
 import { requirementLevelTooltip } from '../../../../../lib/requirement-level';
 import { HoverTooltip } from '../../../../_components/HoverTooltip';
-import { PerControlTester } from './_components/PerControlTester';
+
+/**
+ * Build a deep-link to the Self-Assessment upload flow with the scope
+ * pre-filled from the catalogue entry. Tier maps from the catalogue's
+ * "ordinary-eaa" form to the engine's "ordinary" form.
+ */
+function buildAssessmentLink(control: Control): string {
+  const tierMap: Record<string, string> = {
+    'ordinary-eaa': 'ordinary',
+    qeaa: 'qeaa',
+    'pub-eaa': 'pub-eaa',
+  };
+  const tier =
+    tierMap[control.applies_to.find((t) => t !== 'all') ?? ''] ?? 'ordinary';
+  const params = new URLSearchParams({
+    module: control.module,
+    role: control.role[0] ?? 'issuer',
+    profile: control.profile[0] ?? 'sd-jwt-vc',
+    tier,
+  });
+  return `/eudi-wallet-compliance/self-assessment/upload/?${params.toString()}`;
+}
 
 interface PageProps {
   params: Promise<{ module: string; id: string }>;
@@ -345,24 +366,31 @@ export default async function ControlPage({ params }: PageProps) {
             </section>
           )}
 
-          {/* Conformance check */}
+          {/* Conformance status: small inline status row that mirrors the
+              dot vocabulary used in the catalogue. The action ("Run an
+              assessment for this control") lives in the sidebar so the
+              main column stays prose-only. */}
           <section className="mt-10">
             <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-500">
               Conformance check
             </h2>
             {AUTO_TESTED_IDS.includes(control.id) ? (
-              <>
-                <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
-                  This control is auto-tested. Paste an EAA to run just this
-                  check.
-                </p>
-                <PerControlTester control={control} />
-              </>
+              <p className="mt-3 inline-flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300">
+                <span
+                  aria-hidden="true"
+                  className="inline-block h-2 w-2 rounded-full bg-emerald-500"
+                />
+                Auto-tested. Use the action in the sidebar to run a
+                Self-Assessment for this control.
+              </p>
             ) : (
-              <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-500">
+              <p className="mt-3 inline-flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
+                <span
+                  aria-hidden="true"
+                  className="inline-block h-2 w-2 rounded-full bg-zinc-300 dark:bg-zinc-700"
+                />
                 Not auto-tested yet. The rule above is documented but no
-                automated test runs against it. See related controls for
-                others in the same family that may be auto-tested.
+                automated test runs against it.
               </p>
             )}
           </section>
@@ -371,6 +399,37 @@ export default async function ControlPage({ params }: PageProps) {
         {/* Sidebar */}
         <aside className="lg:col-span-1">
           <div className="lg:sticky lg:top-24 lg:flex lg:flex-col lg:gap-8">
+            {/* Action: run an assessment scoped to this control. Only
+                shown when an automated test exists; not-auto-tested
+                controls can't produce a verdict, so we don't link. */}
+            {AUTO_TESTED_IDS.includes(control.id) && (
+              <div className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950">
+                <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-500">
+                  Test this control
+                </h2>
+                <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-500">
+                  Pre-selected scope:{' '}
+                  <span className="font-mono text-zinc-700 dark:text-zinc-300">
+                    {control.profile[0] ?? 'sd-jwt-vc'} ·{' '}
+                    {control.role[0] ?? 'issuer'} ·{' '}
+                    {control.applies_to.find((t) => t !== 'all') ?? 'ordinary-eaa'}
+                  </span>
+                </p>
+                <HoverTooltip
+                  label="Opens the Self-Assessment upload page with the scope above pre-filled. Paste your EAA, run the full assessment, and find this control's verdict in the report. You can change scope on the upload page."
+                  side="bottom"
+                  className="mt-4 w-full"
+                >
+                  <Link
+                    href={buildAssessmentLink(control)}
+                    className="inline-flex w-full items-center justify-center rounded-md bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+                  >
+                    Run an assessment for this control
+                  </Link>
+                </HoverTooltip>
+              </div>
+            )}
+
             {/* Related controls (top: most-used by engineers in flow) */}
             {related.length > 0 && (
               <div className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950">
