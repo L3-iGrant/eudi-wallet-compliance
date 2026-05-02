@@ -2,9 +2,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { loadAllControls, type Control } from '@iwc/controls';
+import { AUTO_TESTED_IDS } from '@iwc/controls/sync';
 import { controlIdToSlug, slugToControlId } from '@iwc/shared';
 import { requirementLevelTooltip } from '../../../../../lib/requirement-level';
 import { HoverTooltip } from '../../../../_components/HoverTooltip';
+import { PerControlTester } from './_components/PerControlTester';
 
 interface PageProps {
   params: Promise<{ module: string; id: string }>;
@@ -348,18 +350,19 @@ export default async function ControlPage({ params }: PageProps) {
             <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-500">
               Conformance check
             </h2>
-            {control.check_function ? (
-              <p className="mt-3 font-mono text-sm text-zinc-700 dark:text-zinc-300">
-                <span className="text-zinc-500">function</span>{' '}
-                <span className="text-blue-700 dark:text-blue-400">
-                  {control.check_function}
-                </span>
-                <span className="text-zinc-500">()</span>
-              </p>
+            {AUTO_TESTED_IDS.includes(control.id) ? (
+              <>
+                <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
+                  This control is auto-tested. Paste an EAA to run just this
+                  check.
+                </p>
+                <PerControlTester control={control} />
+              </>
             ) : (
               <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-500">
-                (Check function not yet implemented. The conformance engine
-                will gain this rule in a future release.)
+                Not auto-tested yet. The rule above is documented but no
+                automated test runs against it. See related controls for
+                others in the same family that may be auto-tested.
               </p>
             )}
           </section>
