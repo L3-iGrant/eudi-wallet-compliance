@@ -132,6 +132,19 @@ function ReportInner() {
       };
     }, [report]);
 
+  // Hooks must run on every render in the same order — keep this useMemo
+  // above the conditional early returns below so the hook count is stable
+  // between the report-undefined and report-loaded renders.
+  const filteredGroups = useMemo(() => {
+    if (statusFilter === null) return groupedVerdicts;
+    return groupedVerdicts
+      .map((g) => ({
+        ...g,
+        verdicts: g.verdicts.filter((v) => v.status === statusFilter),
+      }))
+      .filter((g) => g.verdicts.length > 0);
+  }, [groupedVerdicts, statusFilter]);
+
   if (report === undefined) {
     return (
       <article className="mx-auto max-w-4xl px-6 py-16">
@@ -161,15 +174,6 @@ function ReportInner() {
 
   const totalRun = activeSummary.pass + activeSummary.fail + activeSummary.warn;
   const totalActive = totalRun + activeSummary.na;
-  const filteredGroups = useMemo(() => {
-    if (statusFilter === null) return groupedVerdicts;
-    return groupedVerdicts
-      .map((g) => ({
-        ...g,
-        verdicts: g.verdicts.filter((v) => v.status === statusFilter),
-      }))
-      .filter((g) => g.verdicts.length > 0);
-  }, [groupedVerdicts, statusFilter]);
   const filteredVerdictCount = filteredGroups.reduce(
     (n, g) => n + g.verdicts.length,
     0,
