@@ -658,15 +658,24 @@ export function CatalogueTable({
         )}
       </div>
 
-      {/* Count + exports */}
+      {/* Count + exports. The "Showing X of Y" count is only useful when
+          filters are narrowing the table; when sorted.length equals
+          rows.length the line repeats what the header already says
+          ("X of Y controls are auto-tested...") and what the table
+          shows visually. Hide it in that case so the row collapses to
+          just the export buttons on the right. */}
       <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
-        <p className="text-sm text-zinc-600 dark:text-zinc-400">
-          Showing{' '}
-          <span className="font-semibold text-zinc-900 dark:text-zinc-100">
-            {sorted.length}
-          </span>{' '}
-          of {rows.length} {totalLabel} controls.
-        </p>
+        {sorted.length !== rows.length ? (
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            Showing{' '}
+            <span className="font-semibold text-zinc-900 dark:text-zinc-100">
+              {sorted.length}
+            </span>{' '}
+            of {rows.length} {totalLabel} controls.
+          </p>
+        ) : (
+          <span aria-hidden="true" />
+        )}
         <div className="flex items-center gap-2">
           <span className="text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
             Export
