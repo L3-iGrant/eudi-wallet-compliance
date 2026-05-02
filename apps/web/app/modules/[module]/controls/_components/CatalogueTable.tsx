@@ -198,7 +198,7 @@ function MultiSelect({
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        className={`inline-flex items-center gap-1.5 rounded-md border px-3 py-2 text-sm font-medium transition ${
+        className={`inline-flex min-w-32 items-center justify-between gap-1.5 rounded-md border px-3 py-2 text-sm font-medium transition ${
           selected.length > 0
             ? 'border-blue-300 bg-blue-50 text-blue-700 dark:border-blue-700 dark:bg-blue-950/40 dark:text-blue-300'
             : 'border-zinc-300 bg-white text-zinc-700 hover:border-zinc-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-600'
@@ -628,25 +628,35 @@ export function CatalogueTable({
         </label>
       </div>
 
-      {/* Active filter chips with inline Clear all */}
-      {activeChips.length > 0 && (
-        <div className="mt-3 flex flex-wrap items-center gap-2">
-          <ul className="contents">
-            {activeChips.map((c) => (
-              <li key={c.key}>
-                <FilterChip label={c.label} onRemove={c.remove} />
-              </li>
-            ))}
-          </ul>
-          <button
-            type="button"
-            onClick={clearAll}
-            className="ml-1 inline-flex items-center rounded-md px-2 py-0.5 text-xs font-semibold text-zinc-600 hover:text-blue-700 dark:text-zinc-400 dark:hover:text-blue-300"
-          >
-            Clear all
-          </button>
-        </div>
-      )}
+      {/* Active filter chips with inline Clear all. The wrapper is rendered
+          unconditionally with a fixed minimum height so the rows below
+          (count, exports, table) don't jump down when the first chip
+          appears. min-h-6 fits a chip's natural ~20px height with a touch
+          of breathing room; mt-2 keeps the gap tight when empty so the
+          reserved space doesn't draw attention. */}
+      <div
+        className="mt-2 flex min-h-6 flex-wrap items-center gap-2"
+        aria-live="polite"
+      >
+        {activeChips.length > 0 && (
+          <>
+            <ul className="contents">
+              {activeChips.map((c) => (
+                <li key={c.key}>
+                  <FilterChip label={c.label} onRemove={c.remove} />
+                </li>
+              ))}
+            </ul>
+            <button
+              type="button"
+              onClick={clearAll}
+              className="ml-1 inline-flex items-center rounded-md px-2 py-0.5 text-xs font-semibold text-zinc-600 hover:text-blue-700 dark:text-zinc-400 dark:hover:text-blue-300"
+            >
+              Clear all
+            </button>
+          </>
+        )}
+      </div>
 
       {/* Count + exports */}
       <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
