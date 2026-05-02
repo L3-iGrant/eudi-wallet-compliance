@@ -170,11 +170,14 @@ function ReportInner() {
         Generated {new Date(report.createdAt).toLocaleString()} · stored locally for 30 days
       </p>
 
-      <section className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <Stat label="Pass" value={activeSummary.pass} accent="emerald" />
-        <Stat label="Fail" value={activeSummary.fail} accent="red" />
-        <Stat label="Warn" value={activeSummary.warn} accent="amber" />
-        <Stat label="N/A" value={activeSummary.na} accent="zinc" />
+      <section className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center">
+        <VerdictDonut summary={activeSummary} />
+        <div className="grid flex-1 grid-cols-2 gap-3 sm:grid-cols-4">
+          <Stat label="Pass" value={activeSummary.pass} accent="emerald" />
+          <Stat label="Fail" value={activeSummary.fail} accent="red" />
+          <Stat label="Warn" value={activeSummary.warn} accent="amber" />
+          <Stat label="N/A" value={activeSummary.na} accent="zinc" />
+        </div>
       </section>
       {unimplementedCount > 0 && (
         <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-500">
@@ -625,6 +628,101 @@ function Stat({
         {label}
       </p>
       <p className={`mt-1 text-3xl font-semibold ${accentClass}`}>{value}</p>
+    </div>
+  );
+}
+
+/**
+ * Inline SVG donut summarising pass / fail / warn. N/A is intentionally
+ * excluded: it represents "not applicable to this evidence", not a
+ * conformance signal, so mixing it into the chart muddies the read.
+ * The N/A count still appears on the dedicated stat card beside the
+ * chart, where it belongs.
+ *
+ * No chart library: each segment is a stroked <circle> with
+ * stroke-dasharray sized to its fraction of the total, and
+ * stroke-dashoffset advancing per segment so they sit end-to-end.
+ * Renders nothing when there are no decisive verdicts.
+ */
+function VerdictDonut({
+  summary,
+}: {
+  summary: { pass: number; fail: number; warn: number; na: number };
+}) {
+  const total = summary.pass + summary.fail + summary.warn;
+  if (total === 0) return null;
+
+  const r = 40;
+  const circumference = 2 * Math.PI * r;
+  const segments: Array<{ key: string; count: number; className: string }> = [
+    { key: 'pass', count: summary.pass, className: 'stroke-emerald-500' },
+    { key: 'fail', count: summary.fail, className: 'stroke-red-500' },
+    { key: 'warn', count: summary.warn, className: 'stroke-amber-500' },
+  ];
+
+  let cumulative = 0;
+  const arcs = segments
+    .filter((s) => s.count > 0)
+    .map((s) => {
+      const len = (s.count / total) * circumference;
+      const offset = -cumulative;
+      cumulative += len;
+      return {
+        key: s.key,
+        len,
+        offset,
+        className: s.className,
+      };
+    });
+
+  const ariaLabel = `${summary.pass} pass, ${summary.fail} fail, ${summary.warn} warn, out of ${total} decisive verdicts.`;
+
+  return (
+    <div className="flex items-center justify-center">
+      <svg
+        width="140"
+        height="140"
+        viewBox="-60 -60 120 120"
+        role="img"
+        aria-label={ariaLabel}
+      >
+        <circle
+          r={r}
+          fill="none"
+          strokeWidth="14"
+          className="stroke-zinc-200 dark:stroke-zinc-800"
+        />
+        {arcs.map((a) => (
+          <circle
+            key={a.key}
+            r={r}
+            fill="none"
+            strokeWidth="14"
+            strokeLinecap="butt"
+            strokeDasharray={`${a.len} ${circumference - a.len}`}
+            strokeDashoffset={a.offset}
+            transform="rotate(-90)"
+            className={a.className}
+          />
+        ))}
+        <text
+          x="0"
+          y="2"
+          textAnchor="middle"
+          dominantBaseline="middle"
+          className="fill-zinc-950 text-[20px] font-semibold dark:fill-white"
+        >
+          {total}
+        </text>
+        <text
+          x="0"
+          y="20"
+          textAnchor="middle"
+          className="fill-zinc-500 text-[9px] font-medium uppercase tracking-wider dark:fill-zinc-500"
+        >
+          {total === 1 ? 'verdict' : 'verdicts'}
+        </text>
+      </svg>
     </div>
   );
 }
