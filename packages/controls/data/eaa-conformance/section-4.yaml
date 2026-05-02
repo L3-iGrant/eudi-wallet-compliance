@@ -1831,6 +1831,271 @@
     - EAA-4.2.6.6-01
     - EAA-5.3-05
 
+- id: EAA-4.2.7.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.7.1
+    page: 20
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: EAA issuance data must unambiguously identify the issuance instant
+  spec_text: >-
+    The EAA issuance data shall unambiguously identify either the date, or
+    the date and time instant when the EAA was issued.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.7.1-02
+    - EAA-4.2.7.1-03
+    - EAA-5.2.7.1-01
+
+- id: EAA-4.2.7.1-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.7.1
+    page: 20
+  requirement_level: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may incorporate the EAA issuance data
+  spec_text: An EAA may incorporate the EAA issuance data.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.7.1-01
+    - EAA-5.2.7.1-01
+
+- id: EAA-4.2.7.1-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.7.1
+    page: 20
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: EAA issuance data incorporation and placement is profile-specific
+  spec_text: >-
+    The incorporation and placement of the EAA issuance data shall depend on
+    the specific EAA implementation.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.7.1-01
+    - EAA-4.2.7.1-02
+
+- id: EAA-4.2.7.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.7.2
+    page: 21
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Time instants must be UTC, second-precision, no fractions, no offset
+  spec_text: >-
+    A time instant: 1) Shall be expressed as an instant time in Coordinated
+    Universal Time (UTC); 2) Shall include indication of seconds, even when
+    the number of seconds is zero; 3) Shall not include fractions of seconds;
+    and 4) Shall not use local offset from UTC.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.7.1-01
+    - EAA-4.2.8.2-02
+    - EAA-5.2.7.1-03
+    - EAA-5.2.7.2-06
+
+- id: EAA-4.2.8.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.8.2
+    page: 21
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: A validity period must be expressed by two UTC instant times
+  spec_text: >-
+    A validity period shall be expressed by two instant times in Coordinated
+    Universal Time (UTC).
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.8.2-02
+    - EAA-4.2.8.2-03
+    - EAA-4.2.8.3-01
+    - EAA-4.2.8.4-01
+
+- id: EAA-4.2.8.2-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.8.2
+    page: 21
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Each validity-period instant must follow EAA-4.2.7.2 time content rules
+  spec_text: >-
+    The content of each instant time shall meet the requirements specified in
+    clause 4.2.7.2 of the present document.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.7.2-01
+    - EAA-4.2.8.2-01
+
+- id: EAA-4.2.8.2-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.8.2
+    page: 21
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Validity-period information incorporation and placement is profile-specific
+  spec_text: >-
+    The incorporation and placement of the information on validity periods
+    shall depend on the specific EAA implementation.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.8.2-01
+    - EAA-4.2.8.2-02
+
+- id: EAA-4.2.8.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.8.3
+    page: 21
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA must incorporate its technical validity period
+  spec_text: An EAA shall incorporate the EAA technical validity period.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.8.2-01
+    - EAA-4.2.8.4-01
+    - EAA-5.2.7.1-03
+
+- id: EAA-4.2.8.4-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.8.4
+    page: 21
+  requirement_level: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may incorporate an administrative validity period
+  spec_text: An EAA may incorporate the EAA administrative validity period.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.8.2-01
+    - EAA-4.2.8.3-01
+    - EAA-5.2.7.2-05
+    - EAA-5.2.7.2-06
+
 - id: EAA-4.2.11.1-03
   module: eaa-conformance
   spec_source:
