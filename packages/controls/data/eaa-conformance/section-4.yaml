@@ -1221,6 +1221,183 @@
     - PuB-EAA-4.2.4.3-01
     - QEAA-4.2.4.2-08
 
+- id: EAA-4.2.5-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.2.5"
+    page: 18
+  requirement_level: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: EAA may indicate that it was issued on behalf of another entity
+  spec_text: >-
+    If the EAA is issued on behalf of another entity, the EAA may incorporate
+    an indication of this fact.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.5-02
+    - EAA-4.2.5-03
+
+- id: EAA-4.2.5-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.2.5"
+    page: 18
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: On-behalf-of indication incorporation, value, and placement is profile-specific
+  spec_text: >-
+    The incorporation, value, and placement of this indication shall depend on
+    the specific EAA implementation.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.5-01
+
+- id: EAA-4.2.5-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.2.5"
+    page: 18
+  requirement_level: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: EAA may incorporate an identifier of the on-behalf-of entity
+  spec_text: >-
+    If the EAA is issued on behalf of another entity, the EAA may incorporate
+    an identifier whose value unambiguously identifies the entity on behalf of
+    which the EAA has been issued.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.5-01
+    - EAA-4.2.5-04
+
+- id: EAA-4.2.5-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.2.5"
+    page: 18
+  requirement_level: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: EAA may include the name of the on-behalf-of entity
+  spec_text: >-
+    If the EAA has been issued on behalf of another entity, the EAA may
+    include the name of this entity.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.5-03
+    - EAA-4.2.5-05
+
+- id: EAA-4.2.5-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.2.5"
+    page: 18
+  requirement_level: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Legal-person on-behalf-of entity may include a registration identifier
+  spec_text: >-
+    If the entity on whose behalf the EAA has been issued is a legal person,
+    the EAA may include a registration identifier of this legal person as
+    stated in the official records, where such a registration identifier
+    exists.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.5-04
+    - EAA-4.2.5-06
+
+- id: EAA-4.2.5-06
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.2.5"
+    page: 19
+  requirement_level: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: On-behalf-of legal-entity registration id may follow EAA-4.2.4.1-07 format
+  spec_text: >-
+    The registration identifier of the legal entity on whose behalf the EAA
+    has been issued may be expressed using the structured character string
+    specified in requirement EAA-4.2.4.1-07.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.5-05
+    - EAA-4.2.4.1-07
+
 - id: EAA-4.2.6.6-01
   module: eaa-conformance
   spec_source:
