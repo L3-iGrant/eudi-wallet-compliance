@@ -2984,7 +2984,7 @@ export const MODULES_BUNDLE: ModuleMetadata[] = [
     "status": "in-development",
     "short_description": "Conformance for wallet-instance attestations that authenticate the wallet to issuers and relying parties.",
     "spec_sources": [
-      "OpenID4VC HAIP",
+      "OpenID4VC HAIP 1.0",
       "IETF draft-ietf-oauth-attestation-based-client-auth"
     ]
   },
@@ -2994,8 +2994,8 @@ export const MODULES_BUNDLE: ModuleMetadata[] = [
     "status": "in-development",
     "short_description": "Conformance for the OpenID4VCI protocol used to issue credentials into the wallet, including credential offer, authorisation, and issuance flows.",
     "spec_sources": [
-      "OpenID4VCI Draft 14",
-      "OpenID4VC HAIP"
+      "OpenID4VCI 1.0",
+      "OpenID4VC HAIP 1.0"
     ]
   },
   {
@@ -3004,8 +3004,8 @@ export const MODULES_BUNDLE: ModuleMetadata[] = [
     "status": "in-development",
     "short_description": "Conformance for the OpenID4VP protocol used by relying parties to request and verify presentations of credentials held in the wallet.",
     "spec_sources": [
-      "OpenID4VP Draft 21",
-      "OpenID4VC HAIP"
+      "OpenID4VP 1.0",
+      "OpenID4VC HAIP 1.0"
     ]
   },
   {
