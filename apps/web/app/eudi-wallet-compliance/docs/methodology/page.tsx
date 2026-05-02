@@ -21,12 +21,24 @@ export default function Methodology() {
         Every control in the catalogue is extracted directly from the
         underlying spec and committed as a YAML entry under{' '}
         <code>packages/controls/data/</code> in the open-source repository.
-        Each entry carries its canonical id (e.g. <code>EAA-5.2.10.1-04</code>
-        ), the spec source citation (document, version, clause, page), the
-        modal verb (shall / should / may), the applicable tiers, the
-        applicable profiles, the role(s) it binds, the kinds of evidence
-        needed to evaluate it, the verbatim spec text, and a hand-written
-        plain-English explanation.
+        The full schema, the field reference, and the step-by-step flow for
+        adding new controls or engine checks live in{' '}
+        <a
+          href="https://github.com/L3-iGrant/eudi-wallet-compliance/blob/main/CONTRIBUTING.md"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          CONTRIBUTING.md
+        </a>{' '}
+        on GitHub.
+      </p>
+      <p>
+        Per-entry, the YAML record carries the canonical id (e.g.{' '}
+        <code>EAA-5.2.10.1-04</code>), the spec source citation (document,
+        version, clause, page), the modal verb (shall / should / may), the
+        applicable tiers, the applicable profiles, the role(s) it binds, the
+        kinds of evidence needed to evaluate it, the verbatim spec text, and
+        a hand-written plain-English explanation.
       </p>
       <p>
         Spec text is reproduced verbatim and is the source of truth. The
