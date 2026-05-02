@@ -297,7 +297,7 @@ export default async function ModulePage({ params }: PageProps) {
   return (
     <article className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
       {/* Header */}
-      <header className="border-b border-zinc-200 pb-10 dark:border-zinc-800">
+      <header>
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700 dark:text-blue-400">
           Module
           <span aria-hidden="true" className="mx-2 text-zinc-400 dark:text-zinc-600">

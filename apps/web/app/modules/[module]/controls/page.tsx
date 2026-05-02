@@ -77,7 +77,7 @@ export default async function ControlsCataloguePage({ params }: PageProps) {
 
   return (
     <article className="mx-auto max-w-7xl px-6 py-12 sm:py-16">
-      <header className="border-b border-zinc-200 pb-8 dark:border-zinc-800">
+      <header>
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700 dark:text-blue-400">
           {m.name}
           {singleSource && (
