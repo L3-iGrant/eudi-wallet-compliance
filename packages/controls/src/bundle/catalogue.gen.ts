@@ -1648,6 +1648,443 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
     ]
   },
   {
+    "id": "EAA-4.2.6.2-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.6.2",
+      "page": 19
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "An EAA may include the EAA subject identifier, a pseudonym, or neither",
+    "spec_text": "An EAA may include the EAA subject identifier, or the pseudonym of the EAA subject, or none of them.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.6.2-02",
+      "EAA-4.2.6.3-01",
+      "PuB-EAA-4.2.6.8-01"
+    ]
+  },
+  {
+    "id": "EAA-4.2.6.2-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.6.2",
+      "page": 19
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "EAA subject identifier incorporation, value, and placement is profile-specific",
+    "spec_text": "The incorporation, value, and placement of the EAA subject identifier shall depend on the specific EAA implementation.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.6.2-01"
+    ]
+  },
+  {
+    "id": "EAA-4.2.6.3-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.6.3",
+      "page": 19
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "EAA subject pseudonym presence must be clearly indicated",
+    "spec_text": "The presence of the EAA subject pseudonym instead of the EAA subject identifier shall be clearly indicated.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.6.2-01",
+      "EAA-4.2.6.3-02",
+      "EAA-4.2.6.6-02"
+    ]
+  },
+  {
+    "id": "EAA-4.2.6.3-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.6.3",
+      "page": 19
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "EAA subject pseudonym incorporation mechanism is profile-specific",
+    "spec_text": "The mechanism used for incorporating the EAA subject pseudonym within the EAA, shall depend on the specific EAA implementation.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.6.3-01"
+    ]
+  },
+  {
+    "id": "EAA-4.2.6.4-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.6.4",
+      "page": 19
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "EAA may bind each attribute to an attribute-subject identifier or pseudonym",
+    "spec_text": "The EAA may bind each attribute either to the identifier or to the pseudonym of the entity (attribute subject) that this attribute refers to.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.6.4-02",
+      "EAA-4.2.6.5-01",
+      "EAA-5.3-04"
+    ]
+  },
+  {
+    "id": "EAA-4.2.6.4-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.6.4",
+      "page": 19
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Attribute-subject identifier incorporation, value, and placement is profile-specific",
+    "spec_text": "The incorporation, value, and placement of the attribute subject identifiers shall depend on the specific EAA implementation.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.6.4-01",
+      "EAA-5.3-04"
+    ]
+  },
+  {
+    "id": "EAA-4.2.6.5-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.6.5",
+      "page": 20
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "An EAA may incorporate pseudonyms for attribute subjects",
+    "spec_text": "An EAA may incorporate pseudonym(s) for attribute subject(s).",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.6.5-02",
+      "EAA-4.2.6.5-04",
+      "EAA-5.3-05"
+    ]
+  },
+  {
+    "id": "EAA-4.2.6.5-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.6.5",
+      "page": 20
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Attribute-subject pseudonym incorporation mechanism is profile-specific",
+    "spec_text": "The mechanism used for incorporating the pseudonym(s) for attribute subject(s) within the EAA, shall depend on the specific EAA implementation.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.6.5-01"
+    ]
+  },
+  {
+    "id": "EAA-4.2.6.5-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.6.5",
+      "page": 20
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Attribute-to-pseudonym binding mechanism is profile-specific",
+    "spec_text": "The mechanism used for binding one attribute or a set of attributes to the pseudonym of the attribute subject, shall depend on the specific EAA implementation.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.6.5-01",
+      "EAA-4.2.6.5-02"
+    ]
+  },
+  {
+    "id": "EAA-4.2.6.5-04",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.6.5",
+      "page": 20
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Attribute-subject pseudonym presence must be clearly indicated",
+    "spec_text": "The presence of the pseudonym(s) for attribute subject(s) instead of identifier(s) for the attribute subject(s), shall be clearly indicated within the EAA.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.6.5-01",
+      "EAA-4.2.6.3-01"
+    ]
+  },
+  {
+    "id": "QEAA-4.2.6.7-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.6.7",
+      "page": 20
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "All attributes in a QEAA must refer to a single entity, the QEAA subject",
+    "spec_text": "All the attributes present within a QEAA shall refer to one entity: the QEAA subject.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "QEAA-5.2.5.5-01",
+      "PuB-EAA-4.2.6.8-02"
+    ]
+  },
+  {
+    "id": "PuB-EAA-4.2.6.8-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.6.8",
+      "page": 20
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "A PuB-EAA must include either the EAA subject identifier or its pseudonym",
+    "spec_text": "A PuB-EAA shall include either the EAA subject identifier or the pseudonym of the EAA subject.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.6.2-01",
+      "PuB-EAA-4.2.6.8-02"
+    ]
+  },
+  {
+    "id": "PuB-EAA-4.2.6.8-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.6.8",
+      "page": 20
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "All attributes in a PuB-EAA must refer to a single entity, the EAA subject",
+    "spec_text": "All the attributes present within PuB-EAA shall refer to one entity: the EAA subject.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "PuB-EAA-5.2.5.6-01",
+      "QEAA-4.2.6.7-02"
+    ]
+  },
+  {
     "id": "EAA-4.2.6.6-01",
     "module": "eaa-conformance",
     "spec_source": {
