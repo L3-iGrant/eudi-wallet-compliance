@@ -5,8 +5,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Link from 'next/link';
-import { Suspense, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import type { AssessmentScope, Evidence } from '@iwc/engine';
+import { getSampleByIdSync } from '@iwc/controls/sync';
 import { runAssessmentAction } from '../../../actions/run-assessment';
 
 const PROFILE_LABEL: Record<string, string> = {
@@ -104,6 +105,23 @@ function UploadInner() {
 
   const payloadValue = watch('eaaPayload') ?? '';
   const hasPayload = payloadValue.trim().length > 0;
+
+  // Pre-fill from a reference sample when ?sample=<id> is supplied. Only
+  // runs once on mount so manual edits are not stomped on subsequent
+  // re-renders.
+  const samplePrefilled = useRef(false);
+  useEffect(() => {
+    if (samplePrefilled.current) return;
+    const sampleId = params.get('sample');
+    if (!sampleId) return;
+    const sample = getSampleByIdSync(sampleId);
+    if (!sample) return;
+    setValue('eaaPayload', sample.compact_serialisation, {
+      shouldValidate: true,
+    });
+    setValue('issuerCert', sample.issuer_cert_pem, { shouldValidate: false });
+    samplePrefilled.current = true;
+  }, [params, setValue]);
 
   if (!scope) {
     return (
