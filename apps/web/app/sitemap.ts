@@ -120,7 +120,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  // Per-module pages and their facet views
+  // Modules index, then per-module pages and their facet views
+  entries.push({
+    path: '/modules/',
+    priority: 0.8,
+    changeFrequency: 'monthly',
+  });
   for (const m of modules) {
     entries.push({
       path: `/modules/${m.id}/`,
