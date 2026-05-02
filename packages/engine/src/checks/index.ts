@@ -34,6 +34,10 @@ import { check as check_5_4_1_3_02, controlId as id_5_4_1_3_02 } from './eaa-5-4
 import { check as check_5_4_1_4_01, controlId as id_5_4_1_4_01 } from './eaa-5-4-1-4-01';
 import { check as check_5_4_1_5_01, controlId as id_5_4_1_5_01 } from './eaa-5-4-1-5-01';
 import { check as check_5_4_1_5_02, controlId as id_5_4_1_5_02 } from './eaa-5-4-1-5-02';
+import { check as check_5_2_7_2_05, controlId as id_5_2_7_2_05 } from './eaa-5-2-7-2-05';
+import { check as check_5_2_7_2_06, controlId as id_5_2_7_2_06 } from './eaa-5-2-7-2-06';
+import { check as check_5_2_8_2_05, controlId as id_5_2_8_2_05 } from './eaa-5-2-8-2-05';
+import { check as check_5_2_12_02, controlId as id_5_2_12_02 } from './eaa-5-2-12-02';
 
 registerCheck(id_5_1_01, check_5_1_01);
 registerCheck(id_5_2_1_2_01, check_5_2_1_2_01);
@@ -61,6 +65,10 @@ registerCheck(id_5_4_1_3_02, check_5_4_1_3_02);
 registerCheck(id_5_4_1_4_01, check_5_4_1_4_01);
 registerCheck(id_5_4_1_5_01, check_5_4_1_5_01);
 registerCheck(id_5_4_1_5_02, check_5_4_1_5_02);
+registerCheck(id_5_2_7_2_05, check_5_2_7_2_05);
+registerCheck(id_5_2_7_2_06, check_5_2_7_2_06);
+registerCheck(id_5_2_8_2_05, check_5_2_8_2_05);
+registerCheck(id_5_2_12_02, check_5_2_12_02);
 
 /** Useful for introspection and tests. */
 export const BUILTIN_CHECK_IDS: readonly string[] = [
@@ -90,4 +98,8 @@ export const BUILTIN_CHECK_IDS: readonly string[] = [
   id_5_4_1_4_01,
   id_5_4_1_5_01,
   id_5_4_1_5_02,
+  id_5_2_7_2_05,
+  id_5_2_7_2_06,
+  id_5_2_8_2_05,
+  id_5_2_12_02,
 ];
