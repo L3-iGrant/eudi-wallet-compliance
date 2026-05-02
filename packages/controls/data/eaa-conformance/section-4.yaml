@@ -2096,6 +2096,507 @@
     - EAA-5.2.7.2-05
     - EAA-5.2.7.2-06
 
+- id: EAA-4.2.9.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.9.2
+    page: 21
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: EAA audience must identify the relying parties the EAA is intended for
+  spec_text: >-
+    The EAA audience shall identify the set of relying parties the EAA is
+    intended for.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.9.2-02
+    - EAA-4.2.9.2-03
+    - EAA-4.2.9.2-04
+
+- id: EAA-4.2.9.2-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.9.2
+    page: 21
+  requirement_level: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may incorporate the EAA audience
+  spec_text: An EAA may incorporate the EAA audience.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.9.2-01
+    - EAA-4.2.9.2-06
+
+- id: EAA-4.2.9.2-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.9.2
+    page: 22
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Audience presence restricts the EAA to the listed relying parties
+  spec_text: >-
+    Presence of the EAA audience shall mean that the EAA is intended only for
+    the relying parties identified in it.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.9.2-01
+    - EAA-4.2.9.2-04
+
+- id: EAA-4.2.9.2-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.9.2
+    page: 22
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Audience must be a sequence of party ids, group ids, or both
+  spec_text: >-
+    The value of EAA audience shall be either: 1) a sequence of relying
+    parties' identifiers (in this sequence it is not mandatory that all the
+    members in the mentioned sequence are of the same type; instead, they may
+    be of different types); or 2) a sequence of identifiers of groups of
+    relying parties (relying parties of a certain type, for instance); or 3)
+    a combination of both types of sequences mentioned in the previous
+    bullets.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.9.2-01
+    - EAA-4.2.9.2-05
+
+- id: EAA-4.2.9.2-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.9.2
+    page: 22
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Audience identifier values are profile-specific
+  spec_text: >-
+    The values of the identifiers of the relying parties or the groups of
+    relying parties shall depend on the specific EAA implementation.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.9.2-04
+
+- id: EAA-4.2.9.2-06
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.9.2
+    page: 22
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Audience incorporation and placement is profile-specific
+  spec_text: >-
+    The incorporation and placement of the EAA audience shall depend on the
+    specific EAA implementation.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.9.2-02
+
+- id: EAA-4.2.9.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.9.3
+    page: 22
+  requirement_level: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may incorporate a one-time-use signal
+  spec_text: An EAA may incorporate the signal of one-time-use within the EAA.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.9.3-02
+    - EAA-4.2.9.3-03
+    - EAA-5.2.8.2-05
+
+- id: EAA-4.2.9.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.9.3
+    page: 22
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: One-time-use signal restricts EAA to a single use, no retention
+  spec_text: >-
+    The presence of this signal shall indicate that the EAA shall be used
+    only once, and that it shall not be retained for future use.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.9.3-01
+    - EAA-4.2.9.3-03
+
+- id: EAA-4.2.9.3-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.9.3
+    page: 22
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Absence of the one-time-use signal lifts the single-use constraint
+  spec_text: >-
+    Its absence shall indicate that the aforementioned constraint shall not
+    apply to the EAA.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.9.3-01
+    - EAA-4.2.9.3-02
+
+- id: EAA-4.2.9.3-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.9.3
+    page: 22
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: One-time-use signal incorporation, value, and placement is profile-specific
+  spec_text: >-
+    The incorporation, value, and placement of this signal shall depend on
+    the specific EAA implementation.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.9.3-01
+    - EAA-5.2.8.2-05
+
+- id: EAA-4.2.10-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.2.10"
+    page: 22
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Attributes evidence must contain the proof material the issuer relied on
+  spec_text: >-
+    The attributes evidence shall contain a set of evidence from the EAA
+    subject (and the attribute subjects when required) that the EAA issuer
+    used for completing the issuance of the EAA.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.10-02
+    - EAA-4.2.10-03
+    - EAA-4.2.10-04
+
+- id: EAA-4.2.10-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.2.10"
+    page: 22
+  requirement_level: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may incorporate the attributes evidence
+  spec_text: An EAA may incorporate the attributes evidence.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.10-01
+    - EAA-4.2.10-05
+
+- id: EAA-4.2.10-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.2.10"
+    page: 22
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Attributes evidence must be a sequence of one or more evidence items
+  spec_text: >-
+    The attributes evidence shall consist in a sequence of one or more
+    evidence.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.10-01
+    - EAA-4.2.10-04
+
+- id: EAA-4.2.10-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.2.10"
+    page: 22
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Each evidence item must carry a type URI, verifier id, data, and optional id
+  spec_text: >-
+    Each evidence: shall include an identifier of its type, which shall be a
+    URI Reference; shall include an identifier of the entity that verified
+    this evidence; shall include a collection of data items that provide
+    details that are particular to each type of evidence; and may include an
+    identifier which allows to externally make reference to this evidence.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.10-03
+
+- id: EAA-4.2.10-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.2.10"
+    page: 22
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Attributes evidence incorporation and placement is profile-specific
+  spec_text: >-
+    The incorporation and placement of attributes evidence shall depend on
+    the specific EAA implementation.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.10-01
+    - EAA-4.2.10-02
+
+- id: EAA-4.2.11.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.11.1
+    page: 23
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: EAA status service must contain enough detail to query the EAA's validity
+  spec_text: >-
+    The EAA status service shall contain details of the services (including
+    its location), that can be used to enquire about the validity status of
+    the EAA.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.11.1-02
+    - EAA-4.2.11.1-04
+    - EAA-4.2.11.1-05
+    - EAA-5.2.10.1-10
+
+- id: EAA-4.2.11.1-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.11.1
+    page: 23
+  requirement_level: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: An EAA may incorporate the EAA status service
+  spec_text: An EAA may incorporate the EAA status service.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.11.1-01
+    - EAA-4.2.11.1-03
+    - QEAA-4.2.11.2-01
+    - PuB-EAA-4.2.11.3-01
+
 - id: EAA-4.2.11.1-03
   module: eaa-conformance
   spec_source:
@@ -2172,3 +2673,91 @@
   related_controls:
     - EAA-5.2.10.1-10
     - EAA-5.2.10.1-11
+
+- id: EAA-4.2.11.1-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.11.1
+    page: 23
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: Status service incorporation, value, and placement is profile-specific
+  spec_text: >-
+    The incorporation, value, and placement of the EAA status service shall
+    depend on the specific EAA implementation.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.11.1-01
+    - EAA-4.2.11.1-02
+
+- id: QEAA-4.2.11.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.11.2
+    page: 23
+  requirement_level: shall
+  applies_to:
+    - qeaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: A non-short-lived QEAA must include the EAA status service
+  spec_text: >-
+    If a QEAA does not contain the EAA short-lived component, it shall
+    include the EAA status service.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.11.1-03
+    - QEAA-5.2.10.2-01
+    - PuB-EAA-4.2.11.3-01
+
+- id: PuB-EAA-4.2.11.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: 4.2.11.3
+    page: 23
+  requirement_level: shall
+  applies_to:
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+    - status-list
+  short_title: A non-short-lived PuB-EAA must include the EAA status service
+  spec_text: >-
+    If a PuB-EAA does not contain the EAA short-lived component, it shall
+    include the EAA status service.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.11.1-03
+    - PuB-EAA-5.2.10.3-01
+    - QEAA-4.2.11.2-01
