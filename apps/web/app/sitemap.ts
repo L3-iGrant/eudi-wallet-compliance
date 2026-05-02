@@ -11,6 +11,7 @@ import {
 } from '@iwc/controls';
 import { controlIdToSlug } from '@iwc/shared';
 import { absoluteUrl } from '@/lib/site';
+import { DOCS_PAGES } from '@/app/eudi-wallet-compliance/docs/_pages';
 
 const PROFILES = ['sd-jwt-vc', 'mdoc', 'abstract'] as const;
 const ROLES = ['issuer', 'verifier', 'wallet', 'rp', 'qtsp', 'all'] as const;
@@ -84,6 +85,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
     },
   );
+
+  // Documentation
+  entries.push({
+    path: '/eudi-wallet-compliance/docs/',
+    priority: 0.7,
+    changeFrequency: 'monthly',
+  });
+  for (const d of DOCS_PAGES) {
+    entries.push({
+      path: `/eudi-wallet-compliance/docs/${d.slug}/`,
+      priority: 0.6,
+      changeFrequency: 'monthly',
+    });
+  }
 
   // Reference samples index + each sample
   entries.push({

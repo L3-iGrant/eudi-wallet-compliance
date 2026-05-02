@@ -35,7 +35,7 @@ export async function SiteNav() {
             Reference Samples
           </Link>
 
-          <Link href="/docs/" className={linkClass}>
+          <Link href="/eudi-wallet-compliance/docs/" className={linkClass}>
             Docs
           </Link>
         </div>

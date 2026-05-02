@@ -14,6 +14,11 @@ const eslintConfig = defineConfig([
         "warn",
         { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
       ],
+      // Apostrophes and quotes inside text content do not break JSX. The
+      // rule is mostly noise on content-heavy pages (docs, blog) and the
+      // build does not require escaping for browser rendering. TypeScript
+      // already catches accidental tag fragments.
+      "react/no-unescaped-entities": "off",
     },
   },
   // Override default ignores of eslint-config-next.
