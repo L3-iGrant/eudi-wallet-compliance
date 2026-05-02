@@ -2964,7 +2964,7 @@ export const MODULES_BUNDLE: ModuleMetadata[] = [
     "status": "shipped",
     "short_description": "Conformance for Electronic Attestations of Attributes (EAA) covering SD-JWT VC and ISO/IEC mdoc profiles, ordinary EAA, QEAA, and PuB-EAA tiers.",
     "spec_sources": [
-      "ETSI TS 119 472-1",
+      "ETSI TS 119 472-1 (v1.2.1)",
       "ETSI TS 119 412-6"
     ]
   },
@@ -2984,7 +2984,7 @@ export const MODULES_BUNDLE: ModuleMetadata[] = [
     "status": "in-development",
     "short_description": "Conformance for wallet-instance attestations that authenticate the wallet to issuers and relying parties.",
     "spec_sources": [
-      "OpenID4VC HAIP 1.0",
+      "OpenID4VC HAIP (v1.0)",
       "IETF draft-ietf-oauth-attestation-based-client-auth"
     ]
   },
@@ -2994,8 +2994,8 @@ export const MODULES_BUNDLE: ModuleMetadata[] = [
     "status": "in-development",
     "short_description": "Conformance for the OpenID4VCI protocol used to issue credentials into the wallet, including credential offer, authorisation, and issuance flows.",
     "spec_sources": [
-      "OpenID4VCI 1.0",
-      "OpenID4VC HAIP 1.0"
+      "OpenID4VCI (v1.0)",
+      "OpenID4VC HAIP (v1.0)"
     ]
   },
   {
@@ -3004,8 +3004,8 @@ export const MODULES_BUNDLE: ModuleMetadata[] = [
     "status": "in-development",
     "short_description": "Conformance for the OpenID4VP protocol used by relying parties to request and verify presentations of credentials held in the wallet.",
     "spec_sources": [
-      "OpenID4VP 1.0",
-      "OpenID4VC HAIP 1.0"
+      "OpenID4VP (v1.0)",
+      "OpenID4VC HAIP (v1.0)"
     ]
   },
   {
