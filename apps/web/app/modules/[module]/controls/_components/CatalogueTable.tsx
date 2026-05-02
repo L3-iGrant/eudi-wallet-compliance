@@ -9,7 +9,6 @@ import {
 } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { requirementLevelTooltip } from '../../../../../lib/requirement-level';
 
 export interface CatalogueRow {
   id: string;
@@ -740,8 +739,7 @@ export function CatalogueTable({
                     </td>
                     <td className="whitespace-nowrap px-4 py-3 align-top">
                       <span
-                        title={requirementLevelTooltip(r.requirement_level)}
-                        className={`inline-flex cursor-help items-center rounded-full px-2 py-0.5 text-xs font-semibold uppercase tracking-wider ${MODAL_STYLES[r.requirement_level]}`}
+                        className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold uppercase tracking-wider ${MODAL_STYLES[r.requirement_level]}`}
                       >
                         {r.requirement_level}
                       </span>

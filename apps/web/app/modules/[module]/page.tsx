@@ -8,6 +8,7 @@ import {
   type ModuleMetadata,
 } from '@iwc/controls';
 import { ChevronRight } from '../../_components/ChevronRight';
+import { HoverTooltip } from '../../_components/HoverTooltip';
 import { requirementLevelTooltip } from '../../../lib/requirement-level';
 
 interface PageProps {
@@ -162,11 +163,8 @@ function StatBlock({
   hint?: string;
   tooltip?: string;
 }) {
-  return (
-    <div
-      className={`rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950 ${tooltip ? 'cursor-help' : ''}`}
-      title={tooltip}
-    >
+  const card = (
+    <div className="block w-full rounded-lg border border-zinc-200 bg-white p-4 text-left dark:border-zinc-800 dark:bg-zinc-950">
       <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
         {label}
       </p>
@@ -177,6 +175,12 @@ function StatBlock({
         <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-500">{hint}</p>
       )}
     </div>
+  );
+  if (!tooltip) return card;
+  return (
+    <HoverTooltip label={tooltip} side="bottom" className="block w-full">
+      {card}
+    </HoverTooltip>
   );
 }
 

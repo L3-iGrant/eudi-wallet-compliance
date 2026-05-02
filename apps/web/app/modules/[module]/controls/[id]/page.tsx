@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { loadAllControls, type Control } from '@iwc/controls';
 import { controlIdToSlug, slugToControlId } from '@iwc/shared';
 import { requirementLevelTooltip } from '../../../../../lib/requirement-level';
+import { HoverTooltip } from '../../../../_components/HoverTooltip';
 
 interface PageProps {
   params: Promise<{ module: string; id: string }>;
@@ -136,12 +137,13 @@ function RequirementLevelBadge({ level }: { level: Control['requirement_level'] 
     may: 'bg-zinc-200 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300',
   } as const;
   return (
-    <span
-      title={requirementLevelTooltip(level)}
-      className={`inline-flex cursor-help items-center rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider ${styles[level]}`}
-    >
-      {level}
-    </span>
+    <HoverTooltip label={requirementLevelTooltip(level)} side="bottom">
+      <span
+        className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider ${styles[level]}`}
+      >
+        {level}
+      </span>
+    </HoverTooltip>
   );
 }
 

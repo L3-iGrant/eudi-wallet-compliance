@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import type { Control } from '@iwc/controls';
 import { controlIdToSlug } from '@iwc/shared';
-import { requirementLevelTooltip } from '../../../../lib/requirement-level';
 
 const APPLIES_TO_LABEL: Record<string, string> = {
   'ordinary-eaa': 'Ordinary',
@@ -139,8 +138,7 @@ export function ControlsTable({
               </td>
               <td className="whitespace-nowrap px-4 py-3 align-top">
                 <span
-                  title={requirementLevelTooltip(c.requirement_level)}
-                  className={`inline-flex cursor-help items-center rounded-full px-2 py-0.5 text-xs font-semibold uppercase tracking-wider ${MODAL_STYLES[c.requirement_level]}`}
+                  className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold uppercase tracking-wider ${MODAL_STYLES[c.requirement_level]}`}
                 >
                   {c.requirement_level}
                 </span>
