@@ -132,7 +132,7 @@ function ReportInner() {
       };
     }, [report]);
 
-  // Hooks must run on every render in the same order — keep this useMemo
+  // Hooks must run on every render in the same order. Keep this useMemo
   // above the conditional early returns below so the hook count is stable
   // between the report-undefined and report-loaded renders.
   const filteredGroups = useMemo(() => {
@@ -229,7 +229,7 @@ function ReportInner() {
       </section>
       {unimplementedCount > 0 && (
         <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-500">
-          {unimplementedCount} of {totalInScope} controls in scope have no engine check yet; only the {totalInScope - unimplementedCount} active checks are reflected in the counts above.
+          {unimplementedCount} of {totalInScope} controls in scope aren't auto-tested yet; only the {totalInScope - unimplementedCount} auto-tested controls are reflected in the counts above.
         </p>
       )}
 

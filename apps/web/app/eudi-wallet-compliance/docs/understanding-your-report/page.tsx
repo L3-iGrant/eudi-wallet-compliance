@@ -51,20 +51,18 @@ export default function UnderstandingYourReport() {
         <li>
           <strong className="text-zinc-500">N/A</strong> - the check skipped
           because the evidence does not apply (e.g. a status check on a
-          credential without a status component) or because no engine check
-          for that control id is implemented yet. The note distinguishes
-          the two cases.
+          credential without a status component) or because the control is
+          not auto-tested yet. The note distinguishes the two cases.
         </li>
       </ul>
 
       <h2>Summary cards: what they count</h2>
       <p>
-        The four cards at the top sum verdicts across the controls the
-        engine actually evaluated. Controls without an implemented check
-        are excluded from the cards' counts and called out separately on
-        the line "X of Y controls in scope have no engine check yet". This
-        prevents the N/A card from inflating with the catalogue-coverage
-        gap.
+        The four cards at the top sum verdicts across the auto-tested
+        controls only. Controls that are not yet auto-tested are excluded
+        from the cards' counts and called out separately on the line
+        "X of Y controls in scope aren't auto-tested yet". This prevents
+        the N/A card from inflating with the catalogue-coverage gap.
       </p>
 
       <h2>Verdicts grouped by clause</h2>

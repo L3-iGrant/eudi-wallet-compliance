@@ -8149,3 +8149,58 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
     "generated_at": "2026-05-02T00:13:08.097Z"
   }
 ];
+
+/**
+ * Control ids that have an automated check registered in @iwc/engine.
+ * Sourced from the engine's BUILTIN_CHECK_IDS at bundle build time so
+ * the web app can mark each catalogue row "auto-tested" without
+ * depending on the engine at runtime.
+ */
+export const AUTO_TESTED_IDS: readonly string[] = [
+  "EAA-4.2.11.1-03",
+  "EAA-5.1-01",
+  "EAA-5.2.1.2-01",
+  "EAA-5.2.1.2-03",
+  "EAA-5.2.10.1-03",
+  "EAA-5.2.10.1-04",
+  "EAA-5.2.10.1-05",
+  "EAA-5.2.10.1-06",
+  "EAA-5.2.10.1-07",
+  "EAA-5.2.10.1-08",
+  "EAA-5.2.10.1-09",
+  "EAA-5.2.10.1-10",
+  "EAA-5.2.10.1-11",
+  "EAA-5.2.10.2-01",
+  "EAA-5.2.12-02",
+  "EAA-5.2.4.1-03",
+  "EAA-5.2.5.1-01",
+  "EAA-5.2.5.2-02",
+  "EAA-5.2.5.3-02",
+  "EAA-5.2.6-01",
+  "EAA-5.2.7.1-01",
+  "EAA-5.2.7.1-03",
+  "EAA-5.2.7.2-02",
+  "EAA-5.2.7.2-04",
+  "EAA-5.2.7.2-05",
+  "EAA-5.2.7.2-06",
+  "EAA-5.2.8.1-01",
+  "EAA-5.2.8.2-05",
+  "EAA-5.3-03",
+  "EAA-5.3-04",
+  "EAA-5.3-05",
+  "EAA-5.3-06",
+  "EAA-5.3-07",
+  "EAA-5.4.1.1-01",
+  "EAA-5.4.1.2-01",
+  "EAA-5.4.1.3-01",
+  "EAA-5.4.1.3-02",
+  "EAA-5.4.1.4-01",
+  "EAA-5.4.1.4-02",
+  "EAA-5.4.1.5-01",
+  "EAA-5.4.1.5-02",
+  "EAA-5.5-01",
+  "EAA-5.5-02",
+  "EAA-5.5-04",
+  "EAA-5.5-05",
+  "EAA-5.5-06"
+];

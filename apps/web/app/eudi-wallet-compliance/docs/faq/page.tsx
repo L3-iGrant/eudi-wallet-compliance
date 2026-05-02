@@ -15,7 +15,7 @@ export default function FAQ() {
       <h2>Is this free?</h2>
       <p>
         Yes. The Self-Assessment runner, the controls catalogue, the
-        reference samples, and every engine check are free to use and
+        reference samples, and every automated test are free to use and
         published under an open-source licence. There is no signup wall and
         no rate limit.
       </p>

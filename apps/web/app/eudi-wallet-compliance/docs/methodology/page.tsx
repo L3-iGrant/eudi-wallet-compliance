@@ -22,7 +22,7 @@ export default function Methodology() {
         underlying spec and committed as a YAML entry under{' '}
         <code>packages/controls/data/</code> in the open-source repository.
         The full schema, the field reference, and the step-by-step flow for
-        adding new controls or engine checks live in{' '}
+        adding new controls or automated tests live in{' '}
         <a
           href="https://github.com/L3-iGrant/eudi-wallet-compliance/blob/main/CONTRIBUTING.md"
           target="_blank"

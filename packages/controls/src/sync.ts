@@ -13,6 +13,7 @@ export {
   CONTROLS_BUNDLE,
   MODULES_BUNDLE,
   SAMPLES_BUNDLE,
+  AUTO_TESTED_IDS,
 } from './bundle/catalogue.gen';
 
 import {

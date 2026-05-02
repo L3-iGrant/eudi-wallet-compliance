@@ -17,7 +17,7 @@ export default function GettingStarted() {
       lastReviewed="2026-05-02"
     >
       <p>
-        The Self-Assessment runs every implemented engine check against an
+        The Self-Assessment runs every auto-tested control against an
         Electronic Attestation of Attributes (EAA) you supply, then produces a
         downloadable report. It runs entirely in your browser; nothing about
         your credential is sent to a server. The whole flow takes about five

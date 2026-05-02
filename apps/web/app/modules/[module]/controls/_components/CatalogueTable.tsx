@@ -20,6 +20,8 @@ export interface CatalogueRow {
   role: string[];
   evidence_type: string[];
   clause: string;
+  /** True when @iwc/engine has a registered automated check for this control. */
+  auto_tested: boolean;
 }
 
 interface FilterOption {
@@ -89,6 +91,8 @@ interface FiltersState {
   tiers: string[];
   levels: string[];
   text: string;
+  /** When true, hide rows that don't have an automated check yet. */
+  autoTestedOnly: boolean;
 }
 
 const EMPTY_FILTERS: FiltersState = {
@@ -97,6 +101,7 @@ const EMPTY_FILTERS: FiltersState = {
   tiers: [],
   levels: [],
   text: '',
+  autoTestedOnly: false,
 };
 
 function readFilters(params: URLSearchParams): FiltersState {
@@ -110,6 +115,7 @@ function readFilters(params: URLSearchParams): FiltersState {
     tiers: csv('tier'),
     levels: csv('level'),
     text: params.get('q') ?? '',
+    autoTestedOnly: params.get('autoTested') === '1',
   };
 }
 
@@ -120,6 +126,7 @@ function buildSearchString(filters: FiltersState): string {
   if (filters.tiers.length) params.set('tier', filters.tiers.join(','));
   if (filters.levels.length) params.set('level', filters.levels.join(','));
   if (filters.text) params.set('q', filters.text);
+  if (filters.autoTestedOnly) params.set('autoTested', '1');
   return params.toString();
 }
 
@@ -443,13 +450,22 @@ export function CatalogueTable({
         !filters.levels.includes(r.requirement_level)
       )
         return false;
+      if (filters.autoTestedOnly && !r.auto_tested) return false;
       if (text) {
         const haystack = `${r.id} ${r.short_title}`.toLowerCase();
         if (!haystack.includes(text)) return false;
       }
       return true;
     });
-  }, [rows, filters.profiles, filters.roles, filters.tiers, filters.levels, debouncedText]);
+  }, [
+    rows,
+    filters.profiles,
+    filters.roles,
+    filters.tiers,
+    filters.levels,
+    filters.autoTestedOnly,
+    debouncedText,
+  ]);
 
   const sorted = useMemo(() => {
     const out = [...filtered];
@@ -542,6 +558,13 @@ export function CatalogueTable({
         ),
     });
   }
+  if (filters.autoTestedOnly) {
+    activeChips.push({
+      key: 'autoTested',
+      label: 'Auto-tested only',
+      remove: () => update('autoTestedOnly', false),
+    });
+  }
   if (debouncedText) {
     activeChips.push({
       key: 'text',
@@ -588,6 +611,21 @@ export function CatalogueTable({
           selected={filters.levels}
           onChange={(v) => update('levels', v)}
         />
+        <label
+          className={`inline-flex cursor-pointer items-center gap-2 rounded-md border px-3 py-2 text-sm font-medium transition ${
+            filters.autoTestedOnly
+              ? 'border-emerald-300 bg-emerald-50 text-emerald-700 dark:border-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300'
+              : 'border-zinc-300 bg-white text-zinc-700 hover:border-zinc-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-600'
+          }`}
+        >
+          <input
+            type="checkbox"
+            checked={filters.autoTestedOnly}
+            onChange={(e) => update('autoTestedOnly', e.target.checked)}
+            className="h-4 w-4 rounded border-zinc-300 text-emerald-600 focus:ring-emerald-600 dark:border-zinc-700 dark:bg-zinc-900"
+          />
+          Auto-tested only
+        </label>
       </div>
 
       {/* Active filter chips with inline Clear all */}
@@ -710,6 +748,9 @@ export function CatalogueTable({
                   <th className="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                     Evidence
                   </th>
+                  <th className="whitespace-nowrap px-4 py-3 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                    Auto-tested
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-zinc-100 bg-white dark:divide-zinc-800/60 dark:bg-zinc-950">
@@ -753,6 +794,9 @@ export function CatalogueTable({
                     <td className="px-4 py-3 align-top">
                       <FacetTagList values={r.evidence_type} labels={EVIDENCE_LABEL} />
                     </td>
+                    <td className="whitespace-nowrap px-4 py-3 align-top">
+                      <AutoTestedDot autoTested={r.auto_tested} />
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -761,6 +805,37 @@ export function CatalogueTable({
         )}
       </div>
     </div>
+  );
+}
+
+/**
+ * Status dot for the "Auto-tested" column. Green when an automated
+ * check is registered for this control, grey when not yet. The
+ * native `title` attribute is the slow tooltip; rich popover behaviour
+ * lives on the column header instead.
+ */
+function AutoTestedDot({ autoTested }: { autoTested: boolean }) {
+  return (
+    <span
+      title={
+        autoTested
+          ? 'An automated test runs against your EAA for this control.'
+          : 'No automated test for this control yet; the rule is documented but not auto-checked.'
+      }
+      className="inline-flex items-center gap-2 text-xs text-zinc-600 dark:text-zinc-400"
+    >
+      <span
+        aria-hidden="true"
+        className={`inline-block h-2 w-2 rounded-full ${
+          autoTested
+            ? 'bg-emerald-500'
+            : 'bg-zinc-300 dark:bg-zinc-700'
+        }`}
+      />
+      <span className="sr-only">
+        {autoTested ? 'Auto-tested' : 'Not auto-tested yet'}
+      </span>
+    </span>
   );
 }
 

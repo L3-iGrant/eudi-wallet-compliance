@@ -70,7 +70,7 @@ export default function About() {
       <p>
         Issues and pull requests are welcome. New control entries, fixes to
         plain-English explanations, additional reference samples, and new
-        engine checks are all in scope. See the README for the contribution
+        automated tests are all in scope. See the README for the contribution
         flow.
       </p>
 

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import { loadAllControls, loadModules } from '@iwc/controls';
+import { AUTO_TESTED_IDS } from '@iwc/controls/sync';
 import { controlIdToSlug } from '@iwc/shared';
 import {
   CatalogueTable,
@@ -45,6 +46,7 @@ export default async function ControlsCataloguePage({ params }: PageProps) {
 
   const allControls = await loadAllControls();
   const moduleControls = allControls.filter((c) => c.module === moduleSlug);
+  const autoTestedSet = new Set(AUTO_TESTED_IDS);
   const rows: CatalogueRow[] = moduleControls.map((c) => ({
     id: c.id,
     slug: controlIdToSlug(c.id),
@@ -55,7 +57,9 @@ export default async function ControlsCataloguePage({ params }: PageProps) {
     role: c.role,
     evidence_type: c.evidence_type,
     clause: c.spec_source.clause,
+    auto_tested: autoTestedSet.has(c.id),
   }));
+  const autoTestedCount = rows.filter((r) => r.auto_tested).length;
 
   // Deduplicate spec sources across the module's controls. The kicker shows
   // the spec citation when there is exactly one (so it never lies about
@@ -90,6 +94,14 @@ export default async function ControlsCataloguePage({ params }: PageProps) {
           Filter by profile, role, tier, or requirement level. Search by ID or title.
           Export the filtered set as CSV, JSON, or YAML. Filter state lives in
           the URL, so a configured view is shareable.
+        </p>
+        <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-500">
+          <span
+            aria-hidden="true"
+            className="mr-1.5 inline-block h-2 w-2 rounded-full bg-emerald-500 align-middle"
+          />
+          {autoTestedCount} of {rows.length} controls are auto-tested when you
+          run an assessment.
         </p>
         {/* Single-source modules already get attributed in the kicker above.
             Multi-source modules need a compact, scannable list. Chips read

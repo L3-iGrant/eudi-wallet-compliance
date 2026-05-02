@@ -448,9 +448,9 @@ function CoverPage({
       </View>
       {unimplementedCount > 0 && (
         <Text style={styles.unimplementedNote}>
-          {unimplementedCount} of {totalInScope} controls in scope have no
-          engine check yet; only the {activeCount} active checks are reflected
-          in the counts above.
+          {unimplementedCount} of {totalInScope} controls in scope aren't
+          auto-tested yet; only the {activeCount} auto-tested controls are
+          reflected in the counts above.
         </Text>
       )}
 

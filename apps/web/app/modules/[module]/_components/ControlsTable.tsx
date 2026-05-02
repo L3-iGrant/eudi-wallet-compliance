@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import type { Control } from '@iwc/controls';
+import { AUTO_TESTED_IDS } from '@iwc/controls/sync';
 import { controlIdToSlug } from '@iwc/shared';
+
+const AUTO_TESTED_SET = new Set<string>(AUTO_TESTED_IDS);
 
 const APPLIES_TO_LABEL: Record<string, string> = {
   'ordinary-eaa': 'Ordinary',
@@ -112,6 +115,12 @@ export function ControlsTable({
             >
               Evidence
             </th>
+            <th
+              scope="col"
+              className="whitespace-nowrap px-4 py-3 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400"
+            >
+              Auto-tested
+            </th>
           </tr>
         </thead>
         <tbody className="divide-y divide-zinc-100 bg-white dark:divide-zinc-800/60 dark:bg-zinc-950">
@@ -160,6 +169,30 @@ export function ControlsTable({
                     </li>
                   ))}
                 </ul>
+              </td>
+              <td className="whitespace-nowrap px-4 py-3 align-top">
+                <span
+                  title={
+                    AUTO_TESTED_SET.has(c.id)
+                      ? 'An automated test runs against your EAA for this control.'
+                      : 'No automated test for this control yet; the rule is documented but not auto-checked.'
+                  }
+                  className="inline-flex items-center"
+                >
+                  <span
+                    aria-hidden="true"
+                    className={`inline-block h-2 w-2 rounded-full ${
+                      AUTO_TESTED_SET.has(c.id)
+                        ? 'bg-emerald-500'
+                        : 'bg-zinc-300 dark:bg-zinc-700'
+                    }`}
+                  />
+                  <span className="sr-only">
+                    {AUTO_TESTED_SET.has(c.id)
+                      ? 'Auto-tested'
+                      : 'Not auto-tested yet'}
+                  </span>
+                </span>
               </td>
             </tr>
           ))}

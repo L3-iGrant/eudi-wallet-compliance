@@ -7,6 +7,7 @@ import {
   type Control,
   type ModuleMetadata,
 } from '@iwc/controls';
+import { AUTO_TESTED_IDS } from '@iwc/controls/sync';
 import { ChevronRight } from '../../_components/ChevronRight';
 import { HoverTooltip } from '../../_components/HoverTooltip';
 import { requirementLevelTooltip } from '../../../lib/requirement-level';
@@ -406,6 +407,23 @@ export default async function ModulePage({ params }: PageProps) {
             accent="zinc"
           />
         </div>
+        {(() => {
+          const autoTestedSet = new Set(AUTO_TESTED_IDS);
+          const autoTestedCount = moduleControls.filter((c) =>
+            autoTestedSet.has(c.id),
+          ).length;
+          return (
+            <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
+              <span
+                aria-hidden="true"
+                className="mr-1.5 inline-block h-2 w-2 rounded-full bg-emerald-500 align-middle"
+              />
+              {autoTestedCount} of {counts.total} controls are auto-tested when
+              you run an assessment. The rest are documented in the catalogue
+              for reference.
+            </p>
+          );
+        })()}
 
         <div className="mt-8 space-y-7">
           <FacetRow
