@@ -10,6 +10,957 @@ import type {
 
 export const CONTROLS_BUNDLE: ControlsCatalogue = [
   {
+    "id": "EAA-4.2.1.2-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.1.2",
+      "page": 15
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "EAA type component must indicate the type of the EAA",
+    "spec_text": "This component shall indicate the type of the EAA.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.1.2-02",
+      "EAA-4.2.1.2-03",
+      "EAA-5.2.1.2-01"
+    ]
+  },
+  {
+    "id": "EAA-4.2.1.2-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.1.2",
+      "page": 15
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "An EAA must incorporate the EAA type",
+    "spec_text": "An EAA shall incorporate the EAA type.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.1.2-01",
+      "EAA-4.2.1.2-03",
+      "EAA-5.2.1.2-01"
+    ]
+  },
+  {
+    "id": "EAA-4.2.1.2-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.1.2",
+      "page": 15
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "EAA type incorporation, value, and placement is profile-specific",
+    "spec_text": "The incorporation, value, and placement of the EAA type data shall depend on the specific EAA implementation.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.1.2-01",
+      "EAA-4.2.1.2-02",
+      "EAA-5.2.1.2-01"
+    ]
+  },
+  {
+    "id": "EAA-4.2.1.3-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.1.3",
+      "page": 15
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "EAA must include context components when components have URL names",
+    "spec_text": "If the components of the EAA have URLs as names, the EAA shall include one or more context components.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.1.3-02",
+      "EAA-4.2.1.3-03"
+    ]
+  },
+  {
+    "id": "EAA-4.2.1.3-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.1.3",
+      "page": 16
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "EAA context must reference a URL-to-alias map document",
+    "spec_text": "The EAA context component shall reference a document defining a map between URLs identifying components of an EAA and short-forms aliases for these components.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.1.3-01",
+      "EAA-4.2.1.3-03"
+    ]
+  },
+  {
+    "id": "EAA-4.2.1.3-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.1.3",
+      "page": 16
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "EAA context incorporation, value, and placement is profile-specific",
+    "spec_text": "The incorporation, value, and placement of the information of the EAA context components shall depend on the specific EAA implementation.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.1.3-01",
+      "EAA-4.2.1.3-02"
+    ]
+  },
+  {
+    "id": "EAA-4.2.1.4-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.1.4",
+      "page": 16
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "type-metadata"
+    ],
+    "short_title": "EAA schema must allow verification of contents and structure",
+    "spec_text": "The EAA schema shall contain details that allow to verify that the contents and the structure of an attribute or an EAA are conformant against a specific schema.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.1.4-02",
+      "EAA-4.2.1.4-03",
+      "EAA-5.2.1.2-03"
+    ]
+  },
+  {
+    "id": "EAA-4.2.1.4-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.1.4",
+      "page": 16
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "type-metadata"
+    ],
+    "short_title": "EAA may incorporate references for retrieving the EAA schema",
+    "spec_text": "An EAA may incorporate a sequence of one or more references allowing to retrieve the EAA schema.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.1.4-01",
+      "EAA-4.2.1.4-03",
+      "EAA-5.2.1.2-03"
+    ]
+  },
+  {
+    "id": "EAA-4.2.1.4-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.1.4",
+      "page": 16
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "type-metadata"
+    ],
+    "short_title": "Each schema reference must include a type identifier and URI",
+    "spec_text": "Each reference in the aforementioned sequence: 1) Shall include a type identifier; and 2) Shall include a URI Reference which references the schema itself.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.1.4-01",
+      "EAA-4.2.1.4-02",
+      "EAA-5.2.1.2-03"
+    ]
+  },
+  {
+    "id": "EAA-4.2.2-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.2",
+      "page": 16
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "EAA category must explicitly identify the category of the EAA",
+    "spec_text": "The EAA category shall be an explicit signal identifying the category of the EAA in the context where the EAA has been issued.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.2-02",
+      "QEAA-4.2.2.2-01",
+      "PuB-EAA-4.2.2.3-01"
+    ]
+  },
+  {
+    "id": "EAA-4.2.2-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.2",
+      "page": 16
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "An EAA may include the EAA category",
+    "spec_text": "An EAA may include the EAA category.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.2-01",
+      "QEAA-4.2.2.2-01",
+      "PuB-EAA-4.2.2.3-01"
+    ]
+  },
+  {
+    "id": "QEAA-4.2.2.2-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.2.2",
+      "page": 16
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "A QEAA must signal its qualified condition via the EAA category",
+    "spec_text": "A QEAA shall include the EAA category, signalling its condition of QEAA.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.2-01",
+      "QEAA-4.2.2.2-02"
+    ]
+  },
+  {
+    "id": "QEAA-4.2.2.2-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.2.2",
+      "page": 16
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "QEAA URI category value must be urn:etsi:esi:eaa:eu:qualified",
+    "spec_text": "For QEAA realizations using URIs as identifiers of the category, the value of the EAA category shall be the following URN: \"urn:etsi:esi:eaa:eu:qualified\".",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "QEAA-4.2.2.2-01"
+    ]
+  },
+  {
+    "id": "PuB-EAA-4.2.2.3-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.2.3",
+      "page": 16
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "A PuB-EAA must explicitly signal its PuB-EAA condition",
+    "spec_text": "A PuB-EAA shall include an explicit signal of its condition of PuB-EAA.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.2-01",
+      "PuB-EAA-4.2.2.3-02"
+    ]
+  },
+  {
+    "id": "PuB-EAA-4.2.2.3-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.2.3",
+      "page": 16
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "PuB-EAA URI category value must be urn:etsi:esi:eaa:eu:pub",
+    "spec_text": "For PuB-EAA realizations using URIs as identifiers of the category, this signal shall be the following URN: \"urn:etsi:esi:eaa:eu:pub\".",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "PuB-EAA-4.2.2.3-01"
+    ]
+  },
+  {
+    "id": "EAA-4.2.3-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.3",
+      "page": 16
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "EAA identifier must unambiguously identify the EAA itself",
+    "spec_text": "The EAA identifier shall contain a value that allows to unambiguously identify the EAA itself.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.3-02",
+      "EAA-4.2.3-03"
+    ]
+  },
+  {
+    "id": "EAA-4.2.3-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.3",
+      "page": 16
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "An EAA may incorporate the EAA identifier",
+    "spec_text": "An EAA may incorporate the EAA identifier.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.3-01",
+      "EAA-4.2.3-03"
+    ]
+  },
+  {
+    "id": "EAA-4.2.3-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.3",
+      "page": 17
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "EAA identifier incorporation, value, and placement is profile-specific",
+    "spec_text": "The incorporation, value, and placement of the EAA identifier shall depend on the specific EAA implementation.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.3-01",
+      "EAA-4.2.3-02"
+    ]
+  },
+  {
+    "id": "EAA-4.2.4.1-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.1",
+      "page": 17
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "issuer-cert"
+    ],
+    "short_title": "EAA issuer identifier must unambiguously identify the issuing TSP",
+    "spec_text": "The EAA issuer identifier shall have a value that unambiguously identifies the EAA Trust Service Provider which issues the EAA.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.4.1-02",
+      "EAA-4.2.4.1-03",
+      "EAA-5.2.4.1-01"
+    ]
+  },
+  {
+    "id": "EAA-4.2.4.1-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.1",
+      "page": 17
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "An EAA may incorporate the EAA issuer identifier",
+    "spec_text": "An EAA may incorporate the EAA issuer identifier.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.4.1-01",
+      "EAA-4.2.4.1-03",
+      "EAA-5.2.4.1-01"
+    ]
+  },
+  {
+    "id": "EAA-4.2.4.1-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.1",
+      "page": 17
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Issuer identifier incorporation, value, and placement is profile-specific",
+    "spec_text": "The incorporation, value, and placement of the EAA issuer identifier shall depend on the specific EAA implementation.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.4.1-01",
+      "EAA-4.2.4.1-02",
+      "EAA-5.2.4.1-01"
+    ]
+  },
+  {
+    "id": "EAA-4.2.4.1-04",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.1",
+      "page": 17
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "EAA may include an identifier of the issuer's EU Member State",
+    "spec_text": "The EAA may include an identifier of the EU Member State, in which the EAA issuer is registered.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.4.1-05"
+    ]
+  },
+  {
+    "id": "EAA-4.2.4.1-05",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.1",
+      "page": 17
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Member State identifier must be the ISO 3166-1 alpha-2 country code",
+    "spec_text": "The value of the identifier of an EU Member State shall be the Alpha 2-character country code as specified in ISO 3166-1 [15] corresponding to this EU Member State.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.4.1-04"
+    ]
+  },
+  {
+    "id": "EAA-4.2.4.1-06",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.1",
+      "page": 17
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Legal-person issuer EAA may include a registration identifier",
+    "spec_text": "If the issuer of the EAA is a legal person, the EAA may include a registration identifier as stated in the official records, where such a registration identifier exists.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.4.1-07",
+      "EAA-4.2.4.1-08"
+    ]
+  },
+  {
+    "id": "EAA-4.2.4.1-07",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.1",
+      "page": 17
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Legal-person registration identifier may follow ETSI EN 319 412-1 clause 5.1.4",
+    "spec_text": "If the issuer of the EAA is a legal person, the registration identifier may be built according to the rules defined in clause 5.1.4 of ETSI EN 319 412-1 [16] to build the value of the organizationIdentifier attribute in the subject field of an X.509 certificate.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.4.1-06"
+    ]
+  },
+  {
+    "id": "EAA-4.2.4.1-08",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.1",
+      "page": 17
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Legal-person issuer EAA may include the legal-person name",
+    "spec_text": "If the issuer of the EAA is a legal person, the EAA may include the name of this legal person.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.4.1-06"
+    ]
+  },
+  {
+    "id": "EAA-4.2.4.1-09",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.1",
+      "page": 17
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "National VAT id takes precedence over other national identifiers",
+    "spec_text": "If both a national Value Added Tax (VAT) identification number and one (or more) other national identification number exist, the national value added tax identification number shall be used to identify the EAA issuer.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.4.1-06"
+    ]
+  },
+  {
+    "id": "EAA-4.2.4.1-10",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.1",
+      "page": 17
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Natural-person issuer EAA may include the natural-person name",
+    "spec_text": "If the issuer of the EAA is a natural person, the EAA may include the name of this natural person.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.4.1-08"
+    ]
+  },
+  {
     "id": "EAA-4.2.6.6-01",
     "module": "eaa-conformance",
     "spec_source": {

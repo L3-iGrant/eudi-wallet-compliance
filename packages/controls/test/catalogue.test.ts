@@ -23,6 +23,14 @@ describe('canonical controls catalogue', () => {
     // Drafts use the EAA-4.* clause prefix; if any 4.* control with a clause
     // outside the four cross-cutting picks is loaded, drafts leaked through.
     const allowedSection4Clauses = new Set([
+      '4.2.1.2',
+      '4.2.1.3',
+      '4.2.1.4',
+      '4.2.2',
+      '4.2.2.2',
+      '4.2.2.3',
+      '4.2.3',
+      '4.2.4.1',
       '4.2.6.6',
       '4.2.11.1',
     ]);
