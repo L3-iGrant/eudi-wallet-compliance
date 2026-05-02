@@ -123,6 +123,38 @@ function UploadInner() {
     samplePrefilled.current = true;
   }, [params, setValue]);
 
+  // Pre-fill from a previous assessment when ?fromReport=<id> is supplied.
+  // The evidence is read from sessionStorage where the upload page wrote
+  // it on the previous run; missing entries (different tab / browser
+  // closed) leave the form empty and the user pastes manually.
+  const fromReportPrefilled = useRef(false);
+  useEffect(() => {
+    if (fromReportPrefilled.current) return;
+    const reportId = params.get('fromReport');
+    if (!reportId) return;
+    try {
+      const saved = sessionStorage.getItem(`iwc:evidence:${reportId}`);
+      if (!saved) return;
+      const data = JSON.parse(saved) as {
+        eaaPayload?: string;
+        issuerCert?: string;
+        statusListUrl?: string;
+        typeMetadata?: string;
+      };
+      if (data.eaaPayload)
+        setValue('eaaPayload', data.eaaPayload, { shouldValidate: true });
+      if (data.issuerCert)
+        setValue('issuerCert', data.issuerCert, { shouldValidate: false });
+      if (data.statusListUrl)
+        setValue('statusListUrl', data.statusListUrl, { shouldValidate: false });
+      if (data.typeMetadata)
+        setValue('typeMetadata', data.typeMetadata, { shouldValidate: false });
+      fromReportPrefilled.current = true;
+    } catch {
+      // sessionStorage unavailable or malformed JSON; leave form empty.
+    }
+  }, [params, setValue]);
+
   if (!scope) {
     return (
       <article className="mx-auto max-w-3xl px-6 py-16">
@@ -153,6 +185,26 @@ function UploadInner() {
     };
     try {
       const { reportId } = await runAssessmentAction(scope, evidence);
+      // Persist the submitted evidence to sessionStorage keyed by report
+      // id. The Re-test link on each verdict on the report page reads
+      // this back through ?fromReport=<id> so the user can iterate on
+      // the same EAA without pasting it again. sessionStorage stays
+      // local to the browser tab and clears on close, matching the
+      // same privacy posture as the report itself.
+      try {
+        sessionStorage.setItem(
+          `iwc:evidence:${reportId}`,
+          JSON.stringify({
+            eaaPayload: data.eaaPayload,
+            issuerCert: data.issuerCert ?? '',
+            statusListUrl: data.statusListUrl ?? '',
+            typeMetadata: data.typeMetadata ?? '',
+          }),
+        );
+      } catch {
+        // Storage may be unavailable or quota-exceeded; the report
+        // still runs, the re-test link will just land on an empty form.
+      }
       const reportParams = new URLSearchParams({ id: reportId });
       // Forward an optional ?focus=<control_id> through to the report so
       // the user lands on a single-control filter when they came here

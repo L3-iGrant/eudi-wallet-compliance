@@ -39,6 +39,36 @@ function compareClause(a: string, b: string): number {
   return a1 !== b1 ? a1 - b1 : a2 - b2;
 }
 
+/**
+ * Build the "Re-test" link for a single verdict on the report. Carries
+ * the report's scope so the upload page lands ready to run, and the
+ * fromReport / focus params so the EAA is pre-filled and the new run
+ * lands focused on the same control.
+ *
+ * Profile and role can be multi-valued in the catalogue's scope; the
+ * upload page accepts a single value per dropdown, so we pick the
+ * first concrete one. The tier field is already a single value in
+ * engine form ("ordinary" / "qeaa" / "pub-eaa") so it passes through.
+ */
+function buildRetestLink(
+  report: AssessmentResult,
+  controlId: string,
+): string {
+  const concreteProfile = report.scope.profile.find(
+    (p) => p === 'sd-jwt-vc' || p === 'mdoc',
+  );
+  const concreteRole = report.scope.role.find((r) => r !== 'all');
+  const params = new URLSearchParams({
+    module: report.scope.module,
+    role: concreteRole ?? 'issuer',
+    profile: concreteProfile ?? 'sd-jwt-vc',
+    tier: report.scope.tier,
+    focus: controlId,
+    fromReport: report.reportId,
+  });
+  return `/eudi-wallet-compliance/self-assessment/upload/?${params.toString()}`;
+}
+
 function groupByClause(verdicts: Verdict[]): VerdictGroup[] {
   const groups = new Map<string, Verdict[]>();
   for (const v of verdicts) {
@@ -376,8 +406,17 @@ function ReportInner() {
                       >
                         {v.status}
                       </span>
-                      <span className="col-span-8 text-zinc-700 dark:text-zinc-300">
+                      <span className="col-span-7 text-zinc-700 dark:text-zinc-300">
                         {v.notes}
+                      </span>
+                      <span className="col-span-1 text-right">
+                        <Link
+                          href={buildRetestLink(report, v.controlId)}
+                          title="Re-test this control with the same EAA pre-filled"
+                          className="text-xs font-medium text-blue-700 underline-offset-4 hover:underline dark:text-blue-400"
+                        >
+                          Re-test
+                        </Link>
                       </span>
                     </li>
                   );
