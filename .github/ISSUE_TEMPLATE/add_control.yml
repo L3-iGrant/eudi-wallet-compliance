@@ -1,0 +1,61 @@
+name: Add a missing control
+description: A normative requirement from a published spec is not yet in the catalogue.
+title: "[Add] "
+labels: ["catalogue", "addition"]
+body:
+  - type: input
+    id: spec_document
+    attributes:
+      label: Spec document
+      placeholder: e.g. ETSI TS 119 472-1
+    validations:
+      required: true
+
+  - type: input
+    id: spec_version
+    attributes:
+      label: Spec version
+      placeholder: e.g. v1.2.1
+    validations:
+      required: true
+
+  - type: input
+    id: spec_clause
+    attributes:
+      label: Clause
+      placeholder: e.g. 5.2.10.1
+    validations:
+      required: true
+
+  - type: dropdown
+    id: modal_verb
+    attributes:
+      label: Modal verb
+      options:
+        - shall
+        - should
+        - may
+    validations:
+      required: true
+
+  - type: textarea
+    id: spec_text
+    attributes:
+      label: Spec text (verbatim)
+      description: Reproduce the rule as published, without paraphrasing.
+    validations:
+      required: true
+
+  - type: textarea
+    id: applies_to
+    attributes:
+      label: Applies to
+      description: Which tier(s) does this rule bind? Any of ordinary-eaa / qeaa / pub-eaa / all.
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional context
+      description: Optional. Suggested control id, related controls, anything else useful for the reviewer.

@@ -1,0 +1,53 @@
+name: Engine bug or wrong verdict
+description: The engine returned a verdict that disagrees with the spec, or fails to evaluate evidence it should accept.
+title: "[Engine] "
+labels: ["engine", "bug"]
+body:
+  - type: input
+    id: control_id
+    attributes:
+      label: Control id
+      placeholder: e.g. EAA-5.2.10.1-04
+    validations:
+      required: true
+
+  - type: dropdown
+    id: actual_verdict
+    attributes:
+      label: Verdict the engine returned
+      options:
+        - pass
+        - fail
+        - warn
+        - na
+    validations:
+      required: true
+
+  - type: dropdown
+    id: expected_verdict
+    attributes:
+      label: Verdict you expected
+      options:
+        - pass
+        - fail
+        - warn
+        - na
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence used
+      description: Paste the EAA payload (compact form), and any other inputs you supplied. Redact subject claims if they contain PII.
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Reasoning
+      description: Why do you think the engine is wrong? Cite the spec clause if relevant.
+    validations:
+      required: true

@@ -1,0 +1,44 @@
+name: Catalogue accuracy issue
+description: A control's text, modal verb, profile, role, applies-to, or other field is wrong relative to the spec.
+title: "[Catalogue] "
+labels: ["catalogue", "accuracy"]
+body:
+  - type: input
+    id: control_id
+    attributes:
+      label: Control id
+      description: The canonical id of the control with the issue.
+      placeholder: e.g. EAA-5.2.10.1-04
+    validations:
+      required: true
+
+  - type: input
+    id: spec_clause
+    attributes:
+      label: Spec clause
+      description: The clause in the source specification that the control should match.
+      placeholder: e.g. ETSI TS 119 472-1 v1.2.1, clause 5.2.10.1
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: What the catalogue currently says
+      description: Paste the relevant field(s) from the YAML entry, or quote what is on the public catalogue page.
+    validations:
+      required: true
+
+  - type: textarea
+    id: should_say
+    attributes:
+      label: What it should say
+      description: Quote the spec verbatim where possible. If the issue is a missing or wrong field (e.g. wrong modal verb), state the correct value.
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional context
+      description: Optional. Notes for the reviewer, related controls, links to working-group discussions, etc.

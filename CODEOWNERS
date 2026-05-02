@@ -1,0 +1,33 @@
+# CODEOWNERS for eudi-wallet-compliance.
+#
+# GitHub uses this file to auto-request review from the relevant
+# maintainers when a PR touches a path. The right side is the GitHub
+# team or user. Update the handles below to your actual maintainers
+# team; the placeholder `@L3-iGrant/maintainers` assumes a team of
+# that name in the L3-iGrant org.
+#
+# Branch protection on main should additionally require at least one
+# CODEOWNERS approval before merge.
+
+# Catch-all default
+*                                       @L3-iGrant/maintainers
+
+# Controls catalogue (highest scrutiny: spec accuracy)
+/packages/controls/                     @L3-iGrant/maintainers
+/packages/controls/data/                @L3-iGrant/maintainers
+/packages/controls/src/schema.ts        @L3-iGrant/maintainers
+
+# Engine (correctness of conformance verdicts)
+/packages/engine/                       @L3-iGrant/maintainers
+
+# Reference samples generator
+/tools/generate-samples/                @L3-iGrant/maintainers
+
+# CI and release workflow
+/.github/                               @L3-iGrant/maintainers
+/.github/workflows/                     @L3-iGrant/maintainers
+
+# Governance docs
+/CONTRIBUTING.md                        @L3-iGrant/maintainers
+/CODEOWNERS                             @L3-iGrant/maintainers
+/README.md                              @L3-iGrant/maintainers
