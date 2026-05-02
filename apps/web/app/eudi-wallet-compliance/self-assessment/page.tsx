@@ -67,9 +67,9 @@ export default function ScopePicker() {
 
       <form onSubmit={handleSubmit(onSubmit)} className="mt-10 space-y-8">
         <Fieldset legend="Module">
-          <select
+          <SelectField
             {...register('module')}
-            className="w-full rounded-md border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 shadow-sm focus:border-blue-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-600 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:[color-scheme:dark]"
+            ariaLabel="Module"
           >
             <option value="eaa-conformance">EAA Conformance · Live</option>
             {otherModules.map((m) => (
@@ -77,7 +77,7 @@ export default function ScopePicker() {
                 {m.name} · {STATUS_LABEL[m.status] ?? 'Planned'}
               </option>
             ))}
-          </select>
+          </SelectField>
         </Fieldset>
 
         <Fieldset legend="Role" error={errors.role?.message}>
@@ -107,14 +107,11 @@ export default function ScopePicker() {
         </Fieldset>
 
         <Fieldset legend="Tier">
-          <select
-            {...register('tier')}
-            className="w-full rounded-md border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 shadow-sm focus:border-blue-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-600 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:[color-scheme:dark]"
-          >
+          <SelectField {...register('tier')} ariaLabel="Tier">
             <option value="ordinary">Ordinary EAA</option>
             <option value="qeaa">QEAA</option>
             <option value="pub-eaa">PuB-EAA</option>
-          </select>
+          </SelectField>
         </Fieldset>
 
         <div className="flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800">
@@ -167,4 +164,40 @@ const CheckboxRow = ({
     <input type="checkbox" className="h-4 w-4" {...props} />
     <span className="text-zinc-950 dark:text-white">{label}</span>
   </label>
+);
+
+interface SelectFieldProps
+  extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'aria-label'> {
+  ariaLabel: string;
+  children: React.ReactNode;
+}
+
+/**
+ * Native <select> with our own chevron-down icon. The browser's default
+ * arrow rendering varies wildly across platforms; using
+ * appearance-none + an explicit icon keeps the field consistent with
+ * the rest of the form's bordered inputs.
+ */
+const SelectField = ({ ariaLabel, children, className, ...props }: SelectFieldProps) => (
+  <div className="relative">
+    <select
+      aria-label={ariaLabel}
+      {...props}
+      className={`block w-full appearance-none rounded-md border border-zinc-300 bg-white py-2.5 pl-3 pr-10 text-sm text-zinc-900 shadow-sm focus:border-blue-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-600 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:[color-scheme:dark] ${className ?? ''}`}
+    >
+      {children}
+    </select>
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500 dark:text-zinc-400"
+    >
+      <path
+        fillRule="evenodd"
+        d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 011.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z"
+        clipRule="evenodd"
+      />
+    </svg>
+  </div>
 );
