@@ -52,6 +52,9 @@ describe('canonical controls catalogue', () => {
       '4.2.11.1',
       '4.2.11.2',
       '4.2.11.3',
+      '4.2.12',
+      '4.2.13',
+      '4.3',
     ]);
     const stray = controls.filter(
       (c) =>

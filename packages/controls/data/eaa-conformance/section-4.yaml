@@ -2761,3 +2761,406 @@
     - EAA-4.2.11.1-03
     - PuB-EAA-5.2.10.3-01
     - QEAA-4.2.11.2-01
+
+- id: EAA-4.2.12-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.2.12"
+    page: 23
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: EAA renewal service must contain enough detail to request renewal
+  spec_text: >-
+    The EAA renewal service shall contain details allowing to request to
+    renew the EAA to a renewal service.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.12-02
+    - EAA-4.2.12-03
+    - EAA-4.2.12-04
+
+- id: EAA-4.2.12-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.2.12"
+    page: 23
+  requirement_level: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may incorporate the EAA renewal service data
+  spec_text: An EAA may incorporate EAA renewal service data.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.12-01
+    - EAA-4.2.12-03
+
+- id: EAA-4.2.12-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.2.12"
+    page: 23
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Renewal service data must include a URI and may include a type identifier
+  spec_text: >-
+    The attestation renewal service data: 1) Shall include a URI to the
+    service. 2) May also include an identifier of the type of the renewal
+    service itself.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.12-01
+    - EAA-4.2.11.1-04
+
+- id: EAA-4.2.12-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.2.12"
+    page: 23
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Renewal service incorporation and placement is profile-specific
+  spec_text: >-
+    The incorporation and placement of the EAA renewal service shall depend
+    on the specific EAA implementation.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.12-01
+    - EAA-4.2.12-02
+
+- id: EAA-4.2.13-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.2.13"
+    page: 23
+  requirement_level: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: An EAA may contain the EAA short-lived component
+  spec_text: An EAA may contain the EAA short-lived component.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.13-02
+    - EAA-4.2.11.1-03
+    - EAA-5.2.12-01
+    - EAA-5.2.12-02
+
+- id: EAA-4.2.13-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.2.13"
+    page: 24
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Short-lived presence excuses revocation-status checks
+  spec_text: >-
+    The presence of the EAA short-lived component shall indicate that the
+    validity period of the EAA is so short that it shall not be necessary to
+    check its revocation status.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.13-01
+    - EAA-4.2.11.1-03
+    - EAA-5.2.12-01
+    - QEAA-4.2.11.2-01
+    - PuB-EAA-4.2.11.3-01
+
+- id: EAA-4.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.3"
+    page: 24
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Each attribute must have a unique attribute identifier
+  spec_text: >-
+    Each attribute within an EAA shall have an attribute identifier, which
+    uniquely and unambiguously identifies the attribute itself within the
+    environment where the EAA is used.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.3-02
+    - EAA-4.3-04
+    - EAA-4.3-08
+
+- id: EAA-4.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.3"
+    page: 24
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Each attribute must have a value with attribute-specific semantics
+  spec_text: >-
+    Each attribute within an EAA shall have a value, whose semantics and
+    inner structure shall depend on the specific Attribute.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.3-01
+
+- id: EAA-4.3-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.3"
+    page: 24
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Each attribute must refer to one attribute subject
+  spec_text: Each attribute within an EAA shall refer to one attribute subject.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.2.6.4-01
+    - EAA-5.3-04
+
+- id: EAA-4.3-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.3"
+    page: 24
+  requirement_level: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Each attribute may have a component indicating the identifier format
+  spec_text: >-
+    Each attribute within an EAA may have a component indicating the format
+    used by the attribute identifier.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.3-01
+
+- id: EAA-4.3-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.3"
+    page: 24
+  requirement_level: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Each attribute may have a component identifying its type
+  spec_text: Each attribute within an EAA may have a component identifying its type.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.3-04
+
+- id: EAA-4.3-06
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.3"
+    page: 24
+  requirement_level: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Each attribute may have a friendly-identifier component
+  spec_text: >-
+    Each attribute within an EAA may have a component where a friendly
+    identifier of the attribute is available.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.3-01
+
+- id: EAA-4.3-07
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.3"
+    page: 24
+  requirement_level: may
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Each attribute may have a component for individual external referencing
+  spec_text: >-
+    Each attribute within an EAA may have a component that allows to
+    individually reference the attribute.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.3-01
+
+- id: EAA-4.3-08
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "4.3"
+    page: 24
+  requirement_level: shall
+  applies_to:
+    - ordinary-eaa
+    - qeaa
+    - pub-eaa
+  profile:
+    - abstract
+  role:
+    - issuer
+    - verifier
+  evidence_type:
+    - eaa-payload
+  short_title: Attribute incorporation and placement is profile-specific
+  spec_text: >-
+    The incorporation and placement of the attributes shall depend on the
+    specific EAA implementation.
+  plain_english: TODO
+  common_mistakes: []
+  related_controls:
+    - EAA-4.3-01
+    - EAA-4.3-02
