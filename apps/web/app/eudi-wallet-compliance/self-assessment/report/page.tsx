@@ -68,10 +68,13 @@ function ReportFallback() {
   );
 }
 
+type StatusFilter = 'pass' | 'fail' | 'warn' | 'na';
+
 function ReportInner() {
   const params = useSearchParams();
   const [report, setReport] = useState<AssessmentResult | null | undefined>(undefined);
   const [lead, setLead] = useState<Lead | null>(null);
+  const [statusFilter, setStatusFilter] = useState<StatusFilter | null>(null);
 
   const moduleByControlId = useMemo(() => {
     const m = new Map<string, string>();
@@ -157,6 +160,23 @@ function ReportInner() {
   }
 
   const totalRun = activeSummary.pass + activeSummary.fail + activeSummary.warn;
+  const totalActive = totalRun + activeSummary.na;
+  const filteredGroups = useMemo(() => {
+    if (statusFilter === null) return groupedVerdicts;
+    return groupedVerdicts
+      .map((g) => ({
+        ...g,
+        verdicts: g.verdicts.filter((v) => v.status === statusFilter),
+      }))
+      .filter((g) => g.verdicts.length > 0);
+  }, [groupedVerdicts, statusFilter]);
+  const filteredVerdictCount = filteredGroups.reduce(
+    (n, g) => n + g.verdicts.length,
+    0,
+  );
+  const toggleStatusFilter = (s: 'pass' | 'fail' | 'warn' | 'na') => {
+    setStatusFilter((curr) => (curr === s ? null : s));
+  };
 
   return (
     <article className="mx-auto max-w-4xl px-6 py-12 sm:py-16">
@@ -173,10 +193,34 @@ function ReportInner() {
       <section className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center">
         <VerdictDonut summary={activeSummary} />
         <div className="grid flex-1 grid-cols-2 gap-3 sm:grid-cols-4">
-          <Stat label="Pass" value={activeSummary.pass} accent="emerald" />
-          <Stat label="Fail" value={activeSummary.fail} accent="red" />
-          <Stat label="Warn" value={activeSummary.warn} accent="amber" />
-          <Stat label="N/A" value={activeSummary.na} accent="zinc" />
+          <Stat
+            label="Pass"
+            value={activeSummary.pass}
+            accent="emerald"
+            active={statusFilter === 'pass'}
+            onClick={() => toggleStatusFilter('pass')}
+          />
+          <Stat
+            label="Fail"
+            value={activeSummary.fail}
+            accent="red"
+            active={statusFilter === 'fail'}
+            onClick={() => toggleStatusFilter('fail')}
+          />
+          <Stat
+            label="Warn"
+            value={activeSummary.warn}
+            accent="amber"
+            active={statusFilter === 'warn'}
+            onClick={() => toggleStatusFilter('warn')}
+          />
+          <Stat
+            label="N/A"
+            value={activeSummary.na}
+            accent="zinc"
+            active={statusFilter === 'na'}
+            onClick={() => toggleStatusFilter('na')}
+          />
         </div>
       </section>
       {unimplementedCount > 0 && (
@@ -186,11 +230,31 @@ function ReportInner() {
       )}
 
       <section className="mt-10">
-        <h2 className="text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
-          Verdicts ({totalRun} active checks)
-        </h2>
+        <div className="flex items-baseline justify-between gap-3">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
+            Verdicts (
+            {statusFilter === null
+              ? `${totalActive} active checks`
+              : `${filteredVerdictCount} of ${totalActive}, filtered to ${statusFilter.toUpperCase()}`}
+            )
+          </h2>
+          {statusFilter !== null && (
+            <button
+              type="button"
+              onClick={() => setStatusFilter(null)}
+              className="text-xs font-semibold text-blue-700 underline-offset-4 hover:underline dark:text-blue-400"
+            >
+              Clear filter
+            </button>
+          )}
+        </div>
         <div className="mt-4 space-y-3">
-          {groupedVerdicts.map((g) => (
+          {filteredGroups.length === 0 && (
+            <p className="rounded-md border border-dashed border-zinc-300 bg-zinc-50 p-6 text-center text-sm text-zinc-600 dark:border-zinc-700 dark:bg-zinc-900/40 dark:text-zinc-400">
+              No verdicts with status {statusFilter?.toUpperCase()} in this report.
+            </p>
+          )}
+          {filteredGroups.map((g) => (
             <details
               key={g.clause}
               open
@@ -611,10 +675,14 @@ function Stat({
   label,
   value,
   accent,
+  active,
+  onClick,
 }: {
   label: string;
   value: number;
   accent: 'emerald' | 'red' | 'amber' | 'zinc';
+  active?: boolean;
+  onClick?: () => void;
 }) {
   const accentClass = {
     emerald: 'text-emerald-700 dark:text-emerald-400',
@@ -622,13 +690,39 @@ function Stat({
     amber: 'text-amber-700 dark:text-amber-400',
     zinc: 'text-zinc-700 dark:text-zinc-300',
   }[accent];
-  return (
-    <div className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950">
+  // Active state mirrors the accent so the highlight reads as "this filter
+  // is the live one". Inactive cards keep the neutral border to avoid noise.
+  const ringClass = active
+    ? {
+        emerald:
+          'border-emerald-300 bg-emerald-50/60 ring-2 ring-emerald-300/60 dark:border-emerald-700 dark:bg-emerald-950/40 dark:ring-emerald-700/40',
+        red: 'border-red-300 bg-red-50/60 ring-2 ring-red-300/60 dark:border-red-700 dark:bg-red-950/40 dark:ring-red-700/40',
+        amber:
+          'border-amber-300 bg-amber-50/60 ring-2 ring-amber-300/60 dark:border-amber-700 dark:bg-amber-950/40 dark:ring-amber-700/40',
+        zinc: 'border-zinc-400 bg-zinc-50 ring-2 ring-zinc-300/60 dark:border-zinc-600 dark:bg-zinc-900 dark:ring-zinc-700/40',
+      }[accent]
+    : 'border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950';
+  const className = `block w-full rounded-lg border p-4 text-left transition ${ringClass} ${onClick ? 'cursor-pointer hover:border-zinc-300 hover:shadow-sm dark:hover:border-zinc-700' : ''}`;
+  const inner = (
+    <>
       <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
         {label}
       </p>
       <p className={`mt-1 text-3xl font-semibold ${accentClass}`}>{value}</p>
-    </div>
+    </>
+  );
+  if (!onClick) {
+    return <div className={className}>{inner}</div>;
+  }
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={className}
+    >
+      {inner}
+    </button>
   );
 }
 
