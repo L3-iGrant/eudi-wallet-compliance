@@ -1,4 +1,12 @@
-import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import {
+  Document,
+  Page,
+  Text,
+  View,
+  StyleSheet,
+  Svg,
+  Circle,
+} from '@react-pdf/renderer';
 import type { AssessmentResult, Verdict } from '@iwc/engine';
 
 // Brand palette mirrors the web report.
@@ -60,10 +68,16 @@ const styles = StyleSheet.create({
     fontFamily: 'Helvetica-Bold',
     color: ZINC_950,
   },
-  summaryGrid: {
+  summarySection: {
     flexDirection: 'row',
-    gap: 12,
+    alignItems: 'center',
+    gap: 14,
     marginTop: 12,
+  },
+  summaryGrid: {
+    flex: 1,
+    flexDirection: 'row',
+    gap: 8,
   },
   summaryCard: {
     flex: 1,
@@ -300,6 +314,69 @@ export function ConformanceReportPdf({ report }: ConformanceReportPdfProps) {
   );
 }
 
+/**
+ * Donut chart for the PDF cover page. Mirrors the web report's
+ * VerdictDonut: pass / fail / warn segments only, N/A excluded.
+ *
+ * No chart library; one stroked Circle per segment with
+ * strokeDasharray sized to its fraction of the total and
+ * strokeDashoffset advancing per segment so segments sit
+ * end-to-end. Renders nothing when there are no decisive verdicts.
+ */
+function VerdictDonutPdf({
+  summary,
+}: {
+  summary: { pass: number; fail: number; warn: number; na: number };
+}) {
+  const total = summary.pass + summary.fail + summary.warn;
+  if (total === 0) return null;
+
+  const r = 35;
+  const c = 2 * Math.PI * r;
+  const segments: Array<{ count: number; colour: string }> = [
+    { count: summary.pass, colour: EMERALD },
+    { count: summary.fail, colour: RED },
+    { count: summary.warn, colour: AMBER },
+  ];
+
+  let cumulative = 0;
+  const arcs = segments
+    .filter((s) => s.count > 0)
+    .map((s) => {
+      const len = (s.count / total) * c;
+      const offset = -cumulative;
+      cumulative += len;
+      return { len, offset, colour: s.colour };
+    });
+
+  return (
+    <Svg width={90} height={90} viewBox="-50 -50 100 100">
+      <Circle
+        cx={0}
+        cy={0}
+        r={r}
+        fill="none"
+        stroke={ZINC_200}
+        strokeWidth={12}
+      />
+      {arcs.map((a, i) => (
+        <Circle
+          key={i}
+          cx={0}
+          cy={0}
+          r={r}
+          fill="none"
+          stroke={a.colour}
+          strokeWidth={12}
+          strokeDasharray={`${a.len} ${c - a.len}`}
+          strokeDashoffset={a.offset}
+          transform="rotate(-90)"
+        />
+      ))}
+    </Svg>
+  );
+}
+
 function CoverPage({
   report,
   unimplementedCount,
@@ -335,11 +412,14 @@ function CoverPage({
       />
 
       <Text style={styles.h2}>Summary</Text>
-      <View style={styles.summaryGrid}>
-        <SummaryCard label="Pass" value={report.summary.pass} colour={EMERALD} />
-        <SummaryCard label="Fail" value={report.summary.fail} colour={RED} />
-        <SummaryCard label="Warn" value={report.summary.warn} colour={AMBER} />
-        <SummaryCard label="N/A" value={report.summary.na} colour={ZINC_700} />
+      <View style={styles.summarySection}>
+        <VerdictDonutPdf summary={report.summary} />
+        <View style={styles.summaryGrid}>
+          <SummaryCard label="Pass" value={report.summary.pass} colour={EMERALD} />
+          <SummaryCard label="Fail" value={report.summary.fail} colour={RED} />
+          <SummaryCard label="Warn" value={report.summary.warn} colour={AMBER} />
+          <SummaryCard label="N/A" value={report.summary.na} colour={ZINC_700} />
+        </View>
       </View>
       {unimplementedCount > 0 && (
         <Text style={styles.unimplementedNote}>
