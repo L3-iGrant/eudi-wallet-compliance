@@ -13,7 +13,6 @@ interface BreadcrumbsProps {
 }
 
 const ROUTE_LABELS: Record<string, string> = {
-  'eudi-wallet-compliance': 'EUDI Wallet Compliance',
   'self-assessment': 'Self-Assessment',
   upload: 'Upload',
   report: 'Report',
@@ -23,8 +22,22 @@ const ROUTE_LABELS: Record<string, string> = {
   roles: 'Roles',
   tiers: 'Tiers',
   docs: 'Docs',
+  'getting-started': 'Getting started',
+  'evidence-types': 'Evidence types',
+  'understanding-your-report': 'Understanding your report',
+  methodology: 'Methodology',
+  about: 'About',
+  faq: 'FAQ',
+  privacy: 'Privacy',
   'reference-samples': 'Reference Samples',
 };
+
+/**
+ * Path segments that should not appear as their own crumb. Currently
+ * just the toolkit namespace; the navbar brand already shows where
+ * you are, so repeating it in the breadcrumb adds noise.
+ */
+const SKIP_SEGMENTS = new Set(['eudi-wallet-compliance']);
 
 const MODULE_LABELS: Record<string, string> = {
   'eaa-conformance': 'EAA Conformance',
@@ -97,6 +110,8 @@ function buildCrumbs(
     const segment = segments[i] ?? '';
     href += `/${segment}`;
     const previous = segments[i - 1];
+
+    if (SKIP_SEGMENTS.has(segment)) continue;
 
     let label = ROUTE_LABELS[segment] ?? segment;
 
