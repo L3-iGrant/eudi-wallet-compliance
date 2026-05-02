@@ -3709,6 +3709,554 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
     ]
   },
   {
+    "id": "EAA-4.4.2.2-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.4.2.2",
+      "page": 25
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "An EAA may incorporate the disclosure schema identifier",
+    "spec_text": "An EAA may incorporate the disclosure schema.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.4.2.2-02",
+      "EAA-4.4.2.2-03",
+      "EAA-5.4.1.2-01"
+    ]
+  },
+  {
+    "id": "EAA-4.4.2.2-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.4.2.2",
+      "page": 25
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Disclosure schema identifier must univocally identify the SD mechanism",
+    "spec_text": "This disclosure schema identifier: 1) Shall univocally identify the mechanism used within the EAA for making certain attested attributes disclosable. 2) May also contain an identifier or reference to the standard/specification that defines the mechanism itself.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.4.2.2-01",
+      "EAA-5.4.1.2-01"
+    ]
+  },
+  {
+    "id": "EAA-4.4.2.2-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.4.2.2",
+      "page": 25
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Disclosure schema identifier incorporation and placement is profile-specific",
+    "spec_text": "The incorporation and placement of the disclosure schema identifier shall depend on the specific EAA implementation.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.4.2.2-01",
+      "EAA-4.4.2.2-02"
+    ]
+  },
+  {
+    "id": "EAA-4.4.2.3-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.4.2.3",
+      "page": 25
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "An EAA may have one or more disclosures",
+    "spec_text": "An EAA may have one or more disclosures.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.4.2.3-02",
+      "EAA-4.4.2.4-05",
+      "EAA-5.4.1.1-01"
+    ]
+  },
+  {
+    "id": "EAA-4.4.2.3-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.4.2.3",
+      "page": 25
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Each disclosure must contain the attribute and binding data",
+    "spec_text": "Each disclosure: 1) Shall contain the disclosed attested attribute. 2) Shall contain additional data that allows to bind one disclosure with a disclosure reference. 3) May include an identifier of its version.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.4.2.3-01",
+      "EAA-4.4.2.4-01",
+      "EAA-5.4.1.3-02"
+    ]
+  },
+  {
+    "id": "EAA-4.4.2.3-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.4.2.3",
+      "page": 25
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Disclosure incorporation and placement is profile-specific",
+    "spec_text": "The incorporation and placement of the disclosures shall depend on the specific EAA implementation.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.4.2.3-01",
+      "EAA-4.4.2.3-02"
+    ]
+  },
+  {
+    "id": "EAA-4.4.2.4-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.4.2.4",
+      "page": 25
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Each disclosure reference must be unambiguously bound to one disclosure",
+    "spec_text": "Each disclosure reference shall be unambiguously bound to one disclosure.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.4.2.4-02",
+      "EAA-4.4.2.3-02",
+      "EAA-5.4.1.3-01"
+    ]
+  },
+  {
+    "id": "EAA-4.4.2.4-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.4.2.4",
+      "page": 25
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Disclosure-to-reference binding must be ascertainable by an algorithm",
+    "spec_text": "Each disclosure reference shall be built in such a way that this binding can be ascertained using a certain algorithm.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.4.2.4-01",
+      "EAA-4.4.2.5-01"
+    ]
+  },
+  {
+    "id": "EAA-4.4.2.4-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.4.2.4",
+      "page": 25
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "EAA may include validity information for a set of disclosure references",
+    "spec_text": "The EAA may include information on the validity of a set of disclosure references.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.4.2.4-01"
+    ]
+  },
+  {
+    "id": "EAA-4.4.2.4-04",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.4.2.4",
+      "page": 25
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "All disclosure references must be signed by the EAA issuer",
+    "spec_text": "All the disclosure references present within an EAA shall be signed by the EAA issuer.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.4.2.4-01"
+    ]
+  },
+  {
+    "id": "EAA-4.4.2.4-05",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.4.2.4",
+      "page": 25
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Disclosures and disclosure references must be present together or absent together",
+    "spec_text": "If an EAA has disclosures, then it shall have disclosure references. If an EAA has not disclosures, then it shall not have disclosure references.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.4.2.3-01",
+      "EAA-4.4.2.4-01",
+      "EAA-5.4.1.4-01"
+    ]
+  },
+  {
+    "id": "EAA-4.4.2.4-06",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.4.2.4",
+      "page": 25
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Disclosure-reference computation, incorporation, and placement is profile-specific",
+    "spec_text": "The computation, incorporation and placement of the disclosure references shall depend on the specific EAA implementation.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.4.2.4-01",
+      "EAA-4.4.2.4-02"
+    ]
+  },
+  {
+    "id": "EAA-4.4.2.5-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.4.2.5",
+      "page": 25
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Disclosure algorithm identifier must name the binding-verification algorithm",
+    "spec_text": "The disclosure algorithm identifier shall identify the algorithm for ascertaining the binding between a disclosure reference and its bound disclosure.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.4.2.5-02",
+      "EAA-4.4.2.5-03",
+      "EAA-5.4.1.5-01"
+    ]
+  },
+  {
+    "id": "EAA-4.4.2.5-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.4.2.5",
+      "page": 25
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "An EAA may incorporate the disclosure algorithm identifier",
+    "spec_text": "An EAA may incorporate the disclosure algorithm identifier.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.4.2.5-01",
+      "EAA-5.4.1.5-02"
+    ]
+  },
+  {
+    "id": "EAA-4.4.2.5-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.4.2.5",
+      "page": 25
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Disclosure algorithm identifier must include the algorithm id and may include parameters",
+    "spec_text": "The disclosure algorithm identifier: 1) Shall contain an identifier that univocally identifies the algorithm. 2) May also contain any parameter required for its operation.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.4.2.5-01",
+      "EAA-5.4.1.5-01"
+    ]
+  },
+  {
+    "id": "EAA-4.4.2.5-04",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.4.2.5",
+      "page": 25
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Disclosure algorithm identifier incorporation and placement is profile-specific",
+    "spec_text": "The incorporation and placement of the disclosure algorithm identifier shall depend on the specific EAA implementation.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.4.2.5-01",
+      "EAA-4.4.2.5-02"
+    ]
+  },
+  {
     "id": "EAA-5.1-01",
     "module": "eaa-conformance",
     "spec_source": {
