@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { loadAllControls, type Control } from '@iwc/controls';
 import { controlIdToSlug, slugToControlId } from '@iwc/shared';
+import { requirementLevelTooltip } from '../../../../../lib/requirement-level';
 
 interface PageProps {
   params: Promise<{ module: string; id: string }>;
@@ -136,8 +137,8 @@ function RequirementLevelBadge({ level }: { level: Control['requirement_level'] 
   } as const;
   return (
     <span
-      title="Requirement level (RFC 2119)"
-      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider ${styles[level]}`}
+      title={requirementLevelTooltip(level)}
+      className={`inline-flex cursor-help items-center rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider ${styles[level]}`}
     >
       {level}
     </span>

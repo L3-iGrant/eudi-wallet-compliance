@@ -91,20 +91,25 @@ export default async function ControlsCataloguePage({ params }: PageProps) {
           Export the filtered set as CSV, JSON, or YAML. Filter state lives in
           the URL, so a configured view is shareable.
         </p>
-        {singleSource ? (
-          <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-500">
-            All {rows.length} entries are sourced from {singleSource.document}{' '}
-            ({singleSource.version}).
-          </p>
-        ) : uniqueSources.length > 1 ? (
-          <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-500">
-            Sourced from{' '}
-            {uniqueSources
-              .map((s) => `${s.document} (${s.version})`)
-              .join(', ')}
-            .
-          </p>
-        ) : null}
+        {/* Single-source modules already get attributed in the kicker above.
+            Multi-source modules need a compact, scannable list. Chips read
+            as a glanceable inventory without making per-source claims about
+            which rows came from which document. */}
+        {uniqueSources.length > 1 && (
+          <div className="mt-4 flex flex-wrap items-center gap-2">
+            <span className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
+              Spec sources
+            </span>
+            {uniqueSources.map((s) => (
+              <span
+                key={`${s.document}-${s.version}`}
+                className="inline-flex items-center rounded-full border border-zinc-200 bg-white px-2.5 py-0.5 text-xs font-medium text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300"
+              >
+                {s.document} ({s.version})
+              </span>
+            ))}
+          </div>
+        )}
       </header>
 
       <div className="pt-8">

@@ -8,6 +8,7 @@ import {
   type ModuleMetadata,
 } from '@iwc/controls';
 import { ChevronRight } from '../../_components/ChevronRight';
+import { requirementLevelTooltip } from '../../../lib/requirement-level';
 
 interface PageProps {
   params: Promise<{ module: string }>;
@@ -154,13 +155,18 @@ function StatBlock({
   label,
   value,
   hint,
+  tooltip,
 }: {
   label: string;
   value: number | string;
   hint?: string;
+  tooltip?: string;
 }) {
   return (
-    <div className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950">
+    <div
+      className={`rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950 ${tooltip ? 'cursor-help' : ''}`}
+      title={tooltip}
+    >
       <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
         {label}
       </p>
@@ -366,16 +372,19 @@ export default async function ModulePage({ params }: PageProps) {
             label="Shall"
             value={counts.byRequirementLevel.get('shall') ?? 0}
             hint="Mandatory"
+            tooltip={requirementLevelTooltip('shall')}
           />
           <StatBlock
             label="Should"
             value={counts.byRequirementLevel.get('should') ?? 0}
             hint="Recommended"
+            tooltip={requirementLevelTooltip('should')}
           />
           <StatBlock
             label="May"
             value={counts.byRequirementLevel.get('may') ?? 0}
             hint="Optional"
+            tooltip={requirementLevelTooltip('may')}
           />
         </div>
 
