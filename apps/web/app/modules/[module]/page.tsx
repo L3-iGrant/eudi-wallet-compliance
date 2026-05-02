@@ -305,6 +305,24 @@ export default async function ModulePage({ params }: PageProps) {
           <p className="mt-3 text-base leading-relaxed text-zinc-800 dark:text-zinc-200">
             {copy?.scope ?? m.short_description}
           </p>
+          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+            <Link
+              href={`${basePath}/controls/`}
+              className="inline-flex items-center text-sm font-semibold text-blue-700 hover:underline dark:text-blue-400"
+            >
+              Open the full controls catalogue
+              <ChevronRight className="ml-1" />
+            </Link>
+            {m.id === 'eaa-conformance' && (
+              <Link
+                href={`${basePath}/reference-samples/`}
+                className="inline-flex items-center text-sm font-semibold text-blue-700 hover:underline dark:text-blue-400"
+              >
+                Browse reference samples
+                <ChevronRight className="ml-1" />
+              </Link>
+            )}
+          </div>
         </div>
         <aside className="lg:col-span-1">
           <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900/40">
@@ -383,24 +401,6 @@ export default async function ModulePage({ params }: PageProps) {
           />
         </div>
 
-        <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
-          <Link
-            href={`${basePath}/controls/`}
-            className="inline-flex items-center text-sm font-semibold text-blue-700 hover:underline dark:text-blue-400"
-          >
-            Open the full controls catalogue
-            <ChevronRight className="ml-1" />
-          </Link>
-          {m.id === 'eaa-conformance' && (
-            <Link
-              href={`${basePath}/reference-samples/`}
-              className="inline-flex items-center text-sm font-semibold text-blue-700 hover:underline dark:text-blue-400"
-            >
-              Browse reference samples
-              <ChevronRight className="ml-1" />
-            </Link>
-          )}
-        </div>
       </section>
 
       {/* What's tested vs. what we go beyond */}
