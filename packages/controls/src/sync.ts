@@ -9,10 +9,22 @@
  */
 
 export * from './schema';
-export { CONTROLS_BUNDLE, MODULES_BUNDLE } from './bundle/catalogue.gen';
+export {
+  CONTROLS_BUNDLE,
+  MODULES_BUNDLE,
+  SAMPLES_BUNDLE,
+} from './bundle/catalogue.gen';
 
-import { CONTROLS_BUNDLE, MODULES_BUNDLE } from './bundle/catalogue.gen';
-import type { ControlsCatalogue, ModuleMetadata } from './schema';
+import {
+  CONTROLS_BUNDLE,
+  MODULES_BUNDLE,
+  SAMPLES_BUNDLE,
+} from './bundle/catalogue.gen';
+import type {
+  ControlsCatalogue,
+  ModuleMetadata,
+  ReferenceSample,
+} from './schema';
 
 export function loadAllControlsSync(): ControlsCatalogue {
   return CONTROLS_BUNDLE;
@@ -20,4 +32,12 @@ export function loadAllControlsSync(): ControlsCatalogue {
 
 export function loadModulesSync(): ModuleMetadata[] {
   return MODULES_BUNDLE;
+}
+
+export function loadAllSamplesSync(): ReferenceSample[] {
+  return SAMPLES_BUNDLE;
+}
+
+export function getSampleByIdSync(sampleId: string): ReferenceSample | null {
+  return SAMPLES_BUNDLE.find((s) => s.sample_id === sampleId) ?? null;
 }

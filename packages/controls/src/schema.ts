@@ -78,6 +78,25 @@ export const ModuleMetadataSchema = z.object({
 
 export const ModulesCatalogueSchema = z.array(ModuleMetadataSchema);
 
+export const TierSchema = z.enum(['ordinary-eaa', 'qeaa', 'pub-eaa']);
+
+export const ReferenceSampleSchema = z.object({
+  sample_id: z.string().min(1),
+  title: z.string().min(5),
+  description: z.string().min(20),
+  profile: ProfileSchema,
+  tier: TierSchema,
+  compact_serialisation: z.string().min(1),
+  decoded_header: z.record(z.string(), z.unknown()),
+  decoded_payload: z.record(z.string(), z.unknown()),
+  issuer_cert_pem: z.string().regex(/-----BEGIN CERTIFICATE-----/),
+  exercises_controls: z.array(z.string()).min(1),
+  generated_by: z.string().min(1),
+  generated_at: z.string().regex(/\d{4}-\d{2}-\d{2}T/),
+});
+
+export const ReferenceSamplesCatalogueSchema = z.array(ReferenceSampleSchema);
+
 export type SpecSource = z.infer<typeof SpecSourceSchema>;
 export type Module = z.infer<typeof ModuleSchema>;
 export type ModalVerb = z.infer<typeof ModalVerbSchema>;
@@ -90,3 +109,6 @@ export type ControlsCatalogue = z.infer<typeof ControlsCatalogueSchema>;
 export type ModuleStatus = z.infer<typeof ModuleStatusSchema>;
 export type ModuleMetadata = z.infer<typeof ModuleMetadataSchema>;
 export type ModulesCatalogue = z.infer<typeof ModulesCatalogueSchema>;
+export type Tier = z.infer<typeof TierSchema>;
+export type ReferenceSample = z.infer<typeof ReferenceSampleSchema>;
+export type ReferenceSamplesCatalogue = z.infer<typeof ReferenceSamplesCatalogueSchema>;

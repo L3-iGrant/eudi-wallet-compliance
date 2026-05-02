@@ -5,8 +5,10 @@ import { parse as parseYaml } from 'yaml';
 import {
   ControlsCatalogueSchema,
   ModulesCatalogueSchema,
+  ReferenceSamplesCatalogueSchema,
   type ControlsCatalogue,
   type ModuleMetadata,
+  type ReferenceSample,
 } from './schema';
 
 // Resolves to the bundled `data/` directory next to this package's `src/`.
@@ -56,6 +58,23 @@ export async function loadModules(
   const raw = await readFile(file, 'utf8');
   const parsed = parseYaml(raw);
   return ModulesCatalogueSchema.parse(parsed);
+}
+
+export async function loadAllSamples(
+  dataDir: string = DEFAULT_DATA_DIR,
+): Promise<ReferenceSample[]> {
+  const dir = join(dataDir, 'reference-samples');
+  const entries = await readdir(dir);
+  const jsonFiles = entries
+    .filter((f) => f.endsWith('.json') && !f.startsWith('_') && !f.startsWith('.'))
+    .sort();
+  const samples = await Promise.all(
+    jsonFiles.map(async (f) => {
+      const raw = await readFile(join(dir, f), 'utf8');
+      return JSON.parse(raw) as unknown;
+    }),
+  );
+  return ReferenceSamplesCatalogueSchema.parse(samples);
 }
 
 export * from './schema';

@@ -2,27 +2,13 @@ import { describe, it, expect } from 'vitest';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { readdir, readFile } from 'node:fs/promises';
-import { z } from 'zod';
-import { loadAllControls } from '../src/index';
+import { loadAllControls, ReferenceSampleSchema } from '../src/index';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const samplesDir = join(here, '..', 'data', 'reference-samples');
 const dataDir = join(here, '..', 'data');
 
-const SampleSchema = z.object({
-  sample_id: z.string().min(1),
-  title: z.string().min(5),
-  description: z.string().min(20),
-  profile: z.enum(['sd-jwt-vc', 'mdoc', 'abstract']),
-  tier: z.enum(['ordinary-eaa', 'qeaa', 'pub-eaa']),
-  compact_serialisation: z.string().min(1),
-  decoded_header: z.record(z.string(), z.unknown()),
-  decoded_payload: z.record(z.string(), z.unknown()),
-  issuer_cert_pem: z.string().regex(/-----BEGIN CERTIFICATE-----/),
-  exercises_controls: z.array(z.string()).min(1),
-  generated_by: z.string().min(1),
-  generated_at: z.string().regex(/\d{4}-\d{2}-\d{2}T/),
-});
+const SampleSchema = ReferenceSampleSchema;
 
 async function listSampleFiles(): Promise<string[]> {
   const entries = await readdir(samplesDir);
