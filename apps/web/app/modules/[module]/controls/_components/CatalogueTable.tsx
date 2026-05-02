@@ -650,6 +650,13 @@ export function CatalogueTable({
         </div>
       </div>
 
+      {/* "Showing X of Y" only when filters are active so the default view stays clean */}
+      {activeChips.length > 0 && sorted.length > 0 && (
+        <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
+          Showing {sorted.length} of {rows.length} controls
+        </p>
+      )}
+
       {/* Table or empty state */}
       <div className="mt-4">
         {sorted.length === 0 ? (
@@ -668,7 +675,7 @@ export function CatalogueTable({
         ) : (
           <div className="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800">
             <table className="w-full min-w-[860px] divide-y divide-zinc-200 text-sm dark:divide-zinc-800">
-              <thead className="bg-zinc-50 text-left dark:bg-zinc-900/60">
+              <thead className="sticky top-0 z-10 bg-zinc-50 text-left shadow-[inset_0_-1px_0_0_rgb(228_228_231)] dark:bg-zinc-900/95 dark:shadow-[inset_0_-1px_0_0_rgb(39_39_42)] dark:backdrop-blur-sm">
                 <tr>
                   <SortHeader
                     label="ID"
@@ -804,7 +811,7 @@ function SortHeader({
       <button
         type="button"
         onClick={() => onClick(sortKey)}
-        className={`inline-flex items-center gap-1 hover:text-zinc-900 dark:hover:text-white ${
+        className={`inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider hover:text-zinc-900 dark:hover:text-white ${
           isActive ? 'text-zinc-900 dark:text-white' : ''
         }`}
       >
