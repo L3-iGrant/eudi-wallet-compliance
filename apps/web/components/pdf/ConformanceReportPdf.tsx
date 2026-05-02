@@ -100,9 +100,64 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     borderBottom: `0.5pt solid ${ZINC_200}`,
   },
+  clauseHeading: {
+    fontSize: 10,
+    fontFamily: 'Helvetica-Bold',
+    color: ZINC_950,
+    marginTop: 12,
+    marginBottom: 4,
+    paddingBottom: 4,
+    borderBottom: `0.5pt solid ${ZINC_200}`,
+  },
   colControl: { width: '28%', fontFamily: 'Courier', fontSize: 8 },
   colStatus: { width: '10%', fontFamily: 'Helvetica-Bold', fontSize: 8 },
   colNotes: { width: '62%', fontSize: 9 },
+  gapCard: {
+    border: `1pt solid ${ZINC_200}`,
+    borderRadius: 6,
+    padding: 12,
+    marginTop: 10,
+  },
+  gapHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 6,
+  },
+  gapBadgePass: {
+    fontSize: 8,
+    fontFamily: 'Helvetica-Bold',
+    color: EMERALD,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  gapBadgeFail: {
+    fontSize: 8,
+    fontFamily: 'Helvetica-Bold',
+    color: AMBER,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  gapSubhead: {
+    fontSize: 8,
+    fontFamily: 'Helvetica-Bold',
+    color: ZINC_500,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+    marginTop: 8,
+    marginBottom: 4,
+  },
+  gapList: {
+    fontSize: 8,
+    fontFamily: 'Courier',
+    color: ZINC_700,
+    lineHeight: 1.5,
+  },
+  unimplementedNote: {
+    fontSize: 9,
+    color: ZINC_500,
+    marginTop: 10,
+  },
   footer: {
     position: 'absolute',
     bottom: 24,
@@ -146,7 +201,54 @@ const ROLE_LABEL: Record<string, string> = {
   verifier: 'Verifier',
 };
 
-const VERDICTS_PER_PAGE = 28;
+const ROWS_PER_PAGE = 25;
+
+/** Top-level clause label, e.g. EAA-5.2.10.1-04 -> "5.2". */
+function clauseOf(controlId: string): string {
+  const match = controlId.match(/-(\d+\.\d+)/);
+  return match ? match[1] : 'Other';
+}
+
+function compareClause(a: string, b: string): number {
+  if (a === 'Other') return 1;
+  if (b === 'Other') return -1;
+  const [a1 = 0, a2 = 0] = a.split('.').map(Number);
+  const [b1 = 0, b2 = 0] = b.split('.').map(Number);
+  return a1 !== b1 ? a1 - b1 : a2 - b2;
+}
+
+/**
+ * Flatten verdicts into a stream of "row items" in clause order, with
+ * heading rows injected at each clause boundary. The verdicts pages
+ * then chunk this stream into pages so headings stay together with
+ * their group.
+ */
+type RowItem =
+  | { kind: 'heading'; clause: string; count: number }
+  | { kind: 'verdict'; verdict: Verdict };
+
+function flattenWithHeadings(verdicts: Verdict[]): RowItem[] {
+  const sorted = [...verdicts].sort((a, b) => {
+    const c = compareClause(clauseOf(a.controlId), clauseOf(b.controlId));
+    return c !== 0 ? c : a.controlId.localeCompare(b.controlId);
+  });
+  const counts = new Map<string, number>();
+  for (const v of sorted) {
+    const c = clauseOf(v.controlId);
+    counts.set(c, (counts.get(c) ?? 0) + 1);
+  }
+  const items: RowItem[] = [];
+  let lastClause: string | null = null;
+  for (const v of sorted) {
+    const c = clauseOf(v.controlId);
+    if (c !== lastClause) {
+      items.push({ kind: 'heading', clause: c, count: counts.get(c) ?? 0 });
+      lastClause = c;
+    }
+    items.push({ kind: 'verdict', verdict: v });
+  }
+  return items;
+}
 
 interface ConformanceReportPdfProps {
   report: AssessmentResult;
@@ -156,18 +258,24 @@ export function ConformanceReportPdf({ report }: ConformanceReportPdfProps) {
   const activeVerdicts = report.verdicts.filter(
     (v) => v.status !== 'na' || v.notes !== 'No check implemented yet',
   );
-  const pages: Verdict[][] = [];
-  for (let i = 0; i < activeVerdicts.length; i += VERDICTS_PER_PAGE) {
-    pages.push(activeVerdicts.slice(i, i + VERDICTS_PER_PAGE));
+  const unimplementedCount = report.verdicts.length - activeVerdicts.length;
+  const items = flattenWithHeadings(activeVerdicts);
+  const pages: RowItem[][] = [];
+  for (let i = 0; i < items.length; i += ROWS_PER_PAGE) {
+    pages.push(items.slice(i, i + ROWS_PER_PAGE));
   }
   const totalPages = 1 + Math.max(pages.length, 1) + 1;
 
   return (
     <Document title={`Conformance Report ${report.reportId.slice(0, 8)}`}>
-      <CoverPage report={report} totalPages={totalPages} />
+      <CoverPage
+        report={report}
+        unimplementedCount={unimplementedCount}
+        totalPages={totalPages}
+      />
       {pages.length === 0 ? (
         <VerdictsPage
-          verdicts={[]}
+          items={[]}
           report={report}
           pageNumber={2}
           totalPages={totalPages}
@@ -178,7 +286,7 @@ export function ConformanceReportPdf({ report }: ConformanceReportPdfProps) {
         pages.map((chunk, i) => (
           <VerdictsPage
             key={i}
-            verdicts={chunk}
+            items={chunk}
             report={report}
             pageNumber={i + 2}
             totalPages={totalPages}
@@ -194,11 +302,15 @@ export function ConformanceReportPdf({ report }: ConformanceReportPdfProps) {
 
 function CoverPage({
   report,
+  unimplementedCount,
   totalPages,
 }: {
   report: AssessmentResult;
+  unimplementedCount: number;
   totalPages: number;
 }) {
+  const totalInScope = report.verdicts.length;
+  const activeCount = totalInScope - unimplementedCount;
   return (
     <Page size="A4" style={styles.page}>
       <Text style={styles.brand}>iGrant.io · EUDI Wallet Compliance</Text>
@@ -229,6 +341,13 @@ function CoverPage({
         <SummaryCard label="Warn" value={report.summary.warn} colour={AMBER} />
         <SummaryCard label="N/A" value={report.summary.na} colour={ZINC_700} />
       </View>
+      {unimplementedCount > 0 && (
+        <Text style={styles.unimplementedNote}>
+          {unimplementedCount} of {totalInScope} controls in scope have no
+          engine check yet; only the {activeCount} active checks are reflected
+          in the counts above.
+        </Text>
+      )}
 
       <PageFooter pageNumber={1} totalPages={totalPages} />
     </Page>
@@ -236,20 +355,21 @@ function CoverPage({
 }
 
 function VerdictsPage({
-  verdicts,
+  items,
   report,
   pageNumber,
   totalPages,
   isFirst,
   isLast,
 }: {
-  verdicts: Verdict[];
+  items: RowItem[];
   report: AssessmentResult;
   pageNumber: number;
   totalPages: number;
   isFirst: boolean;
   isLast: boolean;
 }) {
+  const verdictCount = items.filter((i) => i.kind === 'verdict').length;
   return (
     <Page size="A4" style={styles.page}>
       <Text style={styles.brand}>iGrant.io · EUDI Wallet Compliance</Text>
@@ -259,34 +379,49 @@ function VerdictsPage({
           <Text style={styles.meta}>
             {report.verdicts.length} controls in scope ·{' '}
             {report.summary.pass + report.summary.fail + report.summary.warn} active
-            checks executed
+            checks executed, grouped by clause
           </Text>
         </>
       )}
-      <View style={styles.tableHeader}>
-        <Text style={styles.colControl}>Control</Text>
-        <Text style={styles.colStatus}>Status</Text>
-        <Text style={styles.colNotes}>Notes</Text>
-      </View>
-      {verdicts.length === 0 ? (
+      {verdictCount === 0 ? (
         <Text style={{ fontSize: 10, color: ZINC_500, marginTop: 8 }}>
           No active verdicts to report. Either no checks were registered for the
           chosen scope, or every applicable control returned N/A because the
           required evidence was not supplied.
         </Text>
       ) : (
-        verdicts.map((v) => (
-          <View key={v.controlId} style={styles.tableRow} wrap={false}>
-            <Text style={styles.colControl}>{v.controlId}</Text>
-            <Text style={[styles.colStatus, { color: STATUS_COLOUR[v.status] }]}>
-              {v.status.toUpperCase()}
-            </Text>
-            <Text style={styles.colNotes}>{v.notes}</Text>
-          </View>
-        ))
+        items.map((item, idx) => {
+          if (item.kind === 'heading') {
+            return (
+              <View key={`h-${item.clause}-${idx}`} wrap={false}>
+                <Text style={styles.clauseHeading}>
+                  Clause {item.clause}{'  '}
+                  <Text style={{ color: ZINC_500, fontFamily: 'Helvetica' }}>
+                    ({item.count} {item.count === 1 ? 'check' : 'checks'})
+                  </Text>
+                </Text>
+                <View style={styles.tableHeader}>
+                  <Text style={styles.colControl}>Control</Text>
+                  <Text style={styles.colStatus}>Status</Text>
+                  <Text style={styles.colNotes}>Notes</Text>
+                </View>
+              </View>
+            );
+          }
+          const v = item.verdict;
+          return (
+            <View key={v.controlId} style={styles.tableRow} wrap={false}>
+              <Text style={styles.colControl}>{v.controlId}</Text>
+              <Text style={[styles.colStatus, { color: STATUS_COLOUR[v.status] }]}>
+                {v.status.toUpperCase()}
+              </Text>
+              <Text style={styles.colNotes}>{v.notes}</Text>
+            </View>
+          );
+        })
       )}
       {isLast && (
-        <Text style={styles.meta}>
+        <Text style={styles.unimplementedNote}>
           {
             'Verdicts that returned N/A with the standard "No check implemented yet" note are omitted; the engine ships fewer than the catalogue total.'
           }
@@ -294,6 +429,76 @@ function VerdictsPage({
       )}
       <PageFooter pageNumber={pageNumber} totalPages={totalPages} />
     </Page>
+  );
+}
+
+interface TierGap {
+  label: string;
+  canBe: boolean;
+  missing: string[];
+  additionallyRequired: string[];
+}
+
+function buildGaps(report: AssessmentResult): TierGap[] {
+  const gaps: TierGap[] = [];
+  if (report.scope.tier === 'ordinary' || report.scope.tier === 'qeaa') {
+    if (report.scope.tier === 'ordinary') {
+      gaps.push({
+        label: TIER_LABEL.qeaa ?? 'QEAA',
+        canBe: report.gapAnalysis.canBeQeaa,
+        missing: report.gapAnalysis.missingForQeaa,
+        additionallyRequired: report.gapAnalysis.additionallyRequiredForQeaa,
+      });
+    }
+    gaps.push({
+      label: TIER_LABEL['pub-eaa'] ?? 'PuB-EAA',
+      canBe: report.gapAnalysis.canBePubEaa,
+      missing: report.gapAnalysis.missingForPubEaa,
+      additionallyRequired: report.gapAnalysis.additionallyRequiredForPubEaa,
+    });
+  }
+  return gaps;
+}
+
+function GapCardPdf({ gap }: { gap: TierGap }) {
+  return (
+    <View style={styles.gapCard} wrap={false}>
+      <View style={styles.gapHeader}>
+        <Text style={{ fontSize: 12, fontFamily: 'Helvetica-Bold', color: ZINC_950 }}>
+          {gap.label}
+        </Text>
+        <Text style={gap.canBe ? styles.gapBadgePass : styles.gapBadgeFail}>
+          {gap.canBe
+            ? 'Would pass'
+            : `${gap.missing.length} blocker${gap.missing.length === 1 ? '' : 's'}`}
+        </Text>
+      </View>
+      {gap.canBe ? (
+        <Text style={{ fontSize: 9, color: ZINC_700 }}>
+          No control fails at this tier with the supplied evidence.
+        </Text>
+      ) : (
+        <>
+          <Text style={styles.gapSubhead}>Would fail at this tier</Text>
+          <Text style={styles.gapList}>{gap.missing.join('  ·  ')}</Text>
+        </>
+      )}
+      {gap.additionallyRequired.length > 0 && (
+        <>
+          <Text style={styles.gapSubhead}>
+            Additionally required at {gap.label}
+          </Text>
+          <Text style={{ fontSize: 9, color: ZINC_700, marginBottom: 4 }}>
+            {gap.additionallyRequired.length} additional control
+            {gap.additionallyRequired.length === 1 ? '' : 's'} would need to be
+            addressed:
+          </Text>
+          <Text style={styles.gapList}>
+            {gap.additionallyRequired.join('  ·  ')}
+          </Text>
+        </>
+      )}
+    </View>
   );
 }
 
@@ -306,16 +511,45 @@ function ClosingPage({
   pageNumber: number;
   totalPages: number;
 }) {
+  const gaps = buildGaps(report);
+  const allClear =
+    gaps.length > 0 &&
+    gaps.every((g) => g.canBe && g.additionallyRequired.length === 0);
+
   return (
     <Page size="A4" style={styles.page}>
       <Text style={styles.brand}>iGrant.io · EUDI Wallet Compliance</Text>
       <Text style={styles.h1}>Gap analysis</Text>
-      <Text style={{ fontSize: 10, marginBottom: 18 }}>
-        The gap analysis surfaces tier transitions: which Ordinary EAA controls
-        a credential would still need to clear to qualify as QEAA or PuB-EAA.
-        The engine ships an empty stub today; tier-aware verdicts already run,
-        and a future release will roll those into a structured gap report here.
-      </Text>
+      {gaps.length === 0 ? (
+        <Text style={{ fontSize: 10, marginBottom: 18 }}>
+          The chosen scope is already at the highest tier (PuB-EAA), so no
+          tier transitions remain.
+        </Text>
+      ) : (
+        <>
+          <Text style={{ fontSize: 10, marginBottom: 6 }}>
+            Two signals per tier card: controls that would fail if assessed at
+            the higher tier (behaviour-aware), and controls that become
+            required at the higher tier and are not yet passing (catalogue
+            upgrade delta).
+          </Text>
+          {allClear && (
+            <Text
+              style={{
+                fontSize: 10,
+                color: EMERALD,
+                marginTop: 8,
+                marginBottom: 4,
+              }}
+            >
+              This EAA satisfies all controls required for QEAA and PuB-EAA tiers.
+            </Text>
+          )}
+          {gaps.map((g) => (
+            <GapCardPdf key={g.label} gap={g} />
+          ))}
+        </>
+      )}
 
       <Text style={styles.h2}>Methodology</Text>
       <Text style={{ fontSize: 10, marginBottom: 6 }}>
