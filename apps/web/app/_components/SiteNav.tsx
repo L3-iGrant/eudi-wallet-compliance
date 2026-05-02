@@ -31,10 +31,6 @@ export async function SiteNav() {
             Control Catalogue
           </Link>
 
-          <Link href="/modules/eaa-conformance/reference-samples/" className={linkClass}>
-            Reference Samples
-          </Link>
-
           <Link href="/eudi-wallet-compliance/docs/" className={linkClass}>
             Docs
           </Link>
