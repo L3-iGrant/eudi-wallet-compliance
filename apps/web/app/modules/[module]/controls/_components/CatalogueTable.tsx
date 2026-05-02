@@ -1,5 +1,6 @@
 'use client';
 
+import * as React from 'react';
 import {
   useCallback,
   useEffect,
@@ -9,6 +10,7 @@ import {
 } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { TableVirtuoso, type TableComponents } from 'react-virtuoso';
 
 export interface CatalogueRow {
   id: string;
@@ -126,6 +128,49 @@ function buildSearchString(filters: FiltersState): string {
 type SortKey = 'id' | 'clause' | 'requirement_level';
 type SortDir = 'asc' | 'desc';
 const LEVEL_RANK: Record<string, number> = { shall: 0, should: 1, may: 2 };
+
+// Stable table-slot components for TableVirtuoso. Defining them at module
+// scope avoids re-creating them every render, which would force virtuoso
+// to remount the whole list.
+const VirtuosoTableComponents: TableComponents<CatalogueRow> = {
+  Table: (props) => (
+    <table
+      {...props}
+      className="w-full min-w-[860px] border-separate text-sm"
+      style={{ borderSpacing: 0 }}
+    />
+  ),
+  TableHead: React.forwardRef<HTMLTableSectionElement>(function VirtuosoTableHead(
+    props,
+    ref,
+  ) {
+    return (
+      <thead
+        {...props}
+        ref={ref}
+        className="bg-zinc-50 text-left dark:bg-zinc-900/60"
+      />
+    );
+  }),
+  TableRow: ({ ...props }) => (
+    <tr
+      {...props}
+      className="border-t border-zinc-100 transition hover:bg-blue-50/40 dark:border-zinc-800/60 dark:hover:bg-blue-950/20"
+    />
+  ),
+  TableBody: React.forwardRef<HTMLTableSectionElement>(function VirtuosoTableBody(
+    props,
+    ref,
+  ) {
+    return (
+      <tbody
+        {...props}
+        ref={ref}
+        className="bg-white dark:bg-zinc-950"
+      />
+    );
+  }),
+};
 
 function compareRows(a: CatalogueRow, b: CatalogueRow, key: SortKey): number {
   if (key === 'requirement_level') {
@@ -666,9 +711,21 @@ export function CatalogueTable({
             </button>
           </div>
         ) : (
-          <div className="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800">
-            <table className="w-full min-w-[860px] divide-y divide-zinc-200 text-sm dark:divide-zinc-800">
-              <thead className="bg-zinc-50 text-left dark:bg-zinc-900/60">
+          <div className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
+            <p
+              className="border-b border-zinc-200 bg-zinc-50 px-4 py-2 text-xs text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-400"
+              aria-live="polite"
+            >
+              {sorted.length === rows.length
+                ? `${sorted.length} controls`
+                : `${sorted.length} of ${rows.length} controls`}
+            </p>
+            <TableVirtuoso
+              style={{ height: 'min(800px, calc(100vh - 320px))' }}
+              data={sorted}
+              initialItemCount={sorted.length}
+              components={VirtuosoTableComponents}
+              fixedHeaderContent={() => (
                 <tr>
                   <SortHeader
                     label="ID"
@@ -684,7 +741,7 @@ export function CatalogueTable({
                     dir={sortDir}
                     onClick={onHeaderClick}
                   />
-                  <th className="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                  <th className="bg-zinc-50 px-4 py-3 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:bg-zinc-900/60 dark:text-zinc-400">
                     Short title
                   </th>
                   <SortHeader
@@ -694,63 +751,58 @@ export function CatalogueTable({
                     dir={sortDir}
                     onClick={onHeaderClick}
                   />
-                  <th className="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                  <th className="bg-zinc-50 px-4 py-3 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:bg-zinc-900/60 dark:text-zinc-400">
                     Applies to
                   </th>
-                  <th className="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                  <th className="bg-zinc-50 px-4 py-3 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:bg-zinc-900/60 dark:text-zinc-400">
                     Profile
                   </th>
-                  <th className="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                  <th className="bg-zinc-50 px-4 py-3 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:bg-zinc-900/60 dark:text-zinc-400">
                     Evidence
                   </th>
                 </tr>
-              </thead>
-              <tbody className="divide-y divide-zinc-100 bg-white dark:divide-zinc-800/60 dark:bg-zinc-950">
-                {sorted.map((r) => (
-                  <tr
-                    key={r.id}
-                    className="transition hover:bg-blue-50/40 dark:hover:bg-blue-950/20"
-                  >
-                    <td className="whitespace-nowrap px-4 py-3 align-top">
-                      <Link
-                        href={`/modules/${moduleSlug}/controls/${r.slug}/`}
-                        className="font-mono text-xs font-semibold text-blue-700 hover:underline dark:text-blue-400"
-                      >
-                        {r.id}
-                      </Link>
-                    </td>
-                    <td className="whitespace-nowrap px-4 py-3 align-top font-mono text-xs text-zinc-700 dark:text-zinc-300">
-                      {r.clause}
-                    </td>
-                    <td className="px-4 py-3 align-top">
-                      <Link
-                        href={`/modules/${moduleSlug}/controls/${r.slug}/`}
-                        className="text-zinc-800 hover:text-blue-700 hover:underline dark:text-zinc-200 dark:hover:text-blue-300"
-                      >
-                        {r.short_title}
-                      </Link>
-                    </td>
-                    <td className="whitespace-nowrap px-4 py-3 align-top">
-                      <span
-                        title="Requirement level (RFC 2119)"
-                        className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold uppercase tracking-wider ${MODAL_STYLES[r.requirement_level]}`}
-                      >
-                        {r.requirement_level}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3 align-top">
-                      <FacetTagList values={r.applies_to} labels={APPLIES_TO_LABEL} />
-                    </td>
-                    <td className="px-4 py-3 align-top">
-                      <FacetTagList values={r.profile} labels={PROFILE_LABEL} />
-                    </td>
-                    <td className="px-4 py-3 align-top">
-                      <FacetTagList values={r.evidence_type} labels={EVIDENCE_LABEL} />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+              )}
+              itemContent={(_, r) => (
+                <>
+                  <td className="whitespace-nowrap px-4 py-3 align-top">
+                    <Link
+                      href={`/modules/${moduleSlug}/controls/${r.slug}/`}
+                      className="font-mono text-xs font-semibold text-blue-700 hover:underline dark:text-blue-400"
+                    >
+                      {r.id}
+                    </Link>
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-3 align-top font-mono text-xs text-zinc-700 dark:text-zinc-300">
+                    {r.clause}
+                  </td>
+                  <td className="px-4 py-3 align-top">
+                    <Link
+                      href={`/modules/${moduleSlug}/controls/${r.slug}/`}
+                      className="text-zinc-800 hover:text-blue-700 hover:underline dark:text-zinc-200 dark:hover:text-blue-300"
+                    >
+                      {r.short_title}
+                    </Link>
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-3 align-top">
+                    <span
+                      title="Requirement level (RFC 2119)"
+                      className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold uppercase tracking-wider ${MODAL_STYLES[r.requirement_level]}`}
+                    >
+                      {r.requirement_level}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3 align-top">
+                    <FacetTagList values={r.applies_to} labels={APPLIES_TO_LABEL} />
+                  </td>
+                  <td className="px-4 py-3 align-top">
+                    <FacetTagList values={r.profile} labels={PROFILE_LABEL} />
+                  </td>
+                  <td className="px-4 py-3 align-top">
+                    <FacetTagList values={r.evidence_type} labels={EVIDENCE_LABEL} />
+                  </td>
+                </>
+              )}
+            />
           </div>
         )}
       </div>
