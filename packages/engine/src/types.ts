@@ -40,7 +40,7 @@ export interface AssessmentSummary {
  *    which the current verdicts do not show as `pass`. Useful for
  *    "what new things must I do" framing.
  *
- *  - `canBeX`: convenience boolean — true iff `missingForX` is empty.
+ *  - `canBeX`: convenience boolean, true iff `missingForX` is empty.
  */
 export interface GapAnalysis {
   canBeQeaa: boolean;
