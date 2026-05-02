@@ -8188,6 +8188,7 @@ export const AUTO_TESTED_IDS: readonly string[] = [
   "EAA-5.2.7.2-06",
   "EAA-5.2.8.1-01",
   "EAA-5.2.8.2-05",
+  "EAA-5.3-01",
   "EAA-5.3-03",
   "EAA-5.3-04",
   "EAA-5.3-05",
@@ -8205,5 +8206,9 @@ export const AUTO_TESTED_IDS: readonly string[] = [
   "EAA-5.5-02",
   "EAA-5.5-04",
   "EAA-5.5-05",
-  "EAA-5.5-06"
+  "EAA-5.5-06",
+  "PuB-EAA-5.2.4.3-02",
+  "PuB-EAA-5.2.4.3-03",
+  "PuB-EAA-5.2.4.3-04",
+  "QEAA-5.2.5.5-01"
 ];
