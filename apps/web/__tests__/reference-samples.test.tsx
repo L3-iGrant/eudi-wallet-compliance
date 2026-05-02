@@ -1,5 +1,5 @@
 /**
- * Reference samples library — render coverage for the index and the
+ * Render coverage for the reference samples library: index grid and
  * per-sample detail page.
  */
 
