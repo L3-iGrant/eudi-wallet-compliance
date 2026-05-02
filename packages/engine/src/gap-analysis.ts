@@ -16,7 +16,7 @@ const TIER_TO_APPLIES_TO: Record<AssessmentScope['tier'], string> = {
  * `pass` (i.e. the current evidence has not already cleared them).
  *
  * Pure function over the supplied `controls` and `verdicts`. Does no
- * I/O and does not re-run any check — runAssessment's main pass
+ * I/O and does not re-run any check; runAssessment's main pass
  * handles tier-aware behaviour separately via `missingForX`.
  *
  * Controls with `applies_to: ['all']` are treated as required at every
