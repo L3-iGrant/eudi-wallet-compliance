@@ -54,14 +54,14 @@ function buildRetestLink(
   report: AssessmentResult,
   controlId: string,
 ): string {
-  const concreteProfile = report.scope.profile.find(
-    (p) => p === 'sd-jwt-vc' || p === 'mdoc',
-  );
-  const concreteRole = report.scope.role.find((r) => r !== 'all');
+  // AssessmentScope already constrains profile to sd-jwt-vc/mdoc and
+  // role to issuer/verifier (no "abstract" or "all" sentinels), so no
+  // coercion is needed here. The values come from a real assessment;
+  // pick the first.
   const params = new URLSearchParams({
     module: report.scope.module,
-    role: concreteRole ?? 'issuer',
-    profile: concreteProfile ?? 'sd-jwt-vc',
+    role: report.scope.role[0] ?? 'issuer',
+    profile: report.scope.profile[0] ?? 'sd-jwt-vc',
     tier: report.scope.tier,
     focus: controlId,
     fromReport: report.reportId,

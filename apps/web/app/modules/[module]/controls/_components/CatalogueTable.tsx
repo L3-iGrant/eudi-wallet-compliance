@@ -369,11 +369,9 @@ function FilterChip({ label, onRemove }: ChipProps) {
 export function CatalogueTable({
   rows,
   moduleSlug,
-  totalLabel,
 }: {
   rows: CatalogueRow[];
   moduleSlug: string;
-  totalLabel: string;
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -658,24 +656,18 @@ export function CatalogueTable({
         )}
       </div>
 
-      {/* Count + exports. The "Showing X of Y" count is only useful when
-          filters are narrowing the table; when sorted.length equals
-          rows.length the line repeats what the header already says
-          ("X of Y controls are auto-tested...") and what the table
-          shows visually. Hide it in that case so the row collapses to
-          just the export buttons on the right. */}
-      <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
-        {sorted.length !== rows.length ? (
-          <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Showing{' '}
-            <span className="font-semibold text-zinc-900 dark:text-zinc-100">
-              {sorted.length}
-            </span>{' '}
-            of {rows.length} {totalLabel} controls.
-          </p>
-        ) : (
-          <span aria-hidden="true" />
-        )}
+      {/* Count + exports on a single mid-aligned row. Same uppercase-
+          tracked typography on both sides so the row reads as one
+          band. Always shown so the user can read the table size at
+          a glance. mt-3 keeps it tight under the chip strip. */}
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
+        <p className="text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
+          Showing{' '}
+          <span className="font-semibold text-zinc-700 dark:text-zinc-300">
+            {sorted.length}
+          </span>{' '}
+          of {rows.length} controls
+        </p>
         <div className="flex items-center gap-2">
           <span className="text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
             Export
@@ -707,15 +699,10 @@ export function CatalogueTable({
         </div>
       </div>
 
-      {/* "Showing X of Y" only when filters are active so the default view stays clean */}
-      {activeChips.length > 0 && sorted.length > 0 && (
-        <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
-          Showing {sorted.length} of {rows.length} controls
-        </p>
-      )}
-
-      {/* Table or empty state */}
-      <div className="mt-4">
+      {/* Table or empty state. mt-2 keeps the gap to the export/count
+          row tight so the band reads as one piece with the table just
+          below. */}
+      <div className="mt-2">
         {sorted.length === 0 ? (
           <div className="rounded-xl border border-dashed border-zinc-300 bg-zinc-50 p-8 text-center dark:border-zinc-700 dark:bg-zinc-900/40">
             <p className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">
@@ -731,7 +718,21 @@ export function CatalogueTable({
           </div>
         ) : (
           <div className="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800">
-            <table className="w-full min-w-[860px] divide-y divide-zinc-200 text-sm dark:divide-zinc-800">
+            <table className="w-full min-w-[860px] table-fixed divide-y divide-zinc-200 text-sm dark:divide-zinc-800">
+              {/* Lock column widths so the layout stays put when the user
+                  picks a filter and the visible row set narrows. Without
+                  table-fixed + explicit widths, the browser re-runs
+                  auto-layout per filter result and columns shift. */}
+              <colgroup>
+                <col style={{ width: '13%' }} />
+                <col style={{ width: '8%' }} />
+                <col />
+                <col style={{ width: '8%' }} />
+                <col style={{ width: '12%' }} />
+                <col style={{ width: '11%' }} />
+                <col style={{ width: '14%' }} />
+                <col style={{ width: '11%' }} />
+              </colgroup>
               <thead className="sticky top-0 z-10 bg-zinc-50 text-left shadow-[inset_0_-1px_0_0_rgb(228_228_231)] dark:bg-zinc-900/95 dark:shadow-[inset_0_-1px_0_0_rgb(39_39_42)] dark:backdrop-blur-sm">
                 <tr>
                   <SortHeader

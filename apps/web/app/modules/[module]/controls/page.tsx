@@ -126,7 +126,7 @@ export default async function ControlsCataloguePage({ params }: PageProps) {
 
       <div className="pt-8">
         <Suspense fallback={null}>
-          <CatalogueTable rows={rows} moduleSlug={m.id} totalLabel={m.name} />
+          <CatalogueTable rows={rows} moduleSlug={m.id} />
         </Suspense>
       </div>
     </article>
