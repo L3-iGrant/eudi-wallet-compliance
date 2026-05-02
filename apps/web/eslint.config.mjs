@@ -28,6 +28,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored Pagefind index, copied in by the build script. Not our code.
+    "public/pagefind/**",
   ]),
 ]);
 

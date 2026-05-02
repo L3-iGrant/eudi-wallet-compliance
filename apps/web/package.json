@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && pnpm pagefind --site out",
+    "build": "next build && pnpm pagefind --site out && rm -rf public/pagefind && cp -R out/pagefind public/pagefind",
     "start": "serve out -l 3000",
     "lint": "eslint",
     "test": "vitest run"
