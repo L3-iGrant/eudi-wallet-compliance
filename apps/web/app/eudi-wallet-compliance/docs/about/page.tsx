@@ -21,28 +21,35 @@ export default function About() {
         >
           iGrant.io
         </a>
-        . We are a Stockholm-based team that has worked on consent, data-
-        rights, and identity infrastructure since 2019. The EUDI Wallet
-        regulation lands at the intersection of all three; this toolkit is
-        our way of making the spec stack legible to the people who have to
-        ship against it.
+        , an EU Digital Identity and European Business Wallet software
+        provider for regulated industries. We are a Stockholm-based team
+        that has worked on consent, data rights, and identity infrastructure
+        since 2019; our software is production-proven and eIDAS 2.0-ready
+        across credential workflows that span the individual EUDI Wallet and
+        the European Business Wallet.
       </p>
 
       <h2>Why we built it</h2>
       <p>
-        The reference specs for EUDI-Wallet-grade credentials are scattered
-        across ETSI, IETF, ISO, OpenID, and W3C documents. Each is technically
-        precise and individually correct, but stitching them into a single
-        view of "what does my issuer have to do" is a non-trivial reading
-        exercise that every implementer ends up repeating. The toolkit
-        condenses that reading exercise into a runnable engine and a
-        permanent, browseable catalogue that links each rule back to its
-        source clause.
+        The reference specs for EUDI Wallet and European Business Wallet
+        credentials are scattered across ETSI, IETF, ISO, OpenID, and W3C
+        documents. Each is technically precise and individually correct, but
+        stitching them into a single view of "what does my issuer have to
+        do" is a non-trivial reading exercise that every implementer ends up
+        repeating. The toolkit condenses that reading exercise into a
+        runnable engine and a permanent, browseable catalogue that links
+        each rule back to its source clause.
       </p>
       <p>
         We use the same toolkit ourselves on the iGrant.io products that
-        issue EAAs. Open-sourcing it keeps us honest, lets the community fix
-        our gaps, and gives other implementers a free starting point.
+        issue and verify regulated credentials, including Person
+        Identification Data (PID), Legal Person Identification Data /
+        European Business Wallet Organisation ID (LPID / EBWOID),
+        Electronic Attestations of Attributes (EAAs), Qualified EAAs
+        (QEAAs), and Payment Wallet Attestations. Open-sourcing it keeps us
+        honest, lets the community fix our gaps, and gives other
+        implementers a free starting point across the EUDI Wallet and
+        European Business Wallet ecosystems.
       </p>
 
       <h2>Where the source lives</h2>
