@@ -234,7 +234,7 @@ export default async function ControlPage({ params }: PageProps) {
             {moduleName}
           </Link>
           <span className="mx-2 text-zinc-400" aria-hidden="true">/</span>
-          {control.spec_source.document} clause {control.spec_source.clause}
+          {control.spec_source.document} ({control.spec_source.version}) clause {control.spec_source.clause}
         </p>
         <h1 className="mt-4 text-balance text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl lg:text-[2.75rem] dark:text-white">
           <span className="font-mono text-blue-700 dark:text-blue-400">
@@ -281,7 +281,7 @@ export default async function ControlPage({ params }: PageProps) {
               {control.spec_text}
             </blockquote>
             <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-500">
-              {control.spec_source.document}, version {control.spec_source.version},
+              {control.spec_source.document} ({control.spec_source.version}),
               clause {control.spec_source.clause}
               {control.spec_source.page ? `, page ${control.spec_source.page}` : ''}.
             </p>
