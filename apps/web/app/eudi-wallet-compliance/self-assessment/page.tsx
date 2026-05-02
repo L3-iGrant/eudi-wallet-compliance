@@ -71,7 +71,7 @@ export default function ScopePicker() {
             {...register('module')}
             ariaLabel="Module"
           >
-            <option value="eaa-conformance">EAA Conformance · Live</option>
+            <option value="eaa-conformance">EAA Conformance · 🟢 Live</option>
             {otherModules.map((m) => (
               <option key={m.id} value={m.id} disabled>
                 {m.name} · {STATUS_LABEL[m.status] ?? 'Planned'}
