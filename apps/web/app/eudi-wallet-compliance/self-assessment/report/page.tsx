@@ -265,6 +265,13 @@ const TIER_LABEL: Record<string, string> = {
   'pub-eaa': 'PuB-EAA',
 };
 
+interface TierGap {
+  label: string;
+  canBe: boolean;
+  missing: string[];
+  additionallyRequired: string[];
+}
+
 function GapAnalysisSection({
   report,
   moduleByControlId,
@@ -272,28 +279,30 @@ function GapAnalysisSection({
   report: AssessmentResult;
   moduleByControlId: Map<string, string>;
 }) {
-  const gaps: Array<{
-    label: string;
-    canBe: boolean;
-    missing: string[];
-  }> = [];
-  // Only show tiers above (or matching) the chosen tier. PuB-EAA is the
-  // top, so chosen=pub-eaa hides everything (already at the top).
+  const gaps: TierGap[] = [];
+  // Only show tiers above the chosen one. PuB-EAA scope hides the
+  // section entirely (already at the top of the stack).
   if (report.scope.tier === 'ordinary' || report.scope.tier === 'qeaa') {
     if (report.scope.tier === 'ordinary') {
       gaps.push({
         label: TIER_LABEL.qeaa!,
         canBe: report.gapAnalysis.canBeQeaa,
         missing: report.gapAnalysis.missingForQeaa,
+        additionallyRequired: report.gapAnalysis.additionallyRequiredForQeaa,
       });
     }
     gaps.push({
       label: TIER_LABEL['pub-eaa']!,
       canBe: report.gapAnalysis.canBePubEaa,
       missing: report.gapAnalysis.missingForPubEaa,
+      additionallyRequired: report.gapAnalysis.additionallyRequiredForPubEaa,
     });
   }
   if (gaps.length === 0) return null;
+
+  const allClear = gaps.every(
+    (g) => g.canBe && g.additionallyRequired.length === 0,
+  );
 
   return (
     <section className="mt-10">
@@ -301,9 +310,17 @@ function GapAnalysisSection({
         Gap analysis
       </h2>
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        Would this credential pass at a higher tier? Each card shows the
-        controls that would block promotion.
+        Would this credential pass at a higher tier? Two signals per card:
+        controls that would <em>fail</em> if assessed at the higher tier
+        (behaviour-aware), and controls that <em>become required</em> at
+        the higher tier and are not yet passing (catalogue-level upgrade
+        delta).
       </p>
+      {allClear && (
+        <p className="mt-3 rounded-md border border-emerald-200 bg-emerald-50/60 px-4 py-3 text-sm text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-300">
+          This EAA satisfies all controls required for QEAA and PuB-EAA tiers.
+        </p>
+      )}
       <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
         {gaps.map((g) => (
           <GapCard key={g.label} gap={g} moduleByControlId={moduleByControlId} />
@@ -317,7 +334,7 @@ function GapCard({
   gap,
   moduleByControlId,
 }: {
-  gap: { label: string; canBe: boolean; missing: string[] };
+  gap: TierGap;
   moduleByControlId: Map<string, string>;
 }) {
   const accent = gap.canBe
@@ -352,30 +369,63 @@ function GapCard({
           No control fails at this tier with the supplied evidence.
         </p>
       ) : (
-        <ul className="mt-3 space-y-1">
-          {gap.missing.map((cid) => {
-            const moduleId = moduleByControlId.get(cid);
-            const href = moduleId
-              ? `/modules/${moduleId}/controls/${controlIdToSlug(cid)}/`
-              : null;
-            return (
-              <li key={cid} className="font-mono text-xs">
-                {href ? (
-                  <Link
-                    href={href}
-                    className="text-blue-700 underline-offset-4 hover:underline dark:text-blue-400"
-                  >
-                    {cid}
-                  </Link>
-                ) : (
-                  <span className="text-zinc-700 dark:text-zinc-300">{cid}</span>
-                )}
-              </li>
-            );
-          })}
-        </ul>
+        <>
+          <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
+            Would fail at this tier
+          </p>
+          <ControlList ids={gap.missing} moduleByControlId={moduleByControlId} />
+        </>
+      )}
+      {gap.additionallyRequired.length > 0 && (
+        <>
+          <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
+            Additionally required at {gap.label}
+          </p>
+          <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+            To upgrade this EAA to {gap.label}, you would need to address{' '}
+            {gap.additionallyRequired.length} additional control
+            {gap.additionallyRequired.length === 1 ? '' : 's'}:
+          </p>
+          <ControlList
+            ids={gap.additionallyRequired}
+            moduleByControlId={moduleByControlId}
+          />
+        </>
       )}
     </article>
+  );
+}
+
+function ControlList({
+  ids,
+  moduleByControlId,
+}: {
+  ids: string[];
+  moduleByControlId: Map<string, string>;
+}) {
+  return (
+    <ul className="mt-2 space-y-1">
+      {ids.map((cid) => {
+        const moduleId = moduleByControlId.get(cid);
+        const href = moduleId
+          ? `/modules/${moduleId}/controls/${controlIdToSlug(cid)}/`
+          : null;
+        return (
+          <li key={cid} className="font-mono text-xs">
+            {href ? (
+              <Link
+                href={href}
+                className="text-blue-700 underline-offset-4 hover:underline dark:text-blue-400"
+              >
+                {cid}
+              </Link>
+            ) : (
+              <span className="text-zinc-700 dark:text-zinc-300">{cid}</span>
+            )}
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 

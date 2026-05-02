@@ -183,15 +183,19 @@ describe('runAssessment', () => {
     expect(result.evidenceRefs).not.toContain('statusListUrl');
   });
 
-  it('populates gapAnalysis with QEAA and PuB-EAA tier projections', async () => {
+  it('populates gapAnalysis with behavioural and static tier projections', async () => {
     const result = await runAssessment(sampleControls, {}, sdJwtScope);
-    // With no evidence, every check returns na, so no fails at any tier.
-    // Both tier passes succeed vacuously.
-    expect(result.gapAnalysis).toEqual({
-      canBeQeaa: true,
-      missingForQeaa: [],
-      canBePubEaa: true,
-      missingForPubEaa: [],
-    });
+    // With no evidence, every check returns na, so no behavioural fails
+    // at any higher tier. The static catalogue delta still flags
+    // QEAA-only controls in the fixture set as additionally required.
+    expect(result.gapAnalysis.canBeQeaa).toBe(true);
+    expect(result.gapAnalysis.missingForQeaa).toEqual([]);
+    expect(result.gapAnalysis.canBePubEaa).toBe(true);
+    expect(result.gapAnalysis.missingForPubEaa).toEqual([]);
+    // QEAA-5.6.2-01 in the fixture has applies_to: ['qeaa'], so it's a
+    // catalogue-level addition for the Ordinary→QEAA upgrade.
+    expect(result.gapAnalysis.additionallyRequiredForQeaa).toContain(
+      'QEAA-5.6.2-01',
+    );
   });
 });

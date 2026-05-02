@@ -29,14 +29,26 @@ export interface AssessmentSummary {
 }
 
 /**
- * Placeholder shape; populated by the engine's gap analyser in a later
- * prompt. v0 returns an empty stub.
+ * Tier-promotion gap analysis. Two complementary signals per higher tier:
+ *
+ *  - `missingForX`: every control that **fails** when the same evidence is
+ *    re-run at tier X. Captures behaviour-aware checks like the
+ *    shortLived/status mutex which flips between tiers even when the
+ *    catalogue's `applies_to` set does not change.
+ *  - `additionallyRequiredForX`: controls whose catalogue `applies_to`
+ *    includes tier X but **not** the current tier (the upgrade delta) and
+ *    which the current verdicts do not show as `pass`. Useful for
+ *    "what new things must I do" framing.
+ *
+ *  - `canBeX`: convenience boolean — true iff `missingForX` is empty.
  */
 export interface GapAnalysis {
   canBeQeaa: boolean;
   missingForQeaa: string[];
+  additionallyRequiredForQeaa: string[];
   canBePubEaa: boolean;
   missingForPubEaa: string[];
+  additionallyRequiredForPubEaa: string[];
 }
 
 export interface AssessmentResult {

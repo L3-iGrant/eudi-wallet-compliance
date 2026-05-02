@@ -9,6 +9,7 @@ import type {
 } from './types';
 import { getCheck } from './registry';
 import { filterControlsForScope } from './scope';
+import { computeAdditionallyRequired } from './gap-analysis';
 
 // Side-effect import: registers the built-in conformance checks into the
 // shared registry as soon as anything imports @iwc/engine.
@@ -69,19 +70,20 @@ async function runVerdicts(
 
 /**
  * Re-runs the same evidence at QEAA and PuB-EAA tiers (in parallel)
- * and reports which controls fail at each. The chosen tier's own
- * verdicts already live in the main result; gap analysis exists to
- * answer "could this credential pass at a higher tier?".
- *
- * If the chosen tier already matches a higher tier (e.g. chosen=qeaa
- * and we're computing canBeQeaa), the result is consistent with the
- * main verdicts but recomputed for clarity. Cheap.
+ * and reports which controls fail at each. Captures behaviour-aware
+ * tier differences (e.g. the shortLived/status mutex which flips
+ * between Ordinary and QEAA) that a static catalogue filter cannot.
  */
-async function computeGapAnalysis(
+async function computeFailingAtHigherTiers(
   controls: Control[],
   evidence: Evidence,
   scope: AssessmentScope,
-): Promise<GapAnalysis> {
+): Promise<{
+  canBeQeaa: boolean;
+  missingForQeaa: string[];
+  canBePubEaa: boolean;
+  missingForPubEaa: string[];
+}> {
   const [qeaaVerdicts, pubEaaVerdicts] = await Promise.all([
     runVerdicts(controls, evidence, { ...scope, tier: 'qeaa' }),
     runVerdicts(controls, evidence, { ...scope, tier: 'pub-eaa' }),
@@ -108,10 +110,23 @@ export async function runAssessment(
 ): Promise<AssessmentResult> {
   const tenantId = options?.tenantId ?? DEFAULT_TENANT_ID;
 
-  const [verdicts, gapAnalysis] = await Promise.all([
+  const [verdicts, behaviourGaps] = await Promise.all([
     runVerdicts(controls, evidence, scope),
-    computeGapAnalysis(controls, evidence, scope),
+    computeFailingAtHigherTiers(controls, evidence, scope),
   ]);
+
+  // Static catalogue delta: controls that become required at a higher
+  // tier and are not yet passing in the main verdicts.
+  const additionallyRequired = computeAdditionallyRequired(
+    controls,
+    verdicts,
+    scope.tier,
+  );
+
+  const gapAnalysis: GapAnalysis = {
+    ...behaviourGaps,
+    ...additionallyRequired,
+  };
 
   return {
     reportId: crypto.randomUUID(),
