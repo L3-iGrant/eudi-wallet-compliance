@@ -1,0 +1,25 @@
+{
+  "name": "@iwc/generate-samples",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/generate.ts",
+  "types": "./src/generate.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "generate": "tsx src/generate.ts",
+    "test": "echo \"(no tests configured)\""
+  },
+  "dependencies": {
+    "@iwc/controls": "workspace:*",
+    "@iwc/engine": "workspace:*",
+    "@iwc/shared": "workspace:*",
+    "@peculiar/x509": "^1.12.0",
+    "jose": "^5.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.9.0"
+  }
+}

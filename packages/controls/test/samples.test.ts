@@ -14,10 +14,14 @@ const SampleSchema = z.object({
   title: z.string().min(5),
   description: z.string().min(20),
   profile: z.enum(['sd-jwt-vc', 'mdoc', 'abstract']),
-  payload: z.string().min(1),
-  header: z.record(z.string(), z.unknown()),
-  payload_decoded: z.record(z.string(), z.unknown()),
+  tier: z.enum(['ordinary-eaa', 'qeaa', 'pub-eaa']),
+  compact_serialisation: z.string().min(1),
+  decoded_header: z.record(z.string(), z.unknown()),
+  decoded_payload: z.record(z.string(), z.unknown()),
+  issuer_cert_pem: z.string().regex(/-----BEGIN CERTIFICATE-----/),
   exercises_controls: z.array(z.string()).min(1),
+  generated_by: z.string().min(1),
+  generated_at: z.string().regex(/\d{4}-\d{2}-\d{2}T/),
 });
 
 async function listSampleFiles(): Promise<string[]> {

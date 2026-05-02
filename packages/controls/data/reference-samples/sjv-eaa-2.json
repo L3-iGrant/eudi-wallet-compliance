@@ -1,41 +1,47 @@
 {
   "sample_id": "sjv-eaa-2",
-  "title": "SD-JWT VC EAA with key binding (cnf)",
-  "description": "Baseline EAA augmented with the cnf claim that binds the credential to a holder-controlled key. Adds the key-binding controls in clause 5.5 to those already exercised by sjv-eaa-1.",
+  "title": "SJV-EAA-2: Baseline + cnf JWK",
+  "description": "Mandatory elements plus a cnf claim binding the credential to the wallet public key. No selective disclosures.",
   "profile": "sd-jwt-vc",
-  "payload": "<placeholder: real signed sample to be produced in Phase 5>",
-  "header": {
+  "tier": "ordinary-eaa",
+  "compact_serialisation": "eyJhbGciOiJFUzI1NiIsInR5cCI6ImRjK3NkLWp3dCIsIng1YyI6WyJNSUlCWnpDQ0FRMmdBd0lCQWdJQkFUQUtCZ2dxaGtqT1BRUURBakFwTVNjd0pRWURWUVFERXg1cFIzSmhiblF1YVc4Z1JVRkJJRkpsWm1WeVpXNWpaU0JKYzNOMVpYSXdIaGNOTWpZd05UQXlNREF4TXpBNFdoY05NekV3TlRBeE1EQXhNekE0V2pBcE1TY3dKUVlEVlFRREV4NXBSM0poYm5RdWFXOGdSVUZCSUZKbFptVnlaVzVqWlNCSmMzTjFaWEl3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVFpMnlsWGtFODEzdnZzcHNGRDNxZDBaTUNadG9YdllPTms0L0tFc2xHcTFrSUpHdCtTc2o3eDRwby9maE8xczNJNHVLLzY4a25BT0lJNGd6cFpHL0NBb3lZd0pEQVNCZ05WSFJNQkFmOEVDREFHQVFIL0FnRUFNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQUtCZ2dxaGtqT1BRUURBZ05JQURCRkFpRUFoS3dRTWt2dGNZVk5uRHVGU0c3emVtand4eVZQT21WTXk2UUZHUDdzeFpRQ0lEZDgvbDNROVZTM2phelc4QkRkV3dFSWlic2tuSHNiVzdnd0RHZ0dVbDRZIl19.eyJpc3MiOiJodHRwczovL3JlZmVyZW5jZS1pc3N1ZXIuaWdyYW50LmlvLmV4YW1wbGUiLCJ2Y3QiOiJ1cm46aWdyYW50OmVhYTpyZWZlcmVuY2UvdjEiLCJ2Y3QjaW50ZWdyaXR5Ijoic2hhMjU2LTliMWQ2ZTNjNDZkYjhhNmQyZjZkYjIwY2JhODVlOWU2ZGJlM2Q4ZjNhNGIzYTRlYWVmMmMzYzRlMWQ4ZDZlN2YiLCJpYXQiOjE3Nzc2ODA3ODgsIm5iZiI6MTc3NzY4MDc4OCwiZXhwIjoxODQwNzUyNzg4LCJpc3N1aW5nX2F1dGhvcml0eSI6ImlHcmFudC5pbyBSZWZlcmVuY2UgQXV0aG9yaXR5IiwiZ2l2ZW5fbmFtZSI6IkVyaWthIiwiZmFtaWx5X25hbWUiOiJNdXN0ZXJtYW5uIiwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsImNydiI6IlAtMjU2IiwieCI6IkhsZzBZSzNWYTdvaTQwSGJXOGRvOGxnbFV0XzlIcGdwNUEtVm9POEFuUDgiLCJ5IjoiRGNHZ3N4cjdrbU5vV3VmSDhqVmlNVzR5LTNGRFU2MUQ4ZGF1QWVyYWd6SSJ9fX0.Muwtp_RpC0Pu8diAmTolDum5_GEDsjaTyIJuLPLqmCENCiRqEYMJo7owaJhVf5F0PGq11vQcm1F2Qfzfw2gwBw~",
+  "decoded_header": {
     "alg": "ES256",
-    "typ": "vc+sd-jwt",
-    "kid": "https://issuer.example/keys/issuer-1"
+    "typ": "dc+sd-jwt",
+    "x5c": [
+      "MIIBZzCCAQ2gAwIBAgIBATAKBggqhkjOPQQDAjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwHhcNMjYwNTAyMDAxMzA4WhcNMzEwNTAxMDAxMzA4WjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQi2ylXkE813vvspsFD3qd0ZMCZtoXvYONk4/KEslGq1kIJGt+Ssj7x4po/fhO1s3I4uK/68knAOII4gzpZG/CAoyYwJDASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIChDAKBggqhkjOPQQDAgNIADBFAiEAhKwQMkvtcYVNnDuFSG7zemjwxyVPOmVMy6QFGP7sxZQCIDd8/l3Q9VS3jazW8BDdWwEIibsknHsbW7gwDGgGUl4Y"
+    ]
   },
-  "payload_decoded": {
-    "iss": "https://issuer.example",
-    "vct": "https://issuer.example/credentials/keybound-eaa",
-    "vct#integrity": "sha256-eXAMPLEkeyboundintegrityplaceholderlength43cd",
-    "iat": 1735689600,
-    "nbf": 1735689600,
-    "exp": 1767225600,
-    "issuing_authority": "Example Issuing Authority",
+  "decoded_payload": {
+    "iss": "https://reference-issuer.igrant.io.example",
+    "vct": "urn:igrant:eaa:reference/v1",
+    "vct#integrity": "sha256-9b1d6e3c46db8a6d2f6db20cba85e9e6dbe3d8f3a4b3a4eaef2c3c4e1d8d6e7f",
+    "iat": 1777680788,
+    "nbf": 1777680788,
+    "exp": 1840752788,
+    "issuing_authority": "iGrant.io Reference Authority",
+    "given_name": "Erika",
+    "family_name": "Mustermann",
     "cnf": {
       "jwk": {
         "kty": "EC",
         "crv": "P-256",
-        "x": "PLACEHOLDER_HOLDER_PUBKEY_X",
-        "y": "PLACEHOLDER_HOLDER_PUBKEY_Y"
+        "x": "Hlg0YK3Va7oi40HbW8do8lglUt_9Hpgp5A-VoO8AnP8",
+        "y": "DcGgsxr7kmNoWufH8jViMW4y-3FDU61D8dauAeragzI"
       }
     }
   },
+  "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBZzCCAQ2gAwIBAgIBATAKBggqhkjOPQQDAjApMScwJQYDVQQDEx5pR3JhbnQu\naW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwHhcNMjYwNTAyMDAxMzA4WhcNMzEwNTAx\nMDAxMzA4WjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1\nZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQi2ylXkE813vvspsFD3qd0ZMCZ\ntoXvYONk4/KEslGq1kIJGt+Ssj7x4po/fhO1s3I4uK/68knAOII4gzpZG/CAoyYw\nJDASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIChDAKBggqhkjOPQQD\nAgNIADBFAiEAhKwQMkvtcYVNnDuFSG7zemjwxyVPOmVMy6QFGP7sxZQCIDd8/l3Q\n9VS3jazW8BDdWwEIibsknHsbW7gwDGgGUl4Y\n-----END CERTIFICATE-----",
   "exercises_controls": [
     "EAA-5.1-01",
     "EAA-5.2.1.2-01",
     "EAA-5.2.1.2-03",
-    "EAA-5.2.4.1-01",
-    "EAA-5.2.6-01",
+    "EAA-5.2.4.1-03",
     "EAA-5.2.7.1-01",
     "EAA-5.2.7.1-03",
     "EAA-5.5-01",
-    "EAA-5.5-02",
-    "EAA-5.5-06"
-  ]
+    "EAA-5.5-02"
+  ],
+  "generated_by": "iGrant.io EAA Reference Generator v1",
+  "generated_at": "2026-05-02T00:13:08.094Z"
 }

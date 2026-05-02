@@ -4,18 +4,18 @@ import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample } from './he
 
 describe('EAA-5.2.10.1-08 (status object includes index member)', () => {
   it('passes when status.index is present', async () => {
-    const sample = await loadSample('sjv-eaa-5');
+    const sample = await loadSample('sjv-eaa-7');
     const verdict = await check({ eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
     expect(verdict.status).toBe('pass');
   });
 
   it('fails when status is present but index is missing', async () => {
-    const sample = await loadSample('sjv-eaa-5');
-    const status = { ...(sample.payload_decoded.status as Record<string, unknown>) };
+    const sample = await loadSample('sjv-eaa-7');
+    const status = { ...(sample.decoded_payload.status as Record<string, unknown>) };
     delete status.index;
-    const broken = { ...sample.payload_decoded, status };
+    const broken = { ...sample.decoded_payload, status };
     const verdict = await check(
-      { eaaPayload: buildCompact(sample.header, broken) },
+      { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('fail');

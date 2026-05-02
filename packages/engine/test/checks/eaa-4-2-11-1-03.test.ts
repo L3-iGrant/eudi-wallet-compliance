@@ -6,7 +6,7 @@ describe('EAA-4.2.11.1-03 (shortLived ⊕ status mutex, tier-aware)', () => {
   it('fails when both shortLived and status are present', async () => {
     const sample = await loadSample('sjv-eaa-1');
     const broken = {
-      ...sample.payload_decoded,
+      ...sample.decoded_payload,
       shortLived: null,
       status: {
         type: 'TokenStatusList',
@@ -16,15 +16,15 @@ describe('EAA-4.2.11.1-03 (shortLived ⊕ status mutex, tier-aware)', () => {
       },
     };
     const verdict = await check(
-      { eaaPayload: buildCompact(sample.header, broken) },
+      { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('fail');
     expect(verdict.notes).toContain('exactly one revocation strategy');
   });
 
-  it('passes when only status is present (sjv-eaa-5 has status, no shortLived)', async () => {
-    const sample = await loadSample('sjv-eaa-5');
+  it('passes when only status is present (sjv-eaa-7 has status, no shortLived)', async () => {
+    const sample = await loadSample('sjv-eaa-7');
     const verdict = await check(
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
@@ -33,8 +33,8 @@ describe('EAA-4.2.11.1-03 (shortLived ⊕ status mutex, tier-aware)', () => {
     expect(verdict.notes).toContain('status');
   });
 
-  it('passes when only shortLived is present (sjv-eaa-7 has shortLived, no status)', async () => {
-    const sample = await loadSample('sjv-eaa-7');
+  it('passes when only shortLived is present (sjv-eaa-6 carries shortLived, no status)', async () => {
+    const sample = await loadSample('sjv-eaa-6');
     const verdict = await check(
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,

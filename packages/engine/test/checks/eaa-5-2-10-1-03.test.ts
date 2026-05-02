@@ -4,16 +4,16 @@ import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample } from './he
 
 describe('EAA-5.2.10.1-03 (status component must be JSON object)', () => {
   it('passes when status is a JSON object', async () => {
-    const sample = await loadSample('sjv-eaa-5');
+    const sample = await loadSample('sjv-eaa-7');
     const verdict = await check({ eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
     expect(verdict.status).toBe('pass');
   });
 
   it('fails when status is a string instead of an object', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const broken = { ...sample.payload_decoded, status: 'unrevoked' };
+    const broken = { ...sample.decoded_payload, status: 'unrevoked' };
     const verdict = await check(
-      { eaaPayload: buildCompact(sample.header, broken) },
+      { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('fail');

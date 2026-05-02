@@ -25,9 +25,9 @@ describe('EAA-5.5-01 (cnf claim recommended)', () => {
 
   it('fails when cnf is present but malformed (string instead of object)', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const broken = { ...sample.payload_decoded, cnf: 'not-an-object' };
+    const broken = { ...sample.decoded_payload, cnf: 'not-an-object' };
     const verdict = await check(
-      { eaaPayload: buildCompact(sample.header, broken) },
+      { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('fail');

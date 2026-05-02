@@ -16,12 +16,12 @@ describe('EAA-5.2.7.1-03 (exp claim present, integer, exp > nbf)', () => {
   it('fails when exp is set to a value at or before nbf (never-valid window)', async () => {
     const sample = await loadSample('sjv-eaa-1');
     const broken = {
-      ...sample.payload_decoded,
+      ...sample.decoded_payload,
       nbf: 1735689600,
       exp: 1735689600, // equal to nbf, must be strictly greater
     };
     const verdict = await check(
-      { eaaPayload: buildCompact(sample.header, broken) },
+      { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('fail');

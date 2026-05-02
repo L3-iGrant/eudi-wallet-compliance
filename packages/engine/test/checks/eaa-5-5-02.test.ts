@@ -16,11 +16,11 @@ describe('EAA-5.5-02 (cnf must contain JWK or certificate reference)', () => {
   it('passes when cnf carries an x5c certificate reference', async () => {
     const sample = await loadSample('sjv-eaa-1');
     const broken = {
-      ...sample.payload_decoded,
+      ...sample.decoded_payload,
       cnf: { x5c: ['BASE64-CERT-FIRST-LINE'] },
     };
     const verdict = await check(
-      { eaaPayload: buildCompact(sample.header, broken) },
+      { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('pass');
@@ -30,11 +30,11 @@ describe('EAA-5.5-02 (cnf must contain JWK or certificate reference)', () => {
   it('fails when cnf has neither jwk nor a certificate reference', async () => {
     const sample = await loadSample('sjv-eaa-1');
     const broken = {
-      ...sample.payload_decoded,
+      ...sample.decoded_payload,
       cnf: { kid: 'some-key-id' },
     };
     const verdict = await check(
-      { eaaPayload: buildCompact(sample.header, broken) },
+      { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('fail');
@@ -44,11 +44,11 @@ describe('EAA-5.5-02 (cnf must contain JWK or certificate reference)', () => {
   it('fails when cnf.jwk is missing kty', async () => {
     const sample = await loadSample('sjv-eaa-1');
     const broken = {
-      ...sample.payload_decoded,
+      ...sample.decoded_payload,
       cnf: { jwk: { crv: 'P-256', x: 'x', y: 'y' } },
     };
     const verdict = await check(
-      { eaaPayload: buildCompact(sample.header, broken) },
+      { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('fail');
@@ -58,11 +58,11 @@ describe('EAA-5.5-02 (cnf must contain JWK or certificate reference)', () => {
   it('fails when an EC JWK is missing the y coordinate', async () => {
     const sample = await loadSample('sjv-eaa-1');
     const broken = {
-      ...sample.payload_decoded,
+      ...sample.decoded_payload,
       cnf: { jwk: { kty: 'EC', crv: 'P-256', x: 'x' } },
     };
     const verdict = await check(
-      { eaaPayload: buildCompact(sample.header, broken) },
+      { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('fail');

@@ -6,11 +6,11 @@ describe('EAA-5.5-05 (cnf.x5c excludes x5u and x5t#S256)', () => {
   it('passes when cnf has only x5c', async () => {
     const sample = await loadSample('sjv-eaa-1');
     const broken = {
-      ...sample.payload_decoded,
+      ...sample.decoded_payload,
       cnf: { x5c: ['BASE64-CERT'] },
     };
     const verdict = await check(
-      { eaaPayload: buildCompact(sample.header, broken) },
+      { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('pass');
@@ -19,11 +19,11 @@ describe('EAA-5.5-05 (cnf.x5c excludes x5u and x5t#S256)', () => {
   it('fails when cnf has x5c alongside x5u', async () => {
     const sample = await loadSample('sjv-eaa-1');
     const broken = {
-      ...sample.payload_decoded,
+      ...sample.decoded_payload,
       cnf: { x5c: ['BASE64-CERT'], x5u: 'https://example/cert.pem' },
     };
     const verdict = await check(
-      { eaaPayload: buildCompact(sample.header, broken) },
+      { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('fail');
@@ -33,11 +33,11 @@ describe('EAA-5.5-05 (cnf.x5c excludes x5u and x5t#S256)', () => {
   it('fails when cnf has x5c alongside x5t#S256', async () => {
     const sample = await loadSample('sjv-eaa-1');
     const broken = {
-      ...sample.payload_decoded,
+      ...sample.decoded_payload,
       cnf: { x5c: ['BASE64-CERT'], 'x5t#S256': 'thumbprint' },
     };
     const verdict = await check(
-      { eaaPayload: buildCompact(sample.header, broken) },
+      { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('fail');
@@ -47,7 +47,7 @@ describe('EAA-5.5-05 (cnf.x5c excludes x5u and x5t#S256)', () => {
   it('returns na when cnf has no x5c', async () => {
     const sample = await loadSample('sjv-eaa-2');
     const verdict = await check(
-      { eaaPayload: buildCompact(sample.header, sample.payload_decoded) },
+      { eaaPayload: buildCompact(sample.decoded_header, sample.decoded_payload) },
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('na');

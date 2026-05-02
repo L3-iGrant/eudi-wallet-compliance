@@ -4,20 +4,20 @@ import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample } from './he
 
 describe('EAA-5.2.10.1-09 (status.index is a JSON integer)', () => {
   it('passes when status.index is a non-negative integer', async () => {
-    const sample = await loadSample('sjv-eaa-5');
+    const sample = await loadSample('sjv-eaa-7');
     const verdict = await check({ eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
     expect(verdict.status).toBe('pass');
     expect(verdict.notes).toMatch(/JSON integer: \d+/);
   });
 
   it('fails when status.index is a string', async () => {
-    const sample = await loadSample('sjv-eaa-5');
+    const sample = await loadSample('sjv-eaa-7');
     const broken = {
-      ...sample.payload_decoded,
-      status: { ...(sample.payload_decoded.status as object), index: '42' },
+      ...sample.decoded_payload,
+      status: { ...(sample.decoded_payload.status as object), index: '42' },
     };
     const verdict = await check(
-      { eaaPayload: buildCompact(sample.header, broken) },
+      { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('fail');

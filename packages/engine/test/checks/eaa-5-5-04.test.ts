@@ -6,14 +6,14 @@ describe('EAA-5.5-04 (cnf.x5u must be paired with cnf.x5t#S256)', () => {
   it('passes when cnf has both x5u and x5t#S256', async () => {
     const sample = await loadSample('sjv-eaa-1');
     const broken = {
-      ...sample.payload_decoded,
+      ...sample.decoded_payload,
       cnf: {
         x5u: 'https://example/cert.pem',
         'x5t#S256': 'thumbprint',
       },
     };
     const verdict = await check(
-      { eaaPayload: buildCompact(sample.header, broken) },
+      { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('pass');
@@ -22,11 +22,11 @@ describe('EAA-5.5-04 (cnf.x5u must be paired with cnf.x5t#S256)', () => {
   it('fails when cnf has x5u without x5t#S256', async () => {
     const sample = await loadSample('sjv-eaa-1');
     const broken = {
-      ...sample.payload_decoded,
+      ...sample.decoded_payload,
       cnf: { x5u: 'https://example/cert.pem' },
     };
     const verdict = await check(
-      { eaaPayload: buildCompact(sample.header, broken) },
+      { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('fail');
@@ -36,7 +36,7 @@ describe('EAA-5.5-04 (cnf.x5u must be paired with cnf.x5t#S256)', () => {
   it('returns na when cnf has no x5u', async () => {
     const sample = await loadSample('sjv-eaa-2');
     const verdict = await check(
-      { eaaPayload: buildCompact(sample.header, sample.payload_decoded) },
+      { eaaPayload: buildCompact(sample.decoded_header, sample.decoded_payload) },
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('na');

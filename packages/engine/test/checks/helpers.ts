@@ -20,10 +20,14 @@ export interface ReferenceSample {
   title: string;
   description: string;
   profile: string;
-  payload: string;
-  header: Record<string, unknown>;
-  payload_decoded: Record<string, unknown>;
+  tier: 'ordinary-eaa' | 'qeaa' | 'pub-eaa';
+  compact_serialisation: string;
+  decoded_header: Record<string, unknown>;
+  decoded_payload: Record<string, unknown>;
+  issuer_cert_pem: string;
   exercises_controls: string[];
+  generated_by: string;
+  generated_at: string;
 }
 
 export async function loadSample(sampleId: string): Promise<ReferenceSample> {
@@ -73,10 +77,20 @@ export function buildCompact(
   return parts.join('~');
 }
 
-/** Convenience: build a compact serialisation from a loaded sample. */
+/**
+ * Convenience: return a compact serialisation for a loaded sample.
+ *
+ * With no opts the real signed `compact_serialisation` from the sample
+ * is returned verbatim. With opts (custom disclosures, key binding,
+ * altered signature), the helper rebuilds an unsigned compact form
+ * from `decoded_header` + `decoded_payload`. The engine does not
+ * verify signatures yet, so the unsigned variant is fine for negative
+ * structural tests.
+ */
 export function compactFromSample(
   sample: ReferenceSample,
   opts: BuildCompactOptions = {},
 ): string {
-  return buildCompact(sample.header, sample.payload_decoded, opts);
+  if (Object.keys(opts).length === 0) return sample.compact_serialisation;
+  return buildCompact(sample.decoded_header, sample.decoded_payload, opts);
 }

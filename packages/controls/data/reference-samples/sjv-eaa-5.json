@@ -1,50 +1,53 @@
 {
   "sample_id": "sjv-eaa-5",
-  "title": "QEAA signed with a qualified electronic seal",
-  "description": "QEAA produced by a Qualified Trust Service Provider. Signature is a qualified electronic seal under eIDAS 2; the protected header carries x5u and x5t#S256, and (recommended) x5c. Includes a status claim for revocation, as the QEAA is not short-lived.",
+  "title": "SJV-EAA-5: + oneTime",
+  "description": "Carries the oneTime claim (a JSON null primitive) marking the credential as single-use. Includes key binding and selective disclosure.",
   "profile": "sd-jwt-vc",
-  "payload": "<placeholder: real signed sample to be produced in Phase 5>",
-  "header": {
+  "tier": "ordinary-eaa",
+  "compact_serialisation": "eyJhbGciOiJFUzI1NiIsInR5cCI6ImRjK3NkLWp3dCIsIng1YyI6WyJNSUlCWnpDQ0FRMmdBd0lCQWdJQkFUQUtCZ2dxaGtqT1BRUURBakFwTVNjd0pRWURWUVFERXg1cFIzSmhiblF1YVc4Z1JVRkJJRkpsWm1WeVpXNWpaU0JKYzNOMVpYSXdIaGNOTWpZd05UQXlNREF4TXpBNFdoY05NekV3TlRBeE1EQXhNekE0V2pBcE1TY3dKUVlEVlFRREV4NXBSM0poYm5RdWFXOGdSVUZCSUZKbFptVnlaVzVqWlNCSmMzTjFaWEl3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVFpMnlsWGtFODEzdnZzcHNGRDNxZDBaTUNadG9YdllPTms0L0tFc2xHcTFrSUpHdCtTc2o3eDRwby9maE8xczNJNHVLLzY4a25BT0lJNGd6cFpHL0NBb3lZd0pEQVNCZ05WSFJNQkFmOEVDREFHQVFIL0FnRUFNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQUtCZ2dxaGtqT1BRUURBZ05JQURCRkFpRUFoS3dRTWt2dGNZVk5uRHVGU0c3emVtand4eVZQT21WTXk2UUZHUDdzeFpRQ0lEZDgvbDNROVZTM2phelc4QkRkV3dFSWlic2tuSHNiVzdnd0RHZ0dVbDRZIl19.eyJpc3MiOiJodHRwczovL3JlZmVyZW5jZS1pc3N1ZXIuaWdyYW50LmlvLmV4YW1wbGUiLCJ2Y3QiOiJ1cm46aWdyYW50OmVhYTpyZWZlcmVuY2UvdjEiLCJ2Y3QjaW50ZWdyaXR5Ijoic2hhMjU2LTliMWQ2ZTNjNDZkYjhhNmQyZjZkYjIwY2JhODVlOWU2ZGJlM2Q4ZjNhNGIzYTRlYWVmMmMzYzRlMWQ4ZDZlN2YiLCJpYXQiOjE3Nzc2ODA3ODgsIm5iZiI6MTc3NzY4MDc4OCwiZXhwIjoxODQwNzUyNzg4LCJpc3N1aW5nX2F1dGhvcml0eSI6ImlHcmFudC5pbyBSZWZlcmVuY2UgQXV0aG9yaXR5Iiwib25lVGltZSI6bnVsbCwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsImNydiI6IlAtMjU2IiwieCI6IkhsZzBZSzNWYTdvaTQwSGJXOGRvOGxnbFV0XzlIcGdwNUEtVm9POEFuUDgiLCJ5IjoiRGNHZ3N4cjdrbU5vV3VmSDhqVmlNVzR5LTNGRFU2MUQ4ZGF1QWVyYWd6SSJ9fSwiX3NkIjpbIkN1b0E2dFdQM21zLWNYMVJyTXZIMVBhWnhDUm9YY1RMYnJRbmVQZ3Q5RnciLCJURkxuRm1pTGZOM0xZdGNQT1d4Nk1LbU9nekN4S0tvVHhmcWpaQV9vVHljIl0sIl9zZF9hbGciOiJzaGEtMjU2In0.rZRKMGLz0Luo0BYyLdPJbEfo2H6pJj4Il1d_WigOggho3F7bfgnh3U82v5vUgGhwk-FwYP1PTxwRIGE3I9NYyg~WyJnNW8tTG9UbU9wdlpXRmlTemxFdkJnIiwiZ2l2ZW5fbmFtZSIsIkVyaWthIl0~WyJKa1hjREVBdG10d2RUd0Y4ZWhmVlFRIiwiZmFtaWx5X25hbWUiLCJNdXN0ZXJtYW5uIl0~",
+  "decoded_header": {
     "alg": "ES256",
-    "typ": "vc+sd-jwt",
-    "x5u": "https://qtsp.example/certs/qeaa-issuer.pem",
-    "x5t#S256": "PLACEHOLDER_X5T_S256_THUMBPRINT",
-    "x5c": ["PLACEHOLDER_BASE64_QUALIFIED_CERT_FIRST_LINE"]
+    "typ": "dc+sd-jwt",
+    "x5c": [
+      "MIIBZzCCAQ2gAwIBAgIBATAKBggqhkjOPQQDAjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwHhcNMjYwNTAyMDAxMzA4WhcNMzEwNTAxMDAxMzA4WjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQi2ylXkE813vvspsFD3qd0ZMCZtoXvYONk4/KEslGq1kIJGt+Ssj7x4po/fhO1s3I4uK/68knAOII4gzpZG/CAoyYwJDASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIChDAKBggqhkjOPQQDAgNIADBFAiEAhKwQMkvtcYVNnDuFSG7zemjwxyVPOmVMy6QFGP7sxZQCIDd8/l3Q9VS3jazW8BDdWwEIibsknHsbW7gwDGgGUl4Y"
+    ]
   },
-  "payload_decoded": {
-    "iss": "https://qtsp.example",
-    "vct": "https://qtsp.example/credentials/qeaa-degree",
-    "vct#integrity": "sha256-eXAMPLEqeaaintegrityplaceholderlength43cdef01",
-    "iat": 1735689600,
-    "nbf": 1735689600,
-    "exp": 1767225600,
-    "status": {
-      "type": "TokenStatusList",
-      "purpose": "revocation",
-      "index": 42,
-      "uri": "https://qtsp.example/status/qeaa-revocation"
-    },
+  "decoded_payload": {
+    "iss": "https://reference-issuer.igrant.io.example",
+    "vct": "urn:igrant:eaa:reference/v1",
+    "vct#integrity": "sha256-9b1d6e3c46db8a6d2f6db20cba85e9e6dbe3d8f3a4b3a4eaef2c3c4e1d8d6e7f",
+    "iat": 1777680788,
+    "nbf": 1777680788,
+    "exp": 1840752788,
+    "issuing_authority": "iGrant.io Reference Authority",
+    "oneTime": null,
+    "given_name": "Erika",
+    "family_name": "Mustermann",
     "cnf": {
       "jwk": {
         "kty": "EC",
         "crv": "P-256",
-        "x": "PLACEHOLDER_HOLDER_PUBKEY_X",
-        "y": "PLACEHOLDER_HOLDER_PUBKEY_Y"
+        "x": "Hlg0YK3Va7oi40HbW8do8lglUt_9Hpgp5A-VoO8AnP8",
+        "y": "DcGgsxr7kmNoWufH8jViMW4y-3FDU61D8dauAeragzI"
       }
-    }
+    },
+    "_sd": [
+      "CuoA6tWP3ms-cX1RrMvH1PaZxCRoXcTLbrQnePgt9Fw",
+      "TFLnFmiLfN3LYtcPOWx6MKmOgzCxKKoTxfqjZA_oTyc"
+    ],
+    "_sd_alg": "sha-256"
   },
+  "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBZzCCAQ2gAwIBAgIBATAKBggqhkjOPQQDAjApMScwJQYDVQQDEx5pR3JhbnQu\naW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwHhcNMjYwNTAyMDAxMzA4WhcNMzEwNTAx\nMDAxMzA4WjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1\nZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQi2ylXkE813vvspsFD3qd0ZMCZ\ntoXvYONk4/KEslGq1kIJGt+Ssj7x4po/fhO1s3I4uK/68knAOII4gzpZG/CAoyYw\nJDASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIChDAKBggqhkjOPQQD\nAgNIADBFAiEAhKwQMkvtcYVNnDuFSG7zemjwxyVPOmVMy6QFGP7sxZQCIDd8/l3Q\n9VS3jazW8BDdWwEIibsknHsbW7gwDGgGUl4Y\n-----END CERTIFICATE-----",
   "exercises_controls": [
     "EAA-5.1-01",
     "EAA-5.2.1.2-01",
     "EAA-5.2.1.2-03",
+    "EAA-5.2.4.1-03",
     "EAA-5.2.7.1-01",
     "EAA-5.2.7.1-03",
-    "QEAA-5.2.5.5-01",
-    "QEAA-5.2.10.2-01",
-    "QEAA-5.6.2-01",
-    "QEAA-5.6.2-02",
-    "QEAA-5.6.2-03",
     "EAA-5.5-01",
     "EAA-5.5-02"
-  ]
+  ],
+  "generated_by": "iGrant.io EAA Reference Generator v1",
+  "generated_at": "2026-05-02T00:13:08.096Z"
 }

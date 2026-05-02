@@ -23,8 +23,8 @@ afterEach(() => {
 
 describe('EAA-5.2.10.2-01 (status URI must resolve)', () => {
   it('passes when the list resolves and index reads out a value', async () => {
-    const sample = await loadSample('sjv-eaa-5');
-    // sjv-eaa-5 has status.uri = https://qtsp.example/status/qeaa-revocation, index 42.
+    const sample = await loadSample('sjv-eaa-7');
+    // sjv-eaa-7 has status.uri = https://qtsp.example/status/qeaa-revocation, index 42.
     // Build a 1-bit list large enough to hold index 42 (need 6 bytes).
     const bytes = new Array(8).fill(0);
     // Set bit 42 (byte 5, bit-from-MSB 2) to 1: 0x20 in byte 5.
@@ -51,7 +51,7 @@ describe('EAA-5.2.10.2-01 (status URI must resolve)', () => {
   });
 
   it('fails when the fetch returns a non-2xx', async () => {
-    const sample = await loadSample('sjv-eaa-5');
+    const sample = await loadSample('sjv-eaa-7');
     globalThis.fetch = vi.fn(async () =>
       new Response('gone', { status: 410, statusText: 'Gone' }),
     ) as typeof fetch;
@@ -81,14 +81,14 @@ describe('EAA-5.2.10.2-01 (status URI must resolve)', () => {
   });
 
   it('fails when status.index is missing', async () => {
-    const sample = await loadSample('sjv-eaa-5');
+    const sample = await loadSample('sjv-eaa-7');
     const broken = {
-      ...sample.payload_decoded,
-      status: { ...(sample.payload_decoded.status as object), index: undefined },
+      ...sample.decoded_payload,
+      status: { ...(sample.decoded_payload.status as object), index: undefined },
     };
     delete (broken.status as Record<string, unknown>).index;
     const verdict = await check(
-      { eaaPayload: buildCompact(sample.header, broken) },
+      { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('fail');

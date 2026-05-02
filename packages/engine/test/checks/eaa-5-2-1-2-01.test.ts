@@ -15,10 +15,10 @@ describe('EAA-5.2.1.2-01 (vct claim present)', () => {
 
   it('fails when the payload is missing the vct claim', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const broken = { ...sample.payload_decoded };
+    const broken = { ...sample.decoded_payload };
     delete broken.vct;
     const verdict = await check(
-      { eaaPayload: buildCompact(sample.header, broken) },
+      { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('fail');

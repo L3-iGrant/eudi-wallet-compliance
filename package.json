@@ -9,7 +9,7 @@
     "tools/*"
   ],
   "scripts": {
-    "lint:no-em-dashes": "! grep -rn --exclude-dir=node_modules --exclude-dir=.next \"—\" apps packages tools README.md 2>/dev/null",
+    "lint:no-em-dashes": "! grep -rn --exclude-dir=node_modules --exclude-dir=.next --exclude-dir=out --exclude-dir=dist --include=\"*.ts\" --include=\"*.tsx\" --include=\"*.md\" --include=\"*.yaml\" --include=\"*.yml\" --include=\"*.json\" \"—\" apps packages tools README.md 2>/dev/null",
     "lint": "pnpm -r lint && pnpm lint:no-em-dashes"
   },
   "engines": {
