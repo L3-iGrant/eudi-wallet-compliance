@@ -52,6 +52,8 @@ import { check as check_5_2_7_2_02, controlId as id_5_2_7_2_02 } from './eaa-5-2
 import { check as check_5_2_7_2_04, controlId as id_5_2_7_2_04 } from './eaa-5-2-7-2-04';
 import { check as check_5_2_10_1_05, controlId as id_5_2_10_1_05 } from './eaa-5-2-10-1-05';
 import { check as check_5_2_10_1_07, controlId as id_5_2_10_1_07 } from './eaa-5-2-10-1-07';
+import { check as check_5_4_1_4_02, controlId as id_5_4_1_4_02 } from './eaa-5-4-1-4-02';
+import { check as check_5_2_5_3_02, controlId as id_5_2_5_3_02 } from './eaa-5-2-5-3-02';
 
 registerCheck(id_5_1_01, check_5_1_01);
 registerCheck(id_5_2_1_2_01, check_5_2_1_2_01);
@@ -97,6 +99,8 @@ registerCheck(id_5_2_7_2_02, check_5_2_7_2_02);
 registerCheck(id_5_2_7_2_04, check_5_2_7_2_04);
 registerCheck(id_5_2_10_1_05, check_5_2_10_1_05);
 registerCheck(id_5_2_10_1_07, check_5_2_10_1_07);
+registerCheck(id_5_4_1_4_02, check_5_4_1_4_02);
+registerCheck(id_5_2_5_3_02, check_5_2_5_3_02);
 
 /** Useful for introspection and tests. */
 export const BUILTIN_CHECK_IDS: readonly string[] = [
@@ -144,4 +148,6 @@ export const BUILTIN_CHECK_IDS: readonly string[] = [
   id_5_2_7_2_04,
   id_5_2_10_1_05,
   id_5_2_10_1_07,
+  id_5_4_1_4_02,
+  id_5_2_5_3_02,
 ];
