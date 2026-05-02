@@ -9,24 +9,44 @@ import { HoverTooltip } from '../../../../_components/HoverTooltip';
 
 /**
  * Build a deep-link to the Self-Assessment upload flow with the scope
- * pre-filled from the catalogue entry. Tier maps from the catalogue's
- * "ordinary-eaa" form to the engine's "ordinary" form. The focus param
- * follows the user through to the report page so they land directly on
+ * pre-filled from the catalogue entry.
+ *
+ * Three coercions are needed because the catalogue carries values the
+ * upload page cannot accept directly:
+ *
+ * - profile: catalogue rules can be tagged "abstract" (cross-cutting
+ *   rules that apply regardless of profile). The upload page only
+ *   knows the concrete profiles "sd-jwt-vc" and "mdoc". Pick the
+ *   first concrete profile from the control if any, otherwise default
+ *   to "sd-jwt-vc". The engine still evaluates abstract-profile rules
+ *   under either concrete profile so the focused rule's verdict
+ *   appears in the report.
+ * - role: catalogue rules can be tagged "all". Pick the first concrete
+ *   role from the control if any, otherwise default to "issuer".
+ * - tier: catalogue uses "ordinary-eaa", engine uses "ordinary".
+ *   "all" expands to the lowest sensible tier ("ordinary").
+ *
+ * The focus param rides through to the report so the user lands on
  * this single rule's verdict.
  */
 function buildAssessmentLink(control: Control): string {
+  const concreteProfile = control.profile.find(
+    (p) => p === 'sd-jwt-vc' || p === 'mdoc',
+  );
+  const concreteRole = control.role.find((r) => r !== 'all');
   const tierMap: Record<string, string> = {
     'ordinary-eaa': 'ordinary',
     qeaa: 'qeaa',
     'pub-eaa': 'pub-eaa',
   };
-  const tier =
-    tierMap[control.applies_to.find((t) => t !== 'all') ?? ''] ?? 'ordinary';
+  const concreteTier = control.applies_to.find((t) => t !== 'all');
+  const tier = concreteTier ? tierMap[concreteTier] : 'ordinary';
+
   const params = new URLSearchParams({
     module: control.module,
-    role: control.role[0] ?? 'issuer',
-    profile: control.profile[0] ?? 'sd-jwt-vc',
-    tier,
+    role: concreteRole ?? 'issuer',
+    profile: concreteProfile ?? 'sd-jwt-vc',
+    tier: tier ?? 'ordinary',
     focus: control.id,
   });
   return `/eudi-wallet-compliance/self-assessment/upload/?${params.toString()}`;
@@ -413,8 +433,10 @@ export default async function ControlPage({ params }: PageProps) {
                 <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-500">
                   Pre-selected scope:{' '}
                   <span className="font-mono text-zinc-700 dark:text-zinc-300">
-                    {control.profile[0] ?? 'sd-jwt-vc'} ·{' '}
-                    {control.role[0] ?? 'issuer'} ·{' '}
+                    {control.profile.find((p) => p === 'sd-jwt-vc' || p === 'mdoc') ??
+                      'sd-jwt-vc'}{' '}
+                    ·{' '}
+                    {control.role.find((r) => r !== 'all') ?? 'issuer'} ·{' '}
                     {control.applies_to.find((t) => t !== 'all') ?? 'ordinary-eaa'}
                   </span>
                 </p>
