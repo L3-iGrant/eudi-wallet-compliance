@@ -44,25 +44,44 @@ export default async function ControlsCataloguePage({ params }: PageProps) {
   if (!m) notFound();
 
   const allControls = await loadAllControls();
-  const rows: CatalogueRow[] = allControls
-    .filter((c) => c.module === moduleSlug)
-    .map((c) => ({
-      id: c.id,
-      slug: controlIdToSlug(c.id),
-      short_title: c.short_title,
-      requirement_level: c.requirement_level,
-      applies_to: c.applies_to,
-      profile: c.profile,
-      role: c.role,
-      evidence_type: c.evidence_type,
-      clause: c.spec_source.clause,
-    }));
+  const moduleControls = allControls.filter((c) => c.module === moduleSlug);
+  const rows: CatalogueRow[] = moduleControls.map((c) => ({
+    id: c.id,
+    slug: controlIdToSlug(c.id),
+    short_title: c.short_title,
+    requirement_level: c.requirement_level,
+    applies_to: c.applies_to,
+    profile: c.profile,
+    role: c.role,
+    evidence_type: c.evidence_type,
+    clause: c.spec_source.clause,
+  }));
+
+  // Deduplicate spec sources across the module's controls. The kicker shows
+  // the spec citation when there is exactly one (so it never lies about
+  // multi-document modules), and a short attribution line below the intro
+  // tells the reader without forcing them to inspect a row.
+  const uniqueSources = Array.from(
+    new Map(
+      moduleControls.map((c) => [
+        `${c.spec_source.document}|${c.spec_source.version}`,
+        { document: c.spec_source.document, version: c.spec_source.version },
+      ]),
+    ).values(),
+  );
+  const singleSource = uniqueSources.length === 1 ? uniqueSources[0] : null;
 
   return (
     <article className="mx-auto max-w-7xl px-6 py-12 sm:py-16">
       <header className="border-b border-zinc-200 pb-8 dark:border-zinc-800">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700 dark:text-blue-400">
           {m.name}
+          {singleSource && (
+            <>
+              <span className="mx-2 text-zinc-400" aria-hidden="true">/</span>
+              {singleSource.document} ({singleSource.version})
+            </>
+          )}
         </p>
         <h1 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-white">
           Controls catalogue
@@ -72,6 +91,20 @@ export default async function ControlsCataloguePage({ params }: PageProps) {
           Export the filtered set as CSV, JSON, or YAML. Filter state lives in
           the URL, so a configured view is shareable.
         </p>
+        {singleSource ? (
+          <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-500">
+            All {rows.length} entries are sourced from {singleSource.document}{' '}
+            ({singleSource.version}).
+          </p>
+        ) : uniqueSources.length > 1 ? (
+          <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-500">
+            Sourced from{' '}
+            {uniqueSources
+              .map((s) => `${s.document} (${s.version})`)
+              .join(', ')}
+            .
+          </p>
+        ) : null}
       </header>
 
       <div className="pt-8">
