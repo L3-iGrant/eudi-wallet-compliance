@@ -56,7 +56,7 @@ export default function ScopePicker() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 sm:py-16">
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700 dark:text-blue-400">
-        Self-Assessment
+        Self-Assessment · Step 1 of 2
       </p>
       <h1 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-white">
         EUDI Wallet Compliance Self-Assessment
