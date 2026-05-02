@@ -961,6 +961,490 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
     ]
   },
   {
+    "id": "QEAA-4.2.4.2-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.2",
+      "page": 17
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "issuer-cert"
+    ],
+    "short_title": "A QEAA must incorporate the EAA issuer identifier",
+    "spec_text": "A QEAA shall incorporate the EAA issuer identifier.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.4.1-01",
+      "EAA-4.2.4.1-02",
+      "EAA-5.2.4.1-01"
+    ]
+  },
+  {
+    "id": "QEAA-4.2.4.2-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.2",
+      "page": 17
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "A QEAA must include the issuer's EU Member State identifier",
+    "spec_text": "A QEAA shall include an identifier of the EU Member State, in which the QEAA issuer is registered.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "QEAA-4.2.4.2-03",
+      "EAA-4.2.4.1-04"
+    ]
+  },
+  {
+    "id": "QEAA-4.2.4.2-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.2",
+      "page": 17
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "QEAA Member State identifier must follow the EAA-4.2.4.1-05 format",
+    "spec_text": "The value of the identifier of an EU Member State shall be as specified in requirement EAA-4.2.4.1-05 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "QEAA-4.2.4.2-02",
+      "EAA-4.2.4.1-05"
+    ]
+  },
+  {
+    "id": "QEAA-4.2.4.2-04",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.2",
+      "page": 17
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Legal-person QEAA issuer must include a registration identifier",
+    "spec_text": "If the issuer of the QEAA is a legal person, the QEAA shall include a registration identifier as stated in the official records, where such a registration identifier exists.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "QEAA-4.2.4.2-05",
+      "QEAA-4.2.4.2-06",
+      "EAA-4.2.4.1-06"
+    ]
+  },
+  {
+    "id": "QEAA-4.2.4.2-05",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.2",
+      "page": 17
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Legal-person QEAA registration id must follow ETSI EN 319 412-1 clause 5.1.4",
+    "spec_text": "If the issuer of the QEAA is a legal person, the registration identifier shall be built according to the rules defined in clause 5.1.4 of ETSI EN 319 412-1 [16] to build the value of the organizationIdentifier attribute in the subject field of an X.509 certificate.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "QEAA-4.2.4.2-04",
+      "EAA-4.2.4.1-07"
+    ]
+  },
+  {
+    "id": "QEAA-4.2.4.2-06",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.2",
+      "page": 17
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Legal-person QEAA must include the legal-person name",
+    "spec_text": "If the issuer of the QEAA is a legal person, the QEAA shall include the name of this legal person.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "QEAA-4.2.4.2-04",
+      "EAA-4.2.4.1-08"
+    ]
+  },
+  {
+    "id": "QEAA-4.2.4.2-07",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.2",
+      "page": 18
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Natural-person QEAA must include the natural-person name",
+    "spec_text": "If the issuer of the QEAA is a natural person, the QEAA shall include the name of this natural person.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.4.1-10"
+    ]
+  },
+  {
+    "id": "QEAA-4.2.4.2-08",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.2",
+      "page": 18
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "issuer-cert"
+    ],
+    "short_title": "A QEAA must include the download URL of the supporting certificate",
+    "spec_text": "A QEAA shall include the download URL of the certificate supporting the digital signature of the QEAA.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "QEAA-4.2.4.2-01"
+    ]
+  },
+  {
+    "id": "PuB-EAA-4.2.4.3-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.3",
+      "page": 18
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "issuer-cert"
+    ],
+    "short_title": "A PuB-EAA must incorporate the EAA issuer identifier",
+    "spec_text": "A PuB-EAA shall incorporate the EAA issuer identifier.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-4.2.4.1-01",
+      "QEAA-4.2.4.2-01"
+    ]
+  },
+  {
+    "id": "PuB-EAA-4.2.4.3-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.3",
+      "page": 18
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "A PuB-EAA must include the issuer's EU Member State identifier",
+    "spec_text": "A PuB-EAA shall include an identifier of the EU Member State, in which the public body issuing the PuB-EAA is established.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "PuB-EAA-4.2.4.3-03",
+      "QEAA-4.2.4.2-02"
+    ]
+  },
+  {
+    "id": "PuB-EAA-4.2.4.3-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.3",
+      "page": 18
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "PuB-EAA Member State identifier must follow the EAA-4.2.4.1-05 format",
+    "spec_text": "The value of the identifier of an EU Member State shall be as specified in requirement EAA-4.2.4.1-05 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "PuB-EAA-4.2.4.3-02",
+      "EAA-4.2.4.1-05"
+    ]
+  },
+  {
+    "id": "PuB-EAA-4.2.4.3-04",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.3",
+      "page": 18
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "A PuB-EAA must include the issuing public body's registration identifier",
+    "spec_text": "A PuB-EAA shall include the registration identifier of the public body issuing the PuB-EAA, as stated in the official records, where such a registration identifier exists.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "PuB-EAA-4.2.4.3-05",
+      "PuB-EAA-4.2.4.3-06"
+    ]
+  },
+  {
+    "id": "PuB-EAA-4.2.4.3-05",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.3",
+      "page": 18
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "PuB-EAA registration id must follow ETSI EN 319 412-1 clause 5.1.4",
+    "spec_text": "The registration identifier shall be built according to the rules defined in clause 5.1.4 of ETSI EN 319 412-1 [16] to build the value of the organizationIdentifier attribute in the subject field of an X.509 certificate.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "PuB-EAA-4.2.4.3-04",
+      "QEAA-4.2.4.2-05"
+    ]
+  },
+  {
+    "id": "PuB-EAA-4.2.4.3-06",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.3",
+      "page": 18
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "A PuB-EAA must include the name of the issuing public body",
+    "spec_text": "A PuB-EAA shall include the name of the public body issuing the PuB-EAA.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "PuB-EAA-4.2.4.3-04",
+      "QEAA-4.2.4.2-06"
+    ]
+  },
+  {
+    "id": "PuB-EAA-4.2.4.3-07",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "4.2.4.3",
+      "page": 18
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "abstract"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "issuer-cert"
+    ],
+    "short_title": "A PuB-EAA must include the download URL of the supporting certificate",
+    "spec_text": "A PuB-EAA shall include the download URL of the certificate supporting the digital signature of the PuB-EAA.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "PuB-EAA-4.2.4.3-01",
+      "QEAA-4.2.4.2-08"
+    ]
+  },
+  {
     "id": "EAA-4.2.6.6-01",
     "module": "eaa-conformance",
     "spec_source": {
