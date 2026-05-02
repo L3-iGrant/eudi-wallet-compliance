@@ -4,15 +4,33 @@ Thank you for considering a contribution. This toolkit only earns its keep when 
 
 ## Table of contents
 
+- [Two paths in: GitHub web UI vs local clone](#two-paths-in-github-web-ui-vs-local-clone)
 - [Local setup](#local-setup)
 - [Adding a control to the catalogue](#adding-a-control-to-the-catalogue)
 - [Adding an engine check](#adding-an-engine-check)
 - [Conventions](#conventions)
 - [Pull request flow](#pull-request-flow)
+- [What reviewers look for](#what-reviewers-look-for)
+
+## Two paths in: GitHub web UI vs local clone
+
+You do not need to clone the repo to contribute a catalogue entry or fix a typo.
+
+**GitHub web UI (no clone, no install).** Best for subject-matter contributors who want to edit a YAML field, fix a `spec_text` quote, or correct a `modal_verb`. Steps:
+
+1. Open the file on github.com.
+2. Click the pencil icon to edit. GitHub forks the repo automatically into your account.
+3. Make the edit. The web editor highlights YAML syntax.
+4. At the bottom of the page, write a commit message and click "Commit changes".
+5. GitHub takes you to the PR creation screen; fill in the PR template and submit.
+
+The catch: web-UI edits do not run the local validation gate (Zod schema, bundle drift, em-dash check). CI runs it for you on the PR; if anything fails, you'll see a red ✗ with a log link in the PR conversation. Fix by editing your branch's file again via the web UI.
+
+For new modules, multiple file changes, or anything touching engine code or the web app, use the local clone path below.
 
 ## Local setup
 
-The repo is a pnpm workspace. Node 24 (Active LTS) is required.
+For engine and web app changes, work locally. The repo is a pnpm workspace. Node 24 (Active LTS) is required.
 
 ```bash
 nvm install 24
@@ -279,17 +297,33 @@ pnpm --filter @iwc/web build
 
 ## Pull request flow
 
-1. Fork the repo and branch from `main`.
+1. Fork the repo and branch from `main` (or use the GitHub web UI flow above).
 2. Make your changes following the patterns above.
-3. Run the full repo gate locally before pushing.
-4. Open a PR. Title follows Conventional Commits.
-5. PR description should answer:
-   - What does this change?
-   - Why? What spec clause or user feedback motivated it?
-   - How did you verify? Test counts, manual checks, screenshots if UI.
-6. CI runs lint, em-dash check, typecheck, tests, build. Green is required.
-7. A maintainer reviews. Catalogue accuracy bugs and engine-check correctness are top priority and reviewed quickly.
-8. After merge, the change ships on the next deploy.
+3. Run the full repo gate locally before pushing (skip if you used the web UI; CI runs it for you).
+4. Open a PR. Title follows Conventional Commits. The PR template prompts for a spec-citation checklist on catalogue and engine work; tick the boxes that apply.
+5. CI runs lint, em-dash check, typecheck, tests, build. Green is required.
+6. CODEOWNERS routes the PR to an iGrant.io maintainer automatically; merging requires at least one CODEOWNERS approval.
+7. After merge, the change ships on the next deploy.
+
+## What reviewers look for
+
+Catalogue contributions:
+
+- Spec citation is filled and accurate (`document`, `version`, `clause`).
+- `spec_text` matches the spec verbatim, capitalisation preserved.
+- `modal_verb` is the exact word from the spec (`shall` / `should` / `may`).
+- `applies_to`, `profile`, `role`, `evidence_type` reflect the rule's actual scope.
+- `plain_english` is either real prose (≥20 chars) or the literal `TODO` placeholder.
+- `related_controls` ids resolve to real entries.
+- Bundle is regenerated and committed (`build:bundle`).
+
+Engine-check contributions:
+
+- One file per check, named to match the slug of the control id.
+- Registered in `packages/engine/src/checks/index.ts`.
+- At least three tests covering pass, fail, and na branches.
+- Verdict notes are user-facing copy that names the specific reason for the verdict (not generic).
+- No I/O outside what `@iwc/status-list` already does (the engine should remain a pure function over the supplied evidence).
 
 ## Where to ask for help
 
