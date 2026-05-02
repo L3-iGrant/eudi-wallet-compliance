@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { id } = await params;
   const sample = getSampleByIdSync(id);
   if (!sample) return {};
-  const url = `/eudi-wallet-compliance/reference-samples/samples/${sample.sample_id}/`;
+  const url = `/modules/eaa-conformance/reference-samples/${sample.sample_id}/`;
   return {
     title: `${sample.sample_id.toUpperCase()} · Reference Samples · iGrant.io`,
     description: sample.description,
@@ -209,7 +209,7 @@ export default async function SampleDetail({ params }: PageProps) {
       <section className="mt-12 border-t border-zinc-200 pt-6 dark:border-zinc-800">
         <p>
           <Link
-            href="/eudi-wallet-compliance/reference-samples/"
+            href="/modules/eaa-conformance/reference-samples/"
             className="text-sm font-semibold text-zinc-700 hover:text-blue-700 hover:underline dark:text-zinc-300 dark:hover:text-blue-300"
           >
             Back to all samples

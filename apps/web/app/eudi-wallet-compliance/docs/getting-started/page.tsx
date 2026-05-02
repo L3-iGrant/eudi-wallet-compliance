@@ -84,7 +84,7 @@ export default function GettingStarted() {
       </ul>
       <p>
         If you do not have a credential to hand, every entry in the{' '}
-        <Link href="/eudi-wallet-compliance/reference-samples/">
+        <Link href="/modules/eaa-conformance/reference-samples/">
           reference samples library
         </Link>{' '}
         carries a <em>"Run Self-Assessment with this sample"</em> button that

@@ -78,7 +78,7 @@ export default function EvidenceTypes() {
       </ul>
       <p>
         If you do not have an EAA to hand, the{' '}
-        <Link href="/eudi-wallet-compliance/reference-samples/">
+        <Link href="/modules/eaa-conformance/reference-samples/">
           reference samples library
         </Link>{' '}
         publishes seven cryptographically-valid samples mirroring the ETSI

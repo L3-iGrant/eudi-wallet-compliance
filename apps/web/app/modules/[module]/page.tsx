@@ -383,7 +383,7 @@ export default async function ModulePage({ params }: PageProps) {
           />
         </div>
 
-        <div className="mt-8">
+        <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
           <Link
             href={`${basePath}/controls/`}
             className="inline-flex items-center text-sm font-semibold text-blue-700 hover:underline dark:text-blue-400"
@@ -391,6 +391,15 @@ export default async function ModulePage({ params }: PageProps) {
             Open the full controls catalogue
             <ChevronRight className="ml-1" />
           </Link>
+          {m.id === 'eaa-conformance' && (
+            <Link
+              href={`${basePath}/reference-samples/`}
+              className="inline-flex items-center text-sm font-semibold text-blue-700 hover:underline dark:text-blue-400"
+            >
+              Browse reference samples
+              <ChevronRight className="ml-1" />
+            </Link>
+          )}
         </div>
       </section>
 

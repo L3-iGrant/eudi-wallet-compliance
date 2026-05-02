@@ -149,7 +149,7 @@ export default function Methodology() {
       </p>
       <p>
         See{' '}
-        <Link href="/eudi-wallet-compliance/reference-samples/">
+        <Link href="/modules/eaa-conformance/reference-samples/">
           /reference-samples/
         </Link>{' '}
         for the live list and per-sample descriptions.

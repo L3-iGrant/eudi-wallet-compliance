@@ -100,9 +100,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  // Reference samples index + each sample
+  // Reference samples (currently under the EAA Conformance module).
   entries.push({
-    path: '/eudi-wallet-compliance/reference-samples/',
+    path: '/modules/eaa-conformance/reference-samples/',
     priority: 0.8,
     changeFrequency: 'monthly',
   });
@@ -113,7 +113,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       `${s.sample_id}.json`,
     );
     entries.push({
-      path: `/eudi-wallet-compliance/reference-samples/samples/${s.sample_id}/`,
+      path: `/modules/eaa-conformance/reference-samples/${s.sample_id}/`,
       lastModified: gitLastModified(sampleFile),
       priority: 0.7,
       changeFrequency: 'monthly',

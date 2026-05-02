@@ -12,8 +12,8 @@ vi.mock('next/navigation', () => ({
   },
 }));
 
-import ReferenceSamplesIndex from '@/app/eudi-wallet-compliance/reference-samples/page';
-import SampleDetail from '@/app/eudi-wallet-compliance/reference-samples/samples/[id]/page';
+import ReferenceSamplesIndex from '@/app/modules/eaa-conformance/reference-samples/page';
+import SampleDetail from '@/app/modules/eaa-conformance/reference-samples/[id]/page';
 import { loadAllSamplesSync } from '@iwc/controls/sync';
 
 afterEach(() => {

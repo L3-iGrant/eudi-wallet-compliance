@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { loadAllSamplesSync } from '@iwc/controls/sync';
-import { ChevronRight } from '../../_components/ChevronRight';
+import { ChevronRight } from '../../../_components/ChevronRight';
 
 export const metadata: Metadata = {
   title: 'Reference Samples · EUDI Wallet Compliance · iGrant.io',
   description:
     'Cryptographically-valid SD-JWT VC reference samples mirroring the ETSI EAA Plugtests test cases. Use them to exercise the self-assessment runner or any conformance pipeline.',
-  alternates: { canonical: '/eudi-wallet-compliance/reference-samples/' },
+  alternates: { canonical: '/modules/eaa-conformance/reference-samples/' },
 };
 
 const PROFILE_LABEL: Record<string, string> = {
@@ -42,7 +42,7 @@ export default function ReferenceSamplesIndex() {
         {samples.map((s) => (
           <Link
             key={s.sample_id}
-            href={`/eudi-wallet-compliance/reference-samples/samples/${s.sample_id}/`}
+            href={`/modules/eaa-conformance/reference-samples/${s.sample_id}/`}
             className="group flex flex-col rounded-xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-blue-700"
           >
             <div className="flex items-center gap-2">
@@ -77,10 +77,10 @@ export default function ReferenceSamplesIndex() {
       <section className="mt-12 border-t border-zinc-200 pt-6 dark:border-zinc-800">
         <p>
           <Link
-            href="/eudi-wallet-compliance/"
+            href="/modules/eaa-conformance/"
             className="text-sm font-semibold text-zinc-700 hover:text-blue-700 hover:underline dark:text-zinc-300 dark:hover:text-blue-300"
           >
-            Back to EUDI Wallet Compliance
+            Back to EAA Conformance
           </Link>
         </p>
       </section>
