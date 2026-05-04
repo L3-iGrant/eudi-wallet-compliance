@@ -11,7 +11,10 @@ metadata:
     cert-manager.io/cluster-issuer: {{ .Values.ingress.tls.clusterIssuer | quote }}
     {{- end }}
     {{- if .Values.oauth2Proxy.enabled }}
-    nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
+    # In-cluster service URL: the auth subrequest from the ingress
+    # controller stays inside the cluster, avoiding a round-trip through
+    # any front proxy (Cloudflare, etc.) that fronts the public host.
+    nginx.ingress.kubernetes.io/auth-url: "http://{{ include "eudiwc.oauth2ProxyName" . }}.{{ .Release.Namespace }}.svc.cluster.local/oauth2/auth"
     nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=https://$host$escaped_request_uri"
     nginx.ingress.kubernetes.io/auth-response-headers: "X-Auth-Request-User, X-Auth-Request-Email, X-Auth-Request-Preferred-Username"
     {{- end }}
