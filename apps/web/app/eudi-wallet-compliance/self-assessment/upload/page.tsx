@@ -7,6 +7,7 @@ import { z } from 'zod';
 import Link from 'next/link';
 import { Suspense, useEffect, useRef, useState } from 'react';
 import type { AssessmentScope, Evidence } from '@iwc/engine';
+import { parseSdJwtVc, type ParsedSdJwtVc } from '@iwc/shared';
 import { getSampleByIdSync } from '@iwc/controls/sync';
 import { runAssessmentAction } from '../../../actions/run-assessment';
 
@@ -43,6 +44,53 @@ function isJsonOrEmpty(s: string | undefined): boolean {
     return true;
   } catch {
     return false;
+  }
+}
+
+function base64UrlToBytes(input: string): Uint8Array {
+  const s = input.replace(/-/g, '+').replace(/_/g, '/');
+  const pad = (4 - (s.length % 4)) % 4;
+  const binary = atob(s + '='.repeat(pad));
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i += 1) bytes[i] = binary.charCodeAt(i);
+  return bytes;
+}
+
+function derBase64ToPem(b64: string): string {
+  // RFC 7515 §4.1.6: x5c entries are standard base64-encoded DER (no PEM
+  // armour, no line breaks). Wrap to 64-char lines and add the headers.
+  const stripped = b64.replace(/\s+/g, '');
+  const lines = stripped.match(/.{1,64}/g)?.join('\n') ?? stripped;
+  return `-----BEGIN CERTIFICATE-----\n${lines}\n-----END CERTIFICATE-----`;
+}
+
+function extractStatusUri(payload: Record<string, unknown>): string | null {
+  const status = payload['status'];
+  if (!status || typeof status !== 'object' || Array.isArray(status)) return null;
+  const obj = status as Record<string, unknown>;
+  if (typeof obj['uri'] === 'string' && obj['uri'].length > 0) return obj['uri'];
+  // IETF Token Status List nests the URI one level deeper under
+  // `status_list`; honour that shape as a fallback.
+  const nested = obj['status_list'];
+  if (nested && typeof nested === 'object' && !Array.isArray(nested)) {
+    const uri = (nested as Record<string, unknown>)['uri'];
+    if (typeof uri === 'string' && uri.length > 0) return uri;
+  }
+  return null;
+}
+
+function extractTypeMetadata(header: Record<string, unknown>): string | null {
+  // SD-JWT VC §6.3.5: Type Metadata documents travel in the JWT header
+  // `vctm` claim as an array of base64url-encoded JSON documents.
+  const vctm = header['vctm'];
+  if (!Array.isArray(vctm) || vctm.length === 0) return null;
+  const first = vctm[0];
+  if (typeof first !== 'string') return null;
+  try {
+    const json = JSON.parse(new TextDecoder().decode(base64UrlToBytes(first)));
+    return JSON.stringify(json, null, 2);
+  } catch {
+    return null;
   }
 }
 
@@ -98,6 +146,7 @@ function UploadInner() {
     handleSubmit,
     setValue,
     watch,
+    getValues,
     formState: { errors, isSubmitting },
   } = useForm<EvidenceForm>({
     resolver: zodResolver(EvidenceSchema),
@@ -154,6 +203,45 @@ function UploadInner() {
       // sessionStorage unavailable or malformed JSON; leave form empty.
     }
   }, [params, setValue]);
+
+  // Auto-extract issuer X.509, status list URL and type metadata from the
+  // pasted token whenever they're present. Each field is only filled when
+  // it's empty or still holds the value the auto-filler last wrote, so
+  // anything the user has manually typed (or that was prefilled from a
+  // sample / previous report) is left alone.
+  const autoFilled = useRef<{
+    issuerCert?: string;
+    statusListUrl?: string;
+    typeMetadata?: string;
+  }>({});
+  useEffect(() => {
+    const trimmed = payloadValue.trim();
+    if (!trimmed) return;
+    let parsed: ParsedSdJwtVc;
+    try {
+      parsed = parseSdJwtVc(trimmed);
+    } catch {
+      return;
+    }
+    const setIfAuto = (
+      field: 'issuerCert' | 'statusListUrl' | 'typeMetadata',
+      next: string | null,
+    ) => {
+      if (!next) return;
+      const current = (getValues(field) ?? '').trim();
+      const lastAuto = autoFilled.current[field];
+      if (current === '' || current === lastAuto) {
+        setValue(field, next, { shouldValidate: true });
+        autoFilled.current[field] = next;
+      }
+    };
+    const x5c = parsed.header['x5c'];
+    if (Array.isArray(x5c) && typeof x5c[0] === 'string' && x5c[0].length > 0) {
+      setIfAuto('issuerCert', derBase64ToPem(x5c[0]));
+    }
+    setIfAuto('statusListUrl', extractStatusUri(parsed.payload));
+    setIfAuto('typeMetadata', extractTypeMetadata(parsed.header));
+  }, [payloadValue, getValues, setValue]);
 
   if (!scope) {
     return (
