@@ -1,5 +1,10 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "eudiwc.fullname" . -}}
+{{- $oauthName := include "eudiwc.oauth2ProxyName" . -}}
+# Protected Ingress: gates / behind the in-cluster auth subrequest. The
+# annotations on this Ingress apply only to its own location blocks, so
+# the sibling "auth" Ingress below is exempt from auth_request and the
+# /oauth2/* round-trip avoids a redirect loop.
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -11,10 +16,7 @@ metadata:
     cert-manager.io/cluster-issuer: {{ .Values.ingress.tls.clusterIssuer | quote }}
     {{- end }}
     {{- if .Values.oauth2Proxy.enabled }}
-    # In-cluster service URL: the auth subrequest from the ingress
-    # controller stays inside the cluster, avoiding a round-trip through
-    # any front proxy (Cloudflare, etc.) that fronts the public host.
-    nginx.ingress.kubernetes.io/auth-url: "http://{{ include "eudiwc.oauth2ProxyName" . }}.{{ .Release.Namespace }}.svc.cluster.local/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-url: "http://{{ $oauthName }}.{{ .Release.Namespace }}.svc.cluster.local/oauth2/auth"
     nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=https://$host$escaped_request_uri"
     nginx.ingress.kubernetes.io/auth-response-headers: "X-Auth-Request-User, X-Auth-Request-Email, X-Auth-Request-Preferred-Username"
     {{- end }}
@@ -33,15 +35,6 @@ spec:
     - host: {{ .Values.ingress.host | quote }}
       http:
         paths:
-          {{- if .Values.oauth2Proxy.enabled }}
-          - path: /oauth2
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ include "eudiwc.oauth2ProxyName" . }}
-                port:
-                  name: http
-          {{- end }}
           - path: /
             pathType: Prefix
             backend:
@@ -49,4 +42,32 @@ spec:
                 name: {{ $fullName }}
                 port:
                   name: http
+{{- if .Values.oauth2Proxy.enabled }}
+---
+# Auth Ingress: same host, /oauth2/* paths only, deliberately without
+# the auth-url annotations so the sign-in flow itself is not gated.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ $oauthName }}
+  labels:
+    {{- include "eudiwc.labels" . | nindent 4 }}
+  annotations:
+    {{- if .Values.ingress.tls.clusterIssuer }}
+    cert-manager.io/cluster-issuer: {{ .Values.ingress.tls.clusterIssuer | quote }}
+    {{- end }}
+spec:
+  ingressClassName: {{ .Values.ingress.className }}
+  rules:
+    - host: {{ .Values.ingress.host | quote }}
+      http:
+        paths:
+          - path: /oauth2
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $oauthName }}
+                port:
+                  name: http
+{{- end }}
 {{- end }}
