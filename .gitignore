@@ -16,6 +16,18 @@ coverage/
 # Environment
 .env*
 
+# Local secrets (OAuth client JSON, kubeconfigs, service-account keys, etc.)
+secret.json
+secrets/
+*.kubeconfig
+service-account*.json
+*-service-account.json
+*credentials*.json
+*.pem
+*.p12
+*.pfx
+*-key.json
+
 # Deployment
 .vercel
 

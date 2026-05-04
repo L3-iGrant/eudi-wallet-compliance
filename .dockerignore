@@ -1,0 +1,13 @@
+**/node_modules
+**/.next
+**/out
+**/dist
+**/build
+**/.turbo
+**/coverage
+.git
+.github
+deploy/helm
+*.log
+.DS_Store
+.env*

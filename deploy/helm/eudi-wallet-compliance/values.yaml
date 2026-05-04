@@ -1,0 +1,80 @@
+image:
+  repository: eu.gcr.io/jenkins-189019/eudi-wallet-compliance
+  tag: latest
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+
+replicaCount: 2
+
+resources:
+  requests:
+    cpu: 25m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+
+service:
+  port: 80
+
+ingress:
+  enabled: true
+  className: nginx
+  host: eudi-wallet-compliance.igrant.io
+  tls:
+    enabled: true
+    secretName: eudi-wallet-compliance-tls
+    # If using cert-manager, set the issuer here. Leave empty to provide
+    # the secret out-of-band.
+    clusterIssuer: letsencrypt-prod
+  annotations: {}
+
+# oauth2-proxy fronts the site and only lets through users whose Google
+# account email ends in @igrant.io. Sits in the same namespace and is
+# wired in via ingress-nginx auth-url annotations.
+oauth2Proxy:
+  enabled: true
+  image:
+    repository: quay.io/oauth2-proxy/oauth2-proxy
+    tag: v7.7.1
+    pullPolicy: IfNotPresent
+  replicaCount: 2
+  resources:
+    requests:
+      cpu: 10m
+      memory: 32Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
+
+  # oauth2-proxy is mounted at /oauth2/* on the same ingress host as the
+  # site itself, so no extra DNS record or TLS cert is needed.
+
+  # Restrict sign-in to Google Workspace accounts under this domain.
+  emailDomain: igrant.io
+
+  # Optional: also restrict to specific Google groups. Requires the
+  # service-account JSON in the existingSecret with key "google-service-account.json"
+  # and impersonation set up.
+  googleGroups: []
+  googleAdminEmail: ""
+
+  cookie:
+    name: _eudiwc_oauth2
+    # 168h = 7 days
+    expire: 168h
+    refresh: 1h
+    secure: true
+
+  # Provide credentials via an existing Secret rather than committing them
+  # to the chart. Create the secret manually (see deploy/helm README in
+  # this folder for the exact kubectl command).
+  existingSecret: eudi-wallet-compliance-oauth2-proxy
+
+  # Keys expected inside `existingSecret`:
+  #   client-id          : Google OAuth client ID
+  #   client-secret      : Google OAuth client secret
+  #   cookie-secret      : 32-byte base64 random string (`openssl rand -base64 32 | tr -- '+/' '-_'`)
+  # Optional, only when googleGroups is set:
+  #   google-service-account.json : full JSON key for the GSuite delegated SA
