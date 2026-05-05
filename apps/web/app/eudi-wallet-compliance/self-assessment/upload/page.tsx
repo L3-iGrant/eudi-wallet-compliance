@@ -7,7 +7,12 @@ import { z } from 'zod';
 import Link from 'next/link';
 import { Suspense, useEffect, useRef, useState } from 'react';
 import type { AssessmentScope, Evidence } from '@iwc/engine';
-import { parseSdJwtVc, type ParsedSdJwtVc } from '@iwc/shared';
+import {
+  parseEvidence,
+  type ParsedEvidence,
+  type ParsedMdoc,
+  type ParsedSdJwtVc,
+} from '@iwc/shared';
 import { getSampleByIdSync } from '@iwc/controls/sync';
 import { runAssessmentAction } from '../../../actions/run-assessment';
 
@@ -27,14 +32,17 @@ const TIER_LABEL: Record<string, string> = {
   'pub-eaa': 'PuB-EAA',
 };
 
-function isValidSdJwtVc(s: string): boolean {
-  const trimmed = s.trim();
-  if (!trimmed) return false;
-  // Compact form: header.payload.signature[~disclosure...][~kbjwt]
-  const segments = trimmed.split('~');
-  const jws = segments[0]?.split('.');
-  if (!jws || jws.length !== 3) return false;
-  return jws.every((seg) => /^[A-Za-z0-9_-]*$/.test(seg));
+function tryParseEvidence(s: string): ParsedEvidence | null {
+  if (!s || !s.trim()) return null;
+  try {
+    return parseEvidence(s.trim());
+  } catch {
+    return null;
+  }
+}
+
+function isValidEvidenceInput(s: string): boolean {
+  return tryParseEvidence(s) !== null;
 }
 
 function isJsonOrEmpty(s: string | undefined): boolean {
@@ -94,13 +102,71 @@ function extractTypeMetadata(header: Record<string, unknown>): string | null {
   }
 }
 
+function bytesToBase64(bytes: Uint8Array): string {
+  // Chunked encode to avoid stack overflow on largeish files. mdocs are
+  // typically ~5 KB so a single pass would also work; this is defensive.
+  let binary = '';
+  const chunk = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunk) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + chunk));
+  }
+  return btoa(binary);
+}
+
+function bytesToPem(bytes: Uint8Array): string {
+  const b64 = bytesToBase64(bytes);
+  const lines = b64.match(/.{1,64}/g)?.join('\n') ?? b64;
+  return `-----BEGIN CERTIFICATE-----\n${lines}\n-----END CERTIFICATE-----`;
+}
+
+/** Concatenate every cert in an mdoc x5chain into a PEM bundle. */
+function mdocChainToPem(chain: Uint8Array[] | undefined): string | null {
+  if (!chain || chain.length === 0) return null;
+  return chain.map(bytesToPem).join('\n');
+}
+
+/** Pull the status URI from an mdoc MSO, accepting both ETSI flat and IETF nested envelopes. */
+function extractMdocStatusUri(parsed: ParsedMdoc): string | null {
+  const status = parsed.issuerAuth.mso.status;
+  if (!status || typeof status !== 'object' || Array.isArray(status)) return null;
+  const obj = status as Record<string, unknown>;
+  if (typeof obj.uri === 'string' && obj.uri.length > 0) return obj.uri;
+  const nested = obj.status_list;
+  if (nested && typeof nested === 'object' && !Array.isArray(nested)) {
+    const uri = (nested as Record<string, unknown>).uri;
+    if (typeof uri === 'string' && uri.length > 0) return uri;
+  }
+  return null;
+}
+
+/** Heuristic: should this file be read as binary (CBOR) and base64-encoded? */
+function looksLikeBinaryCbor(filename: string): boolean {
+  const lower = filename.toLowerCase();
+  if (lower.endsWith('.cbor.base64') || lower.endsWith('.b64')) return false;
+  return lower.endsWith('.cbor');
+}
+
+/**
+ * Read a dropped or selected file into a string suitable for the
+ * eaaPayload form field. Binary CBOR (.cbor) is base64-encoded so the
+ * downstream parser dispatch can sniff it; other extensions (text-shaped
+ * SD-JWT VC compact, base64 or hex CBOR) come through verbatim.
+ */
+async function readFileAsPayloadString(file: File): Promise<string> {
+  if (looksLikeBinaryCbor(file.name)) {
+    const buf = await file.arrayBuffer();
+    return bytesToBase64(new Uint8Array(buf));
+  }
+  return file.text();
+}
+
 const EvidenceSchema = z.object({
   eaaPayload: z
     .string()
     .min(1, { message: 'EAA payload is required.' })
-    .refine(isValidSdJwtVc, {
+    .refine(isValidEvidenceInput, {
       message:
-        'Does not look like an SD-JWT VC compact serialisation (three base64url segments separated by dots, optionally with ~disclosures).',
+        'Does not look like an SD-JWT VC compact serialisation or an mdoc CBOR (hex or base64-encoded).',
     }),
   issuerCert: z.string().optional(),
   statusListUrl: z
@@ -214,15 +280,23 @@ function UploadInner() {
     statusListUrl?: string;
     typeMetadata?: string;
   }>({});
+  const [mdocContext, setMdocContext] = useState<
+    { docType: string; namespaces: string[] } | null
+  >(null);
+  const [detectedKind, setDetectedKind] = useState<ParsedEvidence['kind'] | null>(null);
   useEffect(() => {
     const trimmed = payloadValue.trim();
-    if (!trimmed) return;
-    let parsed: ParsedSdJwtVc;
-    try {
-      parsed = parseSdJwtVc(trimmed);
-    } catch {
+    if (!trimmed) {
+      setMdocContext(null);
+      setDetectedKind(null);
       return;
     }
+    const parsed = tryParseEvidence(trimmed);
+    if (!parsed) {
+      setDetectedKind(null);
+      return;
+    }
+    setDetectedKind(parsed.kind);
     const setIfAuto = (
       field: 'issuerCert' | 'statusListUrl' | 'typeMetadata',
       next: string | null,
@@ -235,12 +309,25 @@ function UploadInner() {
         autoFilled.current[field] = next;
       }
     };
-    const x5c = parsed.header['x5c'];
-    if (Array.isArray(x5c) && typeof x5c[0] === 'string' && x5c[0].length > 0) {
-      setIfAuto('issuerCert', derBase64ToPem(x5c[0]));
+    if (parsed.kind === 'sd-jwt-vc') {
+      setMdocContext(null);
+      const sd: ParsedSdJwtVc = parsed.parsed;
+      const x5c = sd.header['x5c'];
+      if (Array.isArray(x5c) && typeof x5c[0] === 'string' && x5c[0].length > 0) {
+        setIfAuto('issuerCert', derBase64ToPem(x5c[0]));
+      }
+      setIfAuto('statusListUrl', extractStatusUri(sd.payload));
+      setIfAuto('typeMetadata', extractTypeMetadata(sd.header));
+    } else {
+      const m: ParsedMdoc = parsed.parsed;
+      setMdocContext({
+        docType: m.docType,
+        namespaces: Object.keys(m.nameSpaces),
+      });
+      setIfAuto('issuerCert', mdocChainToPem(m.issuerAuth.protectedHeader.x5chain));
+      setIfAuto('statusListUrl', extractMdocStatusUri(m));
+      // Type metadata isn't a concept in mdoc; leave the field alone.
     }
-    setIfAuto('statusListUrl', extractStatusUri(parsed.payload));
-    setIfAuto('typeMetadata', extractTypeMetadata(parsed.header));
   }, [payloadValue, getValues, setValue]);
 
   if (!scope) {
@@ -333,10 +420,21 @@ function UploadInner() {
 
       <ScopeSummary scope={scope} />
 
+      <ProfileMismatchWarning
+        scope={scope}
+        detectedKind={detectedKind}
+      />
+
       <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-8">
         <FieldGroup
           label="EAA payload"
-          hint="SD-JWT VC compact serialisation: header.payload.signature with optional ~disclosures. Drop a file or paste below."
+          hint={
+            scope.profile.includes('mdoc') && !scope.profile.includes('sd-jwt-vc')
+              ? 'mdoc/mDL CBOR. Drop a .cbor file or paste base64 / hex below.'
+              : scope.profile.includes('sd-jwt-vc') && !scope.profile.includes('mdoc')
+                ? 'SD-JWT VC compact serialisation: header.payload.signature with optional ~disclosures. Drop a file or paste below.'
+                : 'SD-JWT VC compact serialisation OR mdoc CBOR (drop a .cbor file or paste base64 / hex). Format is auto-detected.'
+          }
           error={errors.eaaPayload?.message}
         >
           <DragDropTextarea
@@ -350,6 +448,13 @@ function UploadInner() {
           />
           <FileLoader name="eaaPayload" setValue={setValue} />
         </FieldGroup>
+
+        {detectedKind === 'mdoc' && mdocContext && (
+          <MdocContextBadges
+            docType={mdocContext.docType}
+            namespaces={mdocContext.namespaces}
+          />
+        )}
 
         <FieldGroup
           label="Issuer X.509 certificate"
@@ -379,19 +484,21 @@ function UploadInner() {
           />
         </FieldGroup>
 
-        <FieldGroup
-          label="Type metadata"
-          hint="Optional. JSON object that maps to the vct."
-          error={errors.typeMetadata?.message}
-        >
-          <textarea
-            rows={4}
-            spellCheck={false}
-            className="w-full rounded-md border border-zinc-200 bg-white px-3 py-2 font-mono text-xs text-zinc-900 shadow-sm focus:border-blue-300 focus:outline-2 focus:outline-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
-            placeholder='{"vct": "...", ...}'
-            {...register('typeMetadata')}
-          />
-        </FieldGroup>
+        {detectedKind !== 'mdoc' && (
+          <FieldGroup
+            label="Type metadata"
+            hint="Optional. JSON object that maps to the vct. (SD-JWT VC only; mdoc surfaces its docType and namespaces above instead.)"
+            error={errors.typeMetadata?.message}
+          >
+            <textarea
+              rows={4}
+              spellCheck={false}
+              className="w-full rounded-md border border-zinc-200 bg-white px-3 py-2 font-mono text-xs text-zinc-900 shadow-sm focus:border-blue-300 focus:outline-2 focus:outline-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+              placeholder='{"vct": "...", ...}'
+              {...register('typeMetadata')}
+            />
+          </FieldGroup>
+        )}
 
         {submitError && (
           <p className="rounded-md border border-red-300 bg-red-50 p-3 text-sm text-red-700 dark:border-red-700 dark:bg-red-950/30 dark:text-red-400">
@@ -465,6 +572,90 @@ function ScopeSummary({ scope }: { scope: AssessmentScope }) {
   );
 }
 
+/**
+ * Soft warning displayed above the form when the auto-detected payload
+ * profile disagrees with what the user picked in the scope step. The
+ * detected format wins for parsing and dispatch; the warning only
+ * surfaces the discrepancy so the user knows to fix one or the other.
+ */
+function ProfileMismatchWarning({
+  scope,
+  detectedKind,
+}: {
+  scope: AssessmentScope;
+  detectedKind: ParsedEvidence['kind'] | null;
+}) {
+  if (!detectedKind) return null;
+  if (scope.profile.includes(detectedKind)) return null;
+  const detectedLabel = PROFILE_LABEL[detectedKind] ?? detectedKind;
+  const scopeLabel = scope.profile.map((p) => PROFILE_LABEL[p] ?? p).join(', ');
+  return (
+    <div
+      role="status"
+      data-testid="profile-mismatch-warning"
+      className="mt-6 rounded-md border border-amber-300 bg-amber-50 p-3 text-xs text-amber-900 dark:border-amber-700 dark:bg-amber-950/30 dark:text-amber-200"
+    >
+      The pasted payload looks like <strong>{detectedLabel}</strong>, but the
+      scope you picked is <strong>{scopeLabel}</strong>. The assessment will
+      run against the detected format; go back to the scope step if you meant
+      something different.
+    </div>
+  );
+}
+
+/**
+ * Read-only summary of the mdoc credential's docType and namespace list.
+ * Surfaced in lieu of the SD-JWT VC type-metadata textarea, which has no
+ * mdoc analogue.
+ */
+function MdocContextBadges({
+  docType,
+  namespaces,
+}: {
+  docType: string;
+  namespaces: string[];
+}) {
+  return (
+    <div data-testid="mdoc-context-badges">
+      <p className="text-sm font-semibold text-zinc-950 dark:text-white">
+        mdoc context
+      </p>
+      <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-500">
+        Auto-extracted from the parsed credential. Type-metadata content
+        is not a concept in mdoc; the docType and namespace list serve
+        the equivalent role.
+      </p>
+      <dl className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-[max-content_1fr] sm:gap-x-6 sm:gap-y-2">
+        <dt className="text-xs font-medium text-zinc-700 dark:text-zinc-300">
+          docType
+        </dt>
+        <dd>
+          <code
+            data-testid="mdoc-doctype"
+            className="inline-block rounded-md bg-zinc-100 px-2 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200"
+          >
+            {docType}
+          </code>
+        </dd>
+        <dt className="text-xs font-medium text-zinc-700 dark:text-zinc-300">
+          Namespaces
+        </dt>
+        <dd className="flex flex-wrap gap-1">
+          {namespaces.map((ns) => (
+            <code
+              key={ns}
+              data-testid="mdoc-namespace"
+              className="inline-block rounded-md bg-zinc-100 px-2 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200"
+            >
+              {ns}
+            </code>
+          ))}
+        </dd>
+      </dl>
+    </div>
+  );
+}
+
 function FieldGroup({
   label,
   hint,
@@ -501,11 +692,19 @@ function FileLoader({ name, setValue }: FileLoaderProps) {
       <input
         type="file"
         className="sr-only"
+        accept={
+          name === 'eaaPayload'
+            ? '.cbor,.cbor.base64,.b64,.txt,.json,application/cbor'
+            : '.pem,.crt,.cer,.txt,application/x-pem-file'
+        }
         onChange={async (e) => {
           const file = e.target.files?.[0];
           if (!file) return;
-          const text = await file.text();
-          setValue(name, text, { shouldValidate: true });
+          const value =
+            name === 'eaaPayload'
+              ? await readFileAsPayloadString(file)
+              : await file.text();
+          setValue(name, value, { shouldValidate: true });
         }}
       />
       Or load from file…
@@ -569,8 +768,11 @@ function DragDropTextarea({
         setIsDragOver(false);
         const file = e.dataTransfer.files?.[0];
         if (!file) return;
-        const text = await file.text();
-        setValue(name, text, { shouldValidate: true });
+        const value =
+          name === 'eaaPayload'
+            ? await readFileAsPayloadString(file)
+            : await file.text();
+        setValue(name, value, { shouldValidate: true });
       }}
       className={`relative rounded-md transition ${
         isDragOver ? 'ring-2 ring-blue-500 ring-offset-2 dark:ring-offset-zinc-950' : ''
