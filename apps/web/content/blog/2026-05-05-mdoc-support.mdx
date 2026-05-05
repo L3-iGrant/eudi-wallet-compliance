@@ -1,0 +1,83 @@
+---
+title: "EUDI Wallet Compliance Self-Assessment now supports mdoc/mDL"
+date: "2026-05-05"
+author: "iGrant.io"
+slug: "mdoc-support"
+description: "We have shipped the second EAA profile in the toolkit. Both SD-JWT VC and ISO/IEC mdoc credentials now run through the same conformance engine, with profile-aware auto-fill, a runtime status resolver, and a fresh batch of reference samples."
+---
+
+# EUDI Wallet Compliance Self-Assessment now supports mdoc/mDL
+
+Until this week the Self-Assessment runner accepted only one EAA shape: SD-JWT VC compact serialisations. Today's release adds the second profile defined by ETSI TS 119 472-1 v1.2.1, ISO/IEC mdoc, covering both mobile driving licenses and non-mDL mdocs that follow ISO/IEC 23220-2.
+
+If you tested SD-JWT VC EAAs through the runner during the [ETSI Plugtests](https://signature-plugtests.etsi.org/) earlier this year, the workflow is identical. Pick the mdoc scope on the picker, drop a `.cbor` file (or paste the base64 form) into the upload step, and you get the same control-by-control conformance report.
+
+{/* TODO: insert screenshot of the upload form with an mdoc payload pasted */}
+
+## What's covered
+
+Clause 6 of TS 119 472-1 v1.2.1 specifies the mdoc realisation. We have catalogued every normative rule (100 entries) and added five synthetic resolver / member-presence rules that mirror the SD-JWT VC §5 layout. Concretely:
+
+- **Structural rules** for the `IssuerSigned` envelope, the COSE_Sign1 four-tuple, and the tag(24)-wrapped `MobileSecurityObject`.
+- **Member-presence rules** for `category`, `document_number`, `issuing_authority` / `issuing_authority_unicode`, `issuing_country`, `iss_reg_id`, the standard subject triplet (`given_name`, `family_name`, `document_number`) and the `also_known_as` pseudonym alternative.
+- **Validity-period rules** for the MSO `validFrom` / `validUntil`, including the seconds-precision constraint.
+- **Status-service rules** that mirror the SD-JWT VC envelope: type / purpose / index / uri presence, with the IETF Token Status List nested envelope (`status_list.idx` / `status_list.uri`) accepted in lieu of the flat ETSI shape. The runtime resolver reads the URI, fetches the status list, and reads the registered value.
+- **Tier-specific rules** for QEAA and PuB-EAA: category URN, x5chain recommendation, status-or-shortLived requirement.
+- **Signature-posture rules** for the COSE protected header (`x5u`, `x5t`, `x5chain`). Cryptographic verification is deferred until trust-list integration lands, parallel to the existing SD-JWT VC posture.
+
+The full filtered view is at [/modules/eaa-conformance/profiles/mdoc/](https://compliance.igrant.io/eudi-wallet-compliance/modules/eaa-conformance/profiles/mdoc/).
+
+## Reference samples
+
+Five new samples ship in the [Reference Samples](https://compliance.igrant.io/modules/eaa-conformance/reference-samples/) library, generated with `cbor-x` and a self-signed dev certificate:
+
+- `MDL-EAA-1`: mDL baseline.
+- `MDL-EAA-2`: mDL with TokenStatusList in the flat ETSI shape.
+- `MDL-EAA-3`: non-mDL using the ISO 23220-2 namespace, with a `category` data element flagging non-qualified, non-public-body.
+- `MDL-EAA-4`: mdoc QEAA with `category=urn:etsi:esi:eaa:eu:qualified` and `x5chain` in the COSE protected header.
+- `MDL-EAA-5`: mdoc PuB-EAA with `shortLived=true`.
+
+Each sample's detail page renders the CBOR (base64) with a copy button, the docType, the namespace list, the decoded protected header, the decoded MSO, and the decoded namespaces with their IssuerSignedItem entries.
+
+{/* TODO: insert screenshot of an mdoc sample detail page with the badges visible */}
+
+## Upload form
+
+The upload form is profile-aware:
+
+- **Drop a `.cbor` file** (or `.cbor.base64`, `.b64`) and the form base64-encodes binary input on read so the existing string-typed plumbing carries through to the engine.
+- **Paste hex or base64-encoded CBOR** directly into the EAA payload textarea; `parseEvidence` from `@iwc/shared` sniffs the format and dispatches.
+- **Auto-fill** extracts the issuer cert from the COSE `x5chain` header parameter (each chain entry is PEM-wrapped and joined into a bundle) and the status URL from the MSO. The type-metadata textarea (which has no mdoc analogue) is hidden; in its place the docType and namespace list render as read-only badges.
+- **Profile mismatch** between the chosen scope and the auto-detected payload format surfaces a soft warning above the form. The detected format always wins for parsing and dispatch.
+
+{/* TODO: insert screenshot of the resulting report page */}
+
+## Try it
+
+The fastest way to see it in action is to click "Run Self-Assessment with this sample" on any of the five `MDL-EAA-*` reference samples and inspect the resulting verdict report. About 70 of the 100 mdoc rules are automated; the rest are catalogued with a clear "deferred" note (mostly semantic-conformance rules from clause 4.2 that need a richer evidence model).
+
+If you have your own mdoc payloads from the ETSI Plugtests bundle or your wallet pipeline, drop them into the upload form. We would love feedback on the catalogue rules that fired unexpectedly or the structural rules that misclassified your token.
+
+## Known limitations
+
+- Cryptographic signature verification is deferred for both profiles.
+- The mdoc reference samples carry placeholder signatures; the CBOR structure is real but the bytes after `signature_bstr` are zeros.
+- The `x5t` algorithm field is not surfaced by the current parser, so the QEAA / PuB-EAA "x5t digest algorithm shall be SHA-256" rules are reported as `na` with a parser-extension note.
+- Disclosure-to-digest binding (per ISO 18013-5 §9.1.2.5) is not yet verified.
+
+The full list, plus what comes next, is in [the v1.1.0 release notes](https://github.com/L3-iGrant/eudi-wallet-compliance/blob/main/docs/releases/v1.1.0.md).
+
+## Engineering notes
+
+Two refactors landed before the bulk mdoc work as a behaviour-preserving substrate:
+
+- Payload parsing moved from inside every check up to `runAssessment`. Checks receive a tagged-union `ParsedEvidence` and dispatch on `kind === 'sd-jwt-vc' | 'mdoc'`. The 229 SD-JWT VC engine tests passed unchanged across the migration.
+- `runAssessment` now filters the registry by `scope.profile ∩ control.profile`, so an mdoc payload no longer triggers spurious `na` verdicts from SD-JWT VC-only checks.
+
+The mdoc parser uses [cbor-x](https://github.com/kriszyp/cbor-x) (already a transitive dependency through the status-list package) plus a small inline COSE_Sign1 four-tuple decoder. We did not pull in a heavy COSE library; cryptographic verification belongs in a separate, trust-list-aware layer.
+
+If you want to extend the toolkit with clause 7 (W3C VC) or clause 8 (X.509-AC) of TS 119 472-1, the same pattern applies: a parser in `@iwc/shared`, a clause-section YAML in `@iwc/controls`, and a check pack in `@iwc/engine`. The catalogue's `profile` field already drives engine dispatch, so a new profile slots in additively.
+
+---
+
+Feedback welcome. Reach us at compliance@igrant.io, or open an issue at [github.com/L3-iGrant/eudi-wallet-compliance](https://github.com/L3-iGrant/eudi-wallet-compliance).
