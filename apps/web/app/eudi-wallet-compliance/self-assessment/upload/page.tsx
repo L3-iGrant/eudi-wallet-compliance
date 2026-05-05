@@ -431,12 +431,13 @@ function UploadInner() {
       <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-8">
         <FieldGroup
           label="EAA payload"
+          affordance="Drop a file or paste below"
           hint={
             scope.profile.includes('mdoc') && !scope.profile.includes('sd-jwt-vc')
-              ? 'mdoc/mDL CBOR. Drop a .cbor file or paste base64 / hex below.'
+              ? 'mdoc/mDL CBOR. Accepts a binary .cbor file or hex / base64 text.'
               : scope.profile.includes('sd-jwt-vc') && !scope.profile.includes('mdoc')
-                ? 'SD-JWT VC compact serialisation: header.payload.signature with optional ~disclosures. Drop a file or paste below.'
-                : 'SD-JWT VC compact serialisation OR mdoc CBOR (drop a .cbor file or paste base64 / hex). Format is auto-detected.'
+                ? 'SD-JWT VC compact serialisation: header.payload.signature with optional ~disclosures.'
+                : 'SD-JWT VC compact serialisation or mdoc CBOR (binary .cbor, or hex / base64). Format is auto-detected.'
           }
           error={errors.eaaPayload?.message}
         >
@@ -461,7 +462,8 @@ function UploadInner() {
 
         <FieldGroup
           label="Issuer X.509 certificate"
-          hint="Optional. PEM format. Drop a file or paste below."
+          affordance="Drop a file or paste below"
+          hint="Optional. PEM format."
           error={errors.issuerCert?.message}
         >
           <DragDropTextarea
@@ -662,17 +664,33 @@ function MdocContextBadges({
 function FieldGroup({
   label,
   hint,
+  affordance,
   error,
   children,
 }: {
   label: string;
   hint?: string;
+  /**
+   * Short call-to-action rendered as a tinted pill next to the label.
+   * Used on file-droppable fields to make the drop-or-paste affordance
+   * unmistakable at a glance.
+   */
+  affordance?: string;
   error?: string;
   children: React.ReactNode;
 }) {
   return (
     <div>
-      <label className="text-sm font-semibold text-zinc-950 dark:text-white">{label}</label>
+      <div className="flex flex-wrap items-center gap-2">
+        <label className="text-sm font-semibold text-zinc-950 dark:text-white">
+          {label}
+        </label>
+        {affordance && (
+          <span className="rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-700 dark:bg-blue-950/40 dark:text-blue-300">
+            {affordance}
+          </span>
+        )}
+      </div>
       {hint && (
         <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-500">{hint}</p>
       )}
