@@ -1,0 +1,1786 @@
+# Section 6 controls: ISO/IEC mdoc EAA realisation per ETSI TS 119 472-1
+# v1.2.1 §6. Each entry is profile-tagged [mdoc]; cross-cutting clause-4
+# rules carry profile: [abstract] in section-4.yaml and apply across both
+# profiles automatically through the scope filter.
+#
+# plain_english and why_it_matters are deferred to a hand-curation pass;
+# Zod fills plain_english with the literal "TODO" placeholder when absent.
+
+# ─── §6.1 General requirements ───────────────────────────────────────────
+
+- id: EAA-6.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.1"
+    page: 35
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Data structures shall be those of ISO/IEC 18013-5
+  spec_text: >-
+    The data structures of the EAA shall be the data structures defined in
+    ISO/IEC 18013-5, extended with some structures defined in the present
+    document for meeting specific EAA requirements.
+
+- id: EAA-6.1-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.1"
+    page: 35
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: mDL shall carry org.iso.18013.5.1 namespace data elements
+  spec_text: >-
+    If the EAA is a mobile driving license (mDL) (i.e. the document type of the
+    EAA is "org.iso.18013.5.1.mDL"), it shall contain data elements defined in
+    section 7.1 of ISO/IEC 18013-5 within the namespace "org.iso.18013.5.1";
+    and may contain data elements defined in the present document.
+
+- id: EAA-6.1-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.1"
+    page: 35
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Non-mDL shall carry org.iso.23220.1 namespace data elements
+  spec_text: >-
+    If the EAA is NOT a mobile driving license, it shall contain data elements
+    defined in section 6.3 of ISO/IEC 23220-2 within the namespace
+    "org.iso.23220.1"; may contain data elements defined in the present
+    document; and may contain data elements defined in another document.
+
+- id: EAA-6.1-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.1"
+    page: 35
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: New data elements shall sit in org.etsi.01947201.010101 namespace
+  spec_text: >-
+    The data elements defined in the present document shall be assigned the
+    namespace "org.etsi.01947201.010101".
+
+- id: EAA-6.1-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.1"
+    page: 35
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: mDL presence column of Table 5 of ISO/IEC 18013-5 applies
+  spec_text: >-
+    If the ISO/IEC-mdoc EAA is a mDL, the "presence" column of the Table 5
+    of ISO/IEC 18013-5 shall apply.
+
+- id: EAA-6.1-06
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.1"
+    page: 35
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Non-mDL type document shall specify mandatory data elements
+  spec_text: >-
+    If the ISO/IEC-mdoc EAA is NOT a mDL, the document defining the
+    ISO/IEC-mdoc EAA type shall specify which data elements are mandatory.
+
+- id: EAA-6.1-07
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.1"
+    page: 35
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: EAA shall be an instance of IssuerSigned per ISO/IEC 18013-5
+  spec_text: >-
+    ISO/IEC-mdoc EAA shall be an instance of IssuerSigned type defined in
+    ISO/IEC-mdoc, clause 8.3.2.1.2.2, extended as specified in the present
+    document.
+
+- id: EAA-6.1-08
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.1"
+    page: 36
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: New tstr elements shall encode in Unicode unless stated otherwise
+  spec_text: >-
+    The encoding of any new data element of tstr type defined in clause 6
+    shall be Unicode unless stated otherwise.
+
+# ─── §6.2.2 EAA category ─────────────────────────────────────────────────
+
+- id: EAA-6.2.2.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.2.1"
+    page: 36
+  requirement_level: shall
+  applies_to: [ordinary-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Non-qualified, non-public-body EU mdoc shall not include category
+  spec_text: >-
+    ISO/IEC-mdoc EAAs issued by EAAs issuers registered in the European Union,
+    which are neither ISO/IEC-mdoc QEAAs nor ISO/IEC-mdoc PuB-EAAs, shall not
+    include the category data element.
+
+- id: EAA-6.2.2.1-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.2.1"
+    page: 36
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: category data element implements clause 4.2.2 semantics
+  spec_text: >-
+    The category data element shall implement the semantics specified in
+    clause 4.2.2 of the present document.
+
+- id: EAA-6.2.2.1-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.2.1"
+    page: 36
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: category data element shall be of tstr type
+  spec_text: >-
+    The category data element shall be of type tstr (specified in IETF
+    RFC 8610).
+
+- id: QEAA-6.2.2.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.2.2"
+    page: 36
+  requirement_level: shall
+  applies_to: [qeaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: ISO/IEC-mdoc QEAA shall include category data element
+  spec_text: >-
+    An ISO/IEC-mdoc QEAA shall include the category data element, which shall
+    implement the semantics specified in clause 4.2.2 of the present document.
+
+- id: QEAA-6.2.2.2-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.2.2"
+    page: 36
+  requirement_level: shall
+  applies_to: [qeaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: QEAA category value shall be the qualified URN
+  spec_text: >-
+    The value of the category data element in an ISO/IEC-mdoc QEAA shall be
+    the URN defined in requirement QEAA-4.2.2.2-02 (urn:etsi:esi:eaa:eu:qualified).
+
+- id: PuB-EAA-6.2.2.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.2.3"
+    page: 36
+  requirement_level: shall
+  applies_to: [pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: ISO/IEC-mdoc PuB-EAA shall include category data element
+  spec_text: >-
+    An ISO/IEC-mdoc PuB-EAA shall include the category data element, which
+    shall implement the semantics specified in clause 4.2.2 of the present
+    document.
+
+- id: PuB-EAA-6.2.2.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.2.3"
+    page: 37
+  requirement_level: shall
+  applies_to: [pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: PuB-EAA category value shall be the public-body URN
+  spec_text: >-
+    The value of the category data element in an ISO/IEC-mdoc PuB-EAA shall be
+    the URN defined in requirement PuB-EAA-4.2.2.3-02 (urn:etsi:esi:eaa:eu:pub).
+
+# ─── §6.2.3 EAA identifier ───────────────────────────────────────────────
+
+- id: EAA-6.2.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.3"
+    page: 37
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: ISO/IEC-mdoc EAA shall incorporate the document_number element
+  spec_text: >-
+    An ISO/IEC-mdoc EAA shall incorporate the document_number data element.
+
+- id: EAA-6.2.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.3"
+    page: 37
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: document_number implements clause 4.2.3 semantics
+  spec_text: >-
+    The document_number data element shall implement the semantics of
+    clause 4.2.3 of the present document.
+
+- id: EAA-6.2.3-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.3"
+    page: 37
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: mDL document_number shall match Table 5 of ISO/IEC 18013-5
+  spec_text: >-
+    If the ISO/IEC-mdoc EAA is a mDL, then the document_number data element
+    shall be as specified in Table 5 of clause 7.2.1 of ISO/IEC 18013-5.
+
+- id: EAA-6.2.3-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.3"
+    page: 37
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Non-mDL document_number shall match clause 6.3 of ISO/IEC 23220-2
+  spec_text: >-
+    If the ISO/IEC-mdoc EAA is NOT a mDL the document_number data element
+    shall be as specified in clause 6.3 of ISO/IEC 23220-2.
+
+# ─── §6.2.4 EAA issuer identifier ────────────────────────────────────────
+
+- id: EAA-6.2.4.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.4.1"
+    page: 37
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: mDL shall include issuing_authority component
+  spec_text: >-
+    If an ISO/IEC-mdoc EAA is a mDL it shall include the issuing_authority
+    component, specified in Table 5 of clause 7.2.1 of ISO/IEC 18013-5.
+
+- id: EAA-6.2.4.1-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.4.1"
+    page: 37
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: issuing_authority implements clause 4.2.4 semantics
+  spec_text: >-
+    The issuing_authority data element shall implement the semantics of
+    clause 4.2.4 of the present document.
+
+- id: EAA-6.2.4.1-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.4.1"
+    page: 37
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Non-mDL shall include issuing_authority_unicode component
+  spec_text: >-
+    If an ISO/IEC-mdoc EAA is NOT a mDL it shall include the
+    issuing_authority_unicode component, specified in clause 6.3 of
+    ISO/IEC 23220-2.
+
+- id: EAA-6.2.4.1-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.4.1"
+    page: 37
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: issuing_authority_unicode implements clause 4.2.4 semantics
+  spec_text: >-
+    The issuing_authority_unicode data element shall implement the semantics
+    of clause 4.2.4 of the present document.
+
+- id: EAA-6.2.4.1-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.4.1"
+    page: 37
+  requirement_level: may
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: ISO/IEC-mdoc EAA may incorporate issuing_country
+  spec_text: >-
+    An ISO/IEC-mdoc EAA may incorporate the issuing_country, identifying the
+    EU Member State where the ISO/IEC-mdoc EAA issuer is registered.
+
+- id: EAA-6.2.4.1-06
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.4.1"
+    page: 37
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: mDL issuing_country shall match Table 5 of ISO/IEC 18013-5
+  spec_text: >-
+    If the ISO/IEC-mdoc EAA is a mDL, then the issuing_country data element
+    shall be as specified in Table 5 of clause 7.2.1 of ISO/IEC 18013-5.
+
+- id: EAA-6.2.4.1-07
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.4.1"
+    page: 37
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Non-mDL issuing_country shall match clause 6.3 of ISO/IEC 23220-2
+  spec_text: >-
+    If the ISO/IEC-mdoc EAA is NOT a mDL the issuing_country data element
+    shall be as specified in clause 6.3 of ISO/IEC 23220-2.
+
+- id: EAA-6.2.4.1-08
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.4.1"
+    page: 37
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Optional issuing_country value shall match EAA-4.2.4.1-05
+  spec_text: >-
+    The value of the optional issuing_country data element shall be as
+    specified in requirement EAA-4.2.4.1-05 of the present document.
+
+- id: EAA-6.2.4.1-09
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.4.1"
+    page: 37
+  requirement_level: may
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: ISO/IEC-mdoc EAA may include iss_reg_id where applicable
+  spec_text: >-
+    Where a registration identifier is applicable, an ISO/IEC-mdoc EAA may
+    include the iss_reg_id data element.
+
+- id: EAA-6.2.4.1-10
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.4.1"
+    page: 37
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: iss_reg_id data element shall be of tstr type
+  spec_text: >-
+    The iss_reg_id data element shall be an element of the type tstr
+    (specified in IETF RFC 8610).
+
+- id: EAA-6.2.4.1-11
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.4.1"
+    page: 38
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: iss_reg_id value shall be a registration identifier
+  spec_text: >-
+    The value of the iss_reg_id data element shall be a registration
+    identifier.
+
+- id: EAA-6.2.4.1-12
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.4.1"
+    page: 38
+  requirement_level: may
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: iss_reg_id value may follow ETSI EN 319 412-1 LEG-5.1.4 rules
+  spec_text: >-
+    The value of the iss_reg_id data element may be built applying the rules
+    specified in requirements LEG-5.1.4-02 to LEG-5.1.4-08 (both included)
+    in clause 5.1.4 of ETSI EN 319 412-1.
+
+- id: EAA-6.2.4.1-13
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.4.1"
+    page: 38
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: iss_reg_id mutex with embedded qualified certificate
+  spec_text: >-
+    An ISO/IEC-mdoc EAA shall not incorporate the iss_reg_id claim if it
+    incorporates the qualified certificate supporting the ISO/IEC-mdoc EAA
+    signature.
+
+- id: QEAA-6.2.4.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.4.2"
+    page: 38
+  requirement_level: shall
+  applies_to: [qeaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Legal-person QEAA shall carry registration identifier
+  spec_text: >-
+    If the issuer of the ISO/IEC-mdoc QEAA is a legal person and if a
+    registration identifier is applicable, an ISO/IEC-mdoc QEAA shall include
+    the registration identifier either in the iss_reg_id data element or
+    within the qualified certificate supporting its signature.
+
+- id: QEAA-6.2.4.2-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.4.2"
+    page: 38
+  requirement_level: shall
+  applies_to: [qeaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: QEAA iss_reg_id shall match organizationIdentifier rules
+  spec_text: >-
+    The value of the iss_reg_id data element shall be built according to the
+    rules defined in clause 5.1.4 of ETSI EN 319 412-1 to build the value of
+    the organizationIdentifier attribute in the subject field of an X.509
+    certificate.
+
+- id: PuB-EAA-6.2.4.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.4.3"
+    page: 38
+  requirement_level: shall
+  applies_to: [pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: PuB-EAA shall carry registration identifier where applicable
+  spec_text: >-
+    Where a registration identifier is applicable, an ISO/IEC 18013-5 PuB-EAA
+    shall include the registration identifier either in the iss_reg_id data
+    element or within the qualified certificate supporting its signature.
+
+- id: PuB-EAA-6.2.4.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.4.3"
+    page: 38
+  requirement_level: shall
+  applies_to: [pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: PuB-EAA iss_reg_id shall match organizationIdentifier rules
+  spec_text: >-
+    The value of the iss_reg_id data element shall be built according to the
+    rules defined in clause 5.1.4 of ETSI EN 319 412-1 to build the value of
+    the organizationIdentifier attribute in the subject field of an X.509
+    certificate.
+
+# ─── §6.2.5 EAA subject and attribute subject identifiers and pseudonyms ─
+
+- id: EAA-6.2.5.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.5.1"
+    page: 38
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: mDL identifying its subject shall include the standard triplet
+  spec_text: >-
+    If an ISO/IEC-mdoc EAA requires that the EAA subject (the holder of the
+    mDL) is identified, the ISO/IEC-mdoc EAA shall include the following data
+    elements, specified in Table 5 of clause 7.2.1 of ISO/IEC 18013-5:
+    given_name and family_name, and document_number.
+
+- id: EAA-6.2.5.1-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.5.1"
+    page: 38
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: mDL shall include either the standard triplet or also_known_as
+  spec_text: >-
+    An ISO/IEC-mdoc EAA that is a mDL shall include either the complete set
+    of data elements mentioned in the previous requirement identifying the
+    EAA subject, or the also_known_as data element.
+
+- id: EAA-6.2.5.1-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.5.1"
+    page: 38
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: also_known_as data element shall be of tstr type
+  spec_text: >-
+    The also_known_as data element shall be an element of the type tstr
+    (specified in IETF RFC 8610).
+
+- id: EAA-6.2.5.1-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.5.1"
+    page: 38
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Non-mDL identifying its subject shall include the standard triplet
+  spec_text: >-
+    If the ISO/IEC-mdoc EAA is NOT a mDL, and requires that the EAA subject
+    (the holder of the mDoc) is identified, the ISO/IEC-mdoc EAA shall
+    include the following data elements, specified in clause 6.3 of
+    ISO/IEC 23220-2: given_name, family_name, and document_number.
+
+- id: EAA-6.2.5.1-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.5.1"
+    page: 38
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Non-mDL shall include either the standard triplet or also_known_as
+  spec_text: >-
+    An ISO/IEC-mdoc EAA that is NOT a mDL shall include either the complete
+    set of data elements mentioned in the previous requirement identifying
+    the EAA subject, or the also_known_as data element.
+
+- id: EAA-6.2.5.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.5.2"
+    page: 39
+  requirement_level: may
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: ISO/IEC-mdoc EAA may carry also_known_as as subject pseudonym
+  spec_text: >-
+    An ISO/IEC-mdoc EAA may contain the also_known_as data element, which
+    shall contain the pseudonym of the EAA, and therefore shall implement
+    the semantics specified in clause 4.2.6.3 of the present document.
+
+- id: EAA-6.2.5.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.5.3"
+    page: 39
+  requirement_level: may
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: ISO/IEC-mdoc EAA may include attribute subjects
+  spec_text: >-
+    An ISO/IEC-mdoc EAA may include attributes that refer to entities that
+    are not the EAA subject: the attribute subjects.
+
+- id: EAA-6.2.5.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.5.3"
+    page: 39
+  requirement_level: may
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Attribute subjects may be identified or pseudonymised
+  spec_text: >-
+    For each attribute subject, an ISO/IEC-mdoc EAA may include the attribute
+    subject identifier or the attribute subject pseudonym.
+
+- id: EAA-6.2.5.3-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.5.3"
+    page: 39
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Attribute subject identifiers shall associate to their attributes
+  spec_text: >-
+    In an ISO/IEC-mdoc EAA the identifiers of the attribute subjects shall
+    be associated to their corresponding attributes as specified in
+    clause 6.3 of the present document.
+
+- id: EAA-6.2.5.4-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.5.4"
+    page: 39
+  requirement_level: may
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: ISO/IEC-mdoc EAA may include attribute subject pseudonyms
+  spec_text: >-
+    An ISO/IEC-mdoc EAA may include pseudonyms of attribute subjects.
+
+- id: EAA-6.2.5.4-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.5.4"
+    page: 39
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Attribute subject pseudonyms shall associate to their attributes
+  spec_text: >-
+    In an ISO/IEC-mdoc EAA, the pseudonyms of the attribute subjects shall
+    be associated with their corresponding attributes as specified in
+    clause 6.3 of the present document.
+
+- id: QEAA-6.2.5.5-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.5.5"
+    page: 39
+  requirement_level: shall
+  applies_to: [qeaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: ISO/IEC-mdoc QEAA attributes shall refer to the EAA subject
+  spec_text: >-
+    In an ISO/IEC-mdoc QEAA all the attributes shall refer to the EAA subject.
+
+- id: PuB-EAA-6.2.5.6-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.5.6"
+    page: 39
+  requirement_level: shall
+  applies_to: [pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: ISO/IEC-mdoc PuB-EAA attributes shall refer to the EAA subject
+  spec_text: >-
+    In an ISO/IEC-mdoc PuB-EAA all the attributes shall refer to the EAA
+    subject.
+
+# ─── §6.2.6 EAA issuance ─────────────────────────────────────────────────
+
+- id: EAA-6.2.6-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.6"
+    page: 39
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: ISO/IEC-mdoc EAA shall incorporate issue_date
+  spec_text: >-
+    An ISO/IEC-mdoc EAA shall incorporate the issue_date data element.
+
+- id: EAA-6.2.6-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.6"
+    page: 39
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: issue_date implements clause 4.2.7 semantics
+  spec_text: >-
+    The issue_date data element shall indicate the issuance date according
+    to the semantics of clause 4.2.7 of the present document.
+
+- id: EAA-6.2.6-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.6"
+    page: 39
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: mDL issue_date shall match Table 5 of ISO/IEC 18013-5
+  spec_text: >-
+    If the ISO/IEC-mdoc EAA is a mDL, then the issue_date data element shall
+    be as specified in Table 5 of clause 7.2.1 of ISO/IEC 18013-5.
+
+- id: EAA-6.2.6-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.6"
+    page: 39
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Non-mDL issue_date shall match clause 6.3 of ISO/IEC 23220-2
+  spec_text: >-
+    If the ISO/IEC-mdoc EAA is NOT a mDL the issue_date data element shall
+    be as specified in clause 6.3 of ISO/IEC 23220-2.
+
+# ─── §6.2.7 EAA validity periods ─────────────────────────────────────────
+
+- id: EAA-6.2.7.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.7.1"
+    page: 39
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: validityInfo.validFrom marks technical validity start
+  spec_text: >-
+    The validFrom member of the validityInfo member of the instance of
+    MobileSecurityObject type specified in clause 9.1.2.4 of ISO/IEC 18013-5,
+    shall implement the semantics of the start time of the ISO/IEC-mdoc EAA
+    technical validity period.
+
+- id: EAA-6.2.7.1-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.7.1"
+    page: 39
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: validityInfo.validUntil marks technical validity end
+  spec_text: >-
+    The validUntil member of the validityInfo member of the instance of
+    MobileSecurityObject type specified in clause 9.1.2.4 of ISO/IEC 18013-5,
+    shall implement the semantics of the end type instant of the
+    ISO/IEC-mdoc EAA technical validity period.
+
+- id: EAA-6.2.7.1-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.7.1"
+    page: 39
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: validFrom and validUntil shall indicate UTC time
+  spec_text: >-
+    The validFrom and the validUntil members shall indicate the UTC time for
+    date and time.
+
+- id: EAA-6.2.7.1-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.7.1"
+    page: 40
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: validFrom and validUntil shall have seconds precision
+  spec_text: >-
+    The validFrom and the validUntil members shall have seconds precision.
+
+- id: EAA-6.2.7.1-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.7.1"
+    page: 40
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: validFrom and validUntil shall not contain fractions of seconds
+  spec_text: >-
+    The validFrom and the validUntil members shall not contain fractions of
+    seconds.
+
+- id: EAA-6.2.7.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.7.2"
+    page: 40
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: mDL expiry_date marks administrative validity end
+  spec_text: >-
+    If the ISO/IEC-mdoc EAA is a mDL, then the expiry_date element specified
+    in table 5 of clause 7.1 of ISO/IEC 18013-5, shall implement the
+    semantics of the end date of the ISO/IEC-mdoc EAA administrative
+    validity period.
+
+- id: EAA-6.2.7.2-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.7.2"
+    page: 40
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Non-mDL expiry_date marks administrative validity end
+  spec_text: >-
+    If the ISO/IEC-mdoc EAA is NOT a mDL, then the expiry_date element
+    specified in clause 6.3 of ISO/IEC 23220-2, shall implement the
+    semantics of the end date of the ISO/IEC-mdoc EAA administrative
+    validity period.
+
+- id: EAA-6.2.7.2-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.7.2"
+    page: 40
+  requirement_level: may
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: issue_date may mark administrative validity start
+  spec_text: >-
+    The issue_date data element, as specified in clause 6.2.6 of the present
+    document, may be considered, wherever appropriate, to implement the
+    semantics of the start date of the ISO/IEC-mdoc EAA Administrative
+    validity period.
+
+# ─── §6.2.8 Components constraining usage ────────────────────────────────
+
+- id: EAA-6.2.8.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.8.1"
+    page: 40
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: ISO/IEC-mdoc EAA shall not carry an audience component
+  spec_text: >-
+    An ISO/IEC-mdoc EAA shall not incorporate any data element implementing
+    the semantics specified in clause 4.2.9.2 of the present document.
+
+- id: EAA-6.2.8.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.8.2"
+    page: 40
+  requirement_level: may
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: ISO/IEC-mdoc EAA may incorporate the oneTime data element
+  spec_text: >-
+    An ISO/IEC-mdoc EAA may incorporate the oneTime data element.
+
+- id: EAA-6.2.8.2-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.8.2"
+    page: 40
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: oneTime implements clause 4.2.9.3 semantics
+  spec_text: >-
+    The oneTime data element shall implement the semantics specified in
+    clause 4.2.9.3 of the present document.
+
+- id: EAA-6.2.8.2-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.8.2"
+    page: 40
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: oneTime data element shall have CBOR bool type
+  spec_text: >-
+    The oneTime data element shall have the bool CBOR type.
+
+- id: EAA-6.2.8.2-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.8.2"
+    page: 40
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: oneTime true means single-use, no retention
+  spec_text: >-
+    If the oneTime data element is present and set to true, it shall
+    indicate that the EAA shall be used only once, and that it shall not be
+    retained for future use.
+
+- id: EAA-6.2.8.2-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.8.2"
+    page: 40
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: oneTime false or absent removes the constraint
+  spec_text: >-
+    If the oneTime data element is present and set to false or it is absent,
+    the aforementioned constraint shall not apply to the EAA.
+
+# ─── §6.2.9 Attributes evidence ──────────────────────────────────────────
+
+- id: EAA-6.2.9-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.9"
+    page: 40
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: ISO/IEC-mdoc EAA shall not carry attributes-evidence component
+  spec_text: >-
+    An ISO/IEC-mdoc EAA shall not incorporate any data element implementing
+    the semantics specified in clause 4.2.10 of the present document.
+
+# ─── §6.2.10 EAA status service ──────────────────────────────────────────
+
+- id: EAA-6.2.10.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.10.1"
+    page: 40
+  requirement_level: may
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: MSO may carry status member
+  spec_text: >-
+    An ISO/IEC-mdoc may contain the status member within the instance of
+    MobileSecurityObject.
+  related_controls: [EAA-6.2.10.1-02, EAA-6.2.10.1-03, EAA-4.2.11.1-03]
+
+- id: EAA-6.2.10.1-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.10.1"
+    page: 41
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: status member implements clause 4.2.11 semantics
+  spec_text: >-
+    The status member shall implement the semantics specified in clause
+    4.2.11 of the present document.
+
+- id: EAA-6.2.10.1-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.10.1"
+    page: 41
+  requirement_level: may
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload, status-list]
+  short_title: status may contain status_list per IETF Token Status List
+  spec_text: >-
+    The status member may contain the status_list member as specified in
+    clause 6.3 of IETF draft-ietf-oauth-status-list-13.
+
+- id: QEAA-6.2.10.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.10.2"
+    page: 41
+  requirement_level: shall
+  applies_to: [qeaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload, status-list]
+  short_title: QEAA without shortLived shall carry status in MSO
+  spec_text: >-
+    If an ISO/IEC-mdoc QEAA does not contain the shortLived data element, it
+    shall contain the status member within the instance of
+    MobileSecurityObject as specified in clause 6.2.10.1.
+
+- id: PuB-EAA-6.2.10.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.10.3"
+    page: 41
+  requirement_level: shall
+  applies_to: [pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload, status-list]
+  short_title: PuB-EAA without shortLived shall carry status in MSO
+  spec_text: >-
+    If an ISO/IEC-mdoc PuB-EAA does not contain the shortLived data element,
+    it shall contain the status member within the instance of
+    MobileSecurityObject as specified in clause 6.2.10.1.
+
+# ─── §6.2.11 EAA renewal service ─────────────────────────────────────────
+
+- id: EAA-6.2.11-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.11"
+    page: 41
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: ISO/IEC-mdoc EAA shall not carry a renewal-service component
+  spec_text: >-
+    An ISO/IEC-mdoc EAA shall not incorporate any component implementing the
+    semantics specified in clause 4.2.12 of the present document.
+
+# ─── §6.2.12 EAA short-lived ─────────────────────────────────────────────
+
+- id: EAA-6.2.12-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.12"
+    page: 41
+  requirement_level: may
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: ISO/IEC-mdoc EAA may incorporate the shortLived data element
+  spec_text: >-
+    An ISO/IEC-mdoc EAA may incorporate the shortLived data element.
+
+- id: EAA-6.2.12-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.12"
+    page: 41
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: shortLived implements clause 4.2.13 semantics
+  spec_text: >-
+    The shortLived data element shall implement the semantics specified in
+    clause 4.2.13 of the present document.
+
+- id: EAA-6.2.12-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.12"
+    page: 41
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: shortLived data element shall have CBOR bool type
+  spec_text: >-
+    The shortLived data element shall have the bool CBOR type.
+
+- id: EAA-6.2.12-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.12"
+    page: 41
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: shortLived true bypasses revocation status check
+  spec_text: >-
+    If the shortLived data element is present and set to true, it shall
+    indicate that the validity period of the EAA is so short that it shall
+    not be necessary to check its revocation status.
+
+- id: EAA-6.2.12-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.12"
+    page: 41
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: shortLived false or absent requires revocation status check
+  spec_text: >-
+    If the shortLived data element is present and set to false or it is
+    absent, the aforementioned constraint shall not apply to the EAA and it
+    shall be necessary to check its revocation status.
+
+# ─── §6.3 Attested attributes ────────────────────────────────────────────
+
+- id: EAA-6.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.3"
+    page: 41
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Attested attributes shall be carried in IssuerSignedItem components
+  spec_text: >-
+    An ISO/IEC-mdoc EAA shall include each attested attribute, regardless it
+    is disclosable or not, in one or more IssuerSignedItem component, and
+    shall be incorporated to the ISO/IEC-mdoc EAA as specified in clause
+    8.3.2.1.2.2 of ISO/IEC 18013-5.
+
+- id: EAA-6.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.3"
+    page: 41
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Non-EAA-subject attributes shall use SubAttr in elementValue
+  spec_text: >-
+    For associating one attribute to one entity different than the EAA
+    subject, the ISO/IEC-mdoc EAA shall include an instance of the SubAttr
+    type (which is defined below) in the elementValue member of
+    IssuerSignedItem.
+
+- id: EAA-6.3-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.3"
+    page: 42
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: SubAttr shall have either subId or subAka member
+  spec_text: >-
+    An instance of SubAttr type shall have either the subId member or the
+    subAka member.
+
+- id: EAA-6.3-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.3"
+    page: 42
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: subId shall be a CBOR map identifying the attribute subject
+  spec_text: >-
+    The subId member shall be a CBOR map whose members shall univocally
+    identify the attribute subject.
+
+- id: EAA-6.3-05
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.3"
+    page: 42
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: subAka shall be a CBOR String pseudonym
+  spec_text: >-
+    The subAka member shall be a CBOR String whose value shall be the
+    pseudonym of an attribute subject which shall associate the attributes
+    to this attribute subject.
+
+# ─── §6.4 Attested Attributes metadata ───────────────────────────────────
+
+- id: EAA-6.4.1.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.4.1.2"
+    page: 42
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: ISO/IEC-mdoc EAA shall include version in MobileSecurityObject
+  spec_text: >-
+    An ISO/IEC-mdoc EAA shall include the version component within its
+    MobileSecurityObject.
+
+- id: EAA-6.4.1.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.4.1.3"
+    page: 42
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Disclosable attributes shall ride in IssuerSignedItem components
+  spec_text: >-
+    An ISO/IEC-mdoc EAA containing disclosable attributes, shall include
+    each disclosure in one IssuerSignedItem component, and shall be
+    incorporated to the ISO/IEC-mdoc EAA as specified in clause 8.3.2.1.2.2
+    of ISO/IEC 18013-5.
+
+- id: EAA-6.4.1.4-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.4.1.4"
+    page: 42
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: valueDigests implements clause 4.4.2.3 semantics
+  spec_text: >-
+    For an ISO/IEC-mdoc EAA, the valueDigests component shall implement the
+    semantics specified in clause 4.4.2.3 of the present document.
+
+- id: EAA-6.4.1.4-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.4.1.4"
+    page: 42
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Disclosable mdoc shall include valueDigests in MSO
+  spec_text: >-
+    If an ISO/IEC-mdoc includes selectively disclosable attested attributes,
+    it shall include the valueDigests component within its
+    MobileSecurityObject, as specified in clause 9.1.2.4 of ISO/IEC 18013-5
+    for supporting the semantics specified in clause 4.4.2.3 of the present
+    document.
+
+- id: EAA-6.4.1.5-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.4.1.5"
+    page: 42
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: Disclosable mdoc shall include digestAlgorithm in MSO
+  spec_text: >-
+    An ISO/IEC-mdoc EAA containing disclosable attributes, shall include the
+    digestAlgorithm component within its MobileSecurityObject.
+
+# ─── §6.5 EAA data for Key Binding ───────────────────────────────────────
+
+- id: EAA-6.5-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.5"
+    page: 42
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: deviceKey shall sit within deviceKeyInfo of MSO
+  spec_text: >-
+    An ISO/IEC-mdoc EAA shall incorporate the deviceKey member within the
+    deviceKeyInfo member of the instance of MobileSecurityObject type, to
+    implement the semantics specified in clause 4.5 of the present document.
+
+- id: EAA-6.5-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.5"
+    page: 42
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: deviceKey shall be the EAA subject's public key
+  spec_text: >-
+    The deviceKey member within the deviceKeyInfo member of the instance of
+    MobileSecurityObject type, shall contain a public key whose private key
+    is in possession of the EAA subject.
+
+# ─── §6.6 EAA digital signature ──────────────────────────────────────────
+
+- id: EAA-6.6.1-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.6.1"
+    page: 43
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload, issuer-cert]
+  short_title: ISO/IEC-mdoc EAA shall be signed by a CB-AdES digital signature
+  spec_text: >-
+    An ISO/IEC-mdoc EAA shall be signed by a CB-AdES digital signature.
+
+- id: QEAA-6.6.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.6.2"
+    page: 43
+  requirement_level: shall
+  applies_to: [qeaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload, issuer-cert]
+  short_title: QEAA CB-AdES shall be a qualified electronic signature or seal
+  spec_text: >-
+    The CB-AdES digital signature signing an ISO/IEC-mdoc QEAA shall be a
+    qualified electronic signature or a qualified electronic seal.
+
+- id: QEAA-6.6.2-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.6.2"
+    page: 43
+  requirement_level: shall
+  applies_to: [qeaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload, issuer-cert]
+  short_title: QEAA Protected Header shall contain x5u and x5t
+  spec_text: >-
+    The Protected Header of the CB-AdES digital signature signing an
+    ISO/IEC-mdoc QEAA shall contain the x5u and the x5t header parameters,
+    both specified in IETF RFC 9360.
+
+- id: QEAA-6.6.2-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.6.2"
+    page: 43
+  requirement_level: shall
+  applies_to: [qeaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload, issuer-cert]
+  short_title: QEAA x5t digest algorithm shall be SHA-256
+  spec_text: >-
+    The digest algorithm used in the x5t header parameter, shall be SHA-256.
+
+- id: QEAA-6.6.2-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.6.2"
+    page: 43
+  requirement_level: should
+  applies_to: [qeaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload, issuer-cert]
+  short_title: QEAA Protected Header should contain x5chain
+  spec_text: >-
+    The Protected Header of the CB-AdES digital signature signing an
+    ISO/IEC-mdoc QEAA should contain the x5chain header parameter, specified
+    in IETF RFC 9360.
+
+- id: PuB-EAA-6.6.3-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.6.3"
+    page: 43
+  requirement_level: shall
+  applies_to: [pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload, issuer-cert]
+  short_title: PuB-EAA CB-AdES shall be a qualified electronic signature or seal
+  spec_text: >-
+    The CB-AdES digital signature signing an ISO/IEC-mdocPuB-EAA shall be a
+    qualified electronic signature or a qualified electronic seal.
+
+- id: PuB-EAA-6.6.3-02
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.6.3"
+    page: 43
+  requirement_level: shall
+  applies_to: [pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload, issuer-cert]
+  short_title: PuB-EAA Protected Header shall contain x5u and x5t
+  spec_text: >-
+    The Protected Header of the CB-AdES digital signature signing an
+    ISO/IEC-mdoc PuB-EAA shall contain the x5u and the x5t header
+    parameters, both specified in IETF RFC 9360.
+
+- id: PuB-EAA-6.6.3-03
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.6.3"
+    page: 43
+  requirement_level: shall
+  applies_to: [pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload, issuer-cert]
+  short_title: PuB-EAA x5t digest algorithm shall be SHA-256
+  spec_text: >-
+    The digest algorithm used in the x5t header parameter, shall be SHA-256.
+
+- id: PuB-EAA-6.6.3-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.6.3"
+    page: 43
+  requirement_level: should
+  applies_to: [pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload, issuer-cert]
+  short_title: PuB-EAA Protected Header should contain x5chain
+  spec_text: >-
+    The Protected Header of the CB-AdES digital signature signing an
+    ISO/IEC-mdoc PuB-EAA should contain the x5chain header parameter,
+    specified in IETF RFC 9360.

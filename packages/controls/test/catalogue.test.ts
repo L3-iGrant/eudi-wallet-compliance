@@ -71,4 +71,21 @@ describe('canonical controls catalogue', () => {
     );
     expect(stray).toEqual([]);
   });
+
+  it('includes a non-zero count of mdoc-profile-tagged controls', async () => {
+    const controls = await loadAllControls(dataDir);
+    const mdoc = controls.filter((c) => c.profile.includes('mdoc'));
+    // Phase 7: section-6.yaml ships ~100 entries from ETSI TS 119 472-1 §6.
+    expect(mdoc.length).toBeGreaterThan(50);
+  });
+
+  it('keeps SD-JWT VC and mdoc-only profiles disjoint outside cross-cutting controls', async () => {
+    const controls = await loadAllControls(dataDir);
+    // Cross-cutting (clause 4) rows are tagged ['abstract']; non-cross-cutting
+    // rows declare exactly one concrete profile.
+    const concrete = controls.filter((c) => !c.profile.includes('abstract'));
+    for (const c of concrete) {
+      expect(c.profile.length, `${c.id} has profile ${JSON.stringify(c.profile)}`).toBe(1);
+    }
+  });
 });
