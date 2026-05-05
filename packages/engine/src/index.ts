@@ -1,4 +1,5 @@
 import type { Control } from '@iwc/controls';
+import { ParseError, parseEvidence, type ParsedEvidence } from '@iwc/shared';
 import type {
   AssessmentResult,
   AssessmentScope,
@@ -7,7 +8,7 @@ import type {
   GapAnalysis,
   Verdict,
 } from './types';
-import { getCheck } from './registry';
+import { getCheck, type CheckExtras } from './registry';
 import { filterControlsForScope } from './scope';
 import { computeAdditionallyRequired } from './gap-analysis';
 
@@ -42,13 +43,46 @@ function listEvidenceRefs(evidence: Evidence): string[] {
 }
 
 /**
- * Run every applicable control's check against the supplied evidence and
- * scope, returning the verdict list. Pure helper, used both for the main
- * assessment and for tier-comparison passes inside computeGapAnalysis.
+ * One of three "no parsed payload available" outcomes that runAssessment
+ * fans out to every check when the EAA payload is missing or could not
+ * be parsed. Each check still gets a verdict (na or fail) so the report
+ * has a complete row per in-scope control.
+ */
+type PayloadOutcome =
+  | { state: 'parsed'; parsed: ParsedEvidence }
+  | { state: 'absent' }
+  | { state: 'parse-failed'; message: string };
+
+function payloadOutcomeVerdict(
+  controlId: string,
+  outcome: Exclude<PayloadOutcome, { state: 'parsed' }>,
+): Verdict {
+  if (outcome.state === 'absent') {
+    return {
+      controlId,
+      status: 'na',
+      evidenceRef: '',
+      notes: 'No EAA payload supplied.',
+    };
+  }
+  return {
+    controlId,
+    status: 'fail',
+    evidenceRef: 'eaa-payload',
+    notes: `EAA payload could not be parsed: ${outcome.message}`,
+  };
+}
+
+/**
+ * Run every applicable control's check against the parsed evidence,
+ * scope and side-channel extras, returning the verdict list. Pure
+ * helper, used both for the main assessment and for tier-comparison
+ * passes inside computeGapAnalysis.
  */
 async function runVerdicts(
   controls: Control[],
-  evidence: Evidence,
+  payload: PayloadOutcome,
+  extras: CheckExtras,
   scope: AssessmentScope,
 ): Promise<Verdict[]> {
   const inScope = filterControlsForScope(controls, scope);
@@ -63,9 +97,36 @@ async function runVerdicts(
           notes: 'No check implemented yet',
         };
       }
-      return check(evidence, scope);
+      if (payload.state !== 'parsed') {
+        return payloadOutcomeVerdict(c.id, payload);
+      }
+      return check(payload.parsed, scope, extras);
     }),
   );
+}
+
+function preparePayload(evidence: Evidence): PayloadOutcome {
+  if (
+    evidence.eaaPayload === undefined ||
+    evidence.eaaPayload === null ||
+    evidence.eaaPayload.trim().length === 0
+  ) {
+    return { state: 'absent' };
+  }
+  try {
+    return { state: 'parsed', parsed: parseEvidence(evidence.eaaPayload) };
+  } catch (err) {
+    const message = err instanceof ParseError ? err.message : (err as Error).message;
+    return { state: 'parse-failed', message };
+  }
+}
+
+function evidenceExtras(evidence: Evidence): CheckExtras {
+  return {
+    issuerCert: evidence.issuerCert,
+    statusListUrl: evidence.statusListUrl,
+    typeMetadata: evidence.typeMetadata,
+  };
 }
 
 /**
@@ -76,7 +137,8 @@ async function runVerdicts(
  */
 async function computeFailingAtHigherTiers(
   controls: Control[],
-  evidence: Evidence,
+  payload: PayloadOutcome,
+  extras: CheckExtras,
   scope: AssessmentScope,
 ): Promise<{
   canBeQeaa: boolean;
@@ -85,8 +147,8 @@ async function computeFailingAtHigherTiers(
   missingForPubEaa: string[];
 }> {
   const [qeaaVerdicts, pubEaaVerdicts] = await Promise.all([
-    runVerdicts(controls, evidence, { ...scope, tier: 'qeaa' }),
-    runVerdicts(controls, evidence, { ...scope, tier: 'pub-eaa' }),
+    runVerdicts(controls, payload, extras, { ...scope, tier: 'qeaa' }),
+    runVerdicts(controls, payload, extras, { ...scope, tier: 'pub-eaa' }),
   ]);
   const failingForQeaa = qeaaVerdicts
     .filter((v) => v.status === 'fail')
@@ -110,9 +172,15 @@ export async function runAssessment(
 ): Promise<AssessmentResult> {
   const tenantId = options?.tenantId ?? DEFAULT_TENANT_ID;
 
+  // Parse the EAA payload once; checks operate on the parsed shape and
+  // never re-parse. If parsing fails or the payload is absent, every
+  // in-scope check still gets a verdict (na or fail) via runVerdicts.
+  const payload = preparePayload(evidence);
+  const extras = evidenceExtras(evidence);
+
   const [verdicts, behaviourGaps] = await Promise.all([
-    runVerdicts(controls, evidence, scope),
-    computeFailingAtHigherTiers(controls, evidence, scope),
+    runVerdicts(controls, payload, extras, scope),
+    computeFailingAtHigherTiers(controls, payload, extras, scope),
   ]);
 
   // Static catalogue delta: controls that become required at a higher

@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { check } from '../../src/checks/eaa-5-2-7-2-06';
-import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample } from './helpers';
+import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample, runCheck } from './helpers';
 
 describe('EAA-5.2.7.2-06 (adm_nbf and adm_exp must be NumericDate)', () => {
   it('returns na when neither claim is present', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const verdict = await check({ eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
+    const verdict = await runCheck(check, { eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 
@@ -16,7 +16,7 @@ describe('EAA-5.2.7.2-06 (adm_nbf and adm_exp must be NumericDate)', () => {
       adm_nbf: 1700000000,
       adm_exp: 1900000000,
     };
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: buildCompact(sample.decoded_header, payload) },
       DEFAULT_SCOPE,
     );
@@ -30,7 +30,7 @@ describe('EAA-5.2.7.2-06 (adm_nbf and adm_exp must be NumericDate)', () => {
       adm_nbf: '1700000000',
       adm_exp: 1900000000,
     };
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: buildCompact(sample.decoded_header, payload) },
       DEFAULT_SCOPE,
     );
@@ -45,7 +45,7 @@ describe('EAA-5.2.7.2-06 (adm_nbf and adm_exp must be NumericDate)', () => {
       adm_nbf: 1900000000,
       adm_exp: 1700000000,
     };
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: buildCompact(sample.decoded_header, payload) },
       DEFAULT_SCOPE,
     );
@@ -54,7 +54,7 @@ describe('EAA-5.2.7.2-06 (adm_nbf and adm_exp must be NumericDate)', () => {
   });
 
   it('returns na when no eaaPayload supplied', async () => {
-    const verdict = await check({}, DEFAULT_SCOPE);
+    const verdict = await runCheck(check, {}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 });

@@ -5,6 +5,18 @@ export interface AssessmentScope {
   tier: 'ordinary' | 'qeaa' | 'pub-eaa';
 }
 
+/**
+ * Raw assessment inputs as they arrive from the upload form / API caller.
+ *
+ * `eaaPayload` is the raw string the user supplied (SD-JWT VC compact
+ * serialisation today; mdoc CBOR base64 from Phase 7 onwards). It is
+ * parsed once inside runAssessment, into a `ParsedEvidence` tagged union
+ * (see `@iwc/shared`), before being dispatched to per-control check
+ * functions; checks never re-parse the payload. The other fields
+ * (`issuerCert`, `statusListUrl`, `typeMetadata`) stay on this raw
+ * shape and are passed to checks via the third `extras` argument of
+ * the CheckFunction signature.
+ */
 export interface Evidence {
   eaaPayload?: string;
   issuerCert?: string;

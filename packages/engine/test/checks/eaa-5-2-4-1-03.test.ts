@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { check } from '../../src/checks/eaa-5-2-4-1-03';
-import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample } from './helpers';
+import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample, runCheck } from './helpers';
 
 describe('EAA-5.2.4.1-03 (issuing_authority must not coexist with x5c qualified cert)', () => {
   it('warns when both x5c and issuing_authority are present (baseline ETSI sample)', async () => {
@@ -8,7 +8,7 @@ describe('EAA-5.2.4.1-03 (issuing_authority must not coexist with x5c qualified 
     // issuing_authority (claim) by design, which is exactly the
     // condition the spec rule warns on.
     const sample = await loadSample('sjv-eaa-1');
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -23,7 +23,7 @@ describe('EAA-5.2.4.1-03 (issuing_authority must not coexist with x5c qualified 
       [k: string]: unknown;
     };
     void _ia;
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: buildCompact(sample.decoded_header, payloadWithoutIa) },
       DEFAULT_SCOPE,
     );
@@ -38,7 +38,7 @@ describe('EAA-5.2.4.1-03 (issuing_authority must not coexist with x5c qualified 
       [k: string]: unknown;
     };
     void _x5c;
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: buildCompact(headerWithoutX5c, sample.decoded_payload) },
       DEFAULT_SCOPE,
     );
@@ -47,7 +47,7 @@ describe('EAA-5.2.4.1-03 (issuing_authority must not coexist with x5c qualified 
   });
 
   it('returns na when no eaaPayload is supplied', async () => {
-    const verdict = await check({}, DEFAULT_SCOPE);
+    const verdict = await runCheck(check, {}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 });

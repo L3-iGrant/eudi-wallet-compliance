@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { check } from '../../src/checks/eaa-5-5-01';
-import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample } from './helpers';
+import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample, runCheck } from './helpers';
 
 describe('EAA-5.5-01 (cnf claim recommended)', () => {
   it('passes when cnf is present (sjv-eaa-2 includes a cnf.jwk)', async () => {
     const sample = await loadSample('sjv-eaa-2');
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -15,7 +15,7 @@ describe('EAA-5.5-01 (cnf claim recommended)', () => {
 
   it('warns when cnf is absent (sjv-eaa-1 has no cnf)', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -26,7 +26,7 @@ describe('EAA-5.5-01 (cnf claim recommended)', () => {
   it('fails when cnf is present but malformed (string instead of object)', async () => {
     const sample = await loadSample('sjv-eaa-1');
     const broken = { ...sample.decoded_payload, cnf: 'not-an-object' };
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
@@ -35,7 +35,7 @@ describe('EAA-5.5-01 (cnf claim recommended)', () => {
   });
 
   it('returns na when no eaaPayload is supplied', async () => {
-    const verdict = await check({}, DEFAULT_SCOPE);
+    const verdict = await runCheck(check, {}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 });

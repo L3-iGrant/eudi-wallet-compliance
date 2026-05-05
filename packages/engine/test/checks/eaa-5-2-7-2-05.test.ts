@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { check } from '../../src/checks/eaa-5-2-7-2-05';
-import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample } from './helpers';
+import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample, runCheck } from './helpers';
 
 describe('EAA-5.2.7.2-05 (adm_nbf and adm_exp must appear together or not at all)', () => {
   it('returns na when neither claim is present (sjv-eaa-1)', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const verdict = await check({ eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
+    const verdict = await runCheck(check, { eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 
@@ -16,7 +16,7 @@ describe('EAA-5.2.7.2-05 (adm_nbf and adm_exp must appear together or not at all
       adm_nbf: 1700000000,
       adm_exp: 1900000000,
     };
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: buildCompact(sample.decoded_header, payload) },
       DEFAULT_SCOPE,
     );
@@ -26,7 +26,7 @@ describe('EAA-5.2.7.2-05 (adm_nbf and adm_exp must appear together or not at all
   it('fails when only adm_nbf is present', async () => {
     const sample = await loadSample('sjv-eaa-1');
     const payload = { ...sample.decoded_payload, adm_nbf: 1700000000 };
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: buildCompact(sample.decoded_header, payload) },
       DEFAULT_SCOPE,
     );
@@ -37,7 +37,7 @@ describe('EAA-5.2.7.2-05 (adm_nbf and adm_exp must appear together or not at all
   it('fails when only adm_exp is present', async () => {
     const sample = await loadSample('sjv-eaa-1');
     const payload = { ...sample.decoded_payload, adm_exp: 1900000000 };
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: buildCompact(sample.decoded_header, payload) },
       DEFAULT_SCOPE,
     );
@@ -46,7 +46,7 @@ describe('EAA-5.2.7.2-05 (adm_nbf and adm_exp must appear together or not at all
   });
 
   it('returns na when no eaaPayload supplied', async () => {
-    const verdict = await check({}, DEFAULT_SCOPE);
+    const verdict = await runCheck(check, {}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 });

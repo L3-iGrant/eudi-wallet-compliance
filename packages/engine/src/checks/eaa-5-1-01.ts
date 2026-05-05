@@ -1,5 +1,6 @@
-import { parseSdJwtVc, ParseError } from '@iwc/shared';
-import type { AssessmentScope, Evidence, Verdict } from '../types';
+import type { ParsedEvidence } from '@iwc/shared';
+import type { AssessmentScope, Verdict } from '../types';
+import type { CheckExtras } from '../registry';
 
 const CONTROL_ID = 'EAA-5.1-01';
 const EVIDENCE_REF = 'eaa-payload';
@@ -11,26 +12,24 @@ const EVIDENCE_REF = 'eaa-payload';
  * Pass = compact serialisation parses cleanly into header.payload.signature
  * with the optional disclosures and key-binding tail.
  */
-export async function check(evidence: Evidence, _scope: AssessmentScope): Promise<Verdict> {
-  if (!evidence.eaaPayload) {
+export async function check(
+  evidence: ParsedEvidence,
+  _scope: AssessmentScope,
+  _extras: CheckExtras,
+): Promise<Verdict> {
+  if (evidence.kind !== 'sd-jwt-vc') {
     return {
       controlId: CONTROL_ID,
       status: 'na',
       evidenceRef: '',
-      notes: 'No EAA payload supplied.',
+      notes: 'Check applies to SD-JWT VC evidence only.',
     };
   }
-  try {
-    parseSdJwtVc(evidence.eaaPayload);
-  } catch (err) {
-    const message = err instanceof ParseError ? err.message : (err as Error).message;
-    return {
-      controlId: CONTROL_ID,
-      status: 'fail',
-      evidenceRef: EVIDENCE_REF,
-      notes: `EAA payload does not parse as an SD-JWT VC compact serialisation: ${message}`,
-    };
-  }
+  // Phase 7: parsing happens upstream in runAssessment. Anything that
+  // failed to parse never reaches this check (runAssessment emits a
+  // 'fail' verdict for every in-scope control in that case). Reaching
+  // this branch with `kind === 'sd-jwt-vc'` proves the structural-parse
+  // assertion this control codifies.
   return {
     controlId: CONTROL_ID,
     status: 'pass',

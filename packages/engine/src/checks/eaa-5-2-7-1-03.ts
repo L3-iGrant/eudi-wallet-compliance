@@ -1,5 +1,6 @@
-import { parseSdJwtVc, ParseError } from '@iwc/shared';
-import type { AssessmentScope, Evidence, Verdict } from '../types';
+import type { ParsedEvidence } from '@iwc/shared';
+import type { AssessmentScope, Verdict } from '../types';
+import type { CheckExtras } from '../registry';
 
 const CONTROL_ID = 'EAA-5.2.7.1-03';
 const EVIDENCE_REF = 'eaa-payload';
@@ -10,27 +11,20 @@ const EVIDENCE_REF = 'eaa-payload';
  * present, exp must be strictly greater than nbf (otherwise the EAA has a
  * never-valid window).
  */
-export async function check(evidence: Evidence, _scope: AssessmentScope): Promise<Verdict> {
-  if (!evidence.eaaPayload) {
+export async function check(
+  evidence: ParsedEvidence,
+  _scope: AssessmentScope,
+  _extras: CheckExtras,
+): Promise<Verdict> {
+  if (evidence.kind !== 'sd-jwt-vc') {
     return {
       controlId: CONTROL_ID,
       status: 'na',
       evidenceRef: '',
-      notes: 'No EAA payload supplied.',
+      notes: 'Check applies to SD-JWT VC evidence only.',
     };
   }
-  let payload: Record<string, unknown>;
-  try {
-    ({ payload } = parseSdJwtVc(evidence.eaaPayload));
-  } catch (err) {
-    const message = err instanceof ParseError ? err.message : (err as Error).message;
-    return {
-      controlId: CONTROL_ID,
-      status: 'fail',
-      evidenceRef: EVIDENCE_REF,
-      notes: `EAA payload could not be parsed: ${message}`,
-    };
-  }
+  const { payload } = evidence.parsed;
   const exp = payload['exp'];
   if (typeof exp !== 'number' || !Number.isInteger(exp) || exp < 0) {
     return {

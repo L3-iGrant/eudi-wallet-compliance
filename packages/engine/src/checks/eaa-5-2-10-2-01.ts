@@ -1,7 +1,8 @@
-import { parseSdJwtVc, ParseError } from '@iwc/shared';
+import type { ParsedEvidence } from '@iwc/shared';
 import { fetchStatusList, getStatusAt } from '@iwc/status-list';
 import { normaliseStatus } from './_status';
-import type { AssessmentScope, Evidence, Verdict } from '../types';
+import type { AssessmentScope, Verdict } from '../types';
+import type { CheckExtras } from '../registry';
 
 const CONTROL_ID = 'EAA-5.2.10.2-01';
 const EVIDENCE_REF = 'status-list';
@@ -18,7 +19,7 @@ const EVIDENCE_REF = 'status-list';
  *
  * Tolerance: the resolver reads index/uri from either the ETSI flat
  * shape (`status.{index, uri}`) or the IETF Token Status List nested
- * envelope (`status.status_list.{idx, uri}`). evidence.statusListUrl,
+ * envelope (`status.status_list.{idx, uri}`). extras.statusListUrl,
  * if supplied, overrides the URI from the payload (useful for tests
  * and offline runs).
  *
@@ -26,29 +27,19 @@ const EVIDENCE_REF = 'status-list';
  * until trust-list integration lands.
  */
 export async function check(
-  evidence: Evidence,
+  evidence: ParsedEvidence,
   _scope: AssessmentScope,
+  extras: CheckExtras,
 ): Promise<Verdict> {
-  if (!evidence.eaaPayload) {
+  if (evidence.kind !== 'sd-jwt-vc') {
     return {
       controlId: CONTROL_ID,
       status: 'na',
       evidenceRef: '',
-      notes: 'No EAA payload supplied.',
+      notes: 'Check applies to SD-JWT VC evidence only.',
     };
   }
-  let payload: Record<string, unknown>;
-  try {
-    ({ payload } = parseSdJwtVc(evidence.eaaPayload));
-  } catch (err) {
-    const message = err instanceof ParseError ? err.message : (err as Error).message;
-    return {
-      controlId: CONTROL_ID,
-      status: 'fail',
-      evidenceRef: EVIDENCE_REF,
-      notes: `EAA payload could not be parsed: ${message}`,
-    };
-  }
+  const { payload } = evidence.parsed;
 
   const ns = normaliseStatus(payload);
   if (ns.shape === 'absent' || ns.shape === 'invalid') {
@@ -61,7 +52,7 @@ export async function check(
     };
   }
 
-  const uri = evidence.statusListUrl ?? (typeof ns.uri === 'string' ? ns.uri : undefined);
+  const uri = extras.statusListUrl ?? (typeof ns.uri === 'string' ? ns.uri : undefined);
   const index = ns.index;
 
   if (!uri) {
@@ -70,7 +61,7 @@ export async function check(
       status: 'na',
       evidenceRef: EVIDENCE_REF,
       notes:
-        'No status URI available (neither evidence.statusListUrl nor a status URI in the payload).',
+        'No status URI available (neither extras.statusListUrl nor a status URI in the payload).',
     };
   }
   if (typeof index !== 'number' || !Number.isInteger(index) || index < 0) {

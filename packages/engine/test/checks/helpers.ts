@@ -1,7 +1,9 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { DEFAULT_DATA_DIR } from '@iwc/controls';
-import type { AssessmentScope } from '../../src/types';
+import { parseEvidence, type ParsedEvidence } from '@iwc/shared';
+import type { CheckExtras, CheckFunction } from '../../src/registry';
+import type { AssessmentScope, Evidence, Verdict } from '../../src/types';
 
 /**
  * Sensible default scope for tests that do not exercise scope-aware
@@ -75,6 +77,57 @@ export function buildCompact(
   // Issuance form: trailing tilde, no key binding.
   parts.push('');
   return parts.join('~');
+}
+
+/**
+ * Test-only adapter that mirrors the pre-Phase-7 call shape
+ * `check(evidence, scope)` while invoking the new
+ * `check(parsedEvidence, scope, extras)` signature underneath.
+ *
+ * Each test that used to call `check(evidence, scope)` directly now
+ * calls `runCheck(check, evidence, scope)` and gets identical
+ * behaviour. Parsing happens here once, exactly as runAssessment does
+ * in production. Parse failures and missing payloads are surfaced as
+ * 'fail'/'na' verdicts so existing tests that exercise those paths
+ * keep working without modification.
+ */
+export async function runCheck(
+  fn: CheckFunction,
+  evidence: Evidence,
+  scope: AssessmentScope,
+): Promise<Verdict> {
+  const extras: CheckExtras = {
+    issuerCert: evidence.issuerCert,
+    statusListUrl: evidence.statusListUrl,
+    typeMetadata: evidence.typeMetadata,
+  };
+  if (
+    evidence.eaaPayload === undefined ||
+    evidence.eaaPayload === null ||
+    evidence.eaaPayload.trim().length === 0
+  ) {
+    // Mirror runAssessment's "no payload" outcome: don't call the
+    // check at all; emit a short-circuit na verdict directly.
+    return {
+      controlId: 'test-runner',
+      status: 'na',
+      evidenceRef: '',
+      notes: 'No EAA payload supplied.',
+    };
+  }
+  let parsed: ParsedEvidence;
+  try {
+    parsed = parseEvidence(evidence.eaaPayload);
+  } catch (err) {
+    const message = (err as Error).message;
+    return {
+      controlId: 'test-runner',
+      status: 'fail',
+      evidenceRef: 'eaa-payload',
+      notes: `EAA payload could not be parsed: ${message}`,
+    };
+  }
+  return fn(parsed, scope, extras);
 }
 
 /**

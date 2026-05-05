@@ -1,5 +1,6 @@
-import { parseSdJwtVc, ParseError } from '@iwc/shared';
-import type { AssessmentScope, Evidence, Verdict } from '../types';
+import type { ParsedEvidence } from '@iwc/shared';
+import type { AssessmentScope, Verdict } from '../types';
+import type { CheckExtras } from '../registry';
 
 const CONTROL_ID = 'EAA-5.4.1.4-01';
 const EVIDENCE_REF = 'eaa-payload';
@@ -14,30 +15,19 @@ const EVIDENCE_REF = 'eaa-payload';
  * must include `_sd` as a non-empty array of strings.
  */
 export async function check(
-  evidence: Evidence,
+  evidence: ParsedEvidence,
   _scope: AssessmentScope,
+  _extras: CheckExtras,
 ): Promise<Verdict> {
-  if (!evidence.eaaPayload) {
+  if (evidence.kind !== 'sd-jwt-vc') {
     return {
       controlId: CONTROL_ID,
       status: 'na',
       evidenceRef: '',
-      notes: 'No EAA payload supplied.',
+      notes: 'Check applies to SD-JWT VC evidence only.',
     };
   }
-  let payload: Record<string, unknown>;
-  let disclosures: string[];
-  try {
-    ({ payload, disclosures } = parseSdJwtVc(evidence.eaaPayload));
-  } catch (err) {
-    const message = err instanceof ParseError ? err.message : (err as Error).message;
-    return {
-      controlId: CONTROL_ID,
-      status: 'fail',
-      evidenceRef: EVIDENCE_REF,
-      notes: `EAA payload could not be parsed: ${message}`,
-    };
-  }
+  const { payload, disclosures } = evidence.parsed;
   const propertyDisclosureCount = disclosures.filter((d) => {
     try {
       const decoded = JSON.parse(base64UrlDecodeToString(d));
