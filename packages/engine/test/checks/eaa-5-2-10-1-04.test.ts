@@ -54,4 +54,23 @@ describe('EAA-5.2.10.1-04 (status JSON Object type member)', () => {
     const verdict = await check({}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
+
+  it('passes when status uses the IETF nested envelope (no top-level type)', async () => {
+    const sample = await loadSample('sjv-eaa-7');
+    const ietfPayload = {
+      ...sample.decoded_payload,
+      status: {
+        status_list: {
+          idx: 1,
+          uri: 'https://qtsp.example/status/ietf-form',
+        },
+      },
+    };
+    const verdict = await check(
+      { eaaPayload: buildCompact(sample.decoded_header, ietfPayload) },
+      DEFAULT_SCOPE,
+    );
+    expect(verdict.status).toBe('pass');
+    expect(verdict.notes).toContain('IETF Token Status List nested envelope');
+  });
 });

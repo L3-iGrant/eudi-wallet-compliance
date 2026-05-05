@@ -1,4 +1,5 @@
 import { parseSdJwtVc, ParseError } from '@iwc/shared';
+import { normaliseStatus } from './_status';
 import type { AssessmentScope, Evidence, Verdict } from '../types';
 
 const CONTROL_ID = 'EAA-5.2.10.1-08';
@@ -7,6 +8,10 @@ const EVIDENCE_REF = 'eaa-payload';
 /**
  * EAA-5.2.10.1-08: When the status component is present, the status JSON
  * Object shall have the index member.
+ *
+ * Tolerance: tokens carrying the IETF Token Status List nested
+ * envelope (`status.status_list.idx`) satisfy this rule. The IETF
+ * draft uses `idx` instead of `index`; both name the same concept.
  */
 export async function check(evidence: Evidence, _scope: AssessmentScope): Promise<Verdict> {
   if (!evidence.eaaPayload) {
@@ -29,8 +34,8 @@ export async function check(evidence: Evidence, _scope: AssessmentScope): Promis
       notes: `EAA payload could not be parsed: ${message}`,
     };
   }
-  const status = payload['status'];
-  if (status === undefined || status === null) {
+  const ns = normaliseStatus(payload);
+  if (ns.shape === 'absent') {
     return {
       controlId: CONTROL_ID,
       status: 'na',
@@ -38,7 +43,7 @@ export async function check(evidence: Evidence, _scope: AssessmentScope): Promis
       notes: 'status component absent; rule applies only when status is present.',
     };
   }
-  if (typeof status !== 'object' || Array.isArray(status)) {
+  if (ns.shape === 'invalid') {
     return {
       controlId: CONTROL_ID,
       status: 'fail',
@@ -46,8 +51,25 @@ export async function check(evidence: Evidence, _scope: AssessmentScope): Promis
       notes: 'status component is present but not a JSON object.',
     };
   }
-  const obj = status as Record<string, unknown>;
-  if (!('index' in obj)) {
+  if (ns.shape === 'ietf-nested') {
+    if (ns.index === undefined) {
+      return {
+        controlId: CONTROL_ID,
+        status: 'fail',
+        evidenceRef: EVIDENCE_REF,
+        notes:
+          'status uses the IETF nested envelope but status.status_list.idx is missing.',
+      };
+    }
+    return {
+      controlId: CONTROL_ID,
+      status: 'pass',
+      evidenceRef: EVIDENCE_REF,
+      notes:
+        'status.status_list.idx present (IETF Token Status List nested envelope; accepted in lieu of status.index).',
+    };
+  }
+  if (!('index' in (ns.raw ?? {}))) {
     return {
       controlId: CONTROL_ID,
       status: 'fail',

@@ -33,4 +33,23 @@ describe('EAA-5.2.10.1-06 (status object includes purpose member)', () => {
     const verdict = await check({}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
+
+  it('passes when status uses the IETF nested envelope (no top-level purpose)', async () => {
+    const sample = await loadSample('sjv-eaa-7');
+    const ietfPayload = {
+      ...sample.decoded_payload,
+      status: {
+        status_list: {
+          idx: 1,
+          uri: 'https://qtsp.example/status/ietf-form',
+        },
+      },
+    };
+    const verdict = await check(
+      { eaaPayload: buildCompact(sample.decoded_header, ietfPayload) },
+      DEFAULT_SCOPE,
+    );
+    expect(verdict.status).toBe('pass');
+    expect(verdict.notes).toContain('IETF Token Status List nested envelope');
+  });
 });

@@ -32,4 +32,37 @@ describe('EAA-5.2.10.1-10 (status object includes uri member)', () => {
     const verdict = await check({}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
+
+  it('passes when status uses the IETF nested envelope with uri', async () => {
+    const sample = await loadSample('sjv-eaa-7');
+    const ietfPayload = {
+      ...sample.decoded_payload,
+      status: {
+        status_list: {
+          idx: 1,
+          uri: 'https://qtsp.example/status/ietf-form',
+        },
+      },
+    };
+    const verdict = await check(
+      { eaaPayload: buildCompact(sample.decoded_header, ietfPayload) },
+      DEFAULT_SCOPE,
+    );
+    expect(verdict.status).toBe('pass');
+    expect(verdict.notes).toContain('status.status_list.uri');
+  });
+
+  it('fails when IETF nested envelope is present but uri is missing', async () => {
+    const sample = await loadSample('sjv-eaa-7');
+    const ietfPayload = {
+      ...sample.decoded_payload,
+      status: { status_list: { idx: 1 } },
+    };
+    const verdict = await check(
+      { eaaPayload: buildCompact(sample.decoded_header, ietfPayload) },
+      DEFAULT_SCOPE,
+    );
+    expect(verdict.status).toBe('fail');
+    expect(verdict.notes).toContain('uri is missing');
+  });
 });

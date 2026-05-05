@@ -1,5 +1,6 @@
 import { parseSdJwtVc, ParseError } from '@iwc/shared';
 import { fetchStatusList, getStatusAt } from '@iwc/status-list';
+import { normaliseStatus } from './_status';
 import type { AssessmentScope, Evidence, Verdict } from '../types';
 
 const CONTROL_ID = 'EAA-5.2.10.2-01';
@@ -15,9 +16,14 @@ const EVIDENCE_REF = 'status-list';
  *  - fail : fetch fails, list cannot be parsed, or the index is OOB
  *  - pass : list resolved and a status value was returned (value in notes)
  *
- * Trust-list verification of the status list signature is deferred until
- * trust-list integration lands. evidence.statusListUrl, if supplied,
- * overrides the URI from the payload (useful for tests and offline runs).
+ * Tolerance: the resolver reads index/uri from either the ETSI flat
+ * shape (`status.{index, uri}`) or the IETF Token Status List nested
+ * envelope (`status.status_list.{idx, uri}`). evidence.statusListUrl,
+ * if supplied, overrides the URI from the payload (useful for tests
+ * and offline runs).
+ *
+ * Trust-list verification of the status list signature is deferred
+ * until trust-list integration lands.
  */
 export async function check(
   evidence: Evidence,
@@ -44,31 +50,27 @@ export async function check(
     };
   }
 
-  const status = payload['status'];
-  if (
-    status === undefined ||
-    status === null ||
-    typeof status !== 'object' ||
-    Array.isArray(status)
-  ) {
+  const ns = normaliseStatus(payload);
+  if (ns.shape === 'absent' || ns.shape === 'invalid') {
     return {
       controlId: CONTROL_ID,
       status: 'na',
       evidenceRef: EVIDENCE_REF,
-      notes: 'status component absent; runtime resolver only runs when status is present.',
+      notes:
+        'status component absent or not a JSON object; runtime resolver only runs when status is present.',
     };
   }
 
-  const obj = status as Record<string, unknown>;
-  const uri = evidence.statusListUrl ?? (typeof obj['uri'] === 'string' ? obj['uri'] : undefined);
-  const index = obj['index'];
+  const uri = evidence.statusListUrl ?? (typeof ns.uri === 'string' ? ns.uri : undefined);
+  const index = ns.index;
 
   if (!uri) {
     return {
       controlId: CONTROL_ID,
       status: 'na',
       evidenceRef: EVIDENCE_REF,
-      notes: 'No status URI available (neither evidence.statusListUrl nor payload status.uri).',
+      notes:
+        'No status URI available (neither evidence.statusListUrl nor a status URI in the payload).',
     };
   }
   if (typeof index !== 'number' || !Number.isInteger(index) || index < 0) {
@@ -76,7 +78,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'status.index is missing or not a non-negative integer; cannot resolve.',
+      notes: 'status index is missing or not a non-negative integer; cannot resolve.',
     };
   }
 

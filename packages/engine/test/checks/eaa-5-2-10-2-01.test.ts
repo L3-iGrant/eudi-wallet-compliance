@@ -92,6 +92,42 @@ describe('EAA-5.2.10.2-01 (status URI must resolve)', () => {
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('fail');
-    expect(verdict.notes).toContain('status.index is missing');
+    expect(verdict.notes).toContain('status index is missing');
+  });
+
+  it('passes when the IETF nested envelope provides idx and uri', async () => {
+    const sample = await loadSample('sjv-eaa-7');
+    // Replace the flat status block with the IETF nested envelope and
+    // shift the index off the existing 42 to prove it's the nested one
+    // being resolved.
+    const ietfPayload = { ...sample.decoded_payload };
+    ietfPayload.status = {
+      status_list: {
+        idx: 7,
+        uri: 'https://qtsp.example/status/ietf-form',
+      },
+    };
+    const bytes = new Array(2).fill(0);
+    // Set bit 7 (byte 0, bit-from-MSB 7) to 1: 0x01.
+    bytes[0] = 0x01;
+    const token = buildUnsignedJwt({
+      iss: 'https://qtsp.example',
+      status_list: { bits: 1, lst: buildCompressedLst(bytes) },
+    });
+    globalThis.fetch = vi.fn(async () =>
+      new Response(token, {
+        status: 200,
+        headers: { 'content-type': 'application/statuslist+jwt' },
+      }),
+    ) as typeof fetch;
+
+    const verdict = await check(
+      { eaaPayload: buildCompact(sample.decoded_header, ietfPayload) },
+      DEFAULT_SCOPE,
+    );
+
+    expect(verdict.status).toBe('pass');
+    expect(verdict.notes).toContain('index 7');
+    expect(verdict.notes).toContain('returned status value 1');
   });
 });
