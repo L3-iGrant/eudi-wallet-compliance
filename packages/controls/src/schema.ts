@@ -80,20 +80,45 @@ export const ModulesCatalogueSchema = z.array(ModuleMetadataSchema);
 
 export const TierSchema = z.enum(['ordinary-eaa', 'qeaa', 'pub-eaa']);
 
-export const ReferenceSampleSchema = z.object({
+/**
+ * Fields shared between SD-JWT VC and mdoc reference samples. The
+ * profile-specific arms add their own format-shape fields below.
+ */
+const BaseReferenceSampleFields = {
   sample_id: z.string().min(1),
   title: z.string().min(5),
   description: z.string().min(20),
-  profile: ProfileSchema,
   tier: TierSchema,
-  compact_serialisation: z.string().min(1),
-  decoded_header: z.record(z.string(), z.unknown()),
-  decoded_payload: z.record(z.string(), z.unknown()),
   issuer_cert_pem: z.string().regex(/-----BEGIN CERTIFICATE-----/),
   exercises_controls: z.array(z.string()).min(1),
   generated_by: z.string().min(1),
   generated_at: z.string().regex(/\d{4}-\d{2}-\d{2}T/),
+};
+
+export const SdJwtVcReferenceSampleSchema = z.object({
+  ...BaseReferenceSampleFields,
+  profile: z.literal('sd-jwt-vc'),
+  compact_serialisation: z.string().min(1),
+  decoded_header: z.record(z.string(), z.unknown()),
+  decoded_payload: z.record(z.string(), z.unknown()),
 });
+
+export const MdocReferenceSampleSchema = z.object({
+  ...BaseReferenceSampleFields,
+  profile: z.literal('mdoc'),
+  cbor_base64: z.string().min(1),
+  decoded_protected_header: z.record(z.string(), z.unknown()),
+  decoded_mso: z.record(z.string(), z.unknown()),
+  decoded_namespaces: z.record(
+    z.string(),
+    z.array(z.record(z.string(), z.unknown())),
+  ),
+});
+
+export const ReferenceSampleSchema = z.discriminatedUnion('profile', [
+  SdJwtVcReferenceSampleSchema,
+  MdocReferenceSampleSchema,
+]);
 
 export const ReferenceSamplesCatalogueSchema = z.array(ReferenceSampleSchema);
 
@@ -111,4 +136,6 @@ export type ModuleMetadata = z.infer<typeof ModuleMetadataSchema>;
 export type ModulesCatalogue = z.infer<typeof ModulesCatalogueSchema>;
 export type Tier = z.infer<typeof TierSchema>;
 export type ReferenceSample = z.infer<typeof ReferenceSampleSchema>;
+export type SdJwtVcReferenceSample = z.infer<typeof SdJwtVcReferenceSampleSchema>;
+export type MdocReferenceSample = z.infer<typeof MdocReferenceSampleSchema>;
 export type ReferenceSamplesCatalogue = z.infer<typeof ReferenceSamplesCatalogueSchema>;

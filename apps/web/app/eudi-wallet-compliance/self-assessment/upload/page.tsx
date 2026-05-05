@@ -223,7 +223,8 @@ function UploadInner() {
 
   // Pre-fill from a reference sample when ?sample=<id> is supplied. Only
   // runs once on mount so manual edits are not stomped on subsequent
-  // re-renders.
+  // re-renders. Profile-aware: SD-JWT VC samples carry the compact
+  // serialisation; mdoc samples carry base64-encoded CBOR.
   const samplePrefilled = useRef(false);
   useEffect(() => {
     if (samplePrefilled.current) return;
@@ -231,9 +232,11 @@ function UploadInner() {
     if (!sampleId) return;
     const sample = getSampleByIdSync(sampleId);
     if (!sample) return;
-    setValue('eaaPayload', sample.compact_serialisation, {
-      shouldValidate: true,
-    });
+    const payload =
+      sample.profile === 'sd-jwt-vc'
+        ? sample.compact_serialisation
+        : sample.cbor_base64;
+    setValue('eaaPayload', payload, { shouldValidate: true });
     setValue('issuerCert', sample.issuer_cert_pem, { shouldValidate: false });
     samplePrefilled.current = true;
   }, [params, setValue]);

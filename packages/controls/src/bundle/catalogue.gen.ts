@@ -11047,11 +11047,387 @@ export const MODULES_BUNDLE: ModuleMetadata[] = [
 
 export const SAMPLES_BUNDLE: ReferenceSample[] = [
   {
+    "sample_id": "mdl-eaa-1",
+    "title": "MDL-EAA-1: mDL baseline",
+    "description": "Baseline mDL (org.iso.18013.5.1.mDL) carrying the standard subject identifier triplet plus document_number, issuing_authority and issue_date. No status, no shortLived, no x5chain.",
+    "tier": "ordinary-eaa",
+    "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBqzCCAVGgAwIBAgIBATAKBggqhkjOPQQDAjBLMSgwJgYDVQQDEx9pR3JhbnQu\naW8gbWRvYyBSZWZlcmVuY2UgSXNzdWVyMRIwEAYDVQQKEwlpR3JhbnQuaW8xCzAJ\nBgNVBAYTAlNFMB4XDTI2MDEwMTAwMDAwMFoXDTMxMDEwMTAwMDAwMFowSzEoMCYG\nA1UEAxMfaUdyYW50LmlvIG1kb2MgUmVmZXJlbmNlIElzc3VlcjESMBAGA1UEChMJ\naUdyYW50LmlvMQswCQYDVQQGEwJTRTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA\nBK/nUSPhzck701KIjigRMNDMdoBoxiFpCu2h4a7+5Tc9HGhfb25vfa5I83UcLq59\n68rFP+CKiYD8y8ox1IqSmNOjJjAkMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0P\nAQH/BAQDAgKEMAoGCCqGSM49BAMCA0gAMEUCIQC7o5j1ecSct71zgxLg1hDZPgKj\nMAcUQpmUNPwxoJaWkAIgTkAwvGJ85jLQCP9wAjTmkSVe7yZ8Hh/IrpznRLsH8nA=\n-----END CERTIFICATE-----",
+    "exercises_controls": [
+      "EAA-6.1-01",
+      "EAA-6.1-02",
+      "EAA-6.1-07",
+      "EAA-6.2.3-01",
+      "EAA-6.2.3-03",
+      "EAA-6.2.4.1-01",
+      "EAA-6.2.5.1-01",
+      "EAA-6.2.5.1-02",
+      "EAA-6.2.6-01",
+      "EAA-6.2.7.1-01"
+    ],
+    "generated_by": "iGrant.io mdoc Reference Generator (cbor-x, placeholder signatures)",
+    "generated_at": "2026-05-05T19:41:49.673Z",
+    "profile": "mdoc",
+    "cbor_base64": "uQACam5hbWVTcGFjZXO5AAFxb3JnLmlzby4xODAxMy41LjGG2BhYV7kABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAGxlbGVtZW50VmFsdWVlRXJpa2FxZWxlbWVudElkZW50aWZpZXJqZ2l2ZW5fbmFtZdgYWF25AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRAFsZWxlbWVudFZhbHVlak11c3Rlcm1hbm5xZWxlbWVudElkZW50aWZpZXJrZmFtaWx5X25hbWXYGFhfuQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQCbGVsZW1lbnRWYWx1ZWhNREwtMDAwMXFlbGVtZW50SWRlbnRpZmllcm9kb2N1bWVudF9udW1iZXLYGFh3uQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQDbGVsZW1lbnRWYWx1ZXgdaUdyYW50LmlvIFJlZmVyZW5jZSBBdXRob3JpdHlxZWxlbWVudElkZW50aWZpZXJxaXNzdWluZ19hdXRob3JpdHnYGFhcuQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQEbGVsZW1lbnRWYWx1ZWoyMDI2LTAxLTAxcWVsZW1lbnRJZGVudGlmaWVyamlzc3VlX2RhdGXYGFhduQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQFbGVsZW1lbnRWYWx1ZWoyMDMxLTAxLTAxcWVsZW1lbnRJZGVudGlmaWVya2V4cGlyeV9kYXRlamlzc3VlckF1dGiERrkAAWExJrkAAFkCNNgYWQIvuQAGZ3ZlcnNpb25jMS4wb2RpZ2VzdEFsZ29yaXRobWdTSEEtMjU2bHZhbHVlRGlnZXN0c7kAAXFvcmcuaXNvLjE4MDEzLjUuMbkABmEw2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYTHYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhMthAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGEz2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYTTYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhNdhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG1kZXZpY2VLZXlJbmZvuQABaWRldmljZUtlebkABGExAmItMQFiLTLYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABiLTPYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABnZG9jVHlwZXVvcmcuaXNvLjE4MDEzLjUuMS5tRExsdmFsaWRpdHlJbmZvuQADZnNpZ25lZMB0MjAyNi0wMS0wMVQwMDowMDowMFppdmFsaWRGcm9twHQyMDI2LTAxLTAxVDAwOjAwOjAwWmp2YWxpZFVudGlswHQyMDMxLTAxLTAxVDAwOjAwOjAwWthAWEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "decoded_protected_header": {
+      "alg": "ES256"
+    },
+    "decoded_mso": {
+      "version": "1.0",
+      "digestAlgorithm": "SHA-256",
+      "docType": "org.iso.18013.5.1.mDL",
+      "validityInfo": {
+        "signed": "2026-01-01T00:00:00Z",
+        "validFrom": "2026-01-01T00:00:00Z",
+        "validUntil": "2031-01-01T00:00:00Z"
+      },
+      "valueDigests": "<32-byte digests per element; bytes elided>",
+      "deviceKeyInfo": "<COSE_Key (P-256, placeholder coordinates)>"
+    },
+    "decoded_namespaces": {
+      "org.iso.18013.5.1": [
+        {
+          "digestID": 0,
+          "elementIdentifier": "given_name",
+          "elementValue": "Erika"
+        },
+        {
+          "digestID": 1,
+          "elementIdentifier": "family_name",
+          "elementValue": "Mustermann"
+        },
+        {
+          "digestID": 2,
+          "elementIdentifier": "document_number",
+          "elementValue": "MDL-0001"
+        },
+        {
+          "digestID": 3,
+          "elementIdentifier": "issuing_authority",
+          "elementValue": "iGrant.io Reference Authority"
+        },
+        {
+          "digestID": 4,
+          "elementIdentifier": "issue_date",
+          "elementValue": "2026-01-01"
+        },
+        {
+          "digestID": 5,
+          "elementIdentifier": "expiry_date",
+          "elementValue": "2031-01-01"
+        }
+      ]
+    }
+  },
+  {
+    "sample_id": "mdl-eaa-2",
+    "title": "MDL-EAA-2: mDL with TokenStatusList (flat ETSI shape)",
+    "description": "mDL carrying a status component implementing the ETSI flat shape: type=TokenStatusList, purpose=revocation, index, uri.",
+    "tier": "ordinary-eaa",
+    "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBqzCCAVGgAwIBAgIBATAKBggqhkjOPQQDAjBLMSgwJgYDVQQDEx9pR3JhbnQu\naW8gbWRvYyBSZWZlcmVuY2UgSXNzdWVyMRIwEAYDVQQKEwlpR3JhbnQuaW8xCzAJ\nBgNVBAYTAlNFMB4XDTI2MDEwMTAwMDAwMFoXDTMxMDEwMTAwMDAwMFowSzEoMCYG\nA1UEAxMfaUdyYW50LmlvIG1kb2MgUmVmZXJlbmNlIElzc3VlcjESMBAGA1UEChMJ\naUdyYW50LmlvMQswCQYDVQQGEwJTRTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA\nBK/nUSPhzck701KIjigRMNDMdoBoxiFpCu2h4a7+5Tc9HGhfb25vfa5I83UcLq59\n68rFP+CKiYD8y8ox1IqSmNOjJjAkMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0P\nAQH/BAQDAgKEMAoGCCqGSM49BAMCA0gAMEUCIQC7o5j1ecSct71zgxLg1hDZPgKj\nMAcUQpmUNPwxoJaWkAIgTkAwvGJ85jLQCP9wAjTmkSVe7yZ8Hh/IrpznRLsH8nA=\n-----END CERTIFICATE-----",
+    "exercises_controls": [
+      "EAA-6.1-02",
+      "EAA-6.2.10.1-01",
+      "EAA-6.2.10.1-04",
+      "EAA-6.2.10.1-06",
+      "EAA-6.2.10.1-08",
+      "EAA-6.2.10.1-10"
+    ],
+    "generated_by": "iGrant.io mdoc Reference Generator (cbor-x, placeholder signatures)",
+    "generated_at": "2026-05-05T19:41:49.673Z",
+    "profile": "mdoc",
+    "cbor_base64": "uQACam5hbWVTcGFjZXO5AAFxb3JnLmlzby4xODAxMy41LjGF2BhYV7kABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAGxlbGVtZW50VmFsdWVlRXJpa2FxZWxlbWVudElkZW50aWZpZXJqZ2l2ZW5fbmFtZdgYWF25AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRAFsZWxlbWVudFZhbHVlak11c3Rlcm1hbm5xZWxlbWVudElkZW50aWZpZXJrZmFtaWx5X25hbWXYGFhfuQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQCbGVsZW1lbnRWYWx1ZWhNREwtMDAwMnFlbGVtZW50SWRlbnRpZmllcm9kb2N1bWVudF9udW1iZXLYGFh3uQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQDbGVsZW1lbnRWYWx1ZXgdaUdyYW50LmlvIFJlZmVyZW5jZSBBdXRob3JpdHlxZWxlbWVudElkZW50aWZpZXJxaXNzdWluZ19hdXRob3JpdHnYGFhcuQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQEbGVsZW1lbnRWYWx1ZWoyMDI2LTAxLTAxcWVsZW1lbnRJZGVudGlmaWVyamlzc3VlX2RhdGVqaXNzdWVyQXV0aIRGuQABYTEmuQAAWQKI2BhZAoO5AAdndmVyc2lvbmMxLjBvZGlnZXN0QWxnb3JpdGhtZ1NIQS0yNTZsdmFsdWVEaWdlc3RzuQABcW9yZy5pc28uMTgwMTMuNS4xuQAFYTDYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhMdhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGEy2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYTPYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhNNhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG1kZXZpY2VLZXlJbmZvuQABaWRldmljZUtlebkABGExAmItMQFiLTLYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABiLTPYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABnZG9jVHlwZXVvcmcuaXNvLjE4MDEzLjUuMS5tRExsdmFsaWRpdHlJbmZvuQADZnNpZ25lZMB0MjAyNi0wMS0wMVQwMDowMDowMFppdmFsaWRGcm9twHQyMDI2LTAxLTAxVDAwOjAwOjAwWmp2YWxpZFVudGlswHQyMDMxLTAxLTAxVDAwOjAwOjAwWmZzdGF0dXO5AARkdHlwZW9Ub2tlblN0YXR1c0xpc3RncHVycG9zZWpyZXZvY2F0aW9uZWluZGV4AmN1cml4O2h0dHBzOi8vcmVmZXJlbmNlLWlzc3Vlci5pZ3JhbnQuaW8uZXhhbXBsZS9zdGF0dXMvbWRsLWVhYS0y2EBYQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+    "decoded_protected_header": {
+      "alg": "ES256"
+    },
+    "decoded_mso": {
+      "version": "1.0",
+      "digestAlgorithm": "SHA-256",
+      "docType": "org.iso.18013.5.1.mDL",
+      "validityInfo": {
+        "signed": "2026-01-01T00:00:00Z",
+        "validFrom": "2026-01-01T00:00:00Z",
+        "validUntil": "2031-01-01T00:00:00Z"
+      },
+      "valueDigests": "<32-byte digests per element; bytes elided>",
+      "deviceKeyInfo": "<COSE_Key (P-256, placeholder coordinates)>",
+      "status": {
+        "type": "TokenStatusList",
+        "purpose": "revocation",
+        "index": 2,
+        "uri": "https://reference-issuer.igrant.io.example/status/mdl-eaa-2"
+      }
+    },
+    "decoded_namespaces": {
+      "org.iso.18013.5.1": [
+        {
+          "digestID": 0,
+          "elementIdentifier": "given_name",
+          "elementValue": "Erika"
+        },
+        {
+          "digestID": 1,
+          "elementIdentifier": "family_name",
+          "elementValue": "Mustermann"
+        },
+        {
+          "digestID": 2,
+          "elementIdentifier": "document_number",
+          "elementValue": "MDL-0002"
+        },
+        {
+          "digestID": 3,
+          "elementIdentifier": "issuing_authority",
+          "elementValue": "iGrant.io Reference Authority"
+        },
+        {
+          "digestID": 4,
+          "elementIdentifier": "issue_date",
+          "elementValue": "2026-01-01"
+        }
+      ]
+    }
+  },
+  {
+    "sample_id": "mdl-eaa-3",
+    "title": "MDL-EAA-3: non-mDL with category data element",
+    "description": "Non-mDL credential using the ISO/IEC 23220-2 namespace, plus a category data element in the ETSI namespace flagging the credential as non-qualified, non-public-body.",
+    "tier": "ordinary-eaa",
+    "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBqzCCAVGgAwIBAgIBATAKBggqhkjOPQQDAjBLMSgwJgYDVQQDEx9pR3JhbnQu\naW8gbWRvYyBSZWZlcmVuY2UgSXNzdWVyMRIwEAYDVQQKEwlpR3JhbnQuaW8xCzAJ\nBgNVBAYTAlNFMB4XDTI2MDEwMTAwMDAwMFoXDTMxMDEwMTAwMDAwMFowSzEoMCYG\nA1UEAxMfaUdyYW50LmlvIG1kb2MgUmVmZXJlbmNlIElzc3VlcjESMBAGA1UEChMJ\naUdyYW50LmlvMQswCQYDVQQGEwJTRTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA\nBK/nUSPhzck701KIjigRMNDMdoBoxiFpCu2h4a7+5Tc9HGhfb25vfa5I83UcLq59\n68rFP+CKiYD8y8ox1IqSmNOjJjAkMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0P\nAQH/BAQDAgKEMAoGCCqGSM49BAMCA0gAMEUCIQC7o5j1ecSct71zgxLg1hDZPgKj\nMAcUQpmUNPwxoJaWkAIgTkAwvGJ85jLQCP9wAjTmkSVe7yZ8Hh/IrpznRLsH8nA=\n-----END CERTIFICATE-----",
+    "exercises_controls": [
+      "EAA-6.1-03",
+      "EAA-6.2.2.1-01",
+      "EAA-6.2.2.1-03",
+      "EAA-6.2.3-01",
+      "EAA-6.2.3-04",
+      "EAA-6.2.4.1-03"
+    ],
+    "generated_by": "iGrant.io mdoc Reference Generator (cbor-x, placeholder signatures)",
+    "generated_at": "2026-05-05T19:41:49.673Z",
+    "profile": "mdoc",
+    "cbor_base64": "uQACam5hbWVTcGFjZXO5AAJvb3JnLmlzby4yMzIyMC4xhdgYWFa5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRABsZWxlbWVudFZhbHVlZEFubmFxZWxlbWVudElkZW50aWZpZXJqZ2l2ZW5fbmFtZdgYWFi5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRAFsZWxlbWVudFZhbHVlZVNtaXRocWVsZW1lbnRJZGVudGlmaWVya2ZhbWlseV9uYW1l2BhYX7kABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAmxlbGVtZW50VmFsdWVoRUFBLTAwMDNxZWxlbWVudElkZW50aWZpZXJvZG9jdW1lbnRfbnVtYmVy2BhYcLkABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEA2xlbGVtZW50VmFsdWVuQWNtZSBBdXRob3JpdHlxZWxlbWVudElkZW50aWZpZXJ4GWlzc3VpbmdfYXV0aG9yaXR5X3VuaWNvZGXYGFhcuQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQEbGVsZW1lbnRWYWx1ZWoyMDI2LTAxLTAxcWVsZW1lbnRJZGVudGlmaWVyamlzc3VlX2RhdGV4GG9yZy5ldHNpLjAxOTQ3MjAxLjAxMDEwMYHYGFhyuQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQAbGVsZW1lbnRWYWx1ZXghdXJuOmV4YW1wbGU6ZWFhOmNhdGVnb3J5OmludGVybmFscWVsZW1lbnRJZGVudGlmaWVyaGNhdGVnb3J5amlzc3VlckF1dGiERrkAAWExJrkAAFkCTdgYWQJIuQAGZ3ZlcnNpb25jMS4wb2RpZ2VzdEFsZ29yaXRobWdTSEEtMjU2bHZhbHVlRGlnZXN0c7kAAm9vcmcuaXNvLjIzMjIwLjG5AAVhMNhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGEx2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYTLYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhM9hAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGE02EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeBhvcmcuZXRzaS4wMTk0NzIwMS4wMTAxMDG5AAFhMNhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG1kZXZpY2VLZXlJbmZvuQABaWRldmljZUtlebkABGExAmItMQFiLTLYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABiLTPYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABnZG9jVHlwZXNvcmcuZXhhbXBsZS50ZXN0LnYxbHZhbGlkaXR5SW5mb7kAA2ZzaWduZWTAdDIwMjYtMDEtMDFUMDA6MDA6MDBaaXZhbGlkRnJvbcB0MjAyNi0wMS0wMVQwMDowMDowMFpqdmFsaWRVbnRpbMB0MjAzMS0wMS0wMVQwMDowMDowMFrYQFhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+    "decoded_protected_header": {
+      "alg": "ES256"
+    },
+    "decoded_mso": {
+      "version": "1.0",
+      "digestAlgorithm": "SHA-256",
+      "docType": "org.example.test.v1",
+      "validityInfo": {
+        "signed": "2026-01-01T00:00:00Z",
+        "validFrom": "2026-01-01T00:00:00Z",
+        "validUntil": "2031-01-01T00:00:00Z"
+      },
+      "valueDigests": "<32-byte digests per element; bytes elided>",
+      "deviceKeyInfo": "<COSE_Key (P-256, placeholder coordinates)>"
+    },
+    "decoded_namespaces": {
+      "org.iso.23220.1": [
+        {
+          "digestID": 0,
+          "elementIdentifier": "given_name",
+          "elementValue": "Anna"
+        },
+        {
+          "digestID": 1,
+          "elementIdentifier": "family_name",
+          "elementValue": "Smith"
+        },
+        {
+          "digestID": 2,
+          "elementIdentifier": "document_number",
+          "elementValue": "EAA-0003"
+        },
+        {
+          "digestID": 3,
+          "elementIdentifier": "issuing_authority_unicode",
+          "elementValue": "Acme Authority"
+        },
+        {
+          "digestID": 4,
+          "elementIdentifier": "issue_date",
+          "elementValue": "2026-01-01"
+        }
+      ],
+      "org.etsi.01947201.010101": [
+        {
+          "digestID": 0,
+          "elementIdentifier": "category",
+          "elementValue": "urn:example:eaa:category:internal"
+        }
+      ]
+    }
+  },
+  {
+    "sample_id": "mdl-eaa-4",
+    "title": "MDL-EAA-4: mdoc QEAA with qualified URN",
+    "description": "Non-mDL credential at the QEAA tier with category=urn:etsi:esi:eaa:eu:qualified, status carried in MSO, and the issuer cert in the COSE x5chain header parameter.",
+    "tier": "qeaa",
+    "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBqzCCAVGgAwIBAgIBATAKBggqhkjOPQQDAjBLMSgwJgYDVQQDEx9pR3JhbnQu\naW8gbWRvYyBSZWZlcmVuY2UgSXNzdWVyMRIwEAYDVQQKEwlpR3JhbnQuaW8xCzAJ\nBgNVBAYTAlNFMB4XDTI2MDEwMTAwMDAwMFoXDTMxMDEwMTAwMDAwMFowSzEoMCYG\nA1UEAxMfaUdyYW50LmlvIG1kb2MgUmVmZXJlbmNlIElzc3VlcjESMBAGA1UEChMJ\naUdyYW50LmlvMQswCQYDVQQGEwJTRTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA\nBK/nUSPhzck701KIjigRMNDMdoBoxiFpCu2h4a7+5Tc9HGhfb25vfa5I83UcLq59\n68rFP+CKiYD8y8ox1IqSmNOjJjAkMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0P\nAQH/BAQDAgKEMAoGCCqGSM49BAMCA0gAMEUCIQC7o5j1ecSct71zgxLg1hDZPgKj\nMAcUQpmUNPwxoJaWkAIgTkAwvGJ85jLQCP9wAjTmkSVe7yZ8Hh/IrpznRLsH8nA=\n-----END CERTIFICATE-----",
+    "exercises_controls": [
+      "EAA-6.1-03",
+      "QEAA-6.2.2.2-01",
+      "QEAA-6.2.2.2-02",
+      "QEAA-6.2.10.2-01",
+      "QEAA-6.6.2-04"
+    ],
+    "generated_by": "iGrant.io mdoc Reference Generator (cbor-x, placeholder signatures)",
+    "generated_at": "2026-05-05T19:41:49.673Z",
+    "profile": "mdoc",
+    "cbor_base64": "uQACam5hbWVTcGFjZXO5AAJvb3JnLmlzby4yMzIyMC4xhdgYWFm5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRABsZWxlbWVudFZhbHVlZ0JlYXRyaXpxZWxlbWVudElkZW50aWZpZXJqZ2l2ZW5fbmFtZdgYWFi5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRAFsZWxlbWVudFZhbHVlZUNvc3RhcWVsZW1lbnRJZGVudGlmaWVya2ZhbWlseV9uYW1l2BhYYLkABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAmxlbGVtZW50VmFsdWVpUUVBQS0wMDA0cWVsZW1lbnRJZGVudGlmaWVyb2RvY3VtZW50X251bWJlctgYWHC5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRANsZWxlbWVudFZhbHVlblJlZmVyZW5jZSBRVFNQcWVsZW1lbnRJZGVudGlmaWVyeBlpc3N1aW5nX2F1dGhvcml0eV91bmljb2Rl2BhYXLkABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEBGxlbGVtZW50VmFsdWVqMjAyNi0wMS0wMXFlbGVtZW50SWRlbnRpZmllcmppc3N1ZV9kYXRleBhvcmcuZXRzaS4wMTk0NzIwMS4wMTAxMDGB2BhYbrkABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAGxlbGVtZW50VmFsdWV4HXVybjpldHNpOmVzaTplYWE6ZXU6cXVhbGlmaWVkcWVsZW1lbnRJZGVudGlmaWVyaGNhdGVnb3J5amlzc3VlckF1dGiEWQG+uQACYTEmYjMzgdhAWQGvMIIBqzCCAVGgAwIBAgIBATAKBggqhkjOPQQDAjBLMSgwJgYDVQQDEx9pR3JhbnQuaW8gbWRvYyBSZWZlcmVuY2UgSXNzdWVyMRIwEAYDVQQKEwlpR3JhbnQuaW8xCzAJBgNVBAYTAlNFMB4XDTI2MDEwMTAwMDAwMFoXDTMxMDEwMTAwMDAwMFowSzEoMCYGA1UEAxMfaUdyYW50LmlvIG1kb2MgUmVmZXJlbmNlIElzc3VlcjESMBAGA1UEChMJaUdyYW50LmlvMQswCQYDVQQGEwJTRTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABK/nUSPhzck701KIjigRMNDMdoBoxiFpCu2h4a7+5Tc9HGhfb25vfa5I83UcLq5968rFP+CKiYD8y8ox1IqSmNOjJjAkMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0PAQH/BAQDAgKEMAoGCCqGSM49BAMCA0gAMEUCIQC7o5j1ecSct71zgxLg1hDZPgKjMAcUQpmUNPwxoJaWkAIgTkAwvGJ85jLQCP9wAjTmkSVe7yZ8Hh/IrpznRLsH8nC5AABZAsTYGFkCv7kAB2d2ZXJzaW9uYzEuMG9kaWdlc3RBbGdvcml0aG1nU0hBLTI1Nmx2YWx1ZURpZ2VzdHO5AAJvb3JnLmlzby4yMzIyMC4xuQAFYTDYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhMdhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGEy2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYTPYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhNNhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgYb3JnLmV0c2kuMDE5NDcyMDEuMDEwMTAxuQABYTDYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABtZGV2aWNlS2V5SW5mb7kAAWlkZXZpY2VLZXm5AARhMQJiLTEBYi0y2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYi0z2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZ2RvY1R5cGVzb3JnLmV4YW1wbGUucWVhYS52MWx2YWxpZGl0eUluZm+5AANmc2lnbmVkwHQyMDI2LTAxLTAxVDAwOjAwOjAwWml2YWxpZEZyb23AdDIwMjYtMDEtMDFUMDA6MDA6MDBaanZhbGlkVW50aWzAdDIwMzEtMDEtMDFUMDA6MDA6MDBaZnN0YXR1c7kABGR0eXBlb1Rva2VuU3RhdHVzTGlzdGdwdXJwb3NlanJldm9jYXRpb25laW5kZXgEY3VyaXg4aHR0cHM6Ly9yZWZlcmVuY2UtaXNzdWVyLmlncmFudC5pby5leGFtcGxlL3N0YXR1cy9xZWFhLTTYQFhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+    "decoded_protected_header": {
+      "alg": "ES256",
+      "x5chain": "<1 cert, 431 bytes>"
+    },
+    "decoded_mso": {
+      "version": "1.0",
+      "digestAlgorithm": "SHA-256",
+      "docType": "org.example.qeaa.v1",
+      "validityInfo": {
+        "signed": "2026-01-01T00:00:00Z",
+        "validFrom": "2026-01-01T00:00:00Z",
+        "validUntil": "2031-01-01T00:00:00Z"
+      },
+      "valueDigests": "<32-byte digests per element; bytes elided>",
+      "deviceKeyInfo": "<COSE_Key (P-256, placeholder coordinates)>",
+      "status": {
+        "type": "TokenStatusList",
+        "purpose": "revocation",
+        "index": 4,
+        "uri": "https://reference-issuer.igrant.io.example/status/qeaa-4"
+      }
+    },
+    "decoded_namespaces": {
+      "org.iso.23220.1": [
+        {
+          "digestID": 0,
+          "elementIdentifier": "given_name",
+          "elementValue": "Beatriz"
+        },
+        {
+          "digestID": 1,
+          "elementIdentifier": "family_name",
+          "elementValue": "Costa"
+        },
+        {
+          "digestID": 2,
+          "elementIdentifier": "document_number",
+          "elementValue": "QEAA-0004"
+        },
+        {
+          "digestID": 3,
+          "elementIdentifier": "issuing_authority_unicode",
+          "elementValue": "Reference QTSP"
+        },
+        {
+          "digestID": 4,
+          "elementIdentifier": "issue_date",
+          "elementValue": "2026-01-01"
+        }
+      ],
+      "org.etsi.01947201.010101": [
+        {
+          "digestID": 0,
+          "elementIdentifier": "category",
+          "elementValue": "urn:etsi:esi:eaa:eu:qualified"
+        }
+      ]
+    }
+  },
+  {
+    "sample_id": "mdl-eaa-5",
+    "title": "MDL-EAA-5: mdoc PuB-EAA with shortLived",
+    "description": "Non-mDL credential at the PuB-EAA tier with category=urn:etsi:esi:eaa:eu:pub and shortLived=true (so revocation status is not required).",
+    "tier": "pub-eaa",
+    "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBqzCCAVGgAwIBAgIBATAKBggqhkjOPQQDAjBLMSgwJgYDVQQDEx9pR3JhbnQu\naW8gbWRvYyBSZWZlcmVuY2UgSXNzdWVyMRIwEAYDVQQKEwlpR3JhbnQuaW8xCzAJ\nBgNVBAYTAlNFMB4XDTI2MDEwMTAwMDAwMFoXDTMxMDEwMTAwMDAwMFowSzEoMCYG\nA1UEAxMfaUdyYW50LmlvIG1kb2MgUmVmZXJlbmNlIElzc3VlcjESMBAGA1UEChMJ\naUdyYW50LmlvMQswCQYDVQQGEwJTRTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA\nBK/nUSPhzck701KIjigRMNDMdoBoxiFpCu2h4a7+5Tc9HGhfb25vfa5I83UcLq59\n68rFP+CKiYD8y8ox1IqSmNOjJjAkMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0P\nAQH/BAQDAgKEMAoGCCqGSM49BAMCA0gAMEUCIQC7o5j1ecSct71zgxLg1hDZPgKj\nMAcUQpmUNPwxoJaWkAIgTkAwvGJ85jLQCP9wAjTmkSVe7yZ8Hh/IrpznRLsH8nA=\n-----END CERTIFICATE-----",
+    "exercises_controls": [
+      "EAA-6.1-03",
+      "PuB-EAA-6.2.2.3-01",
+      "PuB-EAA-6.2.2.3-02",
+      "PuB-EAA-6.2.10.3-01",
+      "EAA-6.2.12-01",
+      "EAA-6.2.12-03",
+      "EAA-6.2.12-04",
+      "PuB-EAA-6.6.3-04"
+    ],
+    "generated_by": "iGrant.io mdoc Reference Generator (cbor-x, placeholder signatures)",
+    "generated_at": "2026-05-05T19:41:49.673Z",
+    "profile": "mdoc",
+    "cbor_base64": "uQACam5hbWVTcGFjZXO5AAJvb3JnLmlzby4yMzIyMC4xhdgYWFi5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRABsZWxlbWVudFZhbHVlZkNhcmxvc3FlbGVtZW50SWRlbnRpZmllcmpnaXZlbl9uYW1l2BhYWbkABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAWxlbGVtZW50VmFsdWVmUml2ZXJhcWVsZW1lbnRJZGVudGlmaWVya2ZhbWlseV9uYW1l2BhYX7kABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAmxlbGVtZW50VmFsdWVoUFVCLTAwMDVxZWxlbWVudElkZW50aWZpZXJvZG9jdW1lbnRfbnVtYmVy2BhYe7kABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEA2xlbGVtZW50VmFsdWV4GFJlZmVyZW5jZSBDaXZpbCBSZWdpc3RyeXFlbGVtZW50SWRlbnRpZmllcngZaXNzdWluZ19hdXRob3JpdHlfdW5pY29kZdgYWFy5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRARsZWxlbWVudFZhbHVlajIwMjYtMDEtMDFxZWxlbWVudElkZW50aWZpZXJqaXNzdWVfZGF0ZXgYb3JnLmV0c2kuMDE5NDcyMDEuMDEwMTAxgtgYWGe5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRABsZWxlbWVudFZhbHVld3VybjpldHNpOmVzaTplYWE6ZXU6cHVicWVsZW1lbnRJZGVudGlmaWVyaGNhdGVnb3J52BhYUrkABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAWxlbGVtZW50VmFsdWX1cWVsZW1lbnRJZGVudGlmaWVyanNob3J0TGl2ZWRqaXNzdWVyQXV0aIRZAb65AAJhMSZiMzOB2EBZAa8wggGrMIIBUaADAgECAgEBMAoGCCqGSM49BAMCMEsxKDAmBgNVBAMTH2lHcmFudC5pbyBtZG9jIFJlZmVyZW5jZSBJc3N1ZXIxEjAQBgNVBAoTCWlHcmFudC5pbzELMAkGA1UEBhMCU0UwHhcNMjYwMTAxMDAwMDAwWhcNMzEwMTAxMDAwMDAwWjBLMSgwJgYDVQQDEx9pR3JhbnQuaW8gbWRvYyBSZWZlcmVuY2UgSXNzdWVyMRIwEAYDVQQKEwlpR3JhbnQuaW8xCzAJBgNVBAYTAlNFMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEr+dRI+HNyTvTUoiOKBEw0Mx2gGjGIWkK7aHhrv7lNz0caF9vbm99rkjzdRwurn3rysU/4IqJgPzLyjHUipKY06MmMCQwEgYDVR0TAQH/BAgwBgEB/wIBADAOBgNVHQ8BAf8EBAMCAoQwCgYIKoZIzj0EAwIDSAAwRQIhALujmPV5xJy3vXODEuDWENk+AqMwBxRCmZQ0/DGglpaQAiBOQDC8YnzmMtAI/3ACNOaRJV7vJnweH8iunOdEuwfycLkAAFkCddgYWQJwuQAGZ3ZlcnNpb25jMS4wb2RpZ2VzdEFsZ29yaXRobWdTSEEtMjU2bHZhbHVlRGlnZXN0c7kAAm9vcmcuaXNvLjIzMjIwLjG5AAVhMNhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGEx2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYTLYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhM9hAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGE02EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeBhvcmcuZXRzaS4wMTk0NzIwMS4wMTAxMDG5AAJhMNhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGEx2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbWRldmljZUtleUluZm+5AAFpZGV2aWNlS2V5uQAEYTECYi0xAWItMthAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGItM9hAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGdkb2NUeXBldW9yZy5leGFtcGxlLnB1YmVhYS52MWx2YWxpZGl0eUluZm+5AANmc2lnbmVkwHQyMDI2LTAxLTAxVDAwOjAwOjAwWml2YWxpZEZyb23AdDIwMjYtMDEtMDFUMDA6MDA6MDBaanZhbGlkVW50aWzAdDIwMjYtMDItMDFUMDA6MDA6MDBa2EBYQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+    "decoded_protected_header": {
+      "alg": "ES256",
+      "x5chain": "<1 cert, 431 bytes>"
+    },
+    "decoded_mso": {
+      "version": "1.0",
+      "digestAlgorithm": "SHA-256",
+      "docType": "org.example.pubeaa.v1",
+      "validityInfo": {
+        "signed": "2026-01-01T00:00:00Z",
+        "validFrom": "2026-01-01T00:00:00Z",
+        "validUntil": "2026-02-01T00:00:00Z"
+      },
+      "valueDigests": "<32-byte digests per element; bytes elided>",
+      "deviceKeyInfo": "<COSE_Key (P-256, placeholder coordinates)>"
+    },
+    "decoded_namespaces": {
+      "org.iso.23220.1": [
+        {
+          "digestID": 0,
+          "elementIdentifier": "given_name",
+          "elementValue": "Carlos"
+        },
+        {
+          "digestID": 1,
+          "elementIdentifier": "family_name",
+          "elementValue": "Rivera"
+        },
+        {
+          "digestID": 2,
+          "elementIdentifier": "document_number",
+          "elementValue": "PUB-0005"
+        },
+        {
+          "digestID": 3,
+          "elementIdentifier": "issuing_authority_unicode",
+          "elementValue": "Reference Civil Registry"
+        },
+        {
+          "digestID": 4,
+          "elementIdentifier": "issue_date",
+          "elementValue": "2026-01-01"
+        }
+      ],
+      "org.etsi.01947201.010101": [
+        {
+          "digestID": 0,
+          "elementIdentifier": "category",
+          "elementValue": "urn:etsi:esi:eaa:eu:pub"
+        },
+        {
+          "digestID": 1,
+          "elementIdentifier": "shortLived",
+          "elementValue": true
+        }
+      ]
+    }
+  },
+  {
     "sample_id": "sjv-eaa-1",
     "title": "SJV-EAA-1: Baseline mandatory + given_name + family_name",
     "description": "Mandatory elements only with x5c, iss, issuing_authority, given_name, family_name. No selective disclosures. No key binding.",
-    "profile": "sd-jwt-vc",
     "tier": "ordinary-eaa",
+    "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBZzCCAQ2gAwIBAgIBATAKBggqhkjOPQQDAjApMScwJQYDVQQDEx5pR3JhbnQu\naW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwHhcNMjYwNTAyMDAxMzA4WhcNMzEwNTAx\nMDAxMzA4WjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1\nZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQi2ylXkE813vvspsFD3qd0ZMCZ\ntoXvYONk4/KEslGq1kIJGt+Ssj7x4po/fhO1s3I4uK/68knAOII4gzpZG/CAoyYw\nJDASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIChDAKBggqhkjOPQQD\nAgNIADBFAiEAhKwQMkvtcYVNnDuFSG7zemjwxyVPOmVMy6QFGP7sxZQCIDd8/l3Q\n9VS3jazW8BDdWwEIibsknHsbW7gwDGgGUl4Y\n-----END CERTIFICATE-----",
+    "exercises_controls": [
+      "EAA-5.1-01",
+      "EAA-5.2.1.2-01",
+      "EAA-5.2.1.2-03",
+      "EAA-5.2.4.1-03",
+      "EAA-5.2.7.1-01",
+      "EAA-5.2.7.1-03"
+    ],
+    "generated_by": "iGrant.io EAA Reference Generator v1",
+    "generated_at": "2026-05-02T00:13:08.092Z",
+    "profile": "sd-jwt-vc",
     "compact_serialisation": "eyJhbGciOiJFUzI1NiIsInR5cCI6ImRjK3NkLWp3dCIsIng1YyI6WyJNSUlCWnpDQ0FRMmdBd0lCQWdJQkFUQUtCZ2dxaGtqT1BRUURBakFwTVNjd0pRWURWUVFERXg1cFIzSmhiblF1YVc4Z1JVRkJJRkpsWm1WeVpXNWpaU0JKYzNOMVpYSXdIaGNOTWpZd05UQXlNREF4TXpBNFdoY05NekV3TlRBeE1EQXhNekE0V2pBcE1TY3dKUVlEVlFRREV4NXBSM0poYm5RdWFXOGdSVUZCSUZKbFptVnlaVzVqWlNCSmMzTjFaWEl3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVFpMnlsWGtFODEzdnZzcHNGRDNxZDBaTUNadG9YdllPTms0L0tFc2xHcTFrSUpHdCtTc2o3eDRwby9maE8xczNJNHVLLzY4a25BT0lJNGd6cFpHL0NBb3lZd0pEQVNCZ05WSFJNQkFmOEVDREFHQVFIL0FnRUFNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQUtCZ2dxaGtqT1BRUURBZ05JQURCRkFpRUFoS3dRTWt2dGNZVk5uRHVGU0c3emVtand4eVZQT21WTXk2UUZHUDdzeFpRQ0lEZDgvbDNROVZTM2phelc4QkRkV3dFSWlic2tuSHNiVzdnd0RHZ0dVbDRZIl19.eyJpc3MiOiJodHRwczovL3JlZmVyZW5jZS1pc3N1ZXIuaWdyYW50LmlvLmV4YW1wbGUiLCJ2Y3QiOiJ1cm46aWdyYW50OmVhYTpyZWZlcmVuY2UvdjEiLCJ2Y3QjaW50ZWdyaXR5Ijoic2hhMjU2LTliMWQ2ZTNjNDZkYjhhNmQyZjZkYjIwY2JhODVlOWU2ZGJlM2Q4ZjNhNGIzYTRlYWVmMmMzYzRlMWQ4ZDZlN2YiLCJpYXQiOjE3Nzc2ODA3ODgsIm5iZiI6MTc3NzY4MDc4OCwiZXhwIjoxODQwNzUyNzg4LCJpc3N1aW5nX2F1dGhvcml0eSI6ImlHcmFudC5pbyBSZWZlcmVuY2UgQXV0aG9yaXR5IiwiZ2l2ZW5fbmFtZSI6IkVyaWthIiwiZmFtaWx5X25hbWUiOiJNdXN0ZXJtYW5uIn0.q3EMCtJmAyv6N3nnw1E_ygLY7ABF3QMq2Ve-j8H9pACJvi8ZIPicqRj7aCicVByF0liZl28NHo0WD5u8sX_vsQ~",
     "decoded_header": {
       "alg": "ES256",
@@ -11070,7 +11446,13 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
       "issuing_authority": "iGrant.io Reference Authority",
       "given_name": "Erika",
       "family_name": "Mustermann"
-    },
+    }
+  },
+  {
+    "sample_id": "sjv-eaa-2",
+    "title": "SJV-EAA-2: Baseline + cnf JWK",
+    "description": "Mandatory elements plus a cnf claim binding the credential to the wallet public key. No selective disclosures.",
+    "tier": "ordinary-eaa",
     "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBZzCCAQ2gAwIBAgIBATAKBggqhkjOPQQDAjApMScwJQYDVQQDEx5pR3JhbnQu\naW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwHhcNMjYwNTAyMDAxMzA4WhcNMzEwNTAx\nMDAxMzA4WjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1\nZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQi2ylXkE813vvspsFD3qd0ZMCZ\ntoXvYONk4/KEslGq1kIJGt+Ssj7x4po/fhO1s3I4uK/68knAOII4gzpZG/CAoyYw\nJDASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIChDAKBggqhkjOPQQD\nAgNIADBFAiEAhKwQMkvtcYVNnDuFSG7zemjwxyVPOmVMy6QFGP7sxZQCIDd8/l3Q\n9VS3jazW8BDdWwEIibsknHsbW7gwDGgGUl4Y\n-----END CERTIFICATE-----",
     "exercises_controls": [
       "EAA-5.1-01",
@@ -11078,17 +11460,13 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
       "EAA-5.2.1.2-03",
       "EAA-5.2.4.1-03",
       "EAA-5.2.7.1-01",
-      "EAA-5.2.7.1-03"
+      "EAA-5.2.7.1-03",
+      "EAA-5.5-01",
+      "EAA-5.5-02"
     ],
     "generated_by": "iGrant.io EAA Reference Generator v1",
-    "generated_at": "2026-05-02T00:13:08.092Z"
-  },
-  {
-    "sample_id": "sjv-eaa-2",
-    "title": "SJV-EAA-2: Baseline + cnf JWK",
-    "description": "Mandatory elements plus a cnf claim binding the credential to the wallet public key. No selective disclosures.",
+    "generated_at": "2026-05-02T00:13:08.094Z",
     "profile": "sd-jwt-vc",
-    "tier": "ordinary-eaa",
     "compact_serialisation": "eyJhbGciOiJFUzI1NiIsInR5cCI6ImRjK3NkLWp3dCIsIng1YyI6WyJNSUlCWnpDQ0FRMmdBd0lCQWdJQkFUQUtCZ2dxaGtqT1BRUURBakFwTVNjd0pRWURWUVFERXg1cFIzSmhiblF1YVc4Z1JVRkJJRkpsWm1WeVpXNWpaU0JKYzNOMVpYSXdIaGNOTWpZd05UQXlNREF4TXpBNFdoY05NekV3TlRBeE1EQXhNekE0V2pBcE1TY3dKUVlEVlFRREV4NXBSM0poYm5RdWFXOGdSVUZCSUZKbFptVnlaVzVqWlNCSmMzTjFaWEl3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVFpMnlsWGtFODEzdnZzcHNGRDNxZDBaTUNadG9YdllPTms0L0tFc2xHcTFrSUpHdCtTc2o3eDRwby9maE8xczNJNHVLLzY4a25BT0lJNGd6cFpHL0NBb3lZd0pEQVNCZ05WSFJNQkFmOEVDREFHQVFIL0FnRUFNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQUtCZ2dxaGtqT1BRUURBZ05JQURCRkFpRUFoS3dRTWt2dGNZVk5uRHVGU0c3emVtand4eVZQT21WTXk2UUZHUDdzeFpRQ0lEZDgvbDNROVZTM2phelc4QkRkV3dFSWlic2tuSHNiVzdnd0RHZ0dVbDRZIl19.eyJpc3MiOiJodHRwczovL3JlZmVyZW5jZS1pc3N1ZXIuaWdyYW50LmlvLmV4YW1wbGUiLCJ2Y3QiOiJ1cm46aWdyYW50OmVhYTpyZWZlcmVuY2UvdjEiLCJ2Y3QjaW50ZWdyaXR5Ijoic2hhMjU2LTliMWQ2ZTNjNDZkYjhhNmQyZjZkYjIwY2JhODVlOWU2ZGJlM2Q4ZjNhNGIzYTRlYWVmMmMzYzRlMWQ4ZDZlN2YiLCJpYXQiOjE3Nzc2ODA3ODgsIm5iZiI6MTc3NzY4MDc4OCwiZXhwIjoxODQwNzUyNzg4LCJpc3N1aW5nX2F1dGhvcml0eSI6ImlHcmFudC5pbyBSZWZlcmVuY2UgQXV0aG9yaXR5IiwiZ2l2ZW5fbmFtZSI6IkVyaWthIiwiZmFtaWx5X25hbWUiOiJNdXN0ZXJtYW5uIiwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsImNydiI6IlAtMjU2IiwieCI6IkhsZzBZSzNWYTdvaTQwSGJXOGRvOGxnbFV0XzlIcGdwNUEtVm9POEFuUDgiLCJ5IjoiRGNHZ3N4cjdrbU5vV3VmSDhqVmlNVzR5LTNGRFU2MUQ4ZGF1QWVyYWd6SSJ9fX0.Muwtp_RpC0Pu8diAmTolDum5_GEDsjaTyIJuLPLqmCENCiRqEYMJo7owaJhVf5F0PGq11vQcm1F2Qfzfw2gwBw~",
     "decoded_header": {
       "alg": "ES256",
@@ -11115,7 +11493,13 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
           "y": "DcGgsxr7kmNoWufH8jViMW4y-3FDU61D8dauAeragzI"
         }
       }
-    },
+    }
+  },
+  {
+    "sample_id": "sjv-eaa-3",
+    "title": "SJV-EAA-3: Baseline + selective disclosure",
+    "description": "given_name and family_name are selectively-disclosable claims. The payload carries _sd digests and _sd_alg; the disclosures are appended after the JWT in the compact serialisation.",
+    "tier": "ordinary-eaa",
     "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBZzCCAQ2gAwIBAgIBATAKBggqhkjOPQQDAjApMScwJQYDVQQDEx5pR3JhbnQu\naW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwHhcNMjYwNTAyMDAxMzA4WhcNMzEwNTAx\nMDAxMzA4WjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1\nZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQi2ylXkE813vvspsFD3qd0ZMCZ\ntoXvYONk4/KEslGq1kIJGt+Ssj7x4po/fhO1s3I4uK/68knAOII4gzpZG/CAoyYw\nJDASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIChDAKBggqhkjOPQQD\nAgNIADBFAiEAhKwQMkvtcYVNnDuFSG7zemjwxyVPOmVMy6QFGP7sxZQCIDd8/l3Q\n9VS3jazW8BDdWwEIibsknHsbW7gwDGgGUl4Y\n-----END CERTIFICATE-----",
     "exercises_controls": [
       "EAA-5.1-01",
@@ -11123,19 +11507,11 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
       "EAA-5.2.1.2-03",
       "EAA-5.2.4.1-03",
       "EAA-5.2.7.1-01",
-      "EAA-5.2.7.1-03",
-      "EAA-5.5-01",
-      "EAA-5.5-02"
+      "EAA-5.2.7.1-03"
     ],
     "generated_by": "iGrant.io EAA Reference Generator v1",
-    "generated_at": "2026-05-02T00:13:08.094Z"
-  },
-  {
-    "sample_id": "sjv-eaa-3",
-    "title": "SJV-EAA-3: Baseline + selective disclosure",
-    "description": "given_name and family_name are selectively-disclosable claims. The payload carries _sd digests and _sd_alg; the disclosures are appended after the JWT in the compact serialisation.",
+    "generated_at": "2026-05-02T00:13:08.095Z",
     "profile": "sd-jwt-vc",
-    "tier": "ordinary-eaa",
     "compact_serialisation": "eyJhbGciOiJFUzI1NiIsInR5cCI6ImRjK3NkLWp3dCIsIng1YyI6WyJNSUlCWnpDQ0FRMmdBd0lCQWdJQkFUQUtCZ2dxaGtqT1BRUURBakFwTVNjd0pRWURWUVFERXg1cFIzSmhiblF1YVc4Z1JVRkJJRkpsWm1WeVpXNWpaU0JKYzNOMVpYSXdIaGNOTWpZd05UQXlNREF4TXpBNFdoY05NekV3TlRBeE1EQXhNekE0V2pBcE1TY3dKUVlEVlFRREV4NXBSM0poYm5RdWFXOGdSVUZCSUZKbFptVnlaVzVqWlNCSmMzTjFaWEl3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVFpMnlsWGtFODEzdnZzcHNGRDNxZDBaTUNadG9YdllPTms0L0tFc2xHcTFrSUpHdCtTc2o3eDRwby9maE8xczNJNHVLLzY4a25BT0lJNGd6cFpHL0NBb3lZd0pEQVNCZ05WSFJNQkFmOEVDREFHQVFIL0FnRUFNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQUtCZ2dxaGtqT1BRUURBZ05JQURCRkFpRUFoS3dRTWt2dGNZVk5uRHVGU0c3emVtand4eVZQT21WTXk2UUZHUDdzeFpRQ0lEZDgvbDNROVZTM2phelc4QkRkV3dFSWlic2tuSHNiVzdnd0RHZ0dVbDRZIl19.eyJpc3MiOiJodHRwczovL3JlZmVyZW5jZS1pc3N1ZXIuaWdyYW50LmlvLmV4YW1wbGUiLCJ2Y3QiOiJ1cm46aWdyYW50OmVhYTpyZWZlcmVuY2UvdjEiLCJ2Y3QjaW50ZWdyaXR5Ijoic2hhMjU2LTliMWQ2ZTNjNDZkYjhhNmQyZjZkYjIwY2JhODVlOWU2ZGJlM2Q4ZjNhNGIzYTRlYWVmMmMzYzRlMWQ4ZDZlN2YiLCJpYXQiOjE3Nzc2ODA3ODgsIm5iZiI6MTc3NzY4MDc4OCwiZXhwIjoxODQwNzUyNzg4LCJpc3N1aW5nX2F1dGhvcml0eSI6ImlHcmFudC5pbyBSZWZlcmVuY2UgQXV0aG9yaXR5IiwiX3NkIjpbIjduUmowWE1NS0U1U0l6TUFsNWNCUWtkRTBRSHVjb1cya1B2Ujh0cFlxaUUiLCJiazh6ZHFLLTRsak04R0lhRVp1TUhhMURySWRSVUY3RTlTN04tUV9JWUhZIl0sIl9zZF9hbGciOiJzaGEtMjU2In0.k8iulx6sd_PXTwddqCch97GChobve0WkzwYIFhBolf1638wZgPPuLC359NCdyOvA-yplNixKPhla3wM5fhWS_A~WyJTbTNPYV9KaWF6bjZQMWZ1WGdCMnRnIiwiZ2l2ZW5fbmFtZSIsIkVyaWthIl0~WyIyc2ZlRU1NYV9TUUN2UDROUXVOTGZRIiwiZmFtaWx5X25hbWUiLCJNdXN0ZXJtYW5uIl0~",
     "decoded_header": {
       "alg": "ES256",
@@ -11159,7 +11535,13 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
         "bk8zdqK-4ljM8GIaEZuMHa1DrIdRUF7E9S7N-Q_IYHY"
       ],
       "_sd_alg": "sha-256"
-    },
+    }
+  },
+  {
+    "sample_id": "sjv-eaa-4",
+    "title": "SJV-EAA-4: + pseudonym",
+    "description": "Carries a pseudonym claim plus key binding (cnf) and selective disclosure. The pseudonym substitutes for natural-person identifiers in attestation flows where the subject must remain unidentifiable.",
+    "tier": "ordinary-eaa",
     "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBZzCCAQ2gAwIBAgIBATAKBggqhkjOPQQDAjApMScwJQYDVQQDEx5pR3JhbnQu\naW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwHhcNMjYwNTAyMDAxMzA4WhcNMzEwNTAx\nMDAxMzA4WjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1\nZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQi2ylXkE813vvspsFD3qd0ZMCZ\ntoXvYONk4/KEslGq1kIJGt+Ssj7x4po/fhO1s3I4uK/68knAOII4gzpZG/CAoyYw\nJDASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIChDAKBggqhkjOPQQD\nAgNIADBFAiEAhKwQMkvtcYVNnDuFSG7zemjwxyVPOmVMy6QFGP7sxZQCIDd8/l3Q\n9VS3jazW8BDdWwEIibsknHsbW7gwDGgGUl4Y\n-----END CERTIFICATE-----",
     "exercises_controls": [
       "EAA-5.1-01",
@@ -11167,17 +11549,13 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
       "EAA-5.2.1.2-03",
       "EAA-5.2.4.1-03",
       "EAA-5.2.7.1-01",
-      "EAA-5.2.7.1-03"
+      "EAA-5.2.7.1-03",
+      "EAA-5.5-01",
+      "EAA-5.5-02"
     ],
     "generated_by": "iGrant.io EAA Reference Generator v1",
-    "generated_at": "2026-05-02T00:13:08.095Z"
-  },
-  {
-    "sample_id": "sjv-eaa-4",
-    "title": "SJV-EAA-4: + pseudonym",
-    "description": "Carries a pseudonym claim plus key binding (cnf) and selective disclosure. The pseudonym substitutes for natural-person identifiers in attestation flows where the subject must remain unidentifiable.",
+    "generated_at": "2026-05-02T00:13:08.096Z",
     "profile": "sd-jwt-vc",
-    "tier": "ordinary-eaa",
     "compact_serialisation": "eyJhbGciOiJFUzI1NiIsInR5cCI6ImRjK3NkLWp3dCIsIng1YyI6WyJNSUlCWnpDQ0FRMmdBd0lCQWdJQkFUQUtCZ2dxaGtqT1BRUURBakFwTVNjd0pRWURWUVFERXg1cFIzSmhiblF1YVc4Z1JVRkJJRkpsWm1WeVpXNWpaU0JKYzNOMVpYSXdIaGNOTWpZd05UQXlNREF4TXpBNFdoY05NekV3TlRBeE1EQXhNekE0V2pBcE1TY3dKUVlEVlFRREV4NXBSM0poYm5RdWFXOGdSVUZCSUZKbFptVnlaVzVqWlNCSmMzTjFaWEl3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVFpMnlsWGtFODEzdnZzcHNGRDNxZDBaTUNadG9YdllPTms0L0tFc2xHcTFrSUpHdCtTc2o3eDRwby9maE8xczNJNHVLLzY4a25BT0lJNGd6cFpHL0NBb3lZd0pEQVNCZ05WSFJNQkFmOEVDREFHQVFIL0FnRUFNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQUtCZ2dxaGtqT1BRUURBZ05JQURCRkFpRUFoS3dRTWt2dGNZVk5uRHVGU0c3emVtand4eVZQT21WTXk2UUZHUDdzeFpRQ0lEZDgvbDNROVZTM2phelc4QkRkV3dFSWlic2tuSHNiVzdnd0RHZ0dVbDRZIl19.eyJpc3MiOiJodHRwczovL3JlZmVyZW5jZS1pc3N1ZXIuaWdyYW50LmlvLmV4YW1wbGUiLCJ2Y3QiOiJ1cm46aWdyYW50OmVhYTpyZWZlcmVuY2UvdjEiLCJ2Y3QjaW50ZWdyaXR5Ijoic2hhMjU2LTliMWQ2ZTNjNDZkYjhhNmQyZjZkYjIwY2JhODVlOWU2ZGJlM2Q4ZjNhNGIzYTRlYWVmMmMzYzRlMWQ4ZDZlN2YiLCJpYXQiOjE3Nzc2ODA3ODgsIm5iZiI6MTc3NzY4MDc4OCwiZXhwIjoxODQwNzUyNzg4LCJpc3N1aW5nX2F1dGhvcml0eSI6ImlHcmFudC5pbyBSZWZlcmVuY2UgQXV0aG9yaXR5IiwicHNldWRvbnltIjoicG4tMmM0ZjNiMWE4ZTdkIiwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsImNydiI6IlAtMjU2IiwieCI6IkhsZzBZSzNWYTdvaTQwSGJXOGRvOGxnbFV0XzlIcGdwNUEtVm9POEFuUDgiLCJ5IjoiRGNHZ3N4cjdrbU5vV3VmSDhqVmlNVzR5LTNGRFU2MUQ4ZGF1QWVyYWd6SSJ9fSwiX3NkIjpbImMzS00xdDVLdjJXS2E2eTJqdUtBRHU5WGJiRV9FQlFMVE5IWkdUeFY4VmciLCJtRjEzb205N1BESnR3TXgxdmtHYy02WUo1Yks2OGJBVEFiWEQ3WW5ISjdvIl0sIl9zZF9hbGciOiJzaGEtMjU2In0.Tx0F3XSVxHn--RE3SEwa7MjXvPDjhvYv6EnfRylnYleAQQ0Hb9rWwBQhUR2qEKulDh3TUezr2iRngs150lSOaQ~WyJsaDNOOEVtWFd4dF9GUndZblByZ0VnIiwiZ2l2ZW5fbmFtZSIsIkVyaWthIl0~WyJtcmFXSHI3Rko3YXNDanpMbERiZTRnIiwiZmFtaWx5X25hbWUiLCJNdXN0ZXJtYW5uIl0~",
     "decoded_header": {
       "alg": "ES256",
@@ -11210,7 +11588,13 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
         "mF13om97PDJtwMx1vkGc-6YJ5bK68bATAbXD7YnHJ7o"
       ],
       "_sd_alg": "sha-256"
-    },
+    }
+  },
+  {
+    "sample_id": "sjv-eaa-5",
+    "title": "SJV-EAA-5: + oneTime",
+    "description": "Carries the oneTime claim (a JSON null primitive) marking the credential as single-use. Includes key binding and selective disclosure.",
+    "tier": "ordinary-eaa",
     "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBZzCCAQ2gAwIBAgIBATAKBggqhkjOPQQDAjApMScwJQYDVQQDEx5pR3JhbnQu\naW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwHhcNMjYwNTAyMDAxMzA4WhcNMzEwNTAx\nMDAxMzA4WjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1\nZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQi2ylXkE813vvspsFD3qd0ZMCZ\ntoXvYONk4/KEslGq1kIJGt+Ssj7x4po/fhO1s3I4uK/68knAOII4gzpZG/CAoyYw\nJDASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIChDAKBggqhkjOPQQD\nAgNIADBFAiEAhKwQMkvtcYVNnDuFSG7zemjwxyVPOmVMy6QFGP7sxZQCIDd8/l3Q\n9VS3jazW8BDdWwEIibsknHsbW7gwDGgGUl4Y\n-----END CERTIFICATE-----",
     "exercises_controls": [
       "EAA-5.1-01",
@@ -11223,14 +11607,8 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
       "EAA-5.5-02"
     ],
     "generated_by": "iGrant.io EAA Reference Generator v1",
-    "generated_at": "2026-05-02T00:13:08.096Z"
-  },
-  {
-    "sample_id": "sjv-eaa-5",
-    "title": "SJV-EAA-5: + oneTime",
-    "description": "Carries the oneTime claim (a JSON null primitive) marking the credential as single-use. Includes key binding and selective disclosure.",
+    "generated_at": "2026-05-02T00:13:08.096Z",
     "profile": "sd-jwt-vc",
-    "tier": "ordinary-eaa",
     "compact_serialisation": "eyJhbGciOiJFUzI1NiIsInR5cCI6ImRjK3NkLWp3dCIsIng1YyI6WyJNSUlCWnpDQ0FRMmdBd0lCQWdJQkFUQUtCZ2dxaGtqT1BRUURBakFwTVNjd0pRWURWUVFERXg1cFIzSmhiblF1YVc4Z1JVRkJJRkpsWm1WeVpXNWpaU0JKYzNOMVpYSXdIaGNOTWpZd05UQXlNREF4TXpBNFdoY05NekV3TlRBeE1EQXhNekE0V2pBcE1TY3dKUVlEVlFRREV4NXBSM0poYm5RdWFXOGdSVUZCSUZKbFptVnlaVzVqWlNCSmMzTjFaWEl3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVFpMnlsWGtFODEzdnZzcHNGRDNxZDBaTUNadG9YdllPTms0L0tFc2xHcTFrSUpHdCtTc2o3eDRwby9maE8xczNJNHVLLzY4a25BT0lJNGd6cFpHL0NBb3lZd0pEQVNCZ05WSFJNQkFmOEVDREFHQVFIL0FnRUFNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQUtCZ2dxaGtqT1BRUURBZ05JQURCRkFpRUFoS3dRTWt2dGNZVk5uRHVGU0c3emVtand4eVZQT21WTXk2UUZHUDdzeFpRQ0lEZDgvbDNROVZTM2phelc4QkRkV3dFSWlic2tuSHNiVzdnd0RHZ0dVbDRZIl19.eyJpc3MiOiJodHRwczovL3JlZmVyZW5jZS1pc3N1ZXIuaWdyYW50LmlvLmV4YW1wbGUiLCJ2Y3QiOiJ1cm46aWdyYW50OmVhYTpyZWZlcmVuY2UvdjEiLCJ2Y3QjaW50ZWdyaXR5Ijoic2hhMjU2LTliMWQ2ZTNjNDZkYjhhNmQyZjZkYjIwY2JhODVlOWU2ZGJlM2Q4ZjNhNGIzYTRlYWVmMmMzYzRlMWQ4ZDZlN2YiLCJpYXQiOjE3Nzc2ODA3ODgsIm5iZiI6MTc3NzY4MDc4OCwiZXhwIjoxODQwNzUyNzg4LCJpc3N1aW5nX2F1dGhvcml0eSI6ImlHcmFudC5pbyBSZWZlcmVuY2UgQXV0aG9yaXR5Iiwib25lVGltZSI6bnVsbCwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsImNydiI6IlAtMjU2IiwieCI6IkhsZzBZSzNWYTdvaTQwSGJXOGRvOGxnbFV0XzlIcGdwNUEtVm9POEFuUDgiLCJ5IjoiRGNHZ3N4cjdrbU5vV3VmSDhqVmlNVzR5LTNGRFU2MUQ4ZGF1QWVyYWd6SSJ9fSwiX3NkIjpbIkN1b0E2dFdQM21zLWNYMVJyTXZIMVBhWnhDUm9YY1RMYnJRbmVQZ3Q5RnciLCJURkxuRm1pTGZOM0xZdGNQT1d4Nk1LbU9nekN4S0tvVHhmcWpaQV9vVHljIl0sIl9zZF9hbGciOiJzaGEtMjU2In0.rZRKMGLz0Luo0BYyLdPJbEfo2H6pJj4Il1d_WigOggho3F7bfgnh3U82v5vUgGhwk-FwYP1PTxwRIGE3I9NYyg~WyJnNW8tTG9UbU9wdlpXRmlTemxFdkJnIiwiZ2l2ZW5fbmFtZSIsIkVyaWthIl0~WyJKa1hjREVBdG10d2RUd0Y4ZWhmVlFRIiwiZmFtaWx5X25hbWUiLCJNdXN0ZXJtYW5uIl0~",
     "decoded_header": {
       "alg": "ES256",
@@ -11263,7 +11641,13 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
         "TFLnFmiLfN3LYtcPOWx6MKmOgzCxKKoTxfqjZA_oTyc"
       ],
       "_sd_alg": "sha-256"
-    },
+    }
+  },
+  {
+    "sample_id": "sjv-eaa-6",
+    "title": "SJV-EAA-6: + ShortLived",
+    "description": "Carries the shortLived claim (JSON null) declaring the credential as non-revocable and short-lived. No status component, no key-binding requirement.",
+    "tier": "ordinary-eaa",
     "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBZzCCAQ2gAwIBAgIBATAKBggqhkjOPQQDAjApMScwJQYDVQQDEx5pR3JhbnQu\naW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwHhcNMjYwNTAyMDAxMzA4WhcNMzEwNTAx\nMDAxMzA4WjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1\nZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQi2ylXkE813vvspsFD3qd0ZMCZ\ntoXvYONk4/KEslGq1kIJGt+Ssj7x4po/fhO1s3I4uK/68knAOII4gzpZG/CAoyYw\nJDASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIChDAKBggqhkjOPQQD\nAgNIADBFAiEAhKwQMkvtcYVNnDuFSG7zemjwxyVPOmVMy6QFGP7sxZQCIDd8/l3Q\n9VS3jazW8BDdWwEIibsknHsbW7gwDGgGUl4Y\n-----END CERTIFICATE-----",
     "exercises_controls": [
       "EAA-5.1-01",
@@ -11272,18 +11656,11 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
       "EAA-5.2.4.1-03",
       "EAA-5.2.7.1-01",
       "EAA-5.2.7.1-03",
-      "EAA-5.5-01",
-      "EAA-5.5-02"
+      "EAA-4.2.11.1-03"
     ],
     "generated_by": "iGrant.io EAA Reference Generator v1",
-    "generated_at": "2026-05-02T00:13:08.096Z"
-  },
-  {
-    "sample_id": "sjv-eaa-6",
-    "title": "SJV-EAA-6: + ShortLived",
-    "description": "Carries the shortLived claim (JSON null) declaring the credential as non-revocable and short-lived. No status component, no key-binding requirement.",
+    "generated_at": "2026-05-02T00:13:08.097Z",
     "profile": "sd-jwt-vc",
-    "tier": "ordinary-eaa",
     "compact_serialisation": "eyJhbGciOiJFUzI1NiIsInR5cCI6ImRjK3NkLWp3dCIsIng1YyI6WyJNSUlCWnpDQ0FRMmdBd0lCQWdJQkFUQUtCZ2dxaGtqT1BRUURBakFwTVNjd0pRWURWUVFERXg1cFIzSmhiblF1YVc4Z1JVRkJJRkpsWm1WeVpXNWpaU0JKYzNOMVpYSXdIaGNOTWpZd05UQXlNREF4TXpBNFdoY05NekV3TlRBeE1EQXhNekE0V2pBcE1TY3dKUVlEVlFRREV4NXBSM0poYm5RdWFXOGdSVUZCSUZKbFptVnlaVzVqWlNCSmMzTjFaWEl3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVFpMnlsWGtFODEzdnZzcHNGRDNxZDBaTUNadG9YdllPTms0L0tFc2xHcTFrSUpHdCtTc2o3eDRwby9maE8xczNJNHVLLzY4a25BT0lJNGd6cFpHL0NBb3lZd0pEQVNCZ05WSFJNQkFmOEVDREFHQVFIL0FnRUFNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQUtCZ2dxaGtqT1BRUURBZ05JQURCRkFpRUFoS3dRTWt2dGNZVk5uRHVGU0c3emVtand4eVZQT21WTXk2UUZHUDdzeFpRQ0lEZDgvbDNROVZTM2phelc4QkRkV3dFSWlic2tuSHNiVzdnd0RHZ0dVbDRZIl19.eyJpc3MiOiJodHRwczovL3JlZmVyZW5jZS1pc3N1ZXIuaWdyYW50LmlvLmV4YW1wbGUiLCJ2Y3QiOiJ1cm46aWdyYW50OmVhYTpyZWZlcmVuY2UvdjEiLCJ2Y3QjaW50ZWdyaXR5Ijoic2hhMjU2LTliMWQ2ZTNjNDZkYjhhNmQyZjZkYjIwY2JhODVlOWU2ZGJlM2Q4ZjNhNGIzYTRlYWVmMmMzYzRlMWQ4ZDZlN2YiLCJpYXQiOjE3Nzc2ODA3ODgsIm5iZiI6MTc3NzY4MDc4OCwiZXhwIjoxODQwNzUyNzg4LCJpc3N1aW5nX2F1dGhvcml0eSI6ImlHcmFudC5pbyBSZWZlcmVuY2UgQXV0aG9yaXR5Iiwic2hvcnRMaXZlZCI6bnVsbCwiZ2l2ZW5fbmFtZSI6IkVyaWthIiwiZmFtaWx5X25hbWUiOiJNdXN0ZXJtYW5uIn0.TwixQu8AFwaG2u3EPnKTsxIrNDbpmYzhN09fml-KhtXuzkNSthEX4DgTmfu47X107hxkygHda3V3VJnXtFciZw~",
     "decoded_header": {
       "alg": "ES256",
@@ -11303,7 +11680,13 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
       "shortLived": null,
       "given_name": "Erika",
       "family_name": "Mustermann"
-    },
+    }
+  },
+  {
+    "sample_id": "sjv-eaa-7",
+    "title": "SJV-EAA-7: + status component",
+    "description": "Carries a status claim referencing an IETF Token Status List, plus key binding. The structural status checks (5.2.10.1-*) verify the component is well-formed; the runtime resolver is only exercised against a real endpoint.",
+    "tier": "ordinary-eaa",
     "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBZzCCAQ2gAwIBAgIBATAKBggqhkjOPQQDAjApMScwJQYDVQQDEx5pR3JhbnQu\naW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwHhcNMjYwNTAyMDAxMzA4WhcNMzEwNTAx\nMDAxMzA4WjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1\nZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQi2ylXkE813vvspsFD3qd0ZMCZ\ntoXvYONk4/KEslGq1kIJGt+Ssj7x4po/fhO1s3I4uK/68knAOII4gzpZG/CAoyYw\nJDASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIChDAKBggqhkjOPQQD\nAgNIADBFAiEAhKwQMkvtcYVNnDuFSG7zemjwxyVPOmVMy6QFGP7sxZQCIDd8/l3Q\n9VS3jazW8BDdWwEIibsknHsbW7gwDGgGUl4Y\n-----END CERTIFICATE-----",
     "exercises_controls": [
       "EAA-5.1-01",
@@ -11312,17 +11695,20 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
       "EAA-5.2.4.1-03",
       "EAA-5.2.7.1-01",
       "EAA-5.2.7.1-03",
+      "EAA-5.5-01",
+      "EAA-5.5-02",
+      "EAA-5.2.10.1-03",
+      "EAA-5.2.10.1-04",
+      "EAA-5.2.10.1-06",
+      "EAA-5.2.10.1-08",
+      "EAA-5.2.10.1-09",
+      "EAA-5.2.10.1-10",
+      "EAA-5.2.10.1-11",
       "EAA-4.2.11.1-03"
     ],
     "generated_by": "iGrant.io EAA Reference Generator v1",
-    "generated_at": "2026-05-02T00:13:08.097Z"
-  },
-  {
-    "sample_id": "sjv-eaa-7",
-    "title": "SJV-EAA-7: + status component",
-    "description": "Carries a status claim referencing an IETF Token Status List, plus key binding. The structural status checks (5.2.10.1-*) verify the component is well-formed; the runtime resolver is only exercised against a real endpoint.",
+    "generated_at": "2026-05-02T00:13:08.097Z",
     "profile": "sd-jwt-vc",
-    "tier": "ordinary-eaa",
     "compact_serialisation": "eyJhbGciOiJFUzI1NiIsInR5cCI6ImRjK3NkLWp3dCIsIng1YyI6WyJNSUlCWnpDQ0FRMmdBd0lCQWdJQkFUQUtCZ2dxaGtqT1BRUURBakFwTVNjd0pRWURWUVFERXg1cFIzSmhiblF1YVc4Z1JVRkJJRkpsWm1WeVpXNWpaU0JKYzNOMVpYSXdIaGNOTWpZd05UQXlNREF4TXpBNFdoY05NekV3TlRBeE1EQXhNekE0V2pBcE1TY3dKUVlEVlFRREV4NXBSM0poYm5RdWFXOGdSVUZCSUZKbFptVnlaVzVqWlNCSmMzTjFaWEl3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVFpMnlsWGtFODEzdnZzcHNGRDNxZDBaTUNadG9YdllPTms0L0tFc2xHcTFrSUpHdCtTc2o3eDRwby9maE8xczNJNHVLLzY4a25BT0lJNGd6cFpHL0NBb3lZd0pEQVNCZ05WSFJNQkFmOEVDREFHQVFIL0FnRUFNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQUtCZ2dxaGtqT1BRUURBZ05JQURCRkFpRUFoS3dRTWt2dGNZVk5uRHVGU0c3emVtand4eVZQT21WTXk2UUZHUDdzeFpRQ0lEZDgvbDNROVZTM2phelc4QkRkV3dFSWlic2tuSHNiVzdnd0RHZ0dVbDRZIl19.eyJpc3MiOiJodHRwczovL3JlZmVyZW5jZS1pc3N1ZXIuaWdyYW50LmlvLmV4YW1wbGUiLCJ2Y3QiOiJ1cm46aWdyYW50OmVhYTpyZWZlcmVuY2UvdjEiLCJ2Y3QjaW50ZWdyaXR5Ijoic2hhMjU2LTliMWQ2ZTNjNDZkYjhhNmQyZjZkYjIwY2JhODVlOWU2ZGJlM2Q4ZjNhNGIzYTRlYWVmMmMzYzRlMWQ4ZDZlN2YiLCJpYXQiOjE3Nzc2ODA3ODgsIm5iZiI6MTc3NzY4MDc4OCwiZXhwIjoxODQwNzUyNzg4LCJpc3N1aW5nX2F1dGhvcml0eSI6ImlHcmFudC5pbyBSZWZlcmVuY2UgQXV0aG9yaXR5IiwiZ2l2ZW5fbmFtZSI6IkVyaWthIiwiZmFtaWx5X25hbWUiOiJNdXN0ZXJtYW5uIiwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsImNydiI6IlAtMjU2IiwieCI6IkhsZzBZSzNWYTdvaTQwSGJXOGRvOGxnbFV0XzlIcGdwNUEtVm9POEFuUDgiLCJ5IjoiRGNHZ3N4cjdrbU5vV3VmSDhqVmlNVzR5LTNGRFU2MUQ4ZGF1QWVyYWd6SSJ9fSwic3RhdHVzIjp7InR5cGUiOiJUb2tlblN0YXR1c0xpc3QiLCJwdXJwb3NlIjoicmV2b2NhdGlvbiIsImluZGV4Ijo0MiwidXJpIjoiaHR0cHM6Ly9yZWZlcmVuY2UtaXNzdWVyLmlncmFudC5pby5leGFtcGxlL3N0YXR1cy9zanYtZWFhLTcifX0.WELZMrpAC2IKSJrPLLLYGhgZpXp3-4Z50cd1wYUO1EtvfnKKrZfNAjKWkDtkNwbGbe0RpVgRLYTIqHU3xzDvKA~",
     "decoded_header": {
       "alg": "ES256",
@@ -11355,28 +11741,7 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
         "index": 42,
         "uri": "https://reference-issuer.igrant.io.example/status/sjv-eaa-7"
       }
-    },
-    "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBZzCCAQ2gAwIBAgIBATAKBggqhkjOPQQDAjApMScwJQYDVQQDEx5pR3JhbnQu\naW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwHhcNMjYwNTAyMDAxMzA4WhcNMzEwNTAx\nMDAxMzA4WjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1\nZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQi2ylXkE813vvspsFD3qd0ZMCZ\ntoXvYONk4/KEslGq1kIJGt+Ssj7x4po/fhO1s3I4uK/68knAOII4gzpZG/CAoyYw\nJDASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIChDAKBggqhkjOPQQD\nAgNIADBFAiEAhKwQMkvtcYVNnDuFSG7zemjwxyVPOmVMy6QFGP7sxZQCIDd8/l3Q\n9VS3jazW8BDdWwEIibsknHsbW7gwDGgGUl4Y\n-----END CERTIFICATE-----",
-    "exercises_controls": [
-      "EAA-5.1-01",
-      "EAA-5.2.1.2-01",
-      "EAA-5.2.1.2-03",
-      "EAA-5.2.4.1-03",
-      "EAA-5.2.7.1-01",
-      "EAA-5.2.7.1-03",
-      "EAA-5.5-01",
-      "EAA-5.5-02",
-      "EAA-5.2.10.1-03",
-      "EAA-5.2.10.1-04",
-      "EAA-5.2.10.1-06",
-      "EAA-5.2.10.1-08",
-      "EAA-5.2.10.1-09",
-      "EAA-5.2.10.1-10",
-      "EAA-5.2.10.1-11",
-      "EAA-4.2.11.1-03"
-    ],
-    "generated_by": "iGrant.io EAA Reference Generator v1",
-    "generated_at": "2026-05-02T00:13:08.097Z"
+    }
   }
 ];
 

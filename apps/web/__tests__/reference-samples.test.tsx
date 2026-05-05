@@ -62,4 +62,39 @@ describe('Reference Sample detail page', () => {
       SampleDetail({ params: Promise.resolve({ id: 'nope' }) }),
     ).rejects.toThrow(/NEXT_NOT_FOUND/);
   });
+
+  it('renders an mdoc sample with the CBOR base64 block, docType and namespace badges', async () => {
+    const sample = loadAllSamplesSync().find((s) => s.profile === 'mdoc');
+    expect(sample).toBeTruthy();
+    const ui = await SampleDetail({
+      params: Promise.resolve({ id: sample!.sample_id }),
+    });
+    render(ui);
+    expect(screen.getByText(sample!.title)).toBeInTheDocument();
+    // No SD-JWT compact-form copy button on an mdoc sample.
+    expect(screen.queryByText(/Copy compact form/i)).not.toBeInTheDocument();
+    expect(screen.getByText(/Copy base64 CBOR/i)).toBeInTheDocument();
+    expect(screen.getByText(/CBOR \(base64\)/i)).toBeInTheDocument();
+    // Both the heading and the JSON dump contain "docType"; one match
+    // is enough to confirm the section rendered.
+    expect(screen.getAllByText(/docType/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Namespaces/i).length).toBeGreaterThan(0);
+  });
+
+  it('renders a profile badge on every sample card on the index page', () => {
+    render(<ReferenceSamplesIndex />);
+    const samples = loadAllSamplesSync();
+    const sdjwtSamples = samples.filter((s) => s.profile === 'sd-jwt-vc').length;
+    const mdocSamples = samples.filter((s) => s.profile === 'mdoc').length;
+    if (sdjwtSamples > 0) {
+      expect(screen.getAllByText('SD-JWT VC').length).toBeGreaterThanOrEqual(
+        sdjwtSamples,
+      );
+    }
+    if (mdocSamples > 0) {
+      expect(screen.getAllByText('ISO mdoc').length).toBeGreaterThanOrEqual(
+        mdocSamples,
+      );
+    }
+  });
 });

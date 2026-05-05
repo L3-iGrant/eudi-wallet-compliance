@@ -1,0 +1,78 @@
+{
+  "sample_id": "mdl-eaa-5",
+  "title": "MDL-EAA-5: mdoc PuB-EAA with shortLived",
+  "description": "Non-mDL credential at the PuB-EAA tier with category=urn:etsi:esi:eaa:eu:pub and shortLived=true (so revocation status is not required).",
+  "profile": "mdoc",
+  "tier": "pub-eaa",
+  "cbor_base64": "uQACam5hbWVTcGFjZXO5AAJvb3JnLmlzby4yMzIyMC4xhdgYWFi5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRABsZWxlbWVudFZhbHVlZkNhcmxvc3FlbGVtZW50SWRlbnRpZmllcmpnaXZlbl9uYW1l2BhYWbkABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAWxlbGVtZW50VmFsdWVmUml2ZXJhcWVsZW1lbnRJZGVudGlmaWVya2ZhbWlseV9uYW1l2BhYX7kABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAmxlbGVtZW50VmFsdWVoUFVCLTAwMDVxZWxlbWVudElkZW50aWZpZXJvZG9jdW1lbnRfbnVtYmVy2BhYe7kABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEA2xlbGVtZW50VmFsdWV4GFJlZmVyZW5jZSBDaXZpbCBSZWdpc3RyeXFlbGVtZW50SWRlbnRpZmllcngZaXNzdWluZ19hdXRob3JpdHlfdW5pY29kZdgYWFy5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRARsZWxlbWVudFZhbHVlajIwMjYtMDEtMDFxZWxlbWVudElkZW50aWZpZXJqaXNzdWVfZGF0ZXgYb3JnLmV0c2kuMDE5NDcyMDEuMDEwMTAxgtgYWGe5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRABsZWxlbWVudFZhbHVld3VybjpldHNpOmVzaTplYWE6ZXU6cHVicWVsZW1lbnRJZGVudGlmaWVyaGNhdGVnb3J52BhYUrkABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAWxlbGVtZW50VmFsdWX1cWVsZW1lbnRJZGVudGlmaWVyanNob3J0TGl2ZWRqaXNzdWVyQXV0aIRZAb65AAJhMSZiMzOB2EBZAa8wggGrMIIBUaADAgECAgEBMAoGCCqGSM49BAMCMEsxKDAmBgNVBAMTH2lHcmFudC5pbyBtZG9jIFJlZmVyZW5jZSBJc3N1ZXIxEjAQBgNVBAoTCWlHcmFudC5pbzELMAkGA1UEBhMCU0UwHhcNMjYwMTAxMDAwMDAwWhcNMzEwMTAxMDAwMDAwWjBLMSgwJgYDVQQDEx9pR3JhbnQuaW8gbWRvYyBSZWZlcmVuY2UgSXNzdWVyMRIwEAYDVQQKEwlpR3JhbnQuaW8xCzAJBgNVBAYTAlNFMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEr+dRI+HNyTvTUoiOKBEw0Mx2gGjGIWkK7aHhrv7lNz0caF9vbm99rkjzdRwurn3rysU/4IqJgPzLyjHUipKY06MmMCQwEgYDVR0TAQH/BAgwBgEB/wIBADAOBgNVHQ8BAf8EBAMCAoQwCgYIKoZIzj0EAwIDSAAwRQIhALujmPV5xJy3vXODEuDWENk+AqMwBxRCmZQ0/DGglpaQAiBOQDC8YnzmMtAI/3ACNOaRJV7vJnweH8iunOdEuwfycLkAAFkCddgYWQJwuQAGZ3ZlcnNpb25jMS4wb2RpZ2VzdEFsZ29yaXRobWdTSEEtMjU2bHZhbHVlRGlnZXN0c7kAAm9vcmcuaXNvLjIzMjIwLjG5AAVhMNhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGEx2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYTLYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhM9hAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGE02EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeBhvcmcuZXRzaS4wMTk0NzIwMS4wMTAxMDG5AAJhMNhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGEx2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbWRldmljZUtleUluZm+5AAFpZGV2aWNlS2V5uQAEYTECYi0xAWItMthAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGItM9hAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGdkb2NUeXBldW9yZy5leGFtcGxlLnB1YmVhYS52MWx2YWxpZGl0eUluZm+5AANmc2lnbmVkwHQyMDI2LTAxLTAxVDAwOjAwOjAwWml2YWxpZEZyb23AdDIwMjYtMDEtMDFUMDA6MDA6MDBaanZhbGlkVW50aWzAdDIwMjYtMDItMDFUMDA6MDA6MDBa2EBYQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+  "decoded_protected_header": {
+    "alg": "ES256",
+    "x5chain": "<1 cert, 431 bytes>"
+  },
+  "decoded_mso": {
+    "version": "1.0",
+    "digestAlgorithm": "SHA-256",
+    "docType": "org.example.pubeaa.v1",
+    "validityInfo": {
+      "signed": "2026-01-01T00:00:00Z",
+      "validFrom": "2026-01-01T00:00:00Z",
+      "validUntil": "2026-02-01T00:00:00Z"
+    },
+    "valueDigests": "<32-byte digests per element; bytes elided>",
+    "deviceKeyInfo": "<COSE_Key (P-256, placeholder coordinates)>"
+  },
+  "decoded_namespaces": {
+    "org.iso.23220.1": [
+      {
+        "digestID": 0,
+        "elementIdentifier": "given_name",
+        "elementValue": "Carlos"
+      },
+      {
+        "digestID": 1,
+        "elementIdentifier": "family_name",
+        "elementValue": "Rivera"
+      },
+      {
+        "digestID": 2,
+        "elementIdentifier": "document_number",
+        "elementValue": "PUB-0005"
+      },
+      {
+        "digestID": 3,
+        "elementIdentifier": "issuing_authority_unicode",
+        "elementValue": "Reference Civil Registry"
+      },
+      {
+        "digestID": 4,
+        "elementIdentifier": "issue_date",
+        "elementValue": "2026-01-01"
+      }
+    ],
+    "org.etsi.01947201.010101": [
+      {
+        "digestID": 0,
+        "elementIdentifier": "category",
+        "elementValue": "urn:etsi:esi:eaa:eu:pub"
+      },
+      {
+        "digestID": 1,
+        "elementIdentifier": "shortLived",
+        "elementValue": true
+      }
+    ]
+  },
+  "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBqzCCAVGgAwIBAgIBATAKBggqhkjOPQQDAjBLMSgwJgYDVQQDEx9pR3JhbnQu\naW8gbWRvYyBSZWZlcmVuY2UgSXNzdWVyMRIwEAYDVQQKEwlpR3JhbnQuaW8xCzAJ\nBgNVBAYTAlNFMB4XDTI2MDEwMTAwMDAwMFoXDTMxMDEwMTAwMDAwMFowSzEoMCYG\nA1UEAxMfaUdyYW50LmlvIG1kb2MgUmVmZXJlbmNlIElzc3VlcjESMBAGA1UEChMJ\naUdyYW50LmlvMQswCQYDVQQGEwJTRTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA\nBK/nUSPhzck701KIjigRMNDMdoBoxiFpCu2h4a7+5Tc9HGhfb25vfa5I83UcLq59\n68rFP+CKiYD8y8ox1IqSmNOjJjAkMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0P\nAQH/BAQDAgKEMAoGCCqGSM49BAMCA0gAMEUCIQC7o5j1ecSct71zgxLg1hDZPgKj\nMAcUQpmUNPwxoJaWkAIgTkAwvGJ85jLQCP9wAjTmkSVe7yZ8Hh/IrpznRLsH8nA=\n-----END CERTIFICATE-----",
+  "exercises_controls": [
+    "EAA-6.1-03",
+    "PuB-EAA-6.2.2.3-01",
+    "PuB-EAA-6.2.2.3-02",
+    "PuB-EAA-6.2.10.3-01",
+    "EAA-6.2.12-01",
+    "EAA-6.2.12-03",
+    "EAA-6.2.12-04",
+    "PuB-EAA-6.6.3-04"
+  ],
+  "generated_by": "iGrant.io mdoc Reference Generator (cbor-x, placeholder signatures)",
+  "generated_at": "2026-05-05T19:41:49.673Z"
+}
