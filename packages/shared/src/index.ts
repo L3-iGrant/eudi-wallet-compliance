@@ -1,4 +1,10 @@
 import { parseSdJwtVc, ParseError, type ParsedSdJwtVc } from './sd-jwt-vc';
+import {
+  parseMdoc,
+  type IssuerSignedItem,
+  type MobileSecurityObject,
+  type ParsedMdoc,
+} from './mdoc';
 
 export {
   parseSdJwtVc,
@@ -6,20 +12,25 @@ export {
   type ParsedSdJwtVc,
 } from './sd-jwt-vc';
 
+export {
+  parseMdoc,
+  type IssuerSignedItem,
+  type MobileSecurityObject,
+  type ParsedMdoc,
+} from './mdoc';
+
 /**
  * Tagged-union representation of a successfully-parsed EAA payload.
  *
  * Phase 7 introduces this type so the engine can lift parsing up to
  * runAssessment (instead of every check re-parsing the same compact
- * serialisation), and so a future mdoc parser slots in without touching
- * the SD-JWT VC checks. The `'mdoc'` arm carries `parsed: never` until
- * the mdoc parser lands; once it does, the arm becomes
- * `{ kind: 'mdoc'; parsed: ParsedMdoc }` and existing call sites that
- * narrow on `kind === 'sd-jwt-vc'` keep working unchanged.
+ * serialisation). Each per-control check narrows on `kind` and dispatches
+ * accordingly; checks that apply to only one profile return na for the
+ * other.
  */
 export type ParsedEvidence =
   | { kind: 'sd-jwt-vc'; parsed: ParsedSdJwtVc }
-  | { kind: 'mdoc'; parsed: never };
+  | { kind: 'mdoc'; parsed: ParsedMdoc };
 
 function looksLikeSdJwtCompact(s: string): boolean {
   // Compact SD-JWT VC: <header>.<payload>.<signature>[~disclosure...][~kbjwt]
@@ -32,9 +43,8 @@ function looksLikeSdJwtCompact(s: string): boolean {
 
 /**
  * Sniff the input format and parse accordingly. Throws ParseError when
- * the input is neither an SD-JWT VC compact serialisation nor anything
- * else we currently recognise. The mdoc arm is wired up in Phase 7
- * Prompt 2; until then, anything that is not SD-JWT-shaped is rejected.
+ * the input is neither an SD-JWT VC compact serialisation nor a
+ * recognisable mdoc CBOR (hex or base64-encoded).
  */
 export function parseEvidence(input: string): ParsedEvidence {
   if (typeof input !== 'string') {
@@ -47,10 +57,13 @@ export function parseEvidence(input: string): ParsedEvidence {
   if (looksLikeSdJwtCompact(trimmed)) {
     return { kind: 'sd-jwt-vc', parsed: parseSdJwtVc(trimmed) };
   }
-  throw new ParseError(
-    'Unrecognised evidence format (expected SD-JWT VC compact serialisation; ' +
-      'mdoc support lands in a later phase)',
-  );
+  try {
+    return { kind: 'mdoc', parsed: parseMdoc(trimmed) };
+  } catch {
+    throw new ParseError(
+      'Input is neither SD-JWT VC compact serialisation nor mdoc CBOR (hex or base64)',
+    );
+  }
 }
 
 /**
