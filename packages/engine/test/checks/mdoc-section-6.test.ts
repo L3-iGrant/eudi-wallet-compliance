@@ -969,3 +969,462 @@ describe('§6.2.9 Attributes evidence', () => {
     expect(v.status).toBe('na');
   });
 });
+
+// ─── Section 6.2.10 + 6.2.11 + 6.2.12 + 6.3 + 6.4 + 6.5 + 6.6 ─────────────
+// (Phase 7 Prompt 6 imports inlined here to keep the file flat)
+
+import { afterEach, vi } from 'vitest';
+import { deflateSync } from 'node:zlib';
+import { check as check_6_2_10_1_01 } from '../../src/checks/eaa-6-2-10-1-01';
+import { check as check_6_2_10_1_02 } from '../../src/checks/eaa-6-2-10-1-02';
+import { check as check_6_2_10_1_03 } from '../../src/checks/eaa-6-2-10-1-03';
+import { check as check_6_2_10_1_04 } from '../../src/checks/eaa-6-2-10-1-04';
+import { check as check_6_2_10_1_06 } from '../../src/checks/eaa-6-2-10-1-06';
+import { check as check_6_2_10_1_08 } from '../../src/checks/eaa-6-2-10-1-08';
+import { check as check_6_2_10_1_10 } from '../../src/checks/eaa-6-2-10-1-10';
+import { check as check_6_2_10_2_01 } from '../../src/checks/eaa-6-2-10-2-01';
+import { check as check_qeaa_6_2_10_2_01 } from '../../src/checks/qeaa-6-2-10-2-01';
+import { check as check_pub_6_2_10_3_01 } from '../../src/checks/pub-eaa-6-2-10-3-01';
+import { check as check_6_2_11_01 } from '../../src/checks/eaa-6-2-11-01';
+import { check as check_6_2_12_01 } from '../../src/checks/eaa-6-2-12-01';
+import { check as check_6_2_12_02 } from '../../src/checks/eaa-6-2-12-02';
+import { check as check_6_2_12_03 } from '../../src/checks/eaa-6-2-12-03';
+import { check as check_6_2_12_04 } from '../../src/checks/eaa-6-2-12-04';
+import { check as check_6_2_12_05 } from '../../src/checks/eaa-6-2-12-05';
+import { check as check_6_3_01 } from '../../src/checks/eaa-6-3-01';
+import { check as check_6_3_02 } from '../../src/checks/eaa-6-3-02';
+import { check as check_6_3_03 } from '../../src/checks/eaa-6-3-03';
+import { check as check_6_3_04 } from '../../src/checks/eaa-6-3-04';
+import { check as check_6_3_05 } from '../../src/checks/eaa-6-3-05';
+import { check as check_6_4_1_2_01 } from '../../src/checks/eaa-6-4-1-2-01';
+import { check as check_6_4_1_3_01 } from '../../src/checks/eaa-6-4-1-3-01';
+import { check as check_6_4_1_4_01 } from '../../src/checks/eaa-6-4-1-4-01';
+import { check as check_6_4_1_4_02 } from '../../src/checks/eaa-6-4-1-4-02';
+import { check as check_6_4_1_5_01 } from '../../src/checks/eaa-6-4-1-5-01';
+import { check as check_6_5_01 } from '../../src/checks/eaa-6-5-01';
+import { check as check_6_5_02 } from '../../src/checks/eaa-6-5-02';
+import { check as check_6_6_1_01 } from '../../src/checks/eaa-6-6-1-01';
+import { check as check_qeaa_6_6_2_01 } from '../../src/checks/qeaa-6-6-2-01';
+import { check as check_qeaa_6_6_2_02 } from '../../src/checks/qeaa-6-6-2-02';
+import { check as check_qeaa_6_6_2_03 } from '../../src/checks/qeaa-6-6-2-03';
+import { check as check_qeaa_6_6_2_04 } from '../../src/checks/qeaa-6-6-2-04';
+import { check as check_pub_6_6_3_01 } from '../../src/checks/pub-eaa-6-6-3-01';
+import { check as check_pub_6_6_3_02 } from '../../src/checks/pub-eaa-6-6-3-02';
+import { check as check_pub_6_6_3_03 } from '../../src/checks/pub-eaa-6-6-3-03';
+import { check as check_pub_6_6_3_04 } from '../../src/checks/pub-eaa-6-6-3-04';
+
+// Helper to build a status object on the parsed mdoc.
+function withStatus(parsed: ParsedMdoc, status: Record<string, unknown> | undefined): ParsedMdoc {
+  const out = clone(parsed);
+  if (status === undefined) {
+    delete out.issuerAuth.mso.status;
+  } else {
+    out.issuerAuth.mso.status = status;
+  }
+  return out;
+}
+
+function withProtectedHeader(
+  parsed: ParsedMdoc,
+  patch: Partial<ParsedMdoc['issuerAuth']['protectedHeader']>,
+): ParsedMdoc {
+  const out = clone(parsed);
+  out.issuerAuth.protectedHeader = {
+    ...out.issuerAuth.protectedHeader,
+    ...patch,
+  };
+  return out;
+}
+
+function withSignature(parsed: ParsedMdoc, sig: Uint8Array): ParsedMdoc {
+  const out = clone(parsed);
+  out.issuerAuth.signature = sig;
+  return out;
+}
+
+describe('§6.2.10 status service', () => {
+  it('EAA-6.2.10.1-01 passes regardless of status presence', async () => {
+    const parsed = await loadMdocFixture();
+    const a = await runCheckParsed(check_6_2_10_1_01, asMdocEvidence(parsed), DEFAULT_MDOC_SCOPE);
+    const b = await runCheckParsed(
+      check_6_2_10_1_01,
+      asMdocEvidence(withStatus(parsed, undefined)),
+      DEFAULT_MDOC_SCOPE,
+    );
+    expect(a.status).toBe('pass');
+    expect(b.status).toBe('pass');
+  });
+
+  it('EAA-6.2.10.1-04 fails when status (flat) lacks the type member', async () => {
+    const parsed = await loadMdocFixture();
+    const flat = withStatus(parsed, { uri: 'https://example/list', index: 1 });
+    const v = await runCheckParsed(check_6_2_10_1_04, asMdocEvidence(flat), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+
+  it('EAA-6.2.10.1-04 passes for IETF nested envelope (no type required)', async () => {
+    const parsed = await loadMdocFixture();
+    const nested = withStatus(parsed, { status_list: { idx: 1, uri: 'https://example/list' } });
+    const v = await runCheckParsed(check_6_2_10_1_04, asMdocEvidence(nested), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.10.1-04 passes for flat shape with type present', async () => {
+    const parsed = await loadMdocFixture();
+    const flat = withStatus(parsed, {
+      type: 'TokenStatusList',
+      purpose: 'revocation',
+      index: 1,
+      uri: 'https://example/list',
+    });
+    const v = await runCheckParsed(check_6_2_10_1_04, asMdocEvidence(flat), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.10.1-08 passes via IETF nested idx', async () => {
+    const parsed = await loadMdocFixture();
+    const nested = withStatus(parsed, { status_list: { idx: 7, uri: 'https://example/list' } });
+    const v = await runCheckParsed(check_6_2_10_1_08, asMdocEvidence(nested), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.10.1-10 fails when nested envelope lacks uri', async () => {
+    const parsed = await loadMdocFixture();
+    const nested = withStatus(parsed, { status_list: { idx: 1 } });
+    const v = await runCheckParsed(check_6_2_10_1_10, asMdocEvidence(nested), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+
+  it('QEAA-6.2.10.2-01 fails when QEAA without shortLived has no status', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(
+      check_qeaa_6_2_10_2_01,
+      asMdocEvidence(withStatus(parsed, undefined)),
+      { ...DEFAULT_MDOC_SCOPE, tier: 'qeaa' },
+    );
+    expect(v.status).toBe('fail');
+  });
+
+  it('QEAA-6.2.10.2-01 passes when QEAA carries status', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_qeaa_6_2_10_2_01, asMdocEvidence(parsed), {
+      ...DEFAULT_MDOC_SCOPE,
+      tier: 'qeaa',
+    });
+    expect(v.status).toBe('pass');
+  });
+
+  it('PuB-EAA-6.2.10.3-01 fails when PuB-EAA without shortLived has no status', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(
+      check_pub_6_2_10_3_01,
+      asMdocEvidence(withStatus(parsed, undefined)),
+      { ...DEFAULT_MDOC_SCOPE, tier: 'pub-eaa' },
+    );
+    expect(v.status).toBe('fail');
+  });
+});
+
+describe('§6.2.10.2-01 runtime status resolver', () => {
+  const realFetch = globalThis.fetch;
+  afterEach(() => {
+    globalThis.fetch = realFetch;
+    vi.restoreAllMocks();
+  });
+
+  function buildUnsignedJwt(payload: Record<string, unknown>): string {
+    const b64 = (v: object) => Buffer.from(JSON.stringify(v)).toString('base64url');
+    const header = { alg: 'none', typ: 'statuslist+jwt' };
+    return `${b64(header)}.${b64(payload)}.`;
+  }
+  function buildCompressedLst(bytes: number[]): string {
+    return Buffer.from(deflateSync(Buffer.from(bytes))).toString('base64url');
+  }
+
+  it('passes when status URI resolves and the index reads out a value', async () => {
+    const parsed = await loadMdocFixture();
+    const withFlat = withStatus(parsed, {
+      type: 'TokenStatusList',
+      purpose: 'revocation',
+      index: 1,
+      uri: 'https://example/status',
+    });
+    const bytes = new Array(2).fill(0);
+    bytes[0] = 0x40;
+    const token = buildUnsignedJwt({
+      iss: 'https://example',
+      status_list: { bits: 1, lst: buildCompressedLst(bytes) },
+    });
+    globalThis.fetch = vi.fn(async () =>
+      new Response(token, {
+        status: 200,
+        headers: { 'content-type': 'application/statuslist+jwt' },
+      }),
+    ) as typeof fetch;
+    const v = await runCheckParsed(check_6_2_10_2_01, asMdocEvidence(withFlat), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+    expect(v.notes).toContain('returned status value 1');
+  });
+
+  it('returns na when status is absent', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(
+      check_6_2_10_2_01,
+      asMdocEvidence(withStatus(parsed, undefined)),
+      DEFAULT_MDOC_SCOPE,
+    );
+    expect(v.status).toBe('na');
+  });
+
+  it('returns na for SD-JWT VC evidence', async () => {
+    const v = await runCheckParsed(check_6_2_10_2_01, await asSdJwtVcEvidence(), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('na');
+  });
+});
+
+describe('§6.2.11 renewal absent', () => {
+  it('EAA-6.2.11-01 fails when an element named "renewal" exists', async () => {
+    const parsed = await loadMdocFixture();
+    const evil = withItem(parsed, NS_ETSI, 'renewal', 'something');
+    const v = await runCheckParsed(check_6_2_11_01, asMdocEvidence(evil), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+
+  it('EAA-6.2.11-01 passes when no renewal-shaped element exists', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_6_2_11_01, asMdocEvidence(parsed), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+});
+
+describe('§6.2.12 short-lived', () => {
+  it('EAA-6.2.12-03 fails when shortLived is not a bool', async () => {
+    const parsed = await loadMdocFixture();
+    const evil = withItem(parsed, NS_ETSI, 'shortLived', 'true');
+    const v = await runCheckParsed(check_6_2_12_03, asMdocEvidence(evil), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+
+  it('EAA-6.2.12-03 passes when shortLived is a CBOR bool', async () => {
+    const parsed = await loadMdocFixture();
+    const ok = withItem(parsed, NS_ETSI, 'shortLived', true);
+    const v = await runCheckParsed(check_6_2_12_03, asMdocEvidence(ok), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.12-04 passes when shortLived is true', async () => {
+    const parsed = await loadMdocFixture();
+    const ok = withItem(parsed, NS_ETSI, 'shortLived', true);
+    const v = await runCheckParsed(check_6_2_12_04, asMdocEvidence(ok), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.12-05 passes when shortLived is absent', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_6_2_12_05, asMdocEvidence(parsed), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+});
+
+describe('§6.3 attested attributes', () => {
+  it('EAA-6.3-01 passes for the fixture (has IssuerSignedItem entries)', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_6_3_01, asMdocEvidence(parsed), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.3-01 fails when no IssuerSignedItem entries are present', async () => {
+    const parsed = await loadMdocFixture();
+    let mut = parsed;
+    for (const ns of Object.keys(mut.nameSpaces)) mut = withRemovedNs(mut, ns);
+    const v = await runCheckParsed(check_6_3_01, asMdocEvidence(mut), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+
+  it('EAA-6.3-03 fails when SubAttr carries both subId and subAka', async () => {
+    const parsed = await loadMdocFixture();
+    const evil = withItem(parsed, NS_ETSI, 'foo', { subId: { kind: 'x' }, subAka: 'p' });
+    const v = await runCheckParsed(check_6_3_03, asMdocEvidence(evil), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+
+  it('EAA-6.3-03 passes when SubAttr carries exactly one of subId or subAka', async () => {
+    const parsed = await loadMdocFixture();
+    const ok = withItem(parsed, NS_ETSI, 'foo', { subAka: 'pseudo' });
+    const v = await runCheckParsed(check_6_3_03, asMdocEvidence(ok), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.3-04 fails when subId is not a CBOR map', async () => {
+    const parsed = await loadMdocFixture();
+    const evil = withItem(parsed, NS_ETSI, 'foo', { subId: 'not-a-map' });
+    const v = await runCheckParsed(check_6_3_04, asMdocEvidence(evil), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+
+  it('EAA-6.3-05 fails when subAka is not a string', async () => {
+    const parsed = await loadMdocFixture();
+    const evil = withItem(parsed, NS_ETSI, 'foo', { subAka: 42 });
+    const v = await runCheckParsed(check_6_3_05, asMdocEvidence(evil), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+});
+
+describe('§6.4 attested attributes metadata', () => {
+  it('EAA-6.4.1.2-01 passes when MSO.version is set on the fixture', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_6_4_1_2_01, asMdocEvidence(parsed), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.4.1.4-02 passes when valueDigests has entries', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_6_4_1_4_02, asMdocEvidence(parsed), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.4.1.4-02 fails when valueDigests is empty', async () => {
+    const parsed = await loadMdocFixture();
+    const broken = clone(parsed);
+    broken.issuerAuth.mso.valueDigests = {};
+    const v = await runCheckParsed(check_6_4_1_4_02, asMdocEvidence(broken), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+
+  it('EAA-6.4.1.5-01 passes when digestAlgorithm is set', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_6_4_1_5_01, asMdocEvidence(parsed), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+});
+
+describe('§6.5 key binding', () => {
+  it('EAA-6.5-01 passes when deviceKey is present', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_6_5_01, asMdocEvidence(parsed), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.5-01 fails when deviceKey is missing', async () => {
+    const parsed = await loadMdocFixture();
+    const broken = clone(parsed);
+    broken.issuerAuth.mso.deviceKeyInfo = { deviceKey: undefined };
+    const v = await runCheckParsed(check_6_5_01, asMdocEvidence(broken), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+
+  it('EAA-6.5-02 passes when deviceKey is a CBOR map', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_6_5_02, asMdocEvidence(parsed), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+});
+
+describe('§6.6 digital signature', () => {
+  it('EAA-6.6.1-01 warns on parsed mdoc (cryptographic verification deferred)', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_6_6_1_01, asMdocEvidence(parsed), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('warn');
+  });
+
+  it('EAA-6.6.1-01 fails when the COSE signature is empty', async () => {
+    const parsed = await loadMdocFixture();
+    const broken = withSignature(parsed, new Uint8Array(0));
+    const v = await runCheckParsed(check_6_6_1_01, asMdocEvidence(broken), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+
+  it('QEAA-6.6.2-02 fails at QEAA scope when x5u and x5t are missing', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_qeaa_6_6_2_02, asMdocEvidence(parsed), {
+      ...DEFAULT_MDOC_SCOPE,
+      tier: 'qeaa',
+    });
+    expect(v.status).toBe('fail');
+  });
+
+  it('QEAA-6.6.2-02 passes at QEAA scope when x5u and x5t are both present', async () => {
+    const parsed = await loadMdocFixture();
+    const ok = withProtectedHeader(parsed, {
+      x5u: 'https://example/cert.pem',
+      x5t: new Uint8Array([1, 2, 3]),
+    });
+    const v = await runCheckParsed(check_qeaa_6_6_2_02, asMdocEvidence(ok), {
+      ...DEFAULT_MDOC_SCOPE,
+      tier: 'qeaa',
+    });
+    expect(v.status).toBe('pass');
+  });
+
+  it('QEAA-6.6.2-04 warns at QEAA scope when x5chain is missing', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_qeaa_6_6_2_04, asMdocEvidence(parsed), {
+      ...DEFAULT_MDOC_SCOPE,
+      tier: 'qeaa',
+    });
+    expect(v.status).toBe('warn');
+  });
+
+  it('QEAA-6.6.2-04 passes at QEAA scope when x5chain is present', async () => {
+    const parsed = await loadMdocFixture();
+    const ok = withProtectedHeader(parsed, { x5chain: [new Uint8Array([0x30, 0x82])] });
+    const v = await runCheckParsed(check_qeaa_6_6_2_04, asMdocEvidence(ok), {
+      ...DEFAULT_MDOC_SCOPE,
+      tier: 'qeaa',
+    });
+    expect(v.status).toBe('pass');
+  });
+
+  it('PuB-EAA-6.6.3-02 fails at PuB-EAA scope when x5u and x5t are missing', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_pub_6_6_3_02, asMdocEvidence(parsed), {
+      ...DEFAULT_MDOC_SCOPE,
+      tier: 'pub-eaa',
+    });
+    expect(v.status).toBe('fail');
+  });
+});
+
+describe('§6.2.10–§6.6 SD-JWT VC na sweep', () => {
+  it.each([
+    ['EAA-6.2.10.1-01', check_6_2_10_1_01],
+    ['EAA-6.2.10.1-02', check_6_2_10_1_02],
+    ['EAA-6.2.10.1-03', check_6_2_10_1_03],
+    ['EAA-6.2.10.1-04', check_6_2_10_1_04],
+    ['EAA-6.2.10.1-06', check_6_2_10_1_06],
+    ['EAA-6.2.10.1-08', check_6_2_10_1_08],
+    ['EAA-6.2.10.1-10', check_6_2_10_1_10],
+    ['QEAA-6.2.10.2-01', check_qeaa_6_2_10_2_01],
+    ['PuB-EAA-6.2.10.3-01', check_pub_6_2_10_3_01],
+    ['EAA-6.2.11-01', check_6_2_11_01],
+    ['EAA-6.2.12-01', check_6_2_12_01],
+    ['EAA-6.2.12-02', check_6_2_12_02],
+    ['EAA-6.2.12-03', check_6_2_12_03],
+    ['EAA-6.2.12-04', check_6_2_12_04],
+    ['EAA-6.2.12-05', check_6_2_12_05],
+    ['EAA-6.3-01', check_6_3_01],
+    ['EAA-6.3-02', check_6_3_02],
+    ['EAA-6.3-03', check_6_3_03],
+    ['EAA-6.3-04', check_6_3_04],
+    ['EAA-6.3-05', check_6_3_05],
+    ['EAA-6.4.1.2-01', check_6_4_1_2_01],
+    ['EAA-6.4.1.3-01', check_6_4_1_3_01],
+    ['EAA-6.4.1.4-01', check_6_4_1_4_01],
+    ['EAA-6.4.1.4-02', check_6_4_1_4_02],
+    ['EAA-6.4.1.5-01', check_6_4_1_5_01],
+    ['EAA-6.5-01', check_6_5_01],
+    ['EAA-6.5-02', check_6_5_02],
+    ['EAA-6.6.1-01', check_6_6_1_01],
+    ['QEAA-6.6.2-01', check_qeaa_6_6_2_01],
+    ['QEAA-6.6.2-02', check_qeaa_6_6_2_02],
+    ['QEAA-6.6.2-03', check_qeaa_6_6_2_03],
+    ['QEAA-6.6.2-04', check_qeaa_6_6_2_04],
+    ['PuB-EAA-6.6.3-01', check_pub_6_6_3_01],
+    ['PuB-EAA-6.6.3-02', check_pub_6_6_3_02],
+    ['PuB-EAA-6.6.3-03', check_pub_6_6_3_03],
+    ['PuB-EAA-6.6.3-04', check_pub_6_6_3_04],
+  ] as const)('%s returns na for SD-JWT VC evidence', async (_, check) => {
+    const v = await runCheckParsed(check, await asSdJwtVcEvidence(), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('na');
+  });
+});

@@ -1265,6 +1265,95 @@
     The status member may contain the status_list member as specified in
     clause 6.3 of IETF draft-ietf-oauth-status-list-13.
 
+- id: EAA-6.2.10.1-04
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.10.1"
+    page: 41
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: When status is present, the type member shall be present
+  spec_text: >-
+    When the status member is present in the MobileSecurityObject, the status
+    object shall have a type member, mirroring §5.2.10.1-04 for SD-JWT VC.
+
+- id: EAA-6.2.10.1-06
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.10.1"
+    page: 41
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: When status is present, the purpose member shall be present
+  spec_text: >-
+    When the status member is present in the MobileSecurityObject, the status
+    object shall have a purpose member, mirroring §5.2.10.1-06 for SD-JWT VC.
+
+- id: EAA-6.2.10.1-08
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.10.1"
+    page: 41
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: When status is present, the index member shall be present
+  spec_text: >-
+    When the status member is present in the MobileSecurityObject, the status
+    object shall have an index member, mirroring §5.2.10.1-08 for SD-JWT VC.
+
+- id: EAA-6.2.10.1-10
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.10.1"
+    page: 41
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload]
+  short_title: When status is present, the uri member shall be present
+  spec_text: >-
+    When the status member is present in the MobileSecurityObject, the status
+    object shall have a uri member, mirroring §5.2.10.1-10 for SD-JWT VC.
+
+- id: EAA-6.2.10.2-01
+  module: eaa-conformance
+  spec_source:
+    document: ETSI TS 119 472-1
+    version: v1.2.1
+    clause: "6.2.10.1"
+    page: 41
+  requirement_level: shall
+  applies_to: [ordinary-eaa, qeaa, pub-eaa]
+  profile: [mdoc]
+  role: [issuer, verifier]
+  evidence_type: [eaa-payload, status-list]
+  short_title: Runtime status resolver for mdoc EAA
+  spec_text: >-
+    Runtime check (synthetic): the URI in the credential's status component
+    must resolve to a parseable Token Status List, and the credential's index
+    must read out a registered status value. Mirrors §5.2.10.2-01 for SD-JWT
+    VC; the IETF nested envelope (status_list.idx / status_list.uri) is
+    accepted in lieu of the ETSI flat shape via the shared normaliseStatus
+    helper.
+
 - id: QEAA-6.2.10.2-01
   module: eaa-conformance
   spec_source:

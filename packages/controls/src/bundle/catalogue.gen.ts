@@ -9925,6 +9925,162 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
     "related_controls": []
   },
   {
+    "id": "EAA-6.2.10.1-04",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.10.1",
+      "page": 41
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "When status is present, the type member shall be present",
+    "spec_text": "When the status member is present in the MobileSecurityObject, the status object shall have a type member, mirroring §5.2.10.1-04 for SD-JWT VC.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.10.1-06",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.10.1",
+      "page": 41
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "When status is present, the purpose member shall be present",
+    "spec_text": "When the status member is present in the MobileSecurityObject, the status object shall have a purpose member, mirroring §5.2.10.1-06 for SD-JWT VC.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.10.1-08",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.10.1",
+      "page": 41
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "When status is present, the index member shall be present",
+    "spec_text": "When the status member is present in the MobileSecurityObject, the status object shall have an index member, mirroring §5.2.10.1-08 for SD-JWT VC.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.10.1-10",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.10.1",
+      "page": 41
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "When status is present, the uri member shall be present",
+    "spec_text": "When the status member is present in the MobileSecurityObject, the status object shall have a uri member, mirroring §5.2.10.1-10 for SD-JWT VC.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.10.2-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.10.1",
+      "page": 41
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "status-list"
+    ],
+    "short_title": "Runtime status resolver for mdoc EAA",
+    "spec_text": "Runtime check (synthetic): the URI in the credential's status component must resolve to a parseable Token Status List, and the credential's index must read out a registered status value. Mirrors §5.2.10.2-01 for SD-JWT VC; the IETF nested envelope (status_list.idx / status_list.uri) is accepted in lieu of the ETSI flat shape via the shared normaliseStatus helper.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
     "id": "QEAA-6.2.10.2-01",
     "module": "eaa-conformance",
     "spec_source": {
@@ -11289,6 +11445,20 @@ export const AUTO_TESTED_IDS: readonly string[] = [
   "EAA-6.1-06",
   "EAA-6.1-07",
   "EAA-6.1-08",
+  "EAA-6.2.10.1-01",
+  "EAA-6.2.10.1-02",
+  "EAA-6.2.10.1-03",
+  "EAA-6.2.10.1-04",
+  "EAA-6.2.10.1-06",
+  "EAA-6.2.10.1-08",
+  "EAA-6.2.10.1-10",
+  "EAA-6.2.10.2-01",
+  "EAA-6.2.11-01",
+  "EAA-6.2.12-01",
+  "EAA-6.2.12-02",
+  "EAA-6.2.12-03",
+  "EAA-6.2.12-04",
+  "EAA-6.2.12-05",
   "EAA-6.2.2.1-01",
   "EAA-6.2.2.1-02",
   "EAA-6.2.2.1-03",
@@ -11339,18 +11509,41 @@ export const AUTO_TESTED_IDS: readonly string[] = [
   "EAA-6.2.8.2-04",
   "EAA-6.2.8.2-05",
   "EAA-6.2.9-01",
+  "EAA-6.3-01",
+  "EAA-6.3-02",
+  "EAA-6.3-03",
+  "EAA-6.3-04",
+  "EAA-6.3-05",
+  "EAA-6.4.1.2-01",
+  "EAA-6.4.1.3-01",
+  "EAA-6.4.1.4-01",
+  "EAA-6.4.1.4-02",
+  "EAA-6.4.1.5-01",
+  "EAA-6.5-01",
+  "EAA-6.5-02",
+  "EAA-6.6.1-01",
   "PuB-EAA-5.2.4.3-02",
   "PuB-EAA-5.2.4.3-03",
   "PuB-EAA-5.2.4.3-04",
+  "PuB-EAA-6.2.10.3-01",
   "PuB-EAA-6.2.2.3-01",
   "PuB-EAA-6.2.2.3-02",
   "PuB-EAA-6.2.4.3-01",
   "PuB-EAA-6.2.4.3-02",
   "PuB-EAA-6.2.5.6-01",
+  "PuB-EAA-6.6.3-01",
+  "PuB-EAA-6.6.3-02",
+  "PuB-EAA-6.6.3-03",
+  "PuB-EAA-6.6.3-04",
   "QEAA-5.2.5.5-01",
+  "QEAA-6.2.10.2-01",
   "QEAA-6.2.2.2-01",
   "QEAA-6.2.2.2-02",
   "QEAA-6.2.4.2-01",
   "QEAA-6.2.4.2-02",
-  "QEAA-6.2.5.5-01"
+  "QEAA-6.2.5.5-01",
+  "QEAA-6.6.2-01",
+  "QEAA-6.6.2-02",
+  "QEAA-6.6.2-03",
+  "QEAA-6.6.2-04"
 ];
