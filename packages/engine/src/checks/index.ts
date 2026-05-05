@@ -63,6 +63,44 @@ import { check as check_pub_5_2_4_3_02, controlId as id_pub_5_2_4_3_02 } from '.
 import { check as check_pub_5_2_4_3_03, controlId as id_pub_5_2_4_3_03 } from './pub-eaa-5-2-4-3-03';
 import { check as check_pub_5_2_4_3_04, controlId as id_pub_5_2_4_3_04 } from './pub-eaa-5-2-4-3-04';
 
+// ─── §6 mdoc checks ─────────────────────────────────────────────────────
+import { check as check_eaa_6_1_01, controlId as id_eaa_6_1_01 } from './eaa-6-1-01';
+import { check as check_eaa_6_1_02, controlId as id_eaa_6_1_02 } from './eaa-6-1-02';
+import { check as check_eaa_6_1_03, controlId as id_eaa_6_1_03 } from './eaa-6-1-03';
+import { check as check_eaa_6_1_04, controlId as id_eaa_6_1_04 } from './eaa-6-1-04';
+import { check as check_eaa_6_1_05, controlId as id_eaa_6_1_05 } from './eaa-6-1-05';
+import { check as check_eaa_6_1_06, controlId as id_eaa_6_1_06 } from './eaa-6-1-06';
+import { check as check_eaa_6_1_07, controlId as id_eaa_6_1_07 } from './eaa-6-1-07';
+import { check as check_eaa_6_1_08, controlId as id_eaa_6_1_08 } from './eaa-6-1-08';
+import { check as check_eaa_6_2_2_1_01, controlId as id_eaa_6_2_2_1_01 } from './eaa-6-2-2-1-01';
+import { check as check_eaa_6_2_2_1_02, controlId as id_eaa_6_2_2_1_02 } from './eaa-6-2-2-1-02';
+import { check as check_eaa_6_2_2_1_03, controlId as id_eaa_6_2_2_1_03 } from './eaa-6-2-2-1-03';
+import { check as check_qeaa_6_2_2_2_01, controlId as id_qeaa_6_2_2_2_01 } from './qeaa-6-2-2-2-01';
+import { check as check_qeaa_6_2_2_2_02, controlId as id_qeaa_6_2_2_2_02 } from './qeaa-6-2-2-2-02';
+import { check as check_pub_6_2_2_3_01, controlId as id_pub_6_2_2_3_01 } from './pub-eaa-6-2-2-3-01';
+import { check as check_pub_6_2_2_3_02, controlId as id_pub_6_2_2_3_02 } from './pub-eaa-6-2-2-3-02';
+import { check as check_eaa_6_2_3_01, controlId as id_eaa_6_2_3_01 } from './eaa-6-2-3-01';
+import { check as check_eaa_6_2_3_02, controlId as id_eaa_6_2_3_02 } from './eaa-6-2-3-02';
+import { check as check_eaa_6_2_3_03, controlId as id_eaa_6_2_3_03 } from './eaa-6-2-3-03';
+import { check as check_eaa_6_2_3_04, controlId as id_eaa_6_2_3_04 } from './eaa-6-2-3-04';
+import { check as check_eaa_6_2_4_1_01, controlId as id_eaa_6_2_4_1_01 } from './eaa-6-2-4-1-01';
+import { check as check_eaa_6_2_4_1_02, controlId as id_eaa_6_2_4_1_02 } from './eaa-6-2-4-1-02';
+import { check as check_eaa_6_2_4_1_03, controlId as id_eaa_6_2_4_1_03 } from './eaa-6-2-4-1-03';
+import { check as check_eaa_6_2_4_1_04, controlId as id_eaa_6_2_4_1_04 } from './eaa-6-2-4-1-04';
+import { check as check_eaa_6_2_4_1_05, controlId as id_eaa_6_2_4_1_05 } from './eaa-6-2-4-1-05';
+import { check as check_eaa_6_2_4_1_06, controlId as id_eaa_6_2_4_1_06 } from './eaa-6-2-4-1-06';
+import { check as check_eaa_6_2_4_1_07, controlId as id_eaa_6_2_4_1_07 } from './eaa-6-2-4-1-07';
+import { check as check_eaa_6_2_4_1_08, controlId as id_eaa_6_2_4_1_08 } from './eaa-6-2-4-1-08';
+import { check as check_eaa_6_2_4_1_09, controlId as id_eaa_6_2_4_1_09 } from './eaa-6-2-4-1-09';
+import { check as check_eaa_6_2_4_1_10, controlId as id_eaa_6_2_4_1_10 } from './eaa-6-2-4-1-10';
+import { check as check_eaa_6_2_4_1_11, controlId as id_eaa_6_2_4_1_11 } from './eaa-6-2-4-1-11';
+import { check as check_eaa_6_2_4_1_12, controlId as id_eaa_6_2_4_1_12 } from './eaa-6-2-4-1-12';
+import { check as check_eaa_6_2_4_1_13, controlId as id_eaa_6_2_4_1_13 } from './eaa-6-2-4-1-13';
+import { check as check_qeaa_6_2_4_2_01, controlId as id_qeaa_6_2_4_2_01 } from './qeaa-6-2-4-2-01';
+import { check as check_qeaa_6_2_4_2_02, controlId as id_qeaa_6_2_4_2_02 } from './qeaa-6-2-4-2-02';
+import { check as check_pub_6_2_4_3_01, controlId as id_pub_6_2_4_3_01 } from './pub-eaa-6-2-4-3-01';
+import { check as check_pub_6_2_4_3_02, controlId as id_pub_6_2_4_3_02 } from './pub-eaa-6-2-4-3-02';
+
 registerCheck(id_5_1_01, check_5_1_01);
 registerCheck(id_5_2_1_2_01, check_5_2_1_2_01);
 registerCheck(id_5_2_1_2_03, check_5_2_1_2_03);
@@ -117,6 +155,44 @@ registerCheck(id_qeaa_5_2_5_5_01, check_qeaa_5_2_5_5_01);
 registerCheck(id_pub_5_2_4_3_02, check_pub_5_2_4_3_02);
 registerCheck(id_pub_5_2_4_3_03, check_pub_5_2_4_3_03);
 registerCheck(id_pub_5_2_4_3_04, check_pub_5_2_4_3_04);
+
+// §6 mdoc registrations
+registerCheck(id_eaa_6_1_01, check_eaa_6_1_01);
+registerCheck(id_eaa_6_1_02, check_eaa_6_1_02);
+registerCheck(id_eaa_6_1_03, check_eaa_6_1_03);
+registerCheck(id_eaa_6_1_04, check_eaa_6_1_04);
+registerCheck(id_eaa_6_1_05, check_eaa_6_1_05);
+registerCheck(id_eaa_6_1_06, check_eaa_6_1_06);
+registerCheck(id_eaa_6_1_07, check_eaa_6_1_07);
+registerCheck(id_eaa_6_1_08, check_eaa_6_1_08);
+registerCheck(id_eaa_6_2_2_1_01, check_eaa_6_2_2_1_01);
+registerCheck(id_eaa_6_2_2_1_02, check_eaa_6_2_2_1_02);
+registerCheck(id_eaa_6_2_2_1_03, check_eaa_6_2_2_1_03);
+registerCheck(id_qeaa_6_2_2_2_01, check_qeaa_6_2_2_2_01);
+registerCheck(id_qeaa_6_2_2_2_02, check_qeaa_6_2_2_2_02);
+registerCheck(id_pub_6_2_2_3_01, check_pub_6_2_2_3_01);
+registerCheck(id_pub_6_2_2_3_02, check_pub_6_2_2_3_02);
+registerCheck(id_eaa_6_2_3_01, check_eaa_6_2_3_01);
+registerCheck(id_eaa_6_2_3_02, check_eaa_6_2_3_02);
+registerCheck(id_eaa_6_2_3_03, check_eaa_6_2_3_03);
+registerCheck(id_eaa_6_2_3_04, check_eaa_6_2_3_04);
+registerCheck(id_eaa_6_2_4_1_01, check_eaa_6_2_4_1_01);
+registerCheck(id_eaa_6_2_4_1_02, check_eaa_6_2_4_1_02);
+registerCheck(id_eaa_6_2_4_1_03, check_eaa_6_2_4_1_03);
+registerCheck(id_eaa_6_2_4_1_04, check_eaa_6_2_4_1_04);
+registerCheck(id_eaa_6_2_4_1_05, check_eaa_6_2_4_1_05);
+registerCheck(id_eaa_6_2_4_1_06, check_eaa_6_2_4_1_06);
+registerCheck(id_eaa_6_2_4_1_07, check_eaa_6_2_4_1_07);
+registerCheck(id_eaa_6_2_4_1_08, check_eaa_6_2_4_1_08);
+registerCheck(id_eaa_6_2_4_1_09, check_eaa_6_2_4_1_09);
+registerCheck(id_eaa_6_2_4_1_10, check_eaa_6_2_4_1_10);
+registerCheck(id_eaa_6_2_4_1_11, check_eaa_6_2_4_1_11);
+registerCheck(id_eaa_6_2_4_1_12, check_eaa_6_2_4_1_12);
+registerCheck(id_eaa_6_2_4_1_13, check_eaa_6_2_4_1_13);
+registerCheck(id_qeaa_6_2_4_2_01, check_qeaa_6_2_4_2_01);
+registerCheck(id_qeaa_6_2_4_2_02, check_qeaa_6_2_4_2_02);
+registerCheck(id_pub_6_2_4_3_01, check_pub_6_2_4_3_01);
+registerCheck(id_pub_6_2_4_3_02, check_pub_6_2_4_3_02);
 
 /** Useful for introspection and tests. */
 export const BUILTIN_CHECK_IDS: readonly string[] = [
@@ -174,4 +250,41 @@ export const BUILTIN_CHECK_IDS: readonly string[] = [
   id_pub_5_2_4_3_02,
   id_pub_5_2_4_3_03,
   id_pub_5_2_4_3_04,
+  // §6 mdoc
+  id_eaa_6_1_01,
+  id_eaa_6_1_02,
+  id_eaa_6_1_03,
+  id_eaa_6_1_04,
+  id_eaa_6_1_05,
+  id_eaa_6_1_06,
+  id_eaa_6_1_07,
+  id_eaa_6_1_08,
+  id_eaa_6_2_2_1_01,
+  id_eaa_6_2_2_1_02,
+  id_eaa_6_2_2_1_03,
+  id_qeaa_6_2_2_2_01,
+  id_qeaa_6_2_2_2_02,
+  id_pub_6_2_2_3_01,
+  id_pub_6_2_2_3_02,
+  id_eaa_6_2_3_01,
+  id_eaa_6_2_3_02,
+  id_eaa_6_2_3_03,
+  id_eaa_6_2_3_04,
+  id_eaa_6_2_4_1_01,
+  id_eaa_6_2_4_1_02,
+  id_eaa_6_2_4_1_03,
+  id_eaa_6_2_4_1_04,
+  id_eaa_6_2_4_1_05,
+  id_eaa_6_2_4_1_06,
+  id_eaa_6_2_4_1_07,
+  id_eaa_6_2_4_1_08,
+  id_eaa_6_2_4_1_09,
+  id_eaa_6_2_4_1_10,
+  id_eaa_6_2_4_1_11,
+  id_eaa_6_2_4_1_12,
+  id_eaa_6_2_4_1_13,
+  id_qeaa_6_2_4_2_01,
+  id_qeaa_6_2_4_2_02,
+  id_pub_6_2_4_3_01,
+  id_pub_6_2_4_3_02,
 ];

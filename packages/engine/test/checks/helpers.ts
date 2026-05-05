@@ -1,7 +1,15 @@
 import { readFile } from 'node:fs/promises';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { DEFAULT_DATA_DIR } from '@iwc/controls';
-import { parseEvidence, type ParsedEvidence } from '@iwc/shared';
+import {
+  parseEvidence,
+  parseMdoc,
+  type ParsedEvidence,
+  type ParsedMdoc,
+  type ParsedSdJwtVc,
+  parseSdJwtVc,
+} from '@iwc/shared';
 import type { CheckExtras, CheckFunction } from '../../src/registry';
 import type { AssessmentScope, Evidence, Verdict } from '../../src/types';
 
@@ -13,6 +21,17 @@ import type { AssessmentScope, Evidence, Verdict } from '../../src/types';
 export const DEFAULT_SCOPE: AssessmentScope = {
   module: 'eaa-conformance',
   profile: ['sd-jwt-vc'],
+  role: ['issuer', 'verifier'],
+  tier: 'ordinary',
+};
+
+/**
+ * Sensible default scope for mdoc tests. Profile is mdoc, tier is
+ * ordinary, both roles. Override per test as needed.
+ */
+export const DEFAULT_MDOC_SCOPE: AssessmentScope = {
+  module: 'eaa-conformance',
+  profile: ['mdoc'],
   role: ['issuer', 'verifier'],
   tier: 'ordinary',
 };
@@ -128,6 +147,53 @@ export async function runCheck(
     };
   }
   return fn(parsed, scope, extras);
+}
+
+/**
+ * Test-only: invoke a check with a pre-parsed `ParsedEvidence`. Skips the
+ * runAssessment-side parse step so tests can mutate the parsed shape
+ * directly to exercise negative paths that would otherwise require
+ * re-encoding the CBOR.
+ */
+export async function runCheckParsed(
+  fn: CheckFunction,
+  evidence: ParsedEvidence,
+  scope: AssessmentScope,
+  extras: CheckExtras = {},
+): Promise<Verdict> {
+  return fn(evidence, scope, extras);
+}
+
+const fixturesDir = join(
+  dirname(fileURLToPath(import.meta.url)),
+  '__fixtures__',
+);
+
+/**
+ * Read the binary mdoc fixture and parse it. The default fixture is the
+ * MDL-EAA-1 reference token from the ETSI Plugtests bundle.
+ */
+export async function loadMdocFixture(name = 'mdl-eaa-1'): Promise<ParsedMdoc> {
+  const path = join(fixturesDir, `${name}.cbor`);
+  const buf = await readFile(path);
+  return parseMdoc(new Uint8Array(buf));
+}
+
+export function asMdocEvidence(parsed: ParsedMdoc): ParsedEvidence {
+  return { kind: 'mdoc', parsed };
+}
+
+/**
+ * Build a `kind: 'sd-jwt-vc'` ParsedEvidence from an existing
+ * SD-JWT VC reference sample. Used by mdoc checks' "returns na for
+ * SD-JWT VC evidence" assertions.
+ */
+export async function asSdJwtVcEvidence(
+  sampleId = 'sjv-eaa-1',
+): Promise<ParsedEvidence> {
+  const sample = await loadSample(sampleId);
+  const parsed: ParsedSdJwtVc = parseSdJwtVc(sample.compact_serialisation);
+  return { kind: 'sd-jwt-vc', parsed };
 }
 
 /**
