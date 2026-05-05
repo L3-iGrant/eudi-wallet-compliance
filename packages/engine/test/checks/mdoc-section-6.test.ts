@@ -60,6 +60,40 @@ import { check as check_qeaa_6_2_4_2_02 } from '../../src/checks/qeaa-6-2-4-2-02
 import { check as check_pub_6_2_4_3_01 } from '../../src/checks/pub-eaa-6-2-4-3-01';
 import { check as check_pub_6_2_4_3_02 } from '../../src/checks/pub-eaa-6-2-4-3-02';
 
+// §6.2.5 to §6.2.9 (Phase 7 Prompt 5)
+import { check as check_6_2_5_1_01 } from '../../src/checks/eaa-6-2-5-1-01';
+import { check as check_6_2_5_1_02 } from '../../src/checks/eaa-6-2-5-1-02';
+import { check as check_6_2_5_1_03 } from '../../src/checks/eaa-6-2-5-1-03';
+import { check as check_6_2_5_1_04 } from '../../src/checks/eaa-6-2-5-1-04';
+import { check as check_6_2_5_1_05 } from '../../src/checks/eaa-6-2-5-1-05';
+import { check as check_6_2_5_2_01 } from '../../src/checks/eaa-6-2-5-2-01';
+import { check as check_6_2_5_3_01 } from '../../src/checks/eaa-6-2-5-3-01';
+import { check as check_6_2_5_3_02 } from '../../src/checks/eaa-6-2-5-3-02';
+import { check as check_6_2_5_3_03 } from '../../src/checks/eaa-6-2-5-3-03';
+import { check as check_6_2_5_4_01 } from '../../src/checks/eaa-6-2-5-4-01';
+import { check as check_6_2_5_4_02 } from '../../src/checks/eaa-6-2-5-4-02';
+import { check as check_qeaa_6_2_5_5_01 } from '../../src/checks/qeaa-6-2-5-5-01';
+import { check as check_pub_6_2_5_6_01 } from '../../src/checks/pub-eaa-6-2-5-6-01';
+import { check as check_6_2_6_01 } from '../../src/checks/eaa-6-2-6-01';
+import { check as check_6_2_6_02 } from '../../src/checks/eaa-6-2-6-02';
+import { check as check_6_2_6_03 } from '../../src/checks/eaa-6-2-6-03';
+import { check as check_6_2_6_04 } from '../../src/checks/eaa-6-2-6-04';
+import { check as check_6_2_7_1_01 } from '../../src/checks/eaa-6-2-7-1-01';
+import { check as check_6_2_7_1_02 } from '../../src/checks/eaa-6-2-7-1-02';
+import { check as check_6_2_7_1_03 } from '../../src/checks/eaa-6-2-7-1-03';
+import { check as check_6_2_7_1_04 } from '../../src/checks/eaa-6-2-7-1-04';
+import { check as check_6_2_7_1_05 } from '../../src/checks/eaa-6-2-7-1-05';
+import { check as check_6_2_7_2_01 } from '../../src/checks/eaa-6-2-7-2-01';
+import { check as check_6_2_7_2_02 } from '../../src/checks/eaa-6-2-7-2-02';
+import { check as check_6_2_7_2_03 } from '../../src/checks/eaa-6-2-7-2-03';
+import { check as check_6_2_8_1_01 } from '../../src/checks/eaa-6-2-8-1-01';
+import { check as check_6_2_8_2_01 } from '../../src/checks/eaa-6-2-8-2-01';
+import { check as check_6_2_8_2_02 } from '../../src/checks/eaa-6-2-8-2-02';
+import { check as check_6_2_8_2_03 } from '../../src/checks/eaa-6-2-8-2-03';
+import { check as check_6_2_8_2_04 } from '../../src/checks/eaa-6-2-8-2-04';
+import { check as check_6_2_8_2_05 } from '../../src/checks/eaa-6-2-8-2-05';
+import { check as check_6_2_9_01 } from '../../src/checks/eaa-6-2-9-01';
+
 // ─── Mutators ─────────────────────────────────────────────────────────────
 
 function clone(parsed: ParsedMdoc): ParsedMdoc {
@@ -155,6 +189,20 @@ function withX5chain(parsed: ParsedMdoc, chain: Uint8Array[] | undefined): Parse
   } else {
     out.issuerAuth.protectedHeader.x5chain = chain;
   }
+  return out;
+}
+
+function withValidity(
+  parsed: ParsedMdoc,
+  validFrom: Date,
+  validUntil: Date,
+): ParsedMdoc {
+  const out = clone(parsed);
+  out.issuerAuth.mso.validityInfo = {
+    ...out.issuerAuth.mso.validityInfo,
+    validFrom,
+    validUntil,
+  };
   return out;
 }
 
@@ -607,6 +655,317 @@ describe('§6.2.4 EAA issuer identifier', () => {
     ['PuB-EAA-6.2.4.3-02', check_pub_6_2_4_3_02],
   ] as const)('%s returns na for SD-JWT VC evidence', async (_, check) => {
     const v = await runCheckParsed(check, await asSdJwtVcEvidence(), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('na');
+  });
+});
+
+// ─── Section 6.2.5 Subject and pseudonym ──────────────────────────────────
+
+describe('§6.2.5 Subject and pseudonym', () => {
+  it('EAA-6.2.5.1-01 passes for an mDL with the full subject triplet', async () => {
+    const parsed = await loadMdocFixture();
+    const ok = asConformantMdl(parsed);
+    const v = await runCheckParsed(check_6_2_5_1_01, asMdocEvidence(ok), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.5.1-01 fails when the mDL triplet is partial', async () => {
+    const parsed = await loadMdocFixture();
+    const broken = withoutItem(asConformantMdl(parsed), NS_MDL, 'family_name');
+    const v = await runCheckParsed(check_6_2_5_1_01, asMdocEvidence(broken), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+
+  it('EAA-6.2.5.1-02 passes when also_known_as is present without the triplet', async () => {
+    const parsed = await loadMdocFixture();
+    let mdl = withDocType(parsed, MDL_DOC_TYPE);
+    // Remove the original namespace contents and add only also_known_as.
+    for (const ns of Object.keys(mdl.nameSpaces)) {
+      mdl = withRemovedNs(mdl, ns);
+    }
+    mdl = withItem(mdl, NS_ETSI, 'also_known_as', 'pseudo');
+    const v = await runCheckParsed(check_6_2_5_1_02, asMdocEvidence(mdl), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.5.1-02 fails for an mDL with neither the triplet nor also_known_as', async () => {
+    const parsed = await loadMdocFixture();
+    let mdl = withDocType(parsed, MDL_DOC_TYPE);
+    for (const ns of Object.keys(mdl.nameSpaces)) mdl = withRemovedNs(mdl, ns);
+    const v = await runCheckParsed(check_6_2_5_1_02, asMdocEvidence(mdl), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+
+  it('EAA-6.2.5.1-03 passes when also_known_as is a tstr', async () => {
+    const parsed = await loadMdocFixture();
+    const ok = withItem(parsed, NS_ETSI, 'also_known_as', 'pseudo');
+    const v = await runCheckParsed(check_6_2_5_1_03, asMdocEvidence(ok), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.5.1-03 fails when also_known_as is not a string', async () => {
+    const parsed = await loadMdocFixture();
+    const broken = withItem(parsed, NS_ETSI, 'also_known_as', 42);
+    const v = await runCheckParsed(check_6_2_5_1_03, asMdocEvidence(broken), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+
+  it('EAA-6.2.5.1-04 passes for non-mDL with the full triplet', async () => {
+    const parsed = await loadMdocFixture();
+    const ok = asConformantNonMdl(parsed);
+    const v = await runCheckParsed(check_6_2_5_1_04, asMdocEvidence(ok), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.5.1-05 fails for non-mDL with neither triplet nor also_known_as', async () => {
+    const parsed = await loadMdocFixture();
+    let non = withDocType(parsed, 'org.example.test.v1');
+    for (const ns of Object.keys(non.nameSpaces)) non = withRemovedNs(non, ns);
+    const v = await runCheckParsed(check_6_2_5_1_05, asMdocEvidence(non), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+
+  it('QEAA-6.2.5.5-01 fails when SubAttr-shaped values exist at QEAA scope', async () => {
+    const parsed = await loadMdocFixture();
+    const evil = withItem(parsed, NS_ETSI, 'foo', { subId: { kind: 'x' } });
+    const v = await runCheckParsed(check_qeaa_6_2_5_5_01, asMdocEvidence(evil), {
+      ...DEFAULT_MDOC_SCOPE,
+      tier: 'qeaa',
+    });
+    expect(v.status).toBe('fail');
+  });
+
+  it('QEAA-6.2.5.5-01 passes at QEAA scope when no SubAttr-shaped values are present', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_qeaa_6_2_5_5_01, asMdocEvidence(parsed), {
+      ...DEFAULT_MDOC_SCOPE,
+      tier: 'qeaa',
+    });
+    expect(v.status).toBe('pass');
+  });
+
+  it('PuB-EAA-6.2.5.6-01 fails when SubAttr-shaped values exist at PuB-EAA scope', async () => {
+    const parsed = await loadMdocFixture();
+    const evil = withItem(parsed, NS_ETSI, 'foo', { subAka: 'x' });
+    const v = await runCheckParsed(check_pub_6_2_5_6_01, asMdocEvidence(evil), {
+      ...DEFAULT_MDOC_SCOPE,
+      tier: 'pub-eaa',
+    });
+    expect(v.status).toBe('fail');
+  });
+
+  it.each([
+    ['EAA-6.2.5.1-01', check_6_2_5_1_01],
+    ['EAA-6.2.5.1-02', check_6_2_5_1_02],
+    ['EAA-6.2.5.1-03', check_6_2_5_1_03],
+    ['EAA-6.2.5.1-04', check_6_2_5_1_04],
+    ['EAA-6.2.5.1-05', check_6_2_5_1_05],
+    ['EAA-6.2.5.2-01', check_6_2_5_2_01],
+    ['EAA-6.2.5.3-01', check_6_2_5_3_01],
+    ['EAA-6.2.5.3-02', check_6_2_5_3_02],
+    ['EAA-6.2.5.3-03', check_6_2_5_3_03],
+    ['EAA-6.2.5.4-01', check_6_2_5_4_01],
+    ['EAA-6.2.5.4-02', check_6_2_5_4_02],
+    ['QEAA-6.2.5.5-01', check_qeaa_6_2_5_5_01],
+    ['PuB-EAA-6.2.5.6-01', check_pub_6_2_5_6_01],
+  ] as const)('%s returns na for SD-JWT VC evidence', async (_, check) => {
+    const v = await runCheckParsed(check, await asSdJwtVcEvidence(), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('na');
+  });
+});
+
+// ─── Section 6.2.6 Issuance ───────────────────────────────────────────────
+
+describe('§6.2.6 Issuance', () => {
+  it('EAA-6.2.6-01 passes when issue_date is in the primary namespace', async () => {
+    const parsed = await loadMdocFixture();
+    const ok = withItem(asConformantNonMdl(parsed), NS_ISO_23220, 'issue_date', '2026-01-01');
+    const v = await runCheckParsed(check_6_2_6_01, asMdocEvidence(ok), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.6-01 fails when issue_date is missing', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_6_2_6_01, asMdocEvidence(asConformantNonMdl(parsed)), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+
+  it('EAA-6.2.6-03 passes for mDL with issue_date in the mDL namespace', async () => {
+    const parsed = await loadMdocFixture();
+    const mdl = withItem(asConformantMdl(parsed), NS_MDL, 'issue_date', '2026-01-01');
+    const v = await runCheckParsed(check_6_2_6_03, asMdocEvidence(mdl), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.6-04 passes for non-mDL with issue_date in 23220-2', async () => {
+    const parsed = await loadMdocFixture();
+    const non = withItem(asConformantNonMdl(parsed), NS_ISO_23220, 'issue_date', '2026-01-01');
+    const v = await runCheckParsed(check_6_2_6_04, asMdocEvidence(non), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it.each([
+    ['EAA-6.2.6-01', check_6_2_6_01],
+    ['EAA-6.2.6-02', check_6_2_6_02],
+    ['EAA-6.2.6-03', check_6_2_6_03],
+    ['EAA-6.2.6-04', check_6_2_6_04],
+  ] as const)('%s returns na for SD-JWT VC evidence', async (_, check) => {
+    const v = await runCheckParsed(check, await asSdJwtVcEvidence(), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('na');
+  });
+});
+
+// ─── Section 6.2.7 Validity periods ───────────────────────────────────────
+
+describe('§6.2.7 Validity periods', () => {
+  it('EAA-6.2.7.1-01 passes when validityInfo.validFrom is a valid Date', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_6_2_7_1_01, asMdocEvidence(parsed), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.7.1-02 passes when validityInfo.validUntil is a valid Date', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_6_2_7_1_02, asMdocEvidence(parsed), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.7.1-03 passes when both validity dates are valid', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_6_2_7_1_03, asMdocEvidence(parsed), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.7.1-04 fails when validity dates carry milliseconds', async () => {
+    const parsed = await loadMdocFixture();
+    const broken = withValidity(parsed, new Date('2026-01-01T00:00:00.500Z'), new Date('2027-01-01T00:00:00.000Z'));
+    const v = await runCheckParsed(check_6_2_7_1_04, asMdocEvidence(broken), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+
+  it('EAA-6.2.7.1-04 passes at second precision', async () => {
+    const parsed = await loadMdocFixture();
+    const ok = withValidity(parsed, new Date('2026-01-01T00:00:00.000Z'), new Date('2027-01-01T00:00:00.000Z'));
+    const v = await runCheckParsed(check_6_2_7_1_04, asMdocEvidence(ok), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.7.1-05 fails when fractional seconds appear on validUntil', async () => {
+    const parsed = await loadMdocFixture();
+    const broken = withValidity(parsed, new Date('2026-01-01T00:00:00.000Z'), new Date('2027-01-01T00:00:00.250Z'));
+    const v = await runCheckParsed(check_6_2_7_1_05, asMdocEvidence(broken), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+
+  it('EAA-6.2.7.2-01 passes for mDL with expiry_date in mDL namespace', async () => {
+    const parsed = await loadMdocFixture();
+    const mdl = withItem(asConformantMdl(parsed), NS_MDL, 'expiry_date', '2027-01-01');
+    const v = await runCheckParsed(check_6_2_7_2_01, asMdocEvidence(mdl), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.7.2-02 passes for non-mDL with expiry_date in 23220-2', async () => {
+    const parsed = await loadMdocFixture();
+    const non = withItem(asConformantNonMdl(parsed), NS_ISO_23220, 'expiry_date', '2027-01-01');
+    const v = await runCheckParsed(check_6_2_7_2_02, asMdocEvidence(non), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.7.2-03 always passes (permissive)', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_6_2_7_2_03, asMdocEvidence(parsed), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it.each([
+    ['EAA-6.2.7.1-01', check_6_2_7_1_01],
+    ['EAA-6.2.7.1-02', check_6_2_7_1_02],
+    ['EAA-6.2.7.1-03', check_6_2_7_1_03],
+    ['EAA-6.2.7.1-04', check_6_2_7_1_04],
+    ['EAA-6.2.7.1-05', check_6_2_7_1_05],
+    ['EAA-6.2.7.2-01', check_6_2_7_2_01],
+    ['EAA-6.2.7.2-02', check_6_2_7_2_02],
+    ['EAA-6.2.7.2-03', check_6_2_7_2_03],
+  ] as const)('%s returns na for SD-JWT VC evidence', async (_, check) => {
+    const v = await runCheckParsed(check, await asSdJwtVcEvidence(), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('na');
+  });
+});
+
+// ─── Section 6.2.8 Constraining usage ─────────────────────────────────────
+
+describe('§6.2.8 Constraining usage', () => {
+  it('EAA-6.2.8.1-01 passes when no audience-shaped element is present', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_6_2_8_1_01, asMdocEvidence(parsed), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.8.1-01 fails when an "aud" element is present', async () => {
+    const parsed = await loadMdocFixture();
+    const evil = withItem(parsed, NS_ETSI, 'aud', 'rp.example');
+    const v = await runCheckParsed(check_6_2_8_1_01, asMdocEvidence(evil), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+
+  it('EAA-6.2.8.2-03 passes when oneTime is a CBOR bool', async () => {
+    const parsed = await loadMdocFixture();
+    const ok = withItem(parsed, NS_ETSI, 'oneTime', true);
+    const v = await runCheckParsed(check_6_2_8_2_03, asMdocEvidence(ok), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.8.2-03 fails when oneTime is a string', async () => {
+    const parsed = await loadMdocFixture();
+    const broken = withItem(parsed, NS_ETSI, 'oneTime', 'true');
+    const v = await runCheckParsed(check_6_2_8_2_03, asMdocEvidence(broken), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+
+  it('EAA-6.2.8.2-04 passes when oneTime is true', async () => {
+    const parsed = await loadMdocFixture();
+    const ok = withItem(parsed, NS_ETSI, 'oneTime', true);
+    const v = await runCheckParsed(check_6_2_8_2_04, asMdocEvidence(ok), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.8.2-05 passes when oneTime is absent', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_6_2_8_2_05, asMdocEvidence(parsed), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it.each([
+    ['EAA-6.2.8.1-01', check_6_2_8_1_01],
+    ['EAA-6.2.8.2-01', check_6_2_8_2_01],
+    ['EAA-6.2.8.2-02', check_6_2_8_2_02],
+    ['EAA-6.2.8.2-03', check_6_2_8_2_03],
+    ['EAA-6.2.8.2-04', check_6_2_8_2_04],
+    ['EAA-6.2.8.2-05', check_6_2_8_2_05],
+  ] as const)('%s returns na for SD-JWT VC evidence', async (_, check) => {
+    const v = await runCheckParsed(check, await asSdJwtVcEvidence(), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('na');
+  });
+});
+
+// ─── Section 6.2.9 Attributes evidence ────────────────────────────────────
+
+describe('§6.2.9 Attributes evidence', () => {
+  it('EAA-6.2.9-01 passes when no attributes-evidence-shaped element is present', async () => {
+    const parsed = await loadMdocFixture();
+    const v = await runCheckParsed(check_6_2_9_01, asMdocEvidence(parsed), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.9-01 fails when an "evidence" element is present', async () => {
+    const parsed = await loadMdocFixture();
+    const evil = withItem(parsed, NS_ETSI, 'evidence', 'something');
+    const v = await runCheckParsed(check_6_2_9_01, asMdocEvidence(evil), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('fail');
+  });
+
+  it('EAA-6.2.9-01 returns na for SD-JWT VC evidence', async () => {
+    const v = await runCheckParsed(check_6_2_9_01, await asSdJwtVcEvidence(), DEFAULT_MDOC_SCOPE);
     expect(v.status).toBe('na');
   });
 });
