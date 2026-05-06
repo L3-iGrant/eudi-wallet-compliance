@@ -32,7 +32,6 @@ interface FilterOption {
 const PROFILE_OPTIONS: FilterOption[] = [
   { value: 'sd-jwt-vc', label: 'SD-JWT VC' },
   { value: 'mdoc', label: 'mdoc' },
-  { value: 'abstract', label: 'Abstract' },
 ];
 
 const ROLE_OPTIONS: FilterOption[] = [

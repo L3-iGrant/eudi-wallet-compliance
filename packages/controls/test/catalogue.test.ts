@@ -79,13 +79,25 @@ describe('canonical controls catalogue', () => {
     expect(mdoc.length).toBeGreaterThan(50);
   });
 
-  it('keeps SD-JWT VC and mdoc-only profiles disjoint outside cross-cutting controls', async () => {
+  it('keeps SD-JWT-VC-only and mdoc-only profiles disjoint outside cross-cutting controls', async () => {
     const controls = await loadAllControls(dataDir);
-    // Cross-cutting (clause 4) rows are tagged ['abstract']; non-cross-cutting
-    // rows declare exactly one concrete profile.
-    const concrete = controls.filter((c) => !c.profile.includes('abstract'));
-    for (const c of concrete) {
-      expect(c.profile.length, `${c.id} has profile ${JSON.stringify(c.profile)}`).toBe(1);
+    // Cross-cutting (clause 4) rows declare both concrete profiles
+    // [sd-jwt-vc, mdoc]; profile-specific rows declare exactly one.
+    const profileSpecific = controls.filter((c) => c.profile.length === 1);
+    for (const c of profileSpecific) {
+      expect(
+        c.profile.length,
+        `${c.id} has profile ${JSON.stringify(c.profile)}`,
+      ).toBe(1);
+    }
+    // Cross-cutting controls (both profiles) all have clause-4 IDs.
+    const crossCutting = controls.filter((c) => c.profile.length === 2);
+    for (const c of crossCutting) {
+      expect(c.profile.sort()).toEqual(['mdoc', 'sd-jwt-vc']);
+      expect(
+        c.spec_source.clause.startsWith('4.'),
+        `${c.id} has both profiles but clause ${c.spec_source.clause}`,
+      ).toBe(true);
     }
   });
 });

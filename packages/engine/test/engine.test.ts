@@ -38,7 +38,7 @@ const mdocControl = makeControl({
 });
 const abstractControl = makeControl({
   id: 'EAA-4.2.6.6-01',
-  profile: ['abstract'],
+  profile: ['sd-jwt-vc', 'mdoc'],
 });
 
 const sampleControls: Control[] = [
@@ -70,9 +70,10 @@ describe('filterControlsForScope', () => {
     expect(ids).not.toContain('EAA-6.1-01');
   });
 
-  it('always includes abstract-profile (cross-cutting) controls regardless of scope.profile', () => {
-    // The Section 4 cross-cutting controls carry profile: ['abstract'] and
-    // apply to every concrete-profile assessment.
+  it('always includes cross-cutting controls regardless of which concrete scope.profile is selected', () => {
+    // Cross-cutting clause-4 controls declare both concrete profiles
+    // (`profile: [sd-jwt-vc, mdoc]`) so they fire on any single-profile
+    // assessment.
     const out = filterControlsForScope(sampleControls, sdJwtScope);
     expect(out.map((c) => c.id)).toContain('EAA-4.2.6.6-01');
     const mdocOut = filterControlsForScope(sampleControls, {

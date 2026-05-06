@@ -21,7 +21,7 @@ export const RequirementLevelSchema = z.enum(['shall', 'should', 'may']);
 
 export const AppliesToSchema = z.enum(['ordinary-eaa', 'qeaa', 'pub-eaa', 'all']);
 
-export const ProfileSchema = z.enum(['sd-jwt-vc', 'mdoc', 'abstract']);
+export const ProfileSchema = z.enum(['sd-jwt-vc', 'mdoc']);
 
 export const RoleSchema = z.enum(['issuer', 'verifier', 'wallet', 'rp', 'qtsp', 'all']);
 

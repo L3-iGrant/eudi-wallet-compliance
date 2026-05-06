@@ -108,10 +108,12 @@ const ID_REGEX = /(?<=^|\s)((?:EAA|QEAA|PuB-EAA)-[\d.]+(?:-\d+)?):\s+/g;
 const SUBHEADING_REGEX = /^\d+\.\d+(?:\.\d+)*\s+[A-Z]/m;
 
 function profileForSection(sectionNum: number): Profile[] {
-  if (sectionNum === 4) return ['abstract'];
+  // Clause 4 ("Semantics of EAA") is cross-cutting; tag both concrete
+  // profiles so the rule fires on any concrete-profile assessment.
+  if (sectionNum === 4) return ['sd-jwt-vc', 'mdoc'];
   if (sectionNum === 5) return ['sd-jwt-vc'];
   if (sectionNum === 6) return ['mdoc'];
-  return ['abstract'];
+  return ['sd-jwt-vc', 'mdoc'];
 }
 
 function appliesToForId(id: string): AppliesTo[] {

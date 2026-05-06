@@ -25,7 +25,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -60,7 +61,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -95,7 +97,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -130,7 +133,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -164,7 +168,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -198,7 +203,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -232,7 +238,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -268,7 +275,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -304,7 +312,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -340,7 +349,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -375,7 +385,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -410,7 +421,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -443,7 +455,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "qeaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -475,7 +488,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "qeaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -506,7 +520,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -538,7 +553,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -571,7 +587,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -605,7 +622,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -639,7 +657,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -673,7 +692,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -709,7 +729,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -744,7 +765,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -779,7 +801,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -812,7 +835,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -845,7 +869,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -879,7 +904,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -912,7 +938,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -945,7 +972,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -978,7 +1006,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1009,7 +1038,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "qeaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1043,7 +1073,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "qeaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1075,7 +1106,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "qeaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1107,7 +1139,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "qeaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1140,7 +1173,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "qeaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1172,7 +1206,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "qeaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1204,7 +1239,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "qeaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1235,7 +1271,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "qeaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1267,7 +1304,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1300,7 +1338,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1332,7 +1371,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1364,7 +1404,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1396,7 +1437,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1428,7 +1470,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1460,7 +1503,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1495,7 +1539,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1529,7 +1574,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1562,7 +1608,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1596,7 +1643,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1630,7 +1678,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1664,7 +1713,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1698,7 +1748,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1733,7 +1784,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1766,7 +1818,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1801,7 +1854,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1834,7 +1888,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1869,7 +1924,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1903,7 +1959,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1938,7 +1995,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -1971,7 +2029,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2005,7 +2064,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2037,7 +2097,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "qeaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2069,7 +2130,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2101,7 +2163,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2135,7 +2198,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2169,7 +2233,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2203,7 +2268,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2238,7 +2304,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2272,7 +2339,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2306,7 +2374,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2342,7 +2411,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2378,7 +2448,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2412,7 +2483,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2446,7 +2518,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2481,7 +2554,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2517,7 +2591,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2552,7 +2627,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2586,7 +2662,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2620,7 +2697,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2654,7 +2732,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2687,7 +2766,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2720,7 +2800,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2755,7 +2836,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2789,7 +2871,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2823,7 +2906,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2857,7 +2941,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2892,7 +2977,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2926,7 +3012,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2960,7 +3047,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -2993,7 +3081,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3027,7 +3116,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3064,7 +3154,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3101,7 +3192,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3143,7 +3235,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3178,7 +3271,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3211,7 +3305,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "qeaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3245,7 +3340,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3281,7 +3377,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3316,7 +3413,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3350,7 +3448,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3384,7 +3483,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3418,7 +3518,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3454,7 +3555,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3491,7 +3593,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3526,7 +3629,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3559,7 +3663,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3593,7 +3698,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3626,7 +3732,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3659,7 +3766,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3692,7 +3800,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3725,7 +3834,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3759,7 +3869,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3794,7 +3905,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3828,7 +3940,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3862,7 +3975,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3897,7 +4011,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3932,7 +4047,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -3966,7 +4082,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4001,7 +4118,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4035,7 +4153,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4068,7 +4187,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4101,7 +4221,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4136,7 +4257,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4170,7 +4292,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4205,7 +4328,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4239,7 +4363,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4273,7 +4398,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4307,7 +4433,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4343,7 +4470,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4377,7 +4505,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4410,7 +4539,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4444,7 +4574,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4480,7 +4611,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4514,7 +4646,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4548,7 +4681,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4582,7 +4716,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4617,7 +4752,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4651,7 +4787,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4685,7 +4822,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "qeaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4719,7 +4857,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "qeaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4752,7 +4891,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "qeaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4785,7 +4925,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "qeaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4818,7 +4959,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4852,7 +4994,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4885,7 +5028,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",
@@ -4919,7 +5063,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "pub-eaa"
     ],
     "profile": [
-      "abstract"
+      "sd-jwt-vc",
+      "mdoc"
     ],
     "role": [
       "issuer",

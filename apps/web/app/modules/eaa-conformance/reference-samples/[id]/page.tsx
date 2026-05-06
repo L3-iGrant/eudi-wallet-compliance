@@ -32,7 +32,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 const PROFILE_LABEL: Record<string, string> = {
   'sd-jwt-vc': 'SD-JWT VC',
   mdoc: 'ISO mdoc',
-  abstract: 'Abstract',
 };
 
 const TIER_LABEL: Record<string, string> = {

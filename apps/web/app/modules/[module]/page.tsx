@@ -21,7 +21,6 @@ const REVIEW_DATE = '2026-05-01';
 const PROFILE_LABEL: Record<string, string> = {
   'sd-jwt-vc': 'SD-JWT VC',
   mdoc: 'mdoc',
-  abstract: 'Abstract',
 };
 
 const ROLE_LABEL: Record<string, string> = {
@@ -276,7 +275,6 @@ export default async function ModulePage({ params }: PageProps) {
   const profileEntries = buildEntries(counts.byProfile, PROFILE_LABEL, [
     'sd-jwt-vc',
     'mdoc',
-    'abstract',
   ]);
   const roleEntries = buildEntries(counts.byRole, ROLE_LABEL, [
     'issuer',

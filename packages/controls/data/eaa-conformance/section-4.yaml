@@ -16,7 +16,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -44,7 +45,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -72,7 +74,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -102,7 +105,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -131,7 +135,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -161,7 +166,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -190,7 +196,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -222,7 +229,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -253,7 +261,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -285,7 +294,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -315,7 +325,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -345,7 +356,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -371,7 +383,8 @@
   applies_to:
     - qeaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -397,7 +410,8 @@
   applies_to:
     - qeaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -424,7 +438,8 @@
   applies_to:
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -450,7 +465,8 @@
   applies_to:
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -478,7 +494,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -507,7 +524,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -534,7 +552,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -563,7 +582,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -594,7 +614,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -622,7 +643,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -652,7 +674,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -680,7 +703,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -709,7 +733,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -739,7 +764,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -769,7 +795,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -797,7 +824,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -826,7 +854,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -852,7 +881,8 @@
   applies_to:
     - qeaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -879,7 +909,8 @@
   applies_to:
     - qeaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -906,7 +937,8 @@
   applies_to:
     - qeaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -933,7 +965,8 @@
   applies_to:
     - qeaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -962,7 +995,8 @@
   applies_to:
     - qeaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -991,7 +1025,8 @@
   applies_to:
     - qeaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1018,7 +1053,8 @@
   applies_to:
     - qeaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1044,7 +1080,8 @@
   applies_to:
     - qeaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1071,7 +1108,8 @@
   applies_to:
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1097,7 +1135,8 @@
   applies_to:
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1124,7 +1163,8 @@
   applies_to:
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1151,7 +1191,8 @@
   applies_to:
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1179,7 +1220,8 @@
   applies_to:
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1208,7 +1250,8 @@
   applies_to:
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1234,7 +1277,8 @@
   applies_to:
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1264,7 +1308,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1293,7 +1338,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1321,7 +1367,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1351,7 +1398,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1380,7 +1428,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1411,7 +1460,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1441,7 +1491,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1471,7 +1522,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1499,7 +1551,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1529,7 +1582,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1557,7 +1611,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1587,7 +1642,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1616,7 +1672,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1644,7 +1701,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1673,7 +1731,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1703,7 +1762,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1731,7 +1791,8 @@
   applies_to:
     - qeaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1758,7 +1819,8 @@
   applies_to:
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1785,7 +1847,8 @@
   applies_to:
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1814,7 +1877,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1843,7 +1907,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1874,7 +1939,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1904,7 +1970,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1931,7 +1998,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1960,7 +2028,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -1993,7 +2062,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2024,7 +2094,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2053,7 +2124,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2082,7 +2154,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2110,7 +2183,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2139,7 +2213,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2169,7 +2244,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2196,7 +2272,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2225,7 +2302,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2259,7 +2337,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2287,7 +2366,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2315,7 +2395,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2343,7 +2424,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2372,7 +2454,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2401,7 +2484,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2430,7 +2514,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2461,7 +2546,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2488,7 +2574,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2517,7 +2604,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2548,7 +2636,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2577,7 +2666,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2610,7 +2700,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2640,7 +2731,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2685,7 +2777,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2717,7 +2810,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2745,7 +2839,8 @@
   applies_to:
     - qeaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2774,7 +2869,8 @@
   applies_to:
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2805,7 +2901,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2835,7 +2932,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2862,7 +2960,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2892,7 +2991,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2921,7 +3021,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2950,7 +3051,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -2983,7 +3085,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3014,7 +3117,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3042,7 +3146,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3069,7 +3174,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3097,7 +3203,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3123,7 +3230,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3151,7 +3259,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3179,7 +3288,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3208,7 +3318,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3236,7 +3347,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3267,7 +3379,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3296,7 +3409,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3324,7 +3438,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3355,7 +3470,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3384,7 +3500,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3413,7 +3530,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3442,7 +3560,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3470,7 +3589,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3498,7 +3618,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3528,7 +3649,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3557,7 +3679,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3588,7 +3711,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3615,7 +3739,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3645,7 +3770,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3674,7 +3800,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3705,7 +3832,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3734,7 +3862,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3763,7 +3892,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3790,7 +3920,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3821,7 +3952,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3850,7 +3982,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3879,7 +4012,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3910,7 +4044,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3938,7 +4073,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3967,7 +4103,8 @@
     - qeaa
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -3996,7 +4133,8 @@
   applies_to:
     - qeaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -4025,7 +4163,8 @@
   applies_to:
     - qeaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -4056,7 +4195,8 @@
   applies_to:
     - qeaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -4084,7 +4224,8 @@
   applies_to:
     - qeaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -4112,7 +4253,8 @@
   applies_to:
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -4141,7 +4283,8 @@
   applies_to:
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -4172,7 +4315,8 @@
   applies_to:
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
@@ -4201,7 +4345,8 @@
   applies_to:
     - pub-eaa
   profile:
-    - abstract
+    - sd-jwt-vc
+    - mdoc
   role:
     - issuer
     - verifier
