@@ -1,7 +1,7 @@
 import { afterEach, describe, it, expect, vi } from 'vitest';
 import { deflateSync } from 'node:zlib';
 import { check } from '../../src/checks/eaa-5-2-10-2-01';
-import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample } from './helpers';
+import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample, runCheck } from './helpers';
 
 function buildUnsignedJwt(payload: Record<string, unknown>): string {
   const header = { alg: 'none', typ: 'statuslist+jwt' };
@@ -40,7 +40,7 @@ describe('EAA-5.2.10.2-01 (status URI must resolve)', () => {
       }),
     ) as typeof fetch;
 
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -56,7 +56,7 @@ describe('EAA-5.2.10.2-01 (status URI must resolve)', () => {
       new Response('gone', { status: 410, statusText: 'Gone' }),
     ) as typeof fetch;
 
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -67,7 +67,7 @@ describe('EAA-5.2.10.2-01 (status URI must resolve)', () => {
 
   it('returns na when the EAA payload has no status component', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -76,7 +76,7 @@ describe('EAA-5.2.10.2-01 (status URI must resolve)', () => {
   });
 
   it('returns na when no eaaPayload is supplied', async () => {
-    const verdict = await check({}, DEFAULT_SCOPE);
+    const verdict = await runCheck(check, {}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 
@@ -87,7 +87,7 @@ describe('EAA-5.2.10.2-01 (status URI must resolve)', () => {
       status: { ...(sample.decoded_payload.status as object), index: undefined },
     };
     delete (broken.status as Record<string, unknown>).index;
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
@@ -121,7 +121,7 @@ describe('EAA-5.2.10.2-01 (status URI must resolve)', () => {
       }),
     ) as typeof fetch;
 
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: buildCompact(sample.decoded_header, ietfPayload) },
       DEFAULT_SCOPE,
     );

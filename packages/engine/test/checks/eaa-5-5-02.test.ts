@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { check } from '../../src/checks/eaa-5-5-02';
-import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample } from './helpers';
+import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample, runCheck } from './helpers';
 
 describe('EAA-5.5-02 (cnf must contain JWK or certificate reference)', () => {
   it('passes when cnf carries a well-formed EC JWK (sjv-eaa-2)', async () => {
     const sample = await loadSample('sjv-eaa-2');
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -19,7 +19,7 @@ describe('EAA-5.5-02 (cnf must contain JWK or certificate reference)', () => {
       ...sample.decoded_payload,
       cnf: { x5c: ['BASE64-CERT-FIRST-LINE'] },
     };
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
@@ -33,7 +33,7 @@ describe('EAA-5.5-02 (cnf must contain JWK or certificate reference)', () => {
       ...sample.decoded_payload,
       cnf: { kid: 'some-key-id' },
     };
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
@@ -47,7 +47,7 @@ describe('EAA-5.5-02 (cnf must contain JWK or certificate reference)', () => {
       ...sample.decoded_payload,
       cnf: { jwk: { crv: 'P-256', x: 'x', y: 'y' } },
     };
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
@@ -61,7 +61,7 @@ describe('EAA-5.5-02 (cnf must contain JWK or certificate reference)', () => {
       ...sample.decoded_payload,
       cnf: { jwk: { kty: 'EC', crv: 'P-256', x: 'x' } },
     };
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
@@ -71,7 +71,7 @@ describe('EAA-5.5-02 (cnf must contain JWK or certificate reference)', () => {
 
   it('returns na when cnf is absent', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -79,7 +79,7 @@ describe('EAA-5.5-02 (cnf must contain JWK or certificate reference)', () => {
   });
 
   it('returns na when no eaaPayload is supplied', async () => {
-    const verdict = await check({}, DEFAULT_SCOPE);
+    const verdict = await runCheck(check, {}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 });

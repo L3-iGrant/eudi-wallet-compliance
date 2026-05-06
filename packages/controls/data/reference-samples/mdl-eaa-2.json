@@ -1,0 +1,69 @@
+{
+  "sample_id": "mdl-eaa-2",
+  "title": "MDL-EAA-2: mDL with TokenStatusList (flat ETSI shape)",
+  "description": "mDL carrying a status component implementing the ETSI flat shape: type=TokenStatusList, purpose=revocation, index, uri.",
+  "profile": "mdoc",
+  "tier": "ordinary-eaa",
+  "cbor_base64": "uQACam5hbWVTcGFjZXO5AAFxb3JnLmlzby4xODAxMy41LjGF2BhYV7kABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAGxlbGVtZW50VmFsdWVlRXJpa2FxZWxlbWVudElkZW50aWZpZXJqZ2l2ZW5fbmFtZdgYWF25AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRAFsZWxlbWVudFZhbHVlak11c3Rlcm1hbm5xZWxlbWVudElkZW50aWZpZXJrZmFtaWx5X25hbWXYGFhfuQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQCbGVsZW1lbnRWYWx1ZWhNREwtMDAwMnFlbGVtZW50SWRlbnRpZmllcm9kb2N1bWVudF9udW1iZXLYGFh3uQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQDbGVsZW1lbnRWYWx1ZXgdaUdyYW50LmlvIFJlZmVyZW5jZSBBdXRob3JpdHlxZWxlbWVudElkZW50aWZpZXJxaXNzdWluZ19hdXRob3JpdHnYGFhcuQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQEbGVsZW1lbnRWYWx1ZWoyMDI2LTAxLTAxcWVsZW1lbnRJZGVudGlmaWVyamlzc3VlX2RhdGVqaXNzdWVyQXV0aIRGuQABYTEmuQAAWQKI2BhZAoO5AAdndmVyc2lvbmMxLjBvZGlnZXN0QWxnb3JpdGhtZ1NIQS0yNTZsdmFsdWVEaWdlc3RzuQABcW9yZy5pc28uMTgwMTMuNS4xuQAFYTDYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhMdhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGEy2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYTPYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhNNhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG1kZXZpY2VLZXlJbmZvuQABaWRldmljZUtlebkABGExAmItMQFiLTLYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABiLTPYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABnZG9jVHlwZXVvcmcuaXNvLjE4MDEzLjUuMS5tRExsdmFsaWRpdHlJbmZvuQADZnNpZ25lZMB0MjAyNi0wMS0wMVQwMDowMDowMFppdmFsaWRGcm9twHQyMDI2LTAxLTAxVDAwOjAwOjAwWmp2YWxpZFVudGlswHQyMDMxLTAxLTAxVDAwOjAwOjAwWmZzdGF0dXO5AARkdHlwZW9Ub2tlblN0YXR1c0xpc3RncHVycG9zZWpyZXZvY2F0aW9uZWluZGV4AmN1cml4O2h0dHBzOi8vcmVmZXJlbmNlLWlzc3Vlci5pZ3JhbnQuaW8uZXhhbXBsZS9zdGF0dXMvbWRsLWVhYS0y2EBYQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+  "decoded_protected_header": {
+    "alg": "ES256"
+  },
+  "decoded_mso": {
+    "version": "1.0",
+    "digestAlgorithm": "SHA-256",
+    "docType": "org.iso.18013.5.1.mDL",
+    "validityInfo": {
+      "signed": "2026-01-01T00:00:00Z",
+      "validFrom": "2026-01-01T00:00:00Z",
+      "validUntil": "2031-01-01T00:00:00Z"
+    },
+    "valueDigests": "<32-byte digests per element; bytes elided>",
+    "deviceKeyInfo": "<COSE_Key (P-256, placeholder coordinates)>",
+    "status": {
+      "type": "TokenStatusList",
+      "purpose": "revocation",
+      "index": 2,
+      "uri": "https://reference-issuer.igrant.io.example/status/mdl-eaa-2"
+    }
+  },
+  "decoded_namespaces": {
+    "org.iso.18013.5.1": [
+      {
+        "digestID": 0,
+        "elementIdentifier": "given_name",
+        "elementValue": "Erika"
+      },
+      {
+        "digestID": 1,
+        "elementIdentifier": "family_name",
+        "elementValue": "Mustermann"
+      },
+      {
+        "digestID": 2,
+        "elementIdentifier": "document_number",
+        "elementValue": "MDL-0002"
+      },
+      {
+        "digestID": 3,
+        "elementIdentifier": "issuing_authority",
+        "elementValue": "iGrant.io Reference Authority"
+      },
+      {
+        "digestID": 4,
+        "elementIdentifier": "issue_date",
+        "elementValue": "2026-01-01"
+      }
+    ]
+  },
+  "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBqzCCAVGgAwIBAgIBATAKBggqhkjOPQQDAjBLMSgwJgYDVQQDEx9pR3JhbnQu\naW8gbWRvYyBSZWZlcmVuY2UgSXNzdWVyMRIwEAYDVQQKEwlpR3JhbnQuaW8xCzAJ\nBgNVBAYTAlNFMB4XDTI2MDEwMTAwMDAwMFoXDTMxMDEwMTAwMDAwMFowSzEoMCYG\nA1UEAxMfaUdyYW50LmlvIG1kb2MgUmVmZXJlbmNlIElzc3VlcjESMBAGA1UEChMJ\naUdyYW50LmlvMQswCQYDVQQGEwJTRTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA\nBK/nUSPhzck701KIjigRMNDMdoBoxiFpCu2h4a7+5Tc9HGhfb25vfa5I83UcLq59\n68rFP+CKiYD8y8ox1IqSmNOjJjAkMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0P\nAQH/BAQDAgKEMAoGCCqGSM49BAMCA0gAMEUCIQC7o5j1ecSct71zgxLg1hDZPgKj\nMAcUQpmUNPwxoJaWkAIgTkAwvGJ85jLQCP9wAjTmkSVe7yZ8Hh/IrpznRLsH8nA=\n-----END CERTIFICATE-----",
+  "exercises_controls": [
+    "EAA-6.1-02",
+    "EAA-6.2.10.1-01",
+    "EAA-6.2.10.1-04",
+    "EAA-6.2.10.1-06",
+    "EAA-6.2.10.1-08",
+    "EAA-6.2.10.1-10"
+  ],
+  "generated_by": "iGrant.io mdoc Reference Generator (cbor-x, placeholder signatures)",
+  "generated_at": "2026-05-05T19:41:49.673Z"
+}

@@ -1,0 +1,70 @@
+{
+  "sample_id": "mdl-eaa-3",
+  "title": "MDL-EAA-3: non-mDL with category data element",
+  "description": "Non-mDL credential using the ISO/IEC 23220-2 namespace, plus a category data element in the ETSI namespace flagging the credential as non-qualified, non-public-body.",
+  "profile": "mdoc",
+  "tier": "ordinary-eaa",
+  "cbor_base64": "uQACam5hbWVTcGFjZXO5AAJvb3JnLmlzby4yMzIyMC4xhdgYWFa5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRABsZWxlbWVudFZhbHVlZEFubmFxZWxlbWVudElkZW50aWZpZXJqZ2l2ZW5fbmFtZdgYWFi5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRAFsZWxlbWVudFZhbHVlZVNtaXRocWVsZW1lbnRJZGVudGlmaWVya2ZhbWlseV9uYW1l2BhYX7kABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAmxlbGVtZW50VmFsdWVoRUFBLTAwMDNxZWxlbWVudElkZW50aWZpZXJvZG9jdW1lbnRfbnVtYmVy2BhYcLkABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEA2xlbGVtZW50VmFsdWVuQWNtZSBBdXRob3JpdHlxZWxlbWVudElkZW50aWZpZXJ4GWlzc3VpbmdfYXV0aG9yaXR5X3VuaWNvZGXYGFhcuQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQEbGVsZW1lbnRWYWx1ZWoyMDI2LTAxLTAxcWVsZW1lbnRJZGVudGlmaWVyamlzc3VlX2RhdGV4GG9yZy5ldHNpLjAxOTQ3MjAxLjAxMDEwMYHYGFhyuQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQAbGVsZW1lbnRWYWx1ZXghdXJuOmV4YW1wbGU6ZWFhOmNhdGVnb3J5OmludGVybmFscWVsZW1lbnRJZGVudGlmaWVyaGNhdGVnb3J5amlzc3VlckF1dGiERrkAAWExJrkAAFkCTdgYWQJIuQAGZ3ZlcnNpb25jMS4wb2RpZ2VzdEFsZ29yaXRobWdTSEEtMjU2bHZhbHVlRGlnZXN0c7kAAm9vcmcuaXNvLjIzMjIwLjG5AAVhMNhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGEx2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYTLYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhM9hAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGE02EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeBhvcmcuZXRzaS4wMTk0NzIwMS4wMTAxMDG5AAFhMNhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG1kZXZpY2VLZXlJbmZvuQABaWRldmljZUtlebkABGExAmItMQFiLTLYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABiLTPYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABnZG9jVHlwZXNvcmcuZXhhbXBsZS50ZXN0LnYxbHZhbGlkaXR5SW5mb7kAA2ZzaWduZWTAdDIwMjYtMDEtMDFUMDA6MDA6MDBaaXZhbGlkRnJvbcB0MjAyNi0wMS0wMVQwMDowMDowMFpqdmFsaWRVbnRpbMB0MjAzMS0wMS0wMVQwMDowMDowMFrYQFhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+  "decoded_protected_header": {
+    "alg": "ES256"
+  },
+  "decoded_mso": {
+    "version": "1.0",
+    "digestAlgorithm": "SHA-256",
+    "docType": "org.example.test.v1",
+    "validityInfo": {
+      "signed": "2026-01-01T00:00:00Z",
+      "validFrom": "2026-01-01T00:00:00Z",
+      "validUntil": "2031-01-01T00:00:00Z"
+    },
+    "valueDigests": "<32-byte digests per element; bytes elided>",
+    "deviceKeyInfo": "<COSE_Key (P-256, placeholder coordinates)>"
+  },
+  "decoded_namespaces": {
+    "org.iso.23220.1": [
+      {
+        "digestID": 0,
+        "elementIdentifier": "given_name",
+        "elementValue": "Anna"
+      },
+      {
+        "digestID": 1,
+        "elementIdentifier": "family_name",
+        "elementValue": "Smith"
+      },
+      {
+        "digestID": 2,
+        "elementIdentifier": "document_number",
+        "elementValue": "EAA-0003"
+      },
+      {
+        "digestID": 3,
+        "elementIdentifier": "issuing_authority_unicode",
+        "elementValue": "Acme Authority"
+      },
+      {
+        "digestID": 4,
+        "elementIdentifier": "issue_date",
+        "elementValue": "2026-01-01"
+      }
+    ],
+    "org.etsi.01947201.010101": [
+      {
+        "digestID": 0,
+        "elementIdentifier": "category",
+        "elementValue": "urn:example:eaa:category:internal"
+      }
+    ]
+  },
+  "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBqzCCAVGgAwIBAgIBATAKBggqhkjOPQQDAjBLMSgwJgYDVQQDEx9pR3JhbnQu\naW8gbWRvYyBSZWZlcmVuY2UgSXNzdWVyMRIwEAYDVQQKEwlpR3JhbnQuaW8xCzAJ\nBgNVBAYTAlNFMB4XDTI2MDEwMTAwMDAwMFoXDTMxMDEwMTAwMDAwMFowSzEoMCYG\nA1UEAxMfaUdyYW50LmlvIG1kb2MgUmVmZXJlbmNlIElzc3VlcjESMBAGA1UEChMJ\naUdyYW50LmlvMQswCQYDVQQGEwJTRTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA\nBK/nUSPhzck701KIjigRMNDMdoBoxiFpCu2h4a7+5Tc9HGhfb25vfa5I83UcLq59\n68rFP+CKiYD8y8ox1IqSmNOjJjAkMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0P\nAQH/BAQDAgKEMAoGCCqGSM49BAMCA0gAMEUCIQC7o5j1ecSct71zgxLg1hDZPgKj\nMAcUQpmUNPwxoJaWkAIgTkAwvGJ85jLQCP9wAjTmkSVe7yZ8Hh/IrpznRLsH8nA=\n-----END CERTIFICATE-----",
+  "exercises_controls": [
+    "EAA-6.1-03",
+    "EAA-6.2.2.1-01",
+    "EAA-6.2.2.1-03",
+    "EAA-6.2.3-01",
+    "EAA-6.2.3-04",
+    "EAA-6.2.4.1-03"
+  ],
+  "generated_by": "iGrant.io mdoc Reference Generator (cbor-x, placeholder signatures)",
+  "generated_at": "2026-05-05T19:41:49.673Z"
+}

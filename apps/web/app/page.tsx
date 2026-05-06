@@ -347,7 +347,8 @@ export default async function Hub() {
               Each module maps to a distinct compliance surface, from
               issuance and presentation to QTSP operations and trust lists.
               EAA Conformance is the first to ship, anchored in ETSI TS 119
-              472-1. The other six are in active development across upcoming
+              472-1; both SD-JWT VC and ISO/IEC mdoc EAAs are supported.
+              The other six are in active development across upcoming
               releases.
             </p>
           </div>

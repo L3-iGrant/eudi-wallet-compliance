@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { check } from '../../src/checks/eaa-5-2-10-1-10';
-import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample } from './helpers';
+import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample, runCheck } from './helpers';
 
 describe('EAA-5.2.10.1-10 (status object includes uri member)', () => {
   it('passes when status.uri is present', async () => {
     const sample = await loadSample('sjv-eaa-7');
-    const verdict = await check({ eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
+    const verdict = await runCheck(check, { eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
     expect(verdict.status).toBe('pass');
   });
 
@@ -14,7 +14,7 @@ describe('EAA-5.2.10.1-10 (status object includes uri member)', () => {
     const status = { ...(sample.decoded_payload.status as Record<string, unknown>) };
     delete status.uri;
     const broken = { ...sample.decoded_payload, status };
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
@@ -24,12 +24,12 @@ describe('EAA-5.2.10.1-10 (status object includes uri member)', () => {
 
   it('returns na when status is absent', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const verdict = await check({ eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
+    const verdict = await runCheck(check, { eaaPayload: compactFromSample(sample) }, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 
   it('returns na when no eaaPayload is supplied', async () => {
-    const verdict = await check({}, DEFAULT_SCOPE);
+    const verdict = await runCheck(check, {}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 
@@ -44,7 +44,7 @@ describe('EAA-5.2.10.1-10 (status object includes uri member)', () => {
         },
       },
     };
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: buildCompact(sample.decoded_header, ietfPayload) },
       DEFAULT_SCOPE,
     );
@@ -58,7 +58,7 @@ describe('EAA-5.2.10.1-10 (status object includes uri member)', () => {
       ...sample.decoded_payload,
       status: { status_list: { idx: 1 } },
     };
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: buildCompact(sample.decoded_header, ietfPayload) },
       DEFAULT_SCOPE,
     );

@@ -7739,6 +7739,3236 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
       "PuB-EAA-5.6.3-02",
       "QEAA-5.6.2-03"
     ]
+  },
+  {
+    "id": "EAA-6.1-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.1",
+      "page": 35
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Data structures shall be those of ISO/IEC 18013-5",
+    "spec_text": "The data structures of the EAA shall be the data structures defined in ISO/IEC 18013-5, extended with some structures defined in the present document for meeting specific EAA requirements.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.1-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.1",
+      "page": 35
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "mDL shall carry org.iso.18013.5.1 namespace data elements",
+    "spec_text": "If the EAA is a mobile driving license (mDL) (i.e. the document type of the EAA is \"org.iso.18013.5.1.mDL\"), it shall contain data elements defined in section 7.1 of ISO/IEC 18013-5 within the namespace \"org.iso.18013.5.1\"; and may contain data elements defined in the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.1-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.1",
+      "page": 35
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Non-mDL shall carry org.iso.23220.1 namespace data elements",
+    "spec_text": "If the EAA is NOT a mobile driving license, it shall contain data elements defined in section 6.3 of ISO/IEC 23220-2 within the namespace \"org.iso.23220.1\"; may contain data elements defined in the present document; and may contain data elements defined in another document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.1-04",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.1",
+      "page": 35
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "New data elements shall sit in org.etsi.01947201.010101 namespace",
+    "spec_text": "The data elements defined in the present document shall be assigned the namespace \"org.etsi.01947201.010101\".",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.1-05",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.1",
+      "page": 35
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "mDL presence column of Table 5 of ISO/IEC 18013-5 applies",
+    "spec_text": "If the ISO/IEC-mdoc EAA is a mDL, the \"presence\" column of the Table 5 of ISO/IEC 18013-5 shall apply.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.1-06",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.1",
+      "page": 35
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Non-mDL type document shall specify mandatory data elements",
+    "spec_text": "If the ISO/IEC-mdoc EAA is NOT a mDL, the document defining the ISO/IEC-mdoc EAA type shall specify which data elements are mandatory.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.1-07",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.1",
+      "page": 35
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "EAA shall be an instance of IssuerSigned per ISO/IEC 18013-5",
+    "spec_text": "ISO/IEC-mdoc EAA shall be an instance of IssuerSigned type defined in ISO/IEC-mdoc, clause 8.3.2.1.2.2, extended as specified in the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.1-08",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.1",
+      "page": 36
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "New tstr elements shall encode in Unicode unless stated otherwise",
+    "spec_text": "The encoding of any new data element of tstr type defined in clause 6 shall be Unicode unless stated otherwise.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.2.1-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.2.1",
+      "page": 36
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Non-qualified, non-public-body EU mdoc shall not include category",
+    "spec_text": "ISO/IEC-mdoc EAAs issued by EAAs issuers registered in the European Union, which are neither ISO/IEC-mdoc QEAAs nor ISO/IEC-mdoc PuB-EAAs, shall not include the category data element.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.2.1-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.2.1",
+      "page": 36
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "category data element implements clause 4.2.2 semantics",
+    "spec_text": "The category data element shall implement the semantics specified in clause 4.2.2 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.2.1-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.2.1",
+      "page": 36
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "category data element shall be of tstr type",
+    "spec_text": "The category data element shall be of type tstr (specified in IETF RFC 8610).",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "QEAA-6.2.2.2-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.2.2",
+      "page": 36
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "ISO/IEC-mdoc QEAA shall include category data element",
+    "spec_text": "An ISO/IEC-mdoc QEAA shall include the category data element, which shall implement the semantics specified in clause 4.2.2 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "QEAA-6.2.2.2-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.2.2",
+      "page": 36
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "QEAA category value shall be the qualified URN",
+    "spec_text": "The value of the category data element in an ISO/IEC-mdoc QEAA shall be the URN defined in requirement QEAA-4.2.2.2-02 (urn:etsi:esi:eaa:eu:qualified).",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "PuB-EAA-6.2.2.3-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.2.3",
+      "page": 36
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "ISO/IEC-mdoc PuB-EAA shall include category data element",
+    "spec_text": "An ISO/IEC-mdoc PuB-EAA shall include the category data element, which shall implement the semantics specified in clause 4.2.2 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "PuB-EAA-6.2.2.3-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.2.3",
+      "page": 37
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "PuB-EAA category value shall be the public-body URN",
+    "spec_text": "The value of the category data element in an ISO/IEC-mdoc PuB-EAA shall be the URN defined in requirement PuB-EAA-4.2.2.3-02 (urn:etsi:esi:eaa:eu:pub).",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.3-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.3",
+      "page": 37
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "ISO/IEC-mdoc EAA shall incorporate the document_number element",
+    "spec_text": "An ISO/IEC-mdoc EAA shall incorporate the document_number data element.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.3-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.3",
+      "page": 37
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "document_number implements clause 4.2.3 semantics",
+    "spec_text": "The document_number data element shall implement the semantics of clause 4.2.3 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.3-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.3",
+      "page": 37
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "mDL document_number shall match Table 5 of ISO/IEC 18013-5",
+    "spec_text": "If the ISO/IEC-mdoc EAA is a mDL, then the document_number data element shall be as specified in Table 5 of clause 7.2.1 of ISO/IEC 18013-5.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.3-04",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.3",
+      "page": 37
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Non-mDL document_number shall match clause 6.3 of ISO/IEC 23220-2",
+    "spec_text": "If the ISO/IEC-mdoc EAA is NOT a mDL the document_number data element shall be as specified in clause 6.3 of ISO/IEC 23220-2.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.4.1-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.4.1",
+      "page": 37
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "mDL shall include issuing_authority component",
+    "spec_text": "If an ISO/IEC-mdoc EAA is a mDL it shall include the issuing_authority component, specified in Table 5 of clause 7.2.1 of ISO/IEC 18013-5.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.4.1-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.4.1",
+      "page": 37
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "issuing_authority implements clause 4.2.4 semantics",
+    "spec_text": "The issuing_authority data element shall implement the semantics of clause 4.2.4 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.4.1-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.4.1",
+      "page": 37
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Non-mDL shall include issuing_authority_unicode component",
+    "spec_text": "If an ISO/IEC-mdoc EAA is NOT a mDL it shall include the issuing_authority_unicode component, specified in clause 6.3 of ISO/IEC 23220-2.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.4.1-04",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.4.1",
+      "page": 37
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "issuing_authority_unicode implements clause 4.2.4 semantics",
+    "spec_text": "The issuing_authority_unicode data element shall implement the semantics of clause 4.2.4 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.4.1-05",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.4.1",
+      "page": 37
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "ISO/IEC-mdoc EAA may incorporate issuing_country",
+    "spec_text": "An ISO/IEC-mdoc EAA may incorporate the issuing_country, identifying the EU Member State where the ISO/IEC-mdoc EAA issuer is registered.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.4.1-06",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.4.1",
+      "page": 37
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "mDL issuing_country shall match Table 5 of ISO/IEC 18013-5",
+    "spec_text": "If the ISO/IEC-mdoc EAA is a mDL, then the issuing_country data element shall be as specified in Table 5 of clause 7.2.1 of ISO/IEC 18013-5.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.4.1-07",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.4.1",
+      "page": 37
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Non-mDL issuing_country shall match clause 6.3 of ISO/IEC 23220-2",
+    "spec_text": "If the ISO/IEC-mdoc EAA is NOT a mDL the issuing_country data element shall be as specified in clause 6.3 of ISO/IEC 23220-2.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.4.1-08",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.4.1",
+      "page": 37
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Optional issuing_country value shall match EAA-4.2.4.1-05",
+    "spec_text": "The value of the optional issuing_country data element shall be as specified in requirement EAA-4.2.4.1-05 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.4.1-09",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.4.1",
+      "page": 37
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "ISO/IEC-mdoc EAA may include iss_reg_id where applicable",
+    "spec_text": "Where a registration identifier is applicable, an ISO/IEC-mdoc EAA may include the iss_reg_id data element.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.4.1-10",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.4.1",
+      "page": 37
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "iss_reg_id data element shall be of tstr type",
+    "spec_text": "The iss_reg_id data element shall be an element of the type tstr (specified in IETF RFC 8610).",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.4.1-11",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.4.1",
+      "page": 38
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "iss_reg_id value shall be a registration identifier",
+    "spec_text": "The value of the iss_reg_id data element shall be a registration identifier.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.4.1-12",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.4.1",
+      "page": 38
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "iss_reg_id value may follow ETSI EN 319 412-1 LEG-5.1.4 rules",
+    "spec_text": "The value of the iss_reg_id data element may be built applying the rules specified in requirements LEG-5.1.4-02 to LEG-5.1.4-08 (both included) in clause 5.1.4 of ETSI EN 319 412-1.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.4.1-13",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.4.1",
+      "page": 38
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "iss_reg_id mutex with embedded qualified certificate",
+    "spec_text": "An ISO/IEC-mdoc EAA shall not incorporate the iss_reg_id claim if it incorporates the qualified certificate supporting the ISO/IEC-mdoc EAA signature.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "QEAA-6.2.4.2-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.4.2",
+      "page": 38
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Legal-person QEAA shall carry registration identifier",
+    "spec_text": "If the issuer of the ISO/IEC-mdoc QEAA is a legal person and if a registration identifier is applicable, an ISO/IEC-mdoc QEAA shall include the registration identifier either in the iss_reg_id data element or within the qualified certificate supporting its signature.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "QEAA-6.2.4.2-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.4.2",
+      "page": 38
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "QEAA iss_reg_id shall match organizationIdentifier rules",
+    "spec_text": "The value of the iss_reg_id data element shall be built according to the rules defined in clause 5.1.4 of ETSI EN 319 412-1 to build the value of the organizationIdentifier attribute in the subject field of an X.509 certificate.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "PuB-EAA-6.2.4.3-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.4.3",
+      "page": 38
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "PuB-EAA shall carry registration identifier where applicable",
+    "spec_text": "Where a registration identifier is applicable, an ISO/IEC 18013-5 PuB-EAA shall include the registration identifier either in the iss_reg_id data element or within the qualified certificate supporting its signature.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "PuB-EAA-6.2.4.3-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.4.3",
+      "page": 38
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "PuB-EAA iss_reg_id shall match organizationIdentifier rules",
+    "spec_text": "The value of the iss_reg_id data element shall be built according to the rules defined in clause 5.1.4 of ETSI EN 319 412-1 to build the value of the organizationIdentifier attribute in the subject field of an X.509 certificate.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.5.1-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.5.1",
+      "page": 38
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "mDL identifying its subject shall include the standard triplet",
+    "spec_text": "If an ISO/IEC-mdoc EAA requires that the EAA subject (the holder of the mDL) is identified, the ISO/IEC-mdoc EAA shall include the following data elements, specified in Table 5 of clause 7.2.1 of ISO/IEC 18013-5: given_name and family_name, and document_number.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.5.1-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.5.1",
+      "page": 38
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "mDL shall include either the standard triplet or also_known_as",
+    "spec_text": "An ISO/IEC-mdoc EAA that is a mDL shall include either the complete set of data elements mentioned in the previous requirement identifying the EAA subject, or the also_known_as data element.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.5.1-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.5.1",
+      "page": 38
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "also_known_as data element shall be of tstr type",
+    "spec_text": "The also_known_as data element shall be an element of the type tstr (specified in IETF RFC 8610).",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.5.1-04",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.5.1",
+      "page": 38
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Non-mDL identifying its subject shall include the standard triplet",
+    "spec_text": "If the ISO/IEC-mdoc EAA is NOT a mDL, and requires that the EAA subject (the holder of the mDoc) is identified, the ISO/IEC-mdoc EAA shall include the following data elements, specified in clause 6.3 of ISO/IEC 23220-2: given_name, family_name, and document_number.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.5.1-05",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.5.1",
+      "page": 38
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Non-mDL shall include either the standard triplet or also_known_as",
+    "spec_text": "An ISO/IEC-mdoc EAA that is NOT a mDL shall include either the complete set of data elements mentioned in the previous requirement identifying the EAA subject, or the also_known_as data element.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.5.2-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.5.2",
+      "page": 39
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "ISO/IEC-mdoc EAA may carry also_known_as as subject pseudonym",
+    "spec_text": "An ISO/IEC-mdoc EAA may contain the also_known_as data element, which shall contain the pseudonym of the EAA, and therefore shall implement the semantics specified in clause 4.2.6.3 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.5.3-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.5.3",
+      "page": 39
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "ISO/IEC-mdoc EAA may include attribute subjects",
+    "spec_text": "An ISO/IEC-mdoc EAA may include attributes that refer to entities that are not the EAA subject: the attribute subjects.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.5.3-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.5.3",
+      "page": 39
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Attribute subjects may be identified or pseudonymised",
+    "spec_text": "For each attribute subject, an ISO/IEC-mdoc EAA may include the attribute subject identifier or the attribute subject pseudonym.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.5.3-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.5.3",
+      "page": 39
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Attribute subject identifiers shall associate to their attributes",
+    "spec_text": "In an ISO/IEC-mdoc EAA the identifiers of the attribute subjects shall be associated to their corresponding attributes as specified in clause 6.3 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.5.4-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.5.4",
+      "page": 39
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "ISO/IEC-mdoc EAA may include attribute subject pseudonyms",
+    "spec_text": "An ISO/IEC-mdoc EAA may include pseudonyms of attribute subjects.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.5.4-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.5.4",
+      "page": 39
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Attribute subject pseudonyms shall associate to their attributes",
+    "spec_text": "In an ISO/IEC-mdoc EAA, the pseudonyms of the attribute subjects shall be associated with their corresponding attributes as specified in clause 6.3 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "QEAA-6.2.5.5-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.5.5",
+      "page": 39
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "ISO/IEC-mdoc QEAA attributes shall refer to the EAA subject",
+    "spec_text": "In an ISO/IEC-mdoc QEAA all the attributes shall refer to the EAA subject.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "PuB-EAA-6.2.5.6-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.5.6",
+      "page": 39
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "ISO/IEC-mdoc PuB-EAA attributes shall refer to the EAA subject",
+    "spec_text": "In an ISO/IEC-mdoc PuB-EAA all the attributes shall refer to the EAA subject.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.6-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.6",
+      "page": 39
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "ISO/IEC-mdoc EAA shall incorporate issue_date",
+    "spec_text": "An ISO/IEC-mdoc EAA shall incorporate the issue_date data element.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.6-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.6",
+      "page": 39
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "issue_date implements clause 4.2.7 semantics",
+    "spec_text": "The issue_date data element shall indicate the issuance date according to the semantics of clause 4.2.7 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.6-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.6",
+      "page": 39
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "mDL issue_date shall match Table 5 of ISO/IEC 18013-5",
+    "spec_text": "If the ISO/IEC-mdoc EAA is a mDL, then the issue_date data element shall be as specified in Table 5 of clause 7.2.1 of ISO/IEC 18013-5.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.6-04",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.6",
+      "page": 39
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Non-mDL issue_date shall match clause 6.3 of ISO/IEC 23220-2",
+    "spec_text": "If the ISO/IEC-mdoc EAA is NOT a mDL the issue_date data element shall be as specified in clause 6.3 of ISO/IEC 23220-2.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.7.1-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.7.1",
+      "page": 39
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "validityInfo.validFrom marks technical validity start",
+    "spec_text": "The validFrom member of the validityInfo member of the instance of MobileSecurityObject type specified in clause 9.1.2.4 of ISO/IEC 18013-5, shall implement the semantics of the start time of the ISO/IEC-mdoc EAA technical validity period.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.7.1-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.7.1",
+      "page": 39
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "validityInfo.validUntil marks technical validity end",
+    "spec_text": "The validUntil member of the validityInfo member of the instance of MobileSecurityObject type specified in clause 9.1.2.4 of ISO/IEC 18013-5, shall implement the semantics of the end type instant of the ISO/IEC-mdoc EAA technical validity period.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.7.1-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.7.1",
+      "page": 39
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "validFrom and validUntil shall indicate UTC time",
+    "spec_text": "The validFrom and the validUntil members shall indicate the UTC time for date and time.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.7.1-04",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.7.1",
+      "page": 40
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "validFrom and validUntil shall have seconds precision",
+    "spec_text": "The validFrom and the validUntil members shall have seconds precision.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.7.1-05",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.7.1",
+      "page": 40
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "validFrom and validUntil shall not contain fractions of seconds",
+    "spec_text": "The validFrom and the validUntil members shall not contain fractions of seconds.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.7.2-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.7.2",
+      "page": 40
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "mDL expiry_date marks administrative validity end",
+    "spec_text": "If the ISO/IEC-mdoc EAA is a mDL, then the expiry_date element specified in table 5 of clause 7.1 of ISO/IEC 18013-5, shall implement the semantics of the end date of the ISO/IEC-mdoc EAA administrative validity period.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.7.2-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.7.2",
+      "page": 40
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Non-mDL expiry_date marks administrative validity end",
+    "spec_text": "If the ISO/IEC-mdoc EAA is NOT a mDL, then the expiry_date element specified in clause 6.3 of ISO/IEC 23220-2, shall implement the semantics of the end date of the ISO/IEC-mdoc EAA administrative validity period.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.7.2-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.7.2",
+      "page": 40
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "issue_date may mark administrative validity start",
+    "spec_text": "The issue_date data element, as specified in clause 6.2.6 of the present document, may be considered, wherever appropriate, to implement the semantics of the start date of the ISO/IEC-mdoc EAA Administrative validity period.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.8.1-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.8.1",
+      "page": 40
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "ISO/IEC-mdoc EAA shall not carry an audience component",
+    "spec_text": "An ISO/IEC-mdoc EAA shall not incorporate any data element implementing the semantics specified in clause 4.2.9.2 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.8.2-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.8.2",
+      "page": 40
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "ISO/IEC-mdoc EAA may incorporate the oneTime data element",
+    "spec_text": "An ISO/IEC-mdoc EAA may incorporate the oneTime data element.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.8.2-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.8.2",
+      "page": 40
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "oneTime implements clause 4.2.9.3 semantics",
+    "spec_text": "The oneTime data element shall implement the semantics specified in clause 4.2.9.3 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.8.2-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.8.2",
+      "page": 40
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "oneTime data element shall have CBOR bool type",
+    "spec_text": "The oneTime data element shall have the bool CBOR type.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.8.2-04",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.8.2",
+      "page": 40
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "oneTime true means single-use, no retention",
+    "spec_text": "If the oneTime data element is present and set to true, it shall indicate that the EAA shall be used only once, and that it shall not be retained for future use.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.8.2-05",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.8.2",
+      "page": 40
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "oneTime false or absent removes the constraint",
+    "spec_text": "If the oneTime data element is present and set to false or it is absent, the aforementioned constraint shall not apply to the EAA.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.9-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.9",
+      "page": 40
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "ISO/IEC-mdoc EAA shall not carry attributes-evidence component",
+    "spec_text": "An ISO/IEC-mdoc EAA shall not incorporate any data element implementing the semantics specified in clause 4.2.10 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.10.1-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.10.1",
+      "page": 40
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "MSO may carry status member",
+    "spec_text": "An ISO/IEC-mdoc may contain the status member within the instance of MobileSecurityObject.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": [
+      "EAA-6.2.10.1-02",
+      "EAA-6.2.10.1-03",
+      "EAA-4.2.11.1-03"
+    ]
+  },
+  {
+    "id": "EAA-6.2.10.1-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.10.1",
+      "page": 41
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "status member implements clause 4.2.11 semantics",
+    "spec_text": "The status member shall implement the semantics specified in clause 4.2.11 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.10.1-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.10.1",
+      "page": 41
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "status-list"
+    ],
+    "short_title": "status may contain status_list per IETF Token Status List",
+    "spec_text": "The status member may contain the status_list member as specified in clause 6.3 of IETF draft-ietf-oauth-status-list-13.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.10.1-04",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.10.1",
+      "page": 41
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "When status is present, the type member shall be present",
+    "spec_text": "When the status member is present in the MobileSecurityObject, the status object shall have a type member, mirroring §5.2.10.1-04 for SD-JWT VC.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.10.1-06",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.10.1",
+      "page": 41
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "When status is present, the purpose member shall be present",
+    "spec_text": "When the status member is present in the MobileSecurityObject, the status object shall have a purpose member, mirroring §5.2.10.1-06 for SD-JWT VC.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.10.1-08",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.10.1",
+      "page": 41
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "When status is present, the index member shall be present",
+    "spec_text": "When the status member is present in the MobileSecurityObject, the status object shall have an index member, mirroring §5.2.10.1-08 for SD-JWT VC.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.10.1-10",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.10.1",
+      "page": 41
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "When status is present, the uri member shall be present",
+    "spec_text": "When the status member is present in the MobileSecurityObject, the status object shall have a uri member, mirroring §5.2.10.1-10 for SD-JWT VC.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.10.2-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.10.1",
+      "page": 41
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "status-list"
+    ],
+    "short_title": "Runtime status resolver for mdoc EAA",
+    "spec_text": "Runtime check (synthetic): the URI in the credential's status component must resolve to a parseable Token Status List, and the credential's index must read out a registered status value. Mirrors §5.2.10.2-01 for SD-JWT VC; the IETF nested envelope (status_list.idx / status_list.uri) is accepted in lieu of the ETSI flat shape via the shared normaliseStatus helper.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "QEAA-6.2.10.2-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.10.2",
+      "page": 41
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "status-list"
+    ],
+    "short_title": "QEAA without shortLived shall carry status in MSO",
+    "spec_text": "If an ISO/IEC-mdoc QEAA does not contain the shortLived data element, it shall contain the status member within the instance of MobileSecurityObject as specified in clause 6.2.10.1.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "PuB-EAA-6.2.10.3-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.10.3",
+      "page": 41
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "status-list"
+    ],
+    "short_title": "PuB-EAA without shortLived shall carry status in MSO",
+    "spec_text": "If an ISO/IEC-mdoc PuB-EAA does not contain the shortLived data element, it shall contain the status member within the instance of MobileSecurityObject as specified in clause 6.2.10.1.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.11-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.11",
+      "page": 41
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "ISO/IEC-mdoc EAA shall not carry a renewal-service component",
+    "spec_text": "An ISO/IEC-mdoc EAA shall not incorporate any component implementing the semantics specified in clause 4.2.12 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.12-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.12",
+      "page": 41
+    },
+    "requirement_level": "may",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "ISO/IEC-mdoc EAA may incorporate the shortLived data element",
+    "spec_text": "An ISO/IEC-mdoc EAA may incorporate the shortLived data element.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.12-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.12",
+      "page": 41
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "shortLived implements clause 4.2.13 semantics",
+    "spec_text": "The shortLived data element shall implement the semantics specified in clause 4.2.13 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.12-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.12",
+      "page": 41
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "shortLived data element shall have CBOR bool type",
+    "spec_text": "The shortLived data element shall have the bool CBOR type.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.12-04",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.12",
+      "page": 41
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "shortLived true bypasses revocation status check",
+    "spec_text": "If the shortLived data element is present and set to true, it shall indicate that the validity period of the EAA is so short that it shall not be necessary to check its revocation status.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.2.12-05",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.2.12",
+      "page": 41
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "shortLived false or absent requires revocation status check",
+    "spec_text": "If the shortLived data element is present and set to false or it is absent, the aforementioned constraint shall not apply to the EAA and it shall be necessary to check its revocation status.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.3-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.3",
+      "page": 41
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Attested attributes shall be carried in IssuerSignedItem components",
+    "spec_text": "An ISO/IEC-mdoc EAA shall include each attested attribute, regardless it is disclosable or not, in one or more IssuerSignedItem component, and shall be incorporated to the ISO/IEC-mdoc EAA as specified in clause 8.3.2.1.2.2 of ISO/IEC 18013-5.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.3-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.3",
+      "page": 41
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Non-EAA-subject attributes shall use SubAttr in elementValue",
+    "spec_text": "For associating one attribute to one entity different than the EAA subject, the ISO/IEC-mdoc EAA shall include an instance of the SubAttr type (which is defined below) in the elementValue member of IssuerSignedItem.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.3-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.3",
+      "page": 42
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "SubAttr shall have either subId or subAka member",
+    "spec_text": "An instance of SubAttr type shall have either the subId member or the subAka member.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.3-04",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.3",
+      "page": 42
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "subId shall be a CBOR map identifying the attribute subject",
+    "spec_text": "The subId member shall be a CBOR map whose members shall univocally identify the attribute subject.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.3-05",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.3",
+      "page": 42
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "subAka shall be a CBOR String pseudonym",
+    "spec_text": "The subAka member shall be a CBOR String whose value shall be the pseudonym of an attribute subject which shall associate the attributes to this attribute subject.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.4.1.2-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.4.1.2",
+      "page": 42
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "ISO/IEC-mdoc EAA shall include version in MobileSecurityObject",
+    "spec_text": "An ISO/IEC-mdoc EAA shall include the version component within its MobileSecurityObject.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.4.1.3-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.4.1.3",
+      "page": 42
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Disclosable attributes shall ride in IssuerSignedItem components",
+    "spec_text": "An ISO/IEC-mdoc EAA containing disclosable attributes, shall include each disclosure in one IssuerSignedItem component, and shall be incorporated to the ISO/IEC-mdoc EAA as specified in clause 8.3.2.1.2.2 of ISO/IEC 18013-5.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.4.1.4-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.4.1.4",
+      "page": 42
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "valueDigests implements clause 4.4.2.3 semantics",
+    "spec_text": "For an ISO/IEC-mdoc EAA, the valueDigests component shall implement the semantics specified in clause 4.4.2.3 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.4.1.4-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.4.1.4",
+      "page": 42
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Disclosable mdoc shall include valueDigests in MSO",
+    "spec_text": "If an ISO/IEC-mdoc includes selectively disclosable attested attributes, it shall include the valueDigests component within its MobileSecurityObject, as specified in clause 9.1.2.4 of ISO/IEC 18013-5 for supporting the semantics specified in clause 4.4.2.3 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.4.1.5-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.4.1.5",
+      "page": 42
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "Disclosable mdoc shall include digestAlgorithm in MSO",
+    "spec_text": "An ISO/IEC-mdoc EAA containing disclosable attributes, shall include the digestAlgorithm component within its MobileSecurityObject.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.5-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.5",
+      "page": 42
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "deviceKey shall sit within deviceKeyInfo of MSO",
+    "spec_text": "An ISO/IEC-mdoc EAA shall incorporate the deviceKey member within the deviceKeyInfo member of the instance of MobileSecurityObject type, to implement the semantics specified in clause 4.5 of the present document.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.5-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.5",
+      "page": 42
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload"
+    ],
+    "short_title": "deviceKey shall be the EAA subject's public key",
+    "spec_text": "The deviceKey member within the deviceKeyInfo member of the instance of MobileSecurityObject type, shall contain a public key whose private key is in possession of the EAA subject.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "EAA-6.6.1-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.6.1",
+      "page": 43
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "ordinary-eaa",
+      "qeaa",
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "issuer-cert"
+    ],
+    "short_title": "ISO/IEC-mdoc EAA shall be signed by a CB-AdES digital signature",
+    "spec_text": "An ISO/IEC-mdoc EAA shall be signed by a CB-AdES digital signature.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "QEAA-6.6.2-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.6.2",
+      "page": 43
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "issuer-cert"
+    ],
+    "short_title": "QEAA CB-AdES shall be a qualified electronic signature or seal",
+    "spec_text": "The CB-AdES digital signature signing an ISO/IEC-mdoc QEAA shall be a qualified electronic signature or a qualified electronic seal.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "QEAA-6.6.2-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.6.2",
+      "page": 43
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "issuer-cert"
+    ],
+    "short_title": "QEAA Protected Header shall contain x5u and x5t",
+    "spec_text": "The Protected Header of the CB-AdES digital signature signing an ISO/IEC-mdoc QEAA shall contain the x5u and the x5t header parameters, both specified in IETF RFC 9360.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "QEAA-6.6.2-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.6.2",
+      "page": 43
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "issuer-cert"
+    ],
+    "short_title": "QEAA x5t digest algorithm shall be SHA-256",
+    "spec_text": "The digest algorithm used in the x5t header parameter, shall be SHA-256.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "QEAA-6.6.2-04",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.6.2",
+      "page": 43
+    },
+    "requirement_level": "should",
+    "applies_to": [
+      "qeaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "issuer-cert"
+    ],
+    "short_title": "QEAA Protected Header should contain x5chain",
+    "spec_text": "The Protected Header of the CB-AdES digital signature signing an ISO/IEC-mdoc QEAA should contain the x5chain header parameter, specified in IETF RFC 9360.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "PuB-EAA-6.6.3-01",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.6.3",
+      "page": 43
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "issuer-cert"
+    ],
+    "short_title": "PuB-EAA CB-AdES shall be a qualified electronic signature or seal",
+    "spec_text": "The CB-AdES digital signature signing an ISO/IEC-mdocPuB-EAA shall be a qualified electronic signature or a qualified electronic seal.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "PuB-EAA-6.6.3-02",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.6.3",
+      "page": 43
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "issuer-cert"
+    ],
+    "short_title": "PuB-EAA Protected Header shall contain x5u and x5t",
+    "spec_text": "The Protected Header of the CB-AdES digital signature signing an ISO/IEC-mdoc PuB-EAA shall contain the x5u and the x5t header parameters, both specified in IETF RFC 9360.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "PuB-EAA-6.6.3-03",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.6.3",
+      "page": 43
+    },
+    "requirement_level": "shall",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "issuer-cert"
+    ],
+    "short_title": "PuB-EAA x5t digest algorithm shall be SHA-256",
+    "spec_text": "The digest algorithm used in the x5t header parameter, shall be SHA-256.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
+  },
+  {
+    "id": "PuB-EAA-6.6.3-04",
+    "module": "eaa-conformance",
+    "spec_source": {
+      "document": "ETSI TS 119 472-1",
+      "version": "v1.2.1",
+      "clause": "6.6.3",
+      "page": 43
+    },
+    "requirement_level": "should",
+    "applies_to": [
+      "pub-eaa"
+    ],
+    "profile": [
+      "mdoc"
+    ],
+    "role": [
+      "issuer",
+      "verifier"
+    ],
+    "evidence_type": [
+      "eaa-payload",
+      "issuer-cert"
+    ],
+    "short_title": "PuB-EAA Protected Header should contain x5chain",
+    "spec_text": "The Protected Header of the CB-AdES digital signature signing an ISO/IEC-mdoc PuB-EAA should contain the x5chain header parameter, specified in IETF RFC 9360.",
+    "plain_english": "TODO",
+    "common_mistakes": [],
+    "related_controls": []
   }
 ];
 
@@ -7817,11 +11047,387 @@ export const MODULES_BUNDLE: ModuleMetadata[] = [
 
 export const SAMPLES_BUNDLE: ReferenceSample[] = [
   {
+    "sample_id": "mdl-eaa-1",
+    "title": "MDL-EAA-1: mDL baseline",
+    "description": "Baseline mDL (org.iso.18013.5.1.mDL) carrying the standard subject identifier triplet plus document_number, issuing_authority and issue_date. No status, no shortLived, no x5chain.",
+    "tier": "ordinary-eaa",
+    "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBqzCCAVGgAwIBAgIBATAKBggqhkjOPQQDAjBLMSgwJgYDVQQDEx9pR3JhbnQu\naW8gbWRvYyBSZWZlcmVuY2UgSXNzdWVyMRIwEAYDVQQKEwlpR3JhbnQuaW8xCzAJ\nBgNVBAYTAlNFMB4XDTI2MDEwMTAwMDAwMFoXDTMxMDEwMTAwMDAwMFowSzEoMCYG\nA1UEAxMfaUdyYW50LmlvIG1kb2MgUmVmZXJlbmNlIElzc3VlcjESMBAGA1UEChMJ\naUdyYW50LmlvMQswCQYDVQQGEwJTRTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA\nBK/nUSPhzck701KIjigRMNDMdoBoxiFpCu2h4a7+5Tc9HGhfb25vfa5I83UcLq59\n68rFP+CKiYD8y8ox1IqSmNOjJjAkMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0P\nAQH/BAQDAgKEMAoGCCqGSM49BAMCA0gAMEUCIQC7o5j1ecSct71zgxLg1hDZPgKj\nMAcUQpmUNPwxoJaWkAIgTkAwvGJ85jLQCP9wAjTmkSVe7yZ8Hh/IrpznRLsH8nA=\n-----END CERTIFICATE-----",
+    "exercises_controls": [
+      "EAA-6.1-01",
+      "EAA-6.1-02",
+      "EAA-6.1-07",
+      "EAA-6.2.3-01",
+      "EAA-6.2.3-03",
+      "EAA-6.2.4.1-01",
+      "EAA-6.2.5.1-01",
+      "EAA-6.2.5.1-02",
+      "EAA-6.2.6-01",
+      "EAA-6.2.7.1-01"
+    ],
+    "generated_by": "iGrant.io mdoc Reference Generator (cbor-x, placeholder signatures)",
+    "generated_at": "2026-05-05T19:41:49.673Z",
+    "profile": "mdoc",
+    "cbor_base64": "uQACam5hbWVTcGFjZXO5AAFxb3JnLmlzby4xODAxMy41LjGG2BhYV7kABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAGxlbGVtZW50VmFsdWVlRXJpa2FxZWxlbWVudElkZW50aWZpZXJqZ2l2ZW5fbmFtZdgYWF25AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRAFsZWxlbWVudFZhbHVlak11c3Rlcm1hbm5xZWxlbWVudElkZW50aWZpZXJrZmFtaWx5X25hbWXYGFhfuQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQCbGVsZW1lbnRWYWx1ZWhNREwtMDAwMXFlbGVtZW50SWRlbnRpZmllcm9kb2N1bWVudF9udW1iZXLYGFh3uQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQDbGVsZW1lbnRWYWx1ZXgdaUdyYW50LmlvIFJlZmVyZW5jZSBBdXRob3JpdHlxZWxlbWVudElkZW50aWZpZXJxaXNzdWluZ19hdXRob3JpdHnYGFhcuQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQEbGVsZW1lbnRWYWx1ZWoyMDI2LTAxLTAxcWVsZW1lbnRJZGVudGlmaWVyamlzc3VlX2RhdGXYGFhduQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQFbGVsZW1lbnRWYWx1ZWoyMDMxLTAxLTAxcWVsZW1lbnRJZGVudGlmaWVya2V4cGlyeV9kYXRlamlzc3VlckF1dGiERrkAAWExJrkAAFkCNNgYWQIvuQAGZ3ZlcnNpb25jMS4wb2RpZ2VzdEFsZ29yaXRobWdTSEEtMjU2bHZhbHVlRGlnZXN0c7kAAXFvcmcuaXNvLjE4MDEzLjUuMbkABmEw2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYTHYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhMthAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGEz2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYTTYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhNdhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG1kZXZpY2VLZXlJbmZvuQABaWRldmljZUtlebkABGExAmItMQFiLTLYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABiLTPYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABnZG9jVHlwZXVvcmcuaXNvLjE4MDEzLjUuMS5tRExsdmFsaWRpdHlJbmZvuQADZnNpZ25lZMB0MjAyNi0wMS0wMVQwMDowMDowMFppdmFsaWRGcm9twHQyMDI2LTAxLTAxVDAwOjAwOjAwWmp2YWxpZFVudGlswHQyMDMxLTAxLTAxVDAwOjAwOjAwWthAWEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "decoded_protected_header": {
+      "alg": "ES256"
+    },
+    "decoded_mso": {
+      "version": "1.0",
+      "digestAlgorithm": "SHA-256",
+      "docType": "org.iso.18013.5.1.mDL",
+      "validityInfo": {
+        "signed": "2026-01-01T00:00:00Z",
+        "validFrom": "2026-01-01T00:00:00Z",
+        "validUntil": "2031-01-01T00:00:00Z"
+      },
+      "valueDigests": "<32-byte digests per element; bytes elided>",
+      "deviceKeyInfo": "<COSE_Key (P-256, placeholder coordinates)>"
+    },
+    "decoded_namespaces": {
+      "org.iso.18013.5.1": [
+        {
+          "digestID": 0,
+          "elementIdentifier": "given_name",
+          "elementValue": "Erika"
+        },
+        {
+          "digestID": 1,
+          "elementIdentifier": "family_name",
+          "elementValue": "Mustermann"
+        },
+        {
+          "digestID": 2,
+          "elementIdentifier": "document_number",
+          "elementValue": "MDL-0001"
+        },
+        {
+          "digestID": 3,
+          "elementIdentifier": "issuing_authority",
+          "elementValue": "iGrant.io Reference Authority"
+        },
+        {
+          "digestID": 4,
+          "elementIdentifier": "issue_date",
+          "elementValue": "2026-01-01"
+        },
+        {
+          "digestID": 5,
+          "elementIdentifier": "expiry_date",
+          "elementValue": "2031-01-01"
+        }
+      ]
+    }
+  },
+  {
+    "sample_id": "mdl-eaa-2",
+    "title": "MDL-EAA-2: mDL with TokenStatusList (flat ETSI shape)",
+    "description": "mDL carrying a status component implementing the ETSI flat shape: type=TokenStatusList, purpose=revocation, index, uri.",
+    "tier": "ordinary-eaa",
+    "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBqzCCAVGgAwIBAgIBATAKBggqhkjOPQQDAjBLMSgwJgYDVQQDEx9pR3JhbnQu\naW8gbWRvYyBSZWZlcmVuY2UgSXNzdWVyMRIwEAYDVQQKEwlpR3JhbnQuaW8xCzAJ\nBgNVBAYTAlNFMB4XDTI2MDEwMTAwMDAwMFoXDTMxMDEwMTAwMDAwMFowSzEoMCYG\nA1UEAxMfaUdyYW50LmlvIG1kb2MgUmVmZXJlbmNlIElzc3VlcjESMBAGA1UEChMJ\naUdyYW50LmlvMQswCQYDVQQGEwJTRTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA\nBK/nUSPhzck701KIjigRMNDMdoBoxiFpCu2h4a7+5Tc9HGhfb25vfa5I83UcLq59\n68rFP+CKiYD8y8ox1IqSmNOjJjAkMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0P\nAQH/BAQDAgKEMAoGCCqGSM49BAMCA0gAMEUCIQC7o5j1ecSct71zgxLg1hDZPgKj\nMAcUQpmUNPwxoJaWkAIgTkAwvGJ85jLQCP9wAjTmkSVe7yZ8Hh/IrpznRLsH8nA=\n-----END CERTIFICATE-----",
+    "exercises_controls": [
+      "EAA-6.1-02",
+      "EAA-6.2.10.1-01",
+      "EAA-6.2.10.1-04",
+      "EAA-6.2.10.1-06",
+      "EAA-6.2.10.1-08",
+      "EAA-6.2.10.1-10"
+    ],
+    "generated_by": "iGrant.io mdoc Reference Generator (cbor-x, placeholder signatures)",
+    "generated_at": "2026-05-05T19:41:49.673Z",
+    "profile": "mdoc",
+    "cbor_base64": "uQACam5hbWVTcGFjZXO5AAFxb3JnLmlzby4xODAxMy41LjGF2BhYV7kABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAGxlbGVtZW50VmFsdWVlRXJpa2FxZWxlbWVudElkZW50aWZpZXJqZ2l2ZW5fbmFtZdgYWF25AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRAFsZWxlbWVudFZhbHVlak11c3Rlcm1hbm5xZWxlbWVudElkZW50aWZpZXJrZmFtaWx5X25hbWXYGFhfuQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQCbGVsZW1lbnRWYWx1ZWhNREwtMDAwMnFlbGVtZW50SWRlbnRpZmllcm9kb2N1bWVudF9udW1iZXLYGFh3uQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQDbGVsZW1lbnRWYWx1ZXgdaUdyYW50LmlvIFJlZmVyZW5jZSBBdXRob3JpdHlxZWxlbWVudElkZW50aWZpZXJxaXNzdWluZ19hdXRob3JpdHnYGFhcuQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQEbGVsZW1lbnRWYWx1ZWoyMDI2LTAxLTAxcWVsZW1lbnRJZGVudGlmaWVyamlzc3VlX2RhdGVqaXNzdWVyQXV0aIRGuQABYTEmuQAAWQKI2BhZAoO5AAdndmVyc2lvbmMxLjBvZGlnZXN0QWxnb3JpdGhtZ1NIQS0yNTZsdmFsdWVEaWdlc3RzuQABcW9yZy5pc28uMTgwMTMuNS4xuQAFYTDYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhMdhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGEy2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYTPYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhNNhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG1kZXZpY2VLZXlJbmZvuQABaWRldmljZUtlebkABGExAmItMQFiLTLYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABiLTPYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABnZG9jVHlwZXVvcmcuaXNvLjE4MDEzLjUuMS5tRExsdmFsaWRpdHlJbmZvuQADZnNpZ25lZMB0MjAyNi0wMS0wMVQwMDowMDowMFppdmFsaWRGcm9twHQyMDI2LTAxLTAxVDAwOjAwOjAwWmp2YWxpZFVudGlswHQyMDMxLTAxLTAxVDAwOjAwOjAwWmZzdGF0dXO5AARkdHlwZW9Ub2tlblN0YXR1c0xpc3RncHVycG9zZWpyZXZvY2F0aW9uZWluZGV4AmN1cml4O2h0dHBzOi8vcmVmZXJlbmNlLWlzc3Vlci5pZ3JhbnQuaW8uZXhhbXBsZS9zdGF0dXMvbWRsLWVhYS0y2EBYQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+    "decoded_protected_header": {
+      "alg": "ES256"
+    },
+    "decoded_mso": {
+      "version": "1.0",
+      "digestAlgorithm": "SHA-256",
+      "docType": "org.iso.18013.5.1.mDL",
+      "validityInfo": {
+        "signed": "2026-01-01T00:00:00Z",
+        "validFrom": "2026-01-01T00:00:00Z",
+        "validUntil": "2031-01-01T00:00:00Z"
+      },
+      "valueDigests": "<32-byte digests per element; bytes elided>",
+      "deviceKeyInfo": "<COSE_Key (P-256, placeholder coordinates)>",
+      "status": {
+        "type": "TokenStatusList",
+        "purpose": "revocation",
+        "index": 2,
+        "uri": "https://reference-issuer.igrant.io.example/status/mdl-eaa-2"
+      }
+    },
+    "decoded_namespaces": {
+      "org.iso.18013.5.1": [
+        {
+          "digestID": 0,
+          "elementIdentifier": "given_name",
+          "elementValue": "Erika"
+        },
+        {
+          "digestID": 1,
+          "elementIdentifier": "family_name",
+          "elementValue": "Mustermann"
+        },
+        {
+          "digestID": 2,
+          "elementIdentifier": "document_number",
+          "elementValue": "MDL-0002"
+        },
+        {
+          "digestID": 3,
+          "elementIdentifier": "issuing_authority",
+          "elementValue": "iGrant.io Reference Authority"
+        },
+        {
+          "digestID": 4,
+          "elementIdentifier": "issue_date",
+          "elementValue": "2026-01-01"
+        }
+      ]
+    }
+  },
+  {
+    "sample_id": "mdl-eaa-3",
+    "title": "MDL-EAA-3: non-mDL with category data element",
+    "description": "Non-mDL credential using the ISO/IEC 23220-2 namespace, plus a category data element in the ETSI namespace flagging the credential as non-qualified, non-public-body.",
+    "tier": "ordinary-eaa",
+    "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBqzCCAVGgAwIBAgIBATAKBggqhkjOPQQDAjBLMSgwJgYDVQQDEx9pR3JhbnQu\naW8gbWRvYyBSZWZlcmVuY2UgSXNzdWVyMRIwEAYDVQQKEwlpR3JhbnQuaW8xCzAJ\nBgNVBAYTAlNFMB4XDTI2MDEwMTAwMDAwMFoXDTMxMDEwMTAwMDAwMFowSzEoMCYG\nA1UEAxMfaUdyYW50LmlvIG1kb2MgUmVmZXJlbmNlIElzc3VlcjESMBAGA1UEChMJ\naUdyYW50LmlvMQswCQYDVQQGEwJTRTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA\nBK/nUSPhzck701KIjigRMNDMdoBoxiFpCu2h4a7+5Tc9HGhfb25vfa5I83UcLq59\n68rFP+CKiYD8y8ox1IqSmNOjJjAkMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0P\nAQH/BAQDAgKEMAoGCCqGSM49BAMCA0gAMEUCIQC7o5j1ecSct71zgxLg1hDZPgKj\nMAcUQpmUNPwxoJaWkAIgTkAwvGJ85jLQCP9wAjTmkSVe7yZ8Hh/IrpznRLsH8nA=\n-----END CERTIFICATE-----",
+    "exercises_controls": [
+      "EAA-6.1-03",
+      "EAA-6.2.2.1-01",
+      "EAA-6.2.2.1-03",
+      "EAA-6.2.3-01",
+      "EAA-6.2.3-04",
+      "EAA-6.2.4.1-03"
+    ],
+    "generated_by": "iGrant.io mdoc Reference Generator (cbor-x, placeholder signatures)",
+    "generated_at": "2026-05-05T19:41:49.673Z",
+    "profile": "mdoc",
+    "cbor_base64": "uQACam5hbWVTcGFjZXO5AAJvb3JnLmlzby4yMzIyMC4xhdgYWFa5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRABsZWxlbWVudFZhbHVlZEFubmFxZWxlbWVudElkZW50aWZpZXJqZ2l2ZW5fbmFtZdgYWFi5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRAFsZWxlbWVudFZhbHVlZVNtaXRocWVsZW1lbnRJZGVudGlmaWVya2ZhbWlseV9uYW1l2BhYX7kABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAmxlbGVtZW50VmFsdWVoRUFBLTAwMDNxZWxlbWVudElkZW50aWZpZXJvZG9jdW1lbnRfbnVtYmVy2BhYcLkABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEA2xlbGVtZW50VmFsdWVuQWNtZSBBdXRob3JpdHlxZWxlbWVudElkZW50aWZpZXJ4GWlzc3VpbmdfYXV0aG9yaXR5X3VuaWNvZGXYGFhcuQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQEbGVsZW1lbnRWYWx1ZWoyMDI2LTAxLTAxcWVsZW1lbnRJZGVudGlmaWVyamlzc3VlX2RhdGV4GG9yZy5ldHNpLjAxOTQ3MjAxLjAxMDEwMYHYGFhyuQAEZnJhbmRvbdhAUAAAAAAAAAAAAAAAAAAAAABoZGlnZXN0SUQAbGVsZW1lbnRWYWx1ZXghdXJuOmV4YW1wbGU6ZWFhOmNhdGVnb3J5OmludGVybmFscWVsZW1lbnRJZGVudGlmaWVyaGNhdGVnb3J5amlzc3VlckF1dGiERrkAAWExJrkAAFkCTdgYWQJIuQAGZ3ZlcnNpb25jMS4wb2RpZ2VzdEFsZ29yaXRobWdTSEEtMjU2bHZhbHVlRGlnZXN0c7kAAm9vcmcuaXNvLjIzMjIwLjG5AAVhMNhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGEx2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYTLYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhM9hAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGE02EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeBhvcmcuZXRzaS4wMTk0NzIwMS4wMTAxMDG5AAFhMNhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG1kZXZpY2VLZXlJbmZvuQABaWRldmljZUtlebkABGExAmItMQFiLTLYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABiLTPYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABnZG9jVHlwZXNvcmcuZXhhbXBsZS50ZXN0LnYxbHZhbGlkaXR5SW5mb7kAA2ZzaWduZWTAdDIwMjYtMDEtMDFUMDA6MDA6MDBaaXZhbGlkRnJvbcB0MjAyNi0wMS0wMVQwMDowMDowMFpqdmFsaWRVbnRpbMB0MjAzMS0wMS0wMVQwMDowMDowMFrYQFhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+    "decoded_protected_header": {
+      "alg": "ES256"
+    },
+    "decoded_mso": {
+      "version": "1.0",
+      "digestAlgorithm": "SHA-256",
+      "docType": "org.example.test.v1",
+      "validityInfo": {
+        "signed": "2026-01-01T00:00:00Z",
+        "validFrom": "2026-01-01T00:00:00Z",
+        "validUntil": "2031-01-01T00:00:00Z"
+      },
+      "valueDigests": "<32-byte digests per element; bytes elided>",
+      "deviceKeyInfo": "<COSE_Key (P-256, placeholder coordinates)>"
+    },
+    "decoded_namespaces": {
+      "org.iso.23220.1": [
+        {
+          "digestID": 0,
+          "elementIdentifier": "given_name",
+          "elementValue": "Anna"
+        },
+        {
+          "digestID": 1,
+          "elementIdentifier": "family_name",
+          "elementValue": "Smith"
+        },
+        {
+          "digestID": 2,
+          "elementIdentifier": "document_number",
+          "elementValue": "EAA-0003"
+        },
+        {
+          "digestID": 3,
+          "elementIdentifier": "issuing_authority_unicode",
+          "elementValue": "Acme Authority"
+        },
+        {
+          "digestID": 4,
+          "elementIdentifier": "issue_date",
+          "elementValue": "2026-01-01"
+        }
+      ],
+      "org.etsi.01947201.010101": [
+        {
+          "digestID": 0,
+          "elementIdentifier": "category",
+          "elementValue": "urn:example:eaa:category:internal"
+        }
+      ]
+    }
+  },
+  {
+    "sample_id": "mdl-eaa-4",
+    "title": "MDL-EAA-4: mdoc QEAA with qualified URN",
+    "description": "Non-mDL credential at the QEAA tier with category=urn:etsi:esi:eaa:eu:qualified, status carried in MSO, and the issuer cert in the COSE x5chain header parameter.",
+    "tier": "qeaa",
+    "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBqzCCAVGgAwIBAgIBATAKBggqhkjOPQQDAjBLMSgwJgYDVQQDEx9pR3JhbnQu\naW8gbWRvYyBSZWZlcmVuY2UgSXNzdWVyMRIwEAYDVQQKEwlpR3JhbnQuaW8xCzAJ\nBgNVBAYTAlNFMB4XDTI2MDEwMTAwMDAwMFoXDTMxMDEwMTAwMDAwMFowSzEoMCYG\nA1UEAxMfaUdyYW50LmlvIG1kb2MgUmVmZXJlbmNlIElzc3VlcjESMBAGA1UEChMJ\naUdyYW50LmlvMQswCQYDVQQGEwJTRTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA\nBK/nUSPhzck701KIjigRMNDMdoBoxiFpCu2h4a7+5Tc9HGhfb25vfa5I83UcLq59\n68rFP+CKiYD8y8ox1IqSmNOjJjAkMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0P\nAQH/BAQDAgKEMAoGCCqGSM49BAMCA0gAMEUCIQC7o5j1ecSct71zgxLg1hDZPgKj\nMAcUQpmUNPwxoJaWkAIgTkAwvGJ85jLQCP9wAjTmkSVe7yZ8Hh/IrpznRLsH8nA=\n-----END CERTIFICATE-----",
+    "exercises_controls": [
+      "EAA-6.1-03",
+      "QEAA-6.2.2.2-01",
+      "QEAA-6.2.2.2-02",
+      "QEAA-6.2.10.2-01",
+      "QEAA-6.6.2-04"
+    ],
+    "generated_by": "iGrant.io mdoc Reference Generator (cbor-x, placeholder signatures)",
+    "generated_at": "2026-05-05T19:41:49.673Z",
+    "profile": "mdoc",
+    "cbor_base64": "uQACam5hbWVTcGFjZXO5AAJvb3JnLmlzby4yMzIyMC4xhdgYWFm5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRABsZWxlbWVudFZhbHVlZ0JlYXRyaXpxZWxlbWVudElkZW50aWZpZXJqZ2l2ZW5fbmFtZdgYWFi5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRAFsZWxlbWVudFZhbHVlZUNvc3RhcWVsZW1lbnRJZGVudGlmaWVya2ZhbWlseV9uYW1l2BhYYLkABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAmxlbGVtZW50VmFsdWVpUUVBQS0wMDA0cWVsZW1lbnRJZGVudGlmaWVyb2RvY3VtZW50X251bWJlctgYWHC5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRANsZWxlbWVudFZhbHVlblJlZmVyZW5jZSBRVFNQcWVsZW1lbnRJZGVudGlmaWVyeBlpc3N1aW5nX2F1dGhvcml0eV91bmljb2Rl2BhYXLkABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEBGxlbGVtZW50VmFsdWVqMjAyNi0wMS0wMXFlbGVtZW50SWRlbnRpZmllcmppc3N1ZV9kYXRleBhvcmcuZXRzaS4wMTk0NzIwMS4wMTAxMDGB2BhYbrkABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAGxlbGVtZW50VmFsdWV4HXVybjpldHNpOmVzaTplYWE6ZXU6cXVhbGlmaWVkcWVsZW1lbnRJZGVudGlmaWVyaGNhdGVnb3J5amlzc3VlckF1dGiEWQG+uQACYTEmYjMzgdhAWQGvMIIBqzCCAVGgAwIBAgIBATAKBggqhkjOPQQDAjBLMSgwJgYDVQQDEx9pR3JhbnQuaW8gbWRvYyBSZWZlcmVuY2UgSXNzdWVyMRIwEAYDVQQKEwlpR3JhbnQuaW8xCzAJBgNVBAYTAlNFMB4XDTI2MDEwMTAwMDAwMFoXDTMxMDEwMTAwMDAwMFowSzEoMCYGA1UEAxMfaUdyYW50LmlvIG1kb2MgUmVmZXJlbmNlIElzc3VlcjESMBAGA1UEChMJaUdyYW50LmlvMQswCQYDVQQGEwJTRTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABK/nUSPhzck701KIjigRMNDMdoBoxiFpCu2h4a7+5Tc9HGhfb25vfa5I83UcLq5968rFP+CKiYD8y8ox1IqSmNOjJjAkMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0PAQH/BAQDAgKEMAoGCCqGSM49BAMCA0gAMEUCIQC7o5j1ecSct71zgxLg1hDZPgKjMAcUQpmUNPwxoJaWkAIgTkAwvGJ85jLQCP9wAjTmkSVe7yZ8Hh/IrpznRLsH8nC5AABZAsTYGFkCv7kAB2d2ZXJzaW9uYzEuMG9kaWdlc3RBbGdvcml0aG1nU0hBLTI1Nmx2YWx1ZURpZ2VzdHO5AAJvb3JnLmlzby4yMzIyMC4xuQAFYTDYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhMdhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGEy2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYTPYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhNNhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgYb3JnLmV0c2kuMDE5NDcyMDEuMDEwMTAxuQABYTDYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABtZGV2aWNlS2V5SW5mb7kAAWlkZXZpY2VLZXm5AARhMQJiLTEBYi0y2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYi0z2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZ2RvY1R5cGVzb3JnLmV4YW1wbGUucWVhYS52MWx2YWxpZGl0eUluZm+5AANmc2lnbmVkwHQyMDI2LTAxLTAxVDAwOjAwOjAwWml2YWxpZEZyb23AdDIwMjYtMDEtMDFUMDA6MDA6MDBaanZhbGlkVW50aWzAdDIwMzEtMDEtMDFUMDA6MDA6MDBaZnN0YXR1c7kABGR0eXBlb1Rva2VuU3RhdHVzTGlzdGdwdXJwb3NlanJldm9jYXRpb25laW5kZXgEY3VyaXg4aHR0cHM6Ly9yZWZlcmVuY2UtaXNzdWVyLmlncmFudC5pby5leGFtcGxlL3N0YXR1cy9xZWFhLTTYQFhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+    "decoded_protected_header": {
+      "alg": "ES256",
+      "x5chain": "<1 cert, 431 bytes>"
+    },
+    "decoded_mso": {
+      "version": "1.0",
+      "digestAlgorithm": "SHA-256",
+      "docType": "org.example.qeaa.v1",
+      "validityInfo": {
+        "signed": "2026-01-01T00:00:00Z",
+        "validFrom": "2026-01-01T00:00:00Z",
+        "validUntil": "2031-01-01T00:00:00Z"
+      },
+      "valueDigests": "<32-byte digests per element; bytes elided>",
+      "deviceKeyInfo": "<COSE_Key (P-256, placeholder coordinates)>",
+      "status": {
+        "type": "TokenStatusList",
+        "purpose": "revocation",
+        "index": 4,
+        "uri": "https://reference-issuer.igrant.io.example/status/qeaa-4"
+      }
+    },
+    "decoded_namespaces": {
+      "org.iso.23220.1": [
+        {
+          "digestID": 0,
+          "elementIdentifier": "given_name",
+          "elementValue": "Beatriz"
+        },
+        {
+          "digestID": 1,
+          "elementIdentifier": "family_name",
+          "elementValue": "Costa"
+        },
+        {
+          "digestID": 2,
+          "elementIdentifier": "document_number",
+          "elementValue": "QEAA-0004"
+        },
+        {
+          "digestID": 3,
+          "elementIdentifier": "issuing_authority_unicode",
+          "elementValue": "Reference QTSP"
+        },
+        {
+          "digestID": 4,
+          "elementIdentifier": "issue_date",
+          "elementValue": "2026-01-01"
+        }
+      ],
+      "org.etsi.01947201.010101": [
+        {
+          "digestID": 0,
+          "elementIdentifier": "category",
+          "elementValue": "urn:etsi:esi:eaa:eu:qualified"
+        }
+      ]
+    }
+  },
+  {
+    "sample_id": "mdl-eaa-5",
+    "title": "MDL-EAA-5: mdoc PuB-EAA with shortLived",
+    "description": "Non-mDL credential at the PuB-EAA tier with category=urn:etsi:esi:eaa:eu:pub and shortLived=true (so revocation status is not required).",
+    "tier": "pub-eaa",
+    "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBqzCCAVGgAwIBAgIBATAKBggqhkjOPQQDAjBLMSgwJgYDVQQDEx9pR3JhbnQu\naW8gbWRvYyBSZWZlcmVuY2UgSXNzdWVyMRIwEAYDVQQKEwlpR3JhbnQuaW8xCzAJ\nBgNVBAYTAlNFMB4XDTI2MDEwMTAwMDAwMFoXDTMxMDEwMTAwMDAwMFowSzEoMCYG\nA1UEAxMfaUdyYW50LmlvIG1kb2MgUmVmZXJlbmNlIElzc3VlcjESMBAGA1UEChMJ\naUdyYW50LmlvMQswCQYDVQQGEwJTRTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA\nBK/nUSPhzck701KIjigRMNDMdoBoxiFpCu2h4a7+5Tc9HGhfb25vfa5I83UcLq59\n68rFP+CKiYD8y8ox1IqSmNOjJjAkMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0P\nAQH/BAQDAgKEMAoGCCqGSM49BAMCA0gAMEUCIQC7o5j1ecSct71zgxLg1hDZPgKj\nMAcUQpmUNPwxoJaWkAIgTkAwvGJ85jLQCP9wAjTmkSVe7yZ8Hh/IrpznRLsH8nA=\n-----END CERTIFICATE-----",
+    "exercises_controls": [
+      "EAA-6.1-03",
+      "PuB-EAA-6.2.2.3-01",
+      "PuB-EAA-6.2.2.3-02",
+      "PuB-EAA-6.2.10.3-01",
+      "EAA-6.2.12-01",
+      "EAA-6.2.12-03",
+      "EAA-6.2.12-04",
+      "PuB-EAA-6.6.3-04"
+    ],
+    "generated_by": "iGrant.io mdoc Reference Generator (cbor-x, placeholder signatures)",
+    "generated_at": "2026-05-05T19:41:49.673Z",
+    "profile": "mdoc",
+    "cbor_base64": "uQACam5hbWVTcGFjZXO5AAJvb3JnLmlzby4yMzIyMC4xhdgYWFi5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRABsZWxlbWVudFZhbHVlZkNhcmxvc3FlbGVtZW50SWRlbnRpZmllcmpnaXZlbl9uYW1l2BhYWbkABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAWxlbGVtZW50VmFsdWVmUml2ZXJhcWVsZW1lbnRJZGVudGlmaWVya2ZhbWlseV9uYW1l2BhYX7kABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAmxlbGVtZW50VmFsdWVoUFVCLTAwMDVxZWxlbWVudElkZW50aWZpZXJvZG9jdW1lbnRfbnVtYmVy2BhYe7kABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEA2xlbGVtZW50VmFsdWV4GFJlZmVyZW5jZSBDaXZpbCBSZWdpc3RyeXFlbGVtZW50SWRlbnRpZmllcngZaXNzdWluZ19hdXRob3JpdHlfdW5pY29kZdgYWFy5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRARsZWxlbWVudFZhbHVlajIwMjYtMDEtMDFxZWxlbWVudElkZW50aWZpZXJqaXNzdWVfZGF0ZXgYb3JnLmV0c2kuMDE5NDcyMDEuMDEwMTAxgtgYWGe5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRABsZWxlbWVudFZhbHVld3VybjpldHNpOmVzaTplYWE6ZXU6cHVicWVsZW1lbnRJZGVudGlmaWVyaGNhdGVnb3J52BhYUrkABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAWxlbGVtZW50VmFsdWX1cWVsZW1lbnRJZGVudGlmaWVyanNob3J0TGl2ZWRqaXNzdWVyQXV0aIRZAb65AAJhMSZiMzOB2EBZAa8wggGrMIIBUaADAgECAgEBMAoGCCqGSM49BAMCMEsxKDAmBgNVBAMTH2lHcmFudC5pbyBtZG9jIFJlZmVyZW5jZSBJc3N1ZXIxEjAQBgNVBAoTCWlHcmFudC5pbzELMAkGA1UEBhMCU0UwHhcNMjYwMTAxMDAwMDAwWhcNMzEwMTAxMDAwMDAwWjBLMSgwJgYDVQQDEx9pR3JhbnQuaW8gbWRvYyBSZWZlcmVuY2UgSXNzdWVyMRIwEAYDVQQKEwlpR3JhbnQuaW8xCzAJBgNVBAYTAlNFMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEr+dRI+HNyTvTUoiOKBEw0Mx2gGjGIWkK7aHhrv7lNz0caF9vbm99rkjzdRwurn3rysU/4IqJgPzLyjHUipKY06MmMCQwEgYDVR0TAQH/BAgwBgEB/wIBADAOBgNVHQ8BAf8EBAMCAoQwCgYIKoZIzj0EAwIDSAAwRQIhALujmPV5xJy3vXODEuDWENk+AqMwBxRCmZQ0/DGglpaQAiBOQDC8YnzmMtAI/3ACNOaRJV7vJnweH8iunOdEuwfycLkAAFkCddgYWQJwuQAGZ3ZlcnNpb25jMS4wb2RpZ2VzdEFsZ29yaXRobWdTSEEtMjU2bHZhbHVlRGlnZXN0c7kAAm9vcmcuaXNvLjIzMjIwLjG5AAVhMNhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGEx2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYTLYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhM9hAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGE02EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeBhvcmcuZXRzaS4wMTk0NzIwMS4wMTAxMDG5AAJhMNhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGEx2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbWRldmljZUtleUluZm+5AAFpZGV2aWNlS2V5uQAEYTECYi0xAWItMthAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGItM9hAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGdkb2NUeXBldW9yZy5leGFtcGxlLnB1YmVhYS52MWx2YWxpZGl0eUluZm+5AANmc2lnbmVkwHQyMDI2LTAxLTAxVDAwOjAwOjAwWml2YWxpZEZyb23AdDIwMjYtMDEtMDFUMDA6MDA6MDBaanZhbGlkVW50aWzAdDIwMjYtMDItMDFUMDA6MDA6MDBa2EBYQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+    "decoded_protected_header": {
+      "alg": "ES256",
+      "x5chain": "<1 cert, 431 bytes>"
+    },
+    "decoded_mso": {
+      "version": "1.0",
+      "digestAlgorithm": "SHA-256",
+      "docType": "org.example.pubeaa.v1",
+      "validityInfo": {
+        "signed": "2026-01-01T00:00:00Z",
+        "validFrom": "2026-01-01T00:00:00Z",
+        "validUntil": "2026-02-01T00:00:00Z"
+      },
+      "valueDigests": "<32-byte digests per element; bytes elided>",
+      "deviceKeyInfo": "<COSE_Key (P-256, placeholder coordinates)>"
+    },
+    "decoded_namespaces": {
+      "org.iso.23220.1": [
+        {
+          "digestID": 0,
+          "elementIdentifier": "given_name",
+          "elementValue": "Carlos"
+        },
+        {
+          "digestID": 1,
+          "elementIdentifier": "family_name",
+          "elementValue": "Rivera"
+        },
+        {
+          "digestID": 2,
+          "elementIdentifier": "document_number",
+          "elementValue": "PUB-0005"
+        },
+        {
+          "digestID": 3,
+          "elementIdentifier": "issuing_authority_unicode",
+          "elementValue": "Reference Civil Registry"
+        },
+        {
+          "digestID": 4,
+          "elementIdentifier": "issue_date",
+          "elementValue": "2026-01-01"
+        }
+      ],
+      "org.etsi.01947201.010101": [
+        {
+          "digestID": 0,
+          "elementIdentifier": "category",
+          "elementValue": "urn:etsi:esi:eaa:eu:pub"
+        },
+        {
+          "digestID": 1,
+          "elementIdentifier": "shortLived",
+          "elementValue": true
+        }
+      ]
+    }
+  },
+  {
     "sample_id": "sjv-eaa-1",
     "title": "SJV-EAA-1: Baseline mandatory + given_name + family_name",
     "description": "Mandatory elements only with x5c, iss, issuing_authority, given_name, family_name. No selective disclosures. No key binding.",
-    "profile": "sd-jwt-vc",
     "tier": "ordinary-eaa",
+    "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBZzCCAQ2gAwIBAgIBATAKBggqhkjOPQQDAjApMScwJQYDVQQDEx5pR3JhbnQu\naW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwHhcNMjYwNTAyMDAxMzA4WhcNMzEwNTAx\nMDAxMzA4WjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1\nZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQi2ylXkE813vvspsFD3qd0ZMCZ\ntoXvYONk4/KEslGq1kIJGt+Ssj7x4po/fhO1s3I4uK/68knAOII4gzpZG/CAoyYw\nJDASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIChDAKBggqhkjOPQQD\nAgNIADBFAiEAhKwQMkvtcYVNnDuFSG7zemjwxyVPOmVMy6QFGP7sxZQCIDd8/l3Q\n9VS3jazW8BDdWwEIibsknHsbW7gwDGgGUl4Y\n-----END CERTIFICATE-----",
+    "exercises_controls": [
+      "EAA-5.1-01",
+      "EAA-5.2.1.2-01",
+      "EAA-5.2.1.2-03",
+      "EAA-5.2.4.1-03",
+      "EAA-5.2.7.1-01",
+      "EAA-5.2.7.1-03"
+    ],
+    "generated_by": "iGrant.io EAA Reference Generator v1",
+    "generated_at": "2026-05-02T00:13:08.092Z",
+    "profile": "sd-jwt-vc",
     "compact_serialisation": "eyJhbGciOiJFUzI1NiIsInR5cCI6ImRjK3NkLWp3dCIsIng1YyI6WyJNSUlCWnpDQ0FRMmdBd0lCQWdJQkFUQUtCZ2dxaGtqT1BRUURBakFwTVNjd0pRWURWUVFERXg1cFIzSmhiblF1YVc4Z1JVRkJJRkpsWm1WeVpXNWpaU0JKYzNOMVpYSXdIaGNOTWpZd05UQXlNREF4TXpBNFdoY05NekV3TlRBeE1EQXhNekE0V2pBcE1TY3dKUVlEVlFRREV4NXBSM0poYm5RdWFXOGdSVUZCSUZKbFptVnlaVzVqWlNCSmMzTjFaWEl3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVFpMnlsWGtFODEzdnZzcHNGRDNxZDBaTUNadG9YdllPTms0L0tFc2xHcTFrSUpHdCtTc2o3eDRwby9maE8xczNJNHVLLzY4a25BT0lJNGd6cFpHL0NBb3lZd0pEQVNCZ05WSFJNQkFmOEVDREFHQVFIL0FnRUFNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQUtCZ2dxaGtqT1BRUURBZ05JQURCRkFpRUFoS3dRTWt2dGNZVk5uRHVGU0c3emVtand4eVZQT21WTXk2UUZHUDdzeFpRQ0lEZDgvbDNROVZTM2phelc4QkRkV3dFSWlic2tuSHNiVzdnd0RHZ0dVbDRZIl19.eyJpc3MiOiJodHRwczovL3JlZmVyZW5jZS1pc3N1ZXIuaWdyYW50LmlvLmV4YW1wbGUiLCJ2Y3QiOiJ1cm46aWdyYW50OmVhYTpyZWZlcmVuY2UvdjEiLCJ2Y3QjaW50ZWdyaXR5Ijoic2hhMjU2LTliMWQ2ZTNjNDZkYjhhNmQyZjZkYjIwY2JhODVlOWU2ZGJlM2Q4ZjNhNGIzYTRlYWVmMmMzYzRlMWQ4ZDZlN2YiLCJpYXQiOjE3Nzc2ODA3ODgsIm5iZiI6MTc3NzY4MDc4OCwiZXhwIjoxODQwNzUyNzg4LCJpc3N1aW5nX2F1dGhvcml0eSI6ImlHcmFudC5pbyBSZWZlcmVuY2UgQXV0aG9yaXR5IiwiZ2l2ZW5fbmFtZSI6IkVyaWthIiwiZmFtaWx5X25hbWUiOiJNdXN0ZXJtYW5uIn0.q3EMCtJmAyv6N3nnw1E_ygLY7ABF3QMq2Ve-j8H9pACJvi8ZIPicqRj7aCicVByF0liZl28NHo0WD5u8sX_vsQ~",
     "decoded_header": {
       "alg": "ES256",
@@ -7840,7 +11446,13 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
       "issuing_authority": "iGrant.io Reference Authority",
       "given_name": "Erika",
       "family_name": "Mustermann"
-    },
+    }
+  },
+  {
+    "sample_id": "sjv-eaa-2",
+    "title": "SJV-EAA-2: Baseline + cnf JWK",
+    "description": "Mandatory elements plus a cnf claim binding the credential to the wallet public key. No selective disclosures.",
+    "tier": "ordinary-eaa",
     "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBZzCCAQ2gAwIBAgIBATAKBggqhkjOPQQDAjApMScwJQYDVQQDEx5pR3JhbnQu\naW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwHhcNMjYwNTAyMDAxMzA4WhcNMzEwNTAx\nMDAxMzA4WjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1\nZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQi2ylXkE813vvspsFD3qd0ZMCZ\ntoXvYONk4/KEslGq1kIJGt+Ssj7x4po/fhO1s3I4uK/68knAOII4gzpZG/CAoyYw\nJDASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIChDAKBggqhkjOPQQD\nAgNIADBFAiEAhKwQMkvtcYVNnDuFSG7zemjwxyVPOmVMy6QFGP7sxZQCIDd8/l3Q\n9VS3jazW8BDdWwEIibsknHsbW7gwDGgGUl4Y\n-----END CERTIFICATE-----",
     "exercises_controls": [
       "EAA-5.1-01",
@@ -7848,17 +11460,13 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
       "EAA-5.2.1.2-03",
       "EAA-5.2.4.1-03",
       "EAA-5.2.7.1-01",
-      "EAA-5.2.7.1-03"
+      "EAA-5.2.7.1-03",
+      "EAA-5.5-01",
+      "EAA-5.5-02"
     ],
     "generated_by": "iGrant.io EAA Reference Generator v1",
-    "generated_at": "2026-05-02T00:13:08.092Z"
-  },
-  {
-    "sample_id": "sjv-eaa-2",
-    "title": "SJV-EAA-2: Baseline + cnf JWK",
-    "description": "Mandatory elements plus a cnf claim binding the credential to the wallet public key. No selective disclosures.",
+    "generated_at": "2026-05-02T00:13:08.094Z",
     "profile": "sd-jwt-vc",
-    "tier": "ordinary-eaa",
     "compact_serialisation": "eyJhbGciOiJFUzI1NiIsInR5cCI6ImRjK3NkLWp3dCIsIng1YyI6WyJNSUlCWnpDQ0FRMmdBd0lCQWdJQkFUQUtCZ2dxaGtqT1BRUURBakFwTVNjd0pRWURWUVFERXg1cFIzSmhiblF1YVc4Z1JVRkJJRkpsWm1WeVpXNWpaU0JKYzNOMVpYSXdIaGNOTWpZd05UQXlNREF4TXpBNFdoY05NekV3TlRBeE1EQXhNekE0V2pBcE1TY3dKUVlEVlFRREV4NXBSM0poYm5RdWFXOGdSVUZCSUZKbFptVnlaVzVqWlNCSmMzTjFaWEl3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVFpMnlsWGtFODEzdnZzcHNGRDNxZDBaTUNadG9YdllPTms0L0tFc2xHcTFrSUpHdCtTc2o3eDRwby9maE8xczNJNHVLLzY4a25BT0lJNGd6cFpHL0NBb3lZd0pEQVNCZ05WSFJNQkFmOEVDREFHQVFIL0FnRUFNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQUtCZ2dxaGtqT1BRUURBZ05JQURCRkFpRUFoS3dRTWt2dGNZVk5uRHVGU0c3emVtand4eVZQT21WTXk2UUZHUDdzeFpRQ0lEZDgvbDNROVZTM2phelc4QkRkV3dFSWlic2tuSHNiVzdnd0RHZ0dVbDRZIl19.eyJpc3MiOiJodHRwczovL3JlZmVyZW5jZS1pc3N1ZXIuaWdyYW50LmlvLmV4YW1wbGUiLCJ2Y3QiOiJ1cm46aWdyYW50OmVhYTpyZWZlcmVuY2UvdjEiLCJ2Y3QjaW50ZWdyaXR5Ijoic2hhMjU2LTliMWQ2ZTNjNDZkYjhhNmQyZjZkYjIwY2JhODVlOWU2ZGJlM2Q4ZjNhNGIzYTRlYWVmMmMzYzRlMWQ4ZDZlN2YiLCJpYXQiOjE3Nzc2ODA3ODgsIm5iZiI6MTc3NzY4MDc4OCwiZXhwIjoxODQwNzUyNzg4LCJpc3N1aW5nX2F1dGhvcml0eSI6ImlHcmFudC5pbyBSZWZlcmVuY2UgQXV0aG9yaXR5IiwiZ2l2ZW5fbmFtZSI6IkVyaWthIiwiZmFtaWx5X25hbWUiOiJNdXN0ZXJtYW5uIiwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsImNydiI6IlAtMjU2IiwieCI6IkhsZzBZSzNWYTdvaTQwSGJXOGRvOGxnbFV0XzlIcGdwNUEtVm9POEFuUDgiLCJ5IjoiRGNHZ3N4cjdrbU5vV3VmSDhqVmlNVzR5LTNGRFU2MUQ4ZGF1QWVyYWd6SSJ9fX0.Muwtp_RpC0Pu8diAmTolDum5_GEDsjaTyIJuLPLqmCENCiRqEYMJo7owaJhVf5F0PGq11vQcm1F2Qfzfw2gwBw~",
     "decoded_header": {
       "alg": "ES256",
@@ -7885,7 +11493,13 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
           "y": "DcGgsxr7kmNoWufH8jViMW4y-3FDU61D8dauAeragzI"
         }
       }
-    },
+    }
+  },
+  {
+    "sample_id": "sjv-eaa-3",
+    "title": "SJV-EAA-3: Baseline + selective disclosure",
+    "description": "given_name and family_name are selectively-disclosable claims. The payload carries _sd digests and _sd_alg; the disclosures are appended after the JWT in the compact serialisation.",
+    "tier": "ordinary-eaa",
     "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBZzCCAQ2gAwIBAgIBATAKBggqhkjOPQQDAjApMScwJQYDVQQDEx5pR3JhbnQu\naW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwHhcNMjYwNTAyMDAxMzA4WhcNMzEwNTAx\nMDAxMzA4WjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1\nZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQi2ylXkE813vvspsFD3qd0ZMCZ\ntoXvYONk4/KEslGq1kIJGt+Ssj7x4po/fhO1s3I4uK/68knAOII4gzpZG/CAoyYw\nJDASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIChDAKBggqhkjOPQQD\nAgNIADBFAiEAhKwQMkvtcYVNnDuFSG7zemjwxyVPOmVMy6QFGP7sxZQCIDd8/l3Q\n9VS3jazW8BDdWwEIibsknHsbW7gwDGgGUl4Y\n-----END CERTIFICATE-----",
     "exercises_controls": [
       "EAA-5.1-01",
@@ -7893,19 +11507,11 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
       "EAA-5.2.1.2-03",
       "EAA-5.2.4.1-03",
       "EAA-5.2.7.1-01",
-      "EAA-5.2.7.1-03",
-      "EAA-5.5-01",
-      "EAA-5.5-02"
+      "EAA-5.2.7.1-03"
     ],
     "generated_by": "iGrant.io EAA Reference Generator v1",
-    "generated_at": "2026-05-02T00:13:08.094Z"
-  },
-  {
-    "sample_id": "sjv-eaa-3",
-    "title": "SJV-EAA-3: Baseline + selective disclosure",
-    "description": "given_name and family_name are selectively-disclosable claims. The payload carries _sd digests and _sd_alg; the disclosures are appended after the JWT in the compact serialisation.",
+    "generated_at": "2026-05-02T00:13:08.095Z",
     "profile": "sd-jwt-vc",
-    "tier": "ordinary-eaa",
     "compact_serialisation": "eyJhbGciOiJFUzI1NiIsInR5cCI6ImRjK3NkLWp3dCIsIng1YyI6WyJNSUlCWnpDQ0FRMmdBd0lCQWdJQkFUQUtCZ2dxaGtqT1BRUURBakFwTVNjd0pRWURWUVFERXg1cFIzSmhiblF1YVc4Z1JVRkJJRkpsWm1WeVpXNWpaU0JKYzNOMVpYSXdIaGNOTWpZd05UQXlNREF4TXpBNFdoY05NekV3TlRBeE1EQXhNekE0V2pBcE1TY3dKUVlEVlFRREV4NXBSM0poYm5RdWFXOGdSVUZCSUZKbFptVnlaVzVqWlNCSmMzTjFaWEl3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVFpMnlsWGtFODEzdnZzcHNGRDNxZDBaTUNadG9YdllPTms0L0tFc2xHcTFrSUpHdCtTc2o3eDRwby9maE8xczNJNHVLLzY4a25BT0lJNGd6cFpHL0NBb3lZd0pEQVNCZ05WSFJNQkFmOEVDREFHQVFIL0FnRUFNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQUtCZ2dxaGtqT1BRUURBZ05JQURCRkFpRUFoS3dRTWt2dGNZVk5uRHVGU0c3emVtand4eVZQT21WTXk2UUZHUDdzeFpRQ0lEZDgvbDNROVZTM2phelc4QkRkV3dFSWlic2tuSHNiVzdnd0RHZ0dVbDRZIl19.eyJpc3MiOiJodHRwczovL3JlZmVyZW5jZS1pc3N1ZXIuaWdyYW50LmlvLmV4YW1wbGUiLCJ2Y3QiOiJ1cm46aWdyYW50OmVhYTpyZWZlcmVuY2UvdjEiLCJ2Y3QjaW50ZWdyaXR5Ijoic2hhMjU2LTliMWQ2ZTNjNDZkYjhhNmQyZjZkYjIwY2JhODVlOWU2ZGJlM2Q4ZjNhNGIzYTRlYWVmMmMzYzRlMWQ4ZDZlN2YiLCJpYXQiOjE3Nzc2ODA3ODgsIm5iZiI6MTc3NzY4MDc4OCwiZXhwIjoxODQwNzUyNzg4LCJpc3N1aW5nX2F1dGhvcml0eSI6ImlHcmFudC5pbyBSZWZlcmVuY2UgQXV0aG9yaXR5IiwiX3NkIjpbIjduUmowWE1NS0U1U0l6TUFsNWNCUWtkRTBRSHVjb1cya1B2Ujh0cFlxaUUiLCJiazh6ZHFLLTRsak04R0lhRVp1TUhhMURySWRSVUY3RTlTN04tUV9JWUhZIl0sIl9zZF9hbGciOiJzaGEtMjU2In0.k8iulx6sd_PXTwddqCch97GChobve0WkzwYIFhBolf1638wZgPPuLC359NCdyOvA-yplNixKPhla3wM5fhWS_A~WyJTbTNPYV9KaWF6bjZQMWZ1WGdCMnRnIiwiZ2l2ZW5fbmFtZSIsIkVyaWthIl0~WyIyc2ZlRU1NYV9TUUN2UDROUXVOTGZRIiwiZmFtaWx5X25hbWUiLCJNdXN0ZXJtYW5uIl0~",
     "decoded_header": {
       "alg": "ES256",
@@ -7929,7 +11535,13 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
         "bk8zdqK-4ljM8GIaEZuMHa1DrIdRUF7E9S7N-Q_IYHY"
       ],
       "_sd_alg": "sha-256"
-    },
+    }
+  },
+  {
+    "sample_id": "sjv-eaa-4",
+    "title": "SJV-EAA-4: + pseudonym",
+    "description": "Carries a pseudonym claim plus key binding (cnf) and selective disclosure. The pseudonym substitutes for natural-person identifiers in attestation flows where the subject must remain unidentifiable.",
+    "tier": "ordinary-eaa",
     "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBZzCCAQ2gAwIBAgIBATAKBggqhkjOPQQDAjApMScwJQYDVQQDEx5pR3JhbnQu\naW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwHhcNMjYwNTAyMDAxMzA4WhcNMzEwNTAx\nMDAxMzA4WjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1\nZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQi2ylXkE813vvspsFD3qd0ZMCZ\ntoXvYONk4/KEslGq1kIJGt+Ssj7x4po/fhO1s3I4uK/68knAOII4gzpZG/CAoyYw\nJDASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIChDAKBggqhkjOPQQD\nAgNIADBFAiEAhKwQMkvtcYVNnDuFSG7zemjwxyVPOmVMy6QFGP7sxZQCIDd8/l3Q\n9VS3jazW8BDdWwEIibsknHsbW7gwDGgGUl4Y\n-----END CERTIFICATE-----",
     "exercises_controls": [
       "EAA-5.1-01",
@@ -7937,17 +11549,13 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
       "EAA-5.2.1.2-03",
       "EAA-5.2.4.1-03",
       "EAA-5.2.7.1-01",
-      "EAA-5.2.7.1-03"
+      "EAA-5.2.7.1-03",
+      "EAA-5.5-01",
+      "EAA-5.5-02"
     ],
     "generated_by": "iGrant.io EAA Reference Generator v1",
-    "generated_at": "2026-05-02T00:13:08.095Z"
-  },
-  {
-    "sample_id": "sjv-eaa-4",
-    "title": "SJV-EAA-4: + pseudonym",
-    "description": "Carries a pseudonym claim plus key binding (cnf) and selective disclosure. The pseudonym substitutes for natural-person identifiers in attestation flows where the subject must remain unidentifiable.",
+    "generated_at": "2026-05-02T00:13:08.096Z",
     "profile": "sd-jwt-vc",
-    "tier": "ordinary-eaa",
     "compact_serialisation": "eyJhbGciOiJFUzI1NiIsInR5cCI6ImRjK3NkLWp3dCIsIng1YyI6WyJNSUlCWnpDQ0FRMmdBd0lCQWdJQkFUQUtCZ2dxaGtqT1BRUURBakFwTVNjd0pRWURWUVFERXg1cFIzSmhiblF1YVc4Z1JVRkJJRkpsWm1WeVpXNWpaU0JKYzNOMVpYSXdIaGNOTWpZd05UQXlNREF4TXpBNFdoY05NekV3TlRBeE1EQXhNekE0V2pBcE1TY3dKUVlEVlFRREV4NXBSM0poYm5RdWFXOGdSVUZCSUZKbFptVnlaVzVqWlNCSmMzTjFaWEl3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVFpMnlsWGtFODEzdnZzcHNGRDNxZDBaTUNadG9YdllPTms0L0tFc2xHcTFrSUpHdCtTc2o3eDRwby9maE8xczNJNHVLLzY4a25BT0lJNGd6cFpHL0NBb3lZd0pEQVNCZ05WSFJNQkFmOEVDREFHQVFIL0FnRUFNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQUtCZ2dxaGtqT1BRUURBZ05JQURCRkFpRUFoS3dRTWt2dGNZVk5uRHVGU0c3emVtand4eVZQT21WTXk2UUZHUDdzeFpRQ0lEZDgvbDNROVZTM2phelc4QkRkV3dFSWlic2tuSHNiVzdnd0RHZ0dVbDRZIl19.eyJpc3MiOiJodHRwczovL3JlZmVyZW5jZS1pc3N1ZXIuaWdyYW50LmlvLmV4YW1wbGUiLCJ2Y3QiOiJ1cm46aWdyYW50OmVhYTpyZWZlcmVuY2UvdjEiLCJ2Y3QjaW50ZWdyaXR5Ijoic2hhMjU2LTliMWQ2ZTNjNDZkYjhhNmQyZjZkYjIwY2JhODVlOWU2ZGJlM2Q4ZjNhNGIzYTRlYWVmMmMzYzRlMWQ4ZDZlN2YiLCJpYXQiOjE3Nzc2ODA3ODgsIm5iZiI6MTc3NzY4MDc4OCwiZXhwIjoxODQwNzUyNzg4LCJpc3N1aW5nX2F1dGhvcml0eSI6ImlHcmFudC5pbyBSZWZlcmVuY2UgQXV0aG9yaXR5IiwicHNldWRvbnltIjoicG4tMmM0ZjNiMWE4ZTdkIiwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsImNydiI6IlAtMjU2IiwieCI6IkhsZzBZSzNWYTdvaTQwSGJXOGRvOGxnbFV0XzlIcGdwNUEtVm9POEFuUDgiLCJ5IjoiRGNHZ3N4cjdrbU5vV3VmSDhqVmlNVzR5LTNGRFU2MUQ4ZGF1QWVyYWd6SSJ9fSwiX3NkIjpbImMzS00xdDVLdjJXS2E2eTJqdUtBRHU5WGJiRV9FQlFMVE5IWkdUeFY4VmciLCJtRjEzb205N1BESnR3TXgxdmtHYy02WUo1Yks2OGJBVEFiWEQ3WW5ISjdvIl0sIl9zZF9hbGciOiJzaGEtMjU2In0.Tx0F3XSVxHn--RE3SEwa7MjXvPDjhvYv6EnfRylnYleAQQ0Hb9rWwBQhUR2qEKulDh3TUezr2iRngs150lSOaQ~WyJsaDNOOEVtWFd4dF9GUndZblByZ0VnIiwiZ2l2ZW5fbmFtZSIsIkVyaWthIl0~WyJtcmFXSHI3Rko3YXNDanpMbERiZTRnIiwiZmFtaWx5X25hbWUiLCJNdXN0ZXJtYW5uIl0~",
     "decoded_header": {
       "alg": "ES256",
@@ -7980,7 +11588,13 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
         "mF13om97PDJtwMx1vkGc-6YJ5bK68bATAbXD7YnHJ7o"
       ],
       "_sd_alg": "sha-256"
-    },
+    }
+  },
+  {
+    "sample_id": "sjv-eaa-5",
+    "title": "SJV-EAA-5: + oneTime",
+    "description": "Carries the oneTime claim (a JSON null primitive) marking the credential as single-use. Includes key binding and selective disclosure.",
+    "tier": "ordinary-eaa",
     "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBZzCCAQ2gAwIBAgIBATAKBggqhkjOPQQDAjApMScwJQYDVQQDEx5pR3JhbnQu\naW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwHhcNMjYwNTAyMDAxMzA4WhcNMzEwNTAx\nMDAxMzA4WjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1\nZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQi2ylXkE813vvspsFD3qd0ZMCZ\ntoXvYONk4/KEslGq1kIJGt+Ssj7x4po/fhO1s3I4uK/68knAOII4gzpZG/CAoyYw\nJDASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIChDAKBggqhkjOPQQD\nAgNIADBFAiEAhKwQMkvtcYVNnDuFSG7zemjwxyVPOmVMy6QFGP7sxZQCIDd8/l3Q\n9VS3jazW8BDdWwEIibsknHsbW7gwDGgGUl4Y\n-----END CERTIFICATE-----",
     "exercises_controls": [
       "EAA-5.1-01",
@@ -7993,14 +11607,8 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
       "EAA-5.5-02"
     ],
     "generated_by": "iGrant.io EAA Reference Generator v1",
-    "generated_at": "2026-05-02T00:13:08.096Z"
-  },
-  {
-    "sample_id": "sjv-eaa-5",
-    "title": "SJV-EAA-5: + oneTime",
-    "description": "Carries the oneTime claim (a JSON null primitive) marking the credential as single-use. Includes key binding and selective disclosure.",
+    "generated_at": "2026-05-02T00:13:08.096Z",
     "profile": "sd-jwt-vc",
-    "tier": "ordinary-eaa",
     "compact_serialisation": "eyJhbGciOiJFUzI1NiIsInR5cCI6ImRjK3NkLWp3dCIsIng1YyI6WyJNSUlCWnpDQ0FRMmdBd0lCQWdJQkFUQUtCZ2dxaGtqT1BRUURBakFwTVNjd0pRWURWUVFERXg1cFIzSmhiblF1YVc4Z1JVRkJJRkpsWm1WeVpXNWpaU0JKYzNOMVpYSXdIaGNOTWpZd05UQXlNREF4TXpBNFdoY05NekV3TlRBeE1EQXhNekE0V2pBcE1TY3dKUVlEVlFRREV4NXBSM0poYm5RdWFXOGdSVUZCSUZKbFptVnlaVzVqWlNCSmMzTjFaWEl3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVFpMnlsWGtFODEzdnZzcHNGRDNxZDBaTUNadG9YdllPTms0L0tFc2xHcTFrSUpHdCtTc2o3eDRwby9maE8xczNJNHVLLzY4a25BT0lJNGd6cFpHL0NBb3lZd0pEQVNCZ05WSFJNQkFmOEVDREFHQVFIL0FnRUFNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQUtCZ2dxaGtqT1BRUURBZ05JQURCRkFpRUFoS3dRTWt2dGNZVk5uRHVGU0c3emVtand4eVZQT21WTXk2UUZHUDdzeFpRQ0lEZDgvbDNROVZTM2phelc4QkRkV3dFSWlic2tuSHNiVzdnd0RHZ0dVbDRZIl19.eyJpc3MiOiJodHRwczovL3JlZmVyZW5jZS1pc3N1ZXIuaWdyYW50LmlvLmV4YW1wbGUiLCJ2Y3QiOiJ1cm46aWdyYW50OmVhYTpyZWZlcmVuY2UvdjEiLCJ2Y3QjaW50ZWdyaXR5Ijoic2hhMjU2LTliMWQ2ZTNjNDZkYjhhNmQyZjZkYjIwY2JhODVlOWU2ZGJlM2Q4ZjNhNGIzYTRlYWVmMmMzYzRlMWQ4ZDZlN2YiLCJpYXQiOjE3Nzc2ODA3ODgsIm5iZiI6MTc3NzY4MDc4OCwiZXhwIjoxODQwNzUyNzg4LCJpc3N1aW5nX2F1dGhvcml0eSI6ImlHcmFudC5pbyBSZWZlcmVuY2UgQXV0aG9yaXR5Iiwib25lVGltZSI6bnVsbCwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsImNydiI6IlAtMjU2IiwieCI6IkhsZzBZSzNWYTdvaTQwSGJXOGRvOGxnbFV0XzlIcGdwNUEtVm9POEFuUDgiLCJ5IjoiRGNHZ3N4cjdrbU5vV3VmSDhqVmlNVzR5LTNGRFU2MUQ4ZGF1QWVyYWd6SSJ9fSwiX3NkIjpbIkN1b0E2dFdQM21zLWNYMVJyTXZIMVBhWnhDUm9YY1RMYnJRbmVQZ3Q5RnciLCJURkxuRm1pTGZOM0xZdGNQT1d4Nk1LbU9nekN4S0tvVHhmcWpaQV9vVHljIl0sIl9zZF9hbGciOiJzaGEtMjU2In0.rZRKMGLz0Luo0BYyLdPJbEfo2H6pJj4Il1d_WigOggho3F7bfgnh3U82v5vUgGhwk-FwYP1PTxwRIGE3I9NYyg~WyJnNW8tTG9UbU9wdlpXRmlTemxFdkJnIiwiZ2l2ZW5fbmFtZSIsIkVyaWthIl0~WyJKa1hjREVBdG10d2RUd0Y4ZWhmVlFRIiwiZmFtaWx5X25hbWUiLCJNdXN0ZXJtYW5uIl0~",
     "decoded_header": {
       "alg": "ES256",
@@ -8033,7 +11641,13 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
         "TFLnFmiLfN3LYtcPOWx6MKmOgzCxKKoTxfqjZA_oTyc"
       ],
       "_sd_alg": "sha-256"
-    },
+    }
+  },
+  {
+    "sample_id": "sjv-eaa-6",
+    "title": "SJV-EAA-6: + ShortLived",
+    "description": "Carries the shortLived claim (JSON null) declaring the credential as non-revocable and short-lived. No status component, no key-binding requirement.",
+    "tier": "ordinary-eaa",
     "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBZzCCAQ2gAwIBAgIBATAKBggqhkjOPQQDAjApMScwJQYDVQQDEx5pR3JhbnQu\naW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwHhcNMjYwNTAyMDAxMzA4WhcNMzEwNTAx\nMDAxMzA4WjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1\nZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQi2ylXkE813vvspsFD3qd0ZMCZ\ntoXvYONk4/KEslGq1kIJGt+Ssj7x4po/fhO1s3I4uK/68knAOII4gzpZG/CAoyYw\nJDASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIChDAKBggqhkjOPQQD\nAgNIADBFAiEAhKwQMkvtcYVNnDuFSG7zemjwxyVPOmVMy6QFGP7sxZQCIDd8/l3Q\n9VS3jazW8BDdWwEIibsknHsbW7gwDGgGUl4Y\n-----END CERTIFICATE-----",
     "exercises_controls": [
       "EAA-5.1-01",
@@ -8042,18 +11656,11 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
       "EAA-5.2.4.1-03",
       "EAA-5.2.7.1-01",
       "EAA-5.2.7.1-03",
-      "EAA-5.5-01",
-      "EAA-5.5-02"
+      "EAA-4.2.11.1-03"
     ],
     "generated_by": "iGrant.io EAA Reference Generator v1",
-    "generated_at": "2026-05-02T00:13:08.096Z"
-  },
-  {
-    "sample_id": "sjv-eaa-6",
-    "title": "SJV-EAA-6: + ShortLived",
-    "description": "Carries the shortLived claim (JSON null) declaring the credential as non-revocable and short-lived. No status component, no key-binding requirement.",
+    "generated_at": "2026-05-02T00:13:08.097Z",
     "profile": "sd-jwt-vc",
-    "tier": "ordinary-eaa",
     "compact_serialisation": "eyJhbGciOiJFUzI1NiIsInR5cCI6ImRjK3NkLWp3dCIsIng1YyI6WyJNSUlCWnpDQ0FRMmdBd0lCQWdJQkFUQUtCZ2dxaGtqT1BRUURBakFwTVNjd0pRWURWUVFERXg1cFIzSmhiblF1YVc4Z1JVRkJJRkpsWm1WeVpXNWpaU0JKYzNOMVpYSXdIaGNOTWpZd05UQXlNREF4TXpBNFdoY05NekV3TlRBeE1EQXhNekE0V2pBcE1TY3dKUVlEVlFRREV4NXBSM0poYm5RdWFXOGdSVUZCSUZKbFptVnlaVzVqWlNCSmMzTjFaWEl3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVFpMnlsWGtFODEzdnZzcHNGRDNxZDBaTUNadG9YdllPTms0L0tFc2xHcTFrSUpHdCtTc2o3eDRwby9maE8xczNJNHVLLzY4a25BT0lJNGd6cFpHL0NBb3lZd0pEQVNCZ05WSFJNQkFmOEVDREFHQVFIL0FnRUFNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQUtCZ2dxaGtqT1BRUURBZ05JQURCRkFpRUFoS3dRTWt2dGNZVk5uRHVGU0c3emVtand4eVZQT21WTXk2UUZHUDdzeFpRQ0lEZDgvbDNROVZTM2phelc4QkRkV3dFSWlic2tuSHNiVzdnd0RHZ0dVbDRZIl19.eyJpc3MiOiJodHRwczovL3JlZmVyZW5jZS1pc3N1ZXIuaWdyYW50LmlvLmV4YW1wbGUiLCJ2Y3QiOiJ1cm46aWdyYW50OmVhYTpyZWZlcmVuY2UvdjEiLCJ2Y3QjaW50ZWdyaXR5Ijoic2hhMjU2LTliMWQ2ZTNjNDZkYjhhNmQyZjZkYjIwY2JhODVlOWU2ZGJlM2Q4ZjNhNGIzYTRlYWVmMmMzYzRlMWQ4ZDZlN2YiLCJpYXQiOjE3Nzc2ODA3ODgsIm5iZiI6MTc3NzY4MDc4OCwiZXhwIjoxODQwNzUyNzg4LCJpc3N1aW5nX2F1dGhvcml0eSI6ImlHcmFudC5pbyBSZWZlcmVuY2UgQXV0aG9yaXR5Iiwic2hvcnRMaXZlZCI6bnVsbCwiZ2l2ZW5fbmFtZSI6IkVyaWthIiwiZmFtaWx5X25hbWUiOiJNdXN0ZXJtYW5uIn0.TwixQu8AFwaG2u3EPnKTsxIrNDbpmYzhN09fml-KhtXuzkNSthEX4DgTmfu47X107hxkygHda3V3VJnXtFciZw~",
     "decoded_header": {
       "alg": "ES256",
@@ -8073,7 +11680,13 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
       "shortLived": null,
       "given_name": "Erika",
       "family_name": "Mustermann"
-    },
+    }
+  },
+  {
+    "sample_id": "sjv-eaa-7",
+    "title": "SJV-EAA-7: + status component",
+    "description": "Carries a status claim referencing an IETF Token Status List, plus key binding. The structural status checks (5.2.10.1-*) verify the component is well-formed; the runtime resolver is only exercised against a real endpoint.",
+    "tier": "ordinary-eaa",
     "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBZzCCAQ2gAwIBAgIBATAKBggqhkjOPQQDAjApMScwJQYDVQQDEx5pR3JhbnQu\naW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwHhcNMjYwNTAyMDAxMzA4WhcNMzEwNTAx\nMDAxMzA4WjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1\nZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQi2ylXkE813vvspsFD3qd0ZMCZ\ntoXvYONk4/KEslGq1kIJGt+Ssj7x4po/fhO1s3I4uK/68knAOII4gzpZG/CAoyYw\nJDASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIChDAKBggqhkjOPQQD\nAgNIADBFAiEAhKwQMkvtcYVNnDuFSG7zemjwxyVPOmVMy6QFGP7sxZQCIDd8/l3Q\n9VS3jazW8BDdWwEIibsknHsbW7gwDGgGUl4Y\n-----END CERTIFICATE-----",
     "exercises_controls": [
       "EAA-5.1-01",
@@ -8082,17 +11695,20 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
       "EAA-5.2.4.1-03",
       "EAA-5.2.7.1-01",
       "EAA-5.2.7.1-03",
+      "EAA-5.5-01",
+      "EAA-5.5-02",
+      "EAA-5.2.10.1-03",
+      "EAA-5.2.10.1-04",
+      "EAA-5.2.10.1-06",
+      "EAA-5.2.10.1-08",
+      "EAA-5.2.10.1-09",
+      "EAA-5.2.10.1-10",
+      "EAA-5.2.10.1-11",
       "EAA-4.2.11.1-03"
     ],
     "generated_by": "iGrant.io EAA Reference Generator v1",
-    "generated_at": "2026-05-02T00:13:08.097Z"
-  },
-  {
-    "sample_id": "sjv-eaa-7",
-    "title": "SJV-EAA-7: + status component",
-    "description": "Carries a status claim referencing an IETF Token Status List, plus key binding. The structural status checks (5.2.10.1-*) verify the component is well-formed; the runtime resolver is only exercised against a real endpoint.",
+    "generated_at": "2026-05-02T00:13:08.097Z",
     "profile": "sd-jwt-vc",
-    "tier": "ordinary-eaa",
     "compact_serialisation": "eyJhbGciOiJFUzI1NiIsInR5cCI6ImRjK3NkLWp3dCIsIng1YyI6WyJNSUlCWnpDQ0FRMmdBd0lCQWdJQkFUQUtCZ2dxaGtqT1BRUURBakFwTVNjd0pRWURWUVFERXg1cFIzSmhiblF1YVc4Z1JVRkJJRkpsWm1WeVpXNWpaU0JKYzNOMVpYSXdIaGNOTWpZd05UQXlNREF4TXpBNFdoY05NekV3TlRBeE1EQXhNekE0V2pBcE1TY3dKUVlEVlFRREV4NXBSM0poYm5RdWFXOGdSVUZCSUZKbFptVnlaVzVqWlNCSmMzTjFaWEl3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPUFFNQkJ3TkNBQVFpMnlsWGtFODEzdnZzcHNGRDNxZDBaTUNadG9YdllPTms0L0tFc2xHcTFrSUpHdCtTc2o3eDRwby9maE8xczNJNHVLLzY4a25BT0lJNGd6cFpHL0NBb3lZd0pEQVNCZ05WSFJNQkFmOEVDREFHQVFIL0FnRUFNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQUtCZ2dxaGtqT1BRUURBZ05JQURCRkFpRUFoS3dRTWt2dGNZVk5uRHVGU0c3emVtand4eVZQT21WTXk2UUZHUDdzeFpRQ0lEZDgvbDNROVZTM2phelc4QkRkV3dFSWlic2tuSHNiVzdnd0RHZ0dVbDRZIl19.eyJpc3MiOiJodHRwczovL3JlZmVyZW5jZS1pc3N1ZXIuaWdyYW50LmlvLmV4YW1wbGUiLCJ2Y3QiOiJ1cm46aWdyYW50OmVhYTpyZWZlcmVuY2UvdjEiLCJ2Y3QjaW50ZWdyaXR5Ijoic2hhMjU2LTliMWQ2ZTNjNDZkYjhhNmQyZjZkYjIwY2JhODVlOWU2ZGJlM2Q4ZjNhNGIzYTRlYWVmMmMzYzRlMWQ4ZDZlN2YiLCJpYXQiOjE3Nzc2ODA3ODgsIm5iZiI6MTc3NzY4MDc4OCwiZXhwIjoxODQwNzUyNzg4LCJpc3N1aW5nX2F1dGhvcml0eSI6ImlHcmFudC5pbyBSZWZlcmVuY2UgQXV0aG9yaXR5IiwiZ2l2ZW5fbmFtZSI6IkVyaWthIiwiZmFtaWx5X25hbWUiOiJNdXN0ZXJtYW5uIiwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsImNydiI6IlAtMjU2IiwieCI6IkhsZzBZSzNWYTdvaTQwSGJXOGRvOGxnbFV0XzlIcGdwNUEtVm9POEFuUDgiLCJ5IjoiRGNHZ3N4cjdrbU5vV3VmSDhqVmlNVzR5LTNGRFU2MUQ4ZGF1QWVyYWd6SSJ9fSwic3RhdHVzIjp7InR5cGUiOiJUb2tlblN0YXR1c0xpc3QiLCJwdXJwb3NlIjoicmV2b2NhdGlvbiIsImluZGV4Ijo0MiwidXJpIjoiaHR0cHM6Ly9yZWZlcmVuY2UtaXNzdWVyLmlncmFudC5pby5leGFtcGxlL3N0YXR1cy9zanYtZWFhLTcifX0.WELZMrpAC2IKSJrPLLLYGhgZpXp3-4Z50cd1wYUO1EtvfnKKrZfNAjKWkDtkNwbGbe0RpVgRLYTIqHU3xzDvKA~",
     "decoded_header": {
       "alg": "ES256",
@@ -8125,28 +11741,7 @@ export const SAMPLES_BUNDLE: ReferenceSample[] = [
         "index": 42,
         "uri": "https://reference-issuer.igrant.io.example/status/sjv-eaa-7"
       }
-    },
-    "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBZzCCAQ2gAwIBAgIBATAKBggqhkjOPQQDAjApMScwJQYDVQQDEx5pR3JhbnQu\naW8gRUFBIFJlZmVyZW5jZSBJc3N1ZXIwHhcNMjYwNTAyMDAxMzA4WhcNMzEwNTAx\nMDAxMzA4WjApMScwJQYDVQQDEx5pR3JhbnQuaW8gRUFBIFJlZmVyZW5jZSBJc3N1\nZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQi2ylXkE813vvspsFD3qd0ZMCZ\ntoXvYONk4/KEslGq1kIJGt+Ssj7x4po/fhO1s3I4uK/68knAOII4gzpZG/CAoyYw\nJDASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIChDAKBggqhkjOPQQD\nAgNIADBFAiEAhKwQMkvtcYVNnDuFSG7zemjwxyVPOmVMy6QFGP7sxZQCIDd8/l3Q\n9VS3jazW8BDdWwEIibsknHsbW7gwDGgGUl4Y\n-----END CERTIFICATE-----",
-    "exercises_controls": [
-      "EAA-5.1-01",
-      "EAA-5.2.1.2-01",
-      "EAA-5.2.1.2-03",
-      "EAA-5.2.4.1-03",
-      "EAA-5.2.7.1-01",
-      "EAA-5.2.7.1-03",
-      "EAA-5.5-01",
-      "EAA-5.5-02",
-      "EAA-5.2.10.1-03",
-      "EAA-5.2.10.1-04",
-      "EAA-5.2.10.1-06",
-      "EAA-5.2.10.1-08",
-      "EAA-5.2.10.1-09",
-      "EAA-5.2.10.1-10",
-      "EAA-5.2.10.1-11",
-      "EAA-4.2.11.1-03"
-    ],
-    "generated_by": "iGrant.io EAA Reference Generator v1",
-    "generated_at": "2026-05-02T00:13:08.097Z"
+    }
   }
 ];
 
@@ -8207,8 +11802,113 @@ export const AUTO_TESTED_IDS: readonly string[] = [
   "EAA-5.5-04",
   "EAA-5.5-05",
   "EAA-5.5-06",
+  "EAA-6.1-01",
+  "EAA-6.1-02",
+  "EAA-6.1-03",
+  "EAA-6.1-04",
+  "EAA-6.1-05",
+  "EAA-6.1-06",
+  "EAA-6.1-07",
+  "EAA-6.1-08",
+  "EAA-6.2.10.1-01",
+  "EAA-6.2.10.1-02",
+  "EAA-6.2.10.1-03",
+  "EAA-6.2.10.1-04",
+  "EAA-6.2.10.1-06",
+  "EAA-6.2.10.1-08",
+  "EAA-6.2.10.1-10",
+  "EAA-6.2.10.2-01",
+  "EAA-6.2.11-01",
+  "EAA-6.2.12-01",
+  "EAA-6.2.12-02",
+  "EAA-6.2.12-03",
+  "EAA-6.2.12-04",
+  "EAA-6.2.12-05",
+  "EAA-6.2.2.1-01",
+  "EAA-6.2.2.1-02",
+  "EAA-6.2.2.1-03",
+  "EAA-6.2.3-01",
+  "EAA-6.2.3-02",
+  "EAA-6.2.3-03",
+  "EAA-6.2.3-04",
+  "EAA-6.2.4.1-01",
+  "EAA-6.2.4.1-02",
+  "EAA-6.2.4.1-03",
+  "EAA-6.2.4.1-04",
+  "EAA-6.2.4.1-05",
+  "EAA-6.2.4.1-06",
+  "EAA-6.2.4.1-07",
+  "EAA-6.2.4.1-08",
+  "EAA-6.2.4.1-09",
+  "EAA-6.2.4.1-10",
+  "EAA-6.2.4.1-11",
+  "EAA-6.2.4.1-12",
+  "EAA-6.2.4.1-13",
+  "EAA-6.2.5.1-01",
+  "EAA-6.2.5.1-02",
+  "EAA-6.2.5.1-03",
+  "EAA-6.2.5.1-04",
+  "EAA-6.2.5.1-05",
+  "EAA-6.2.5.2-01",
+  "EAA-6.2.5.3-01",
+  "EAA-6.2.5.3-02",
+  "EAA-6.2.5.3-03",
+  "EAA-6.2.5.4-01",
+  "EAA-6.2.5.4-02",
+  "EAA-6.2.6-01",
+  "EAA-6.2.6-02",
+  "EAA-6.2.6-03",
+  "EAA-6.2.6-04",
+  "EAA-6.2.7.1-01",
+  "EAA-6.2.7.1-02",
+  "EAA-6.2.7.1-03",
+  "EAA-6.2.7.1-04",
+  "EAA-6.2.7.1-05",
+  "EAA-6.2.7.2-01",
+  "EAA-6.2.7.2-02",
+  "EAA-6.2.7.2-03",
+  "EAA-6.2.8.1-01",
+  "EAA-6.2.8.2-01",
+  "EAA-6.2.8.2-02",
+  "EAA-6.2.8.2-03",
+  "EAA-6.2.8.2-04",
+  "EAA-6.2.8.2-05",
+  "EAA-6.2.9-01",
+  "EAA-6.3-01",
+  "EAA-6.3-02",
+  "EAA-6.3-03",
+  "EAA-6.3-04",
+  "EAA-6.3-05",
+  "EAA-6.4.1.2-01",
+  "EAA-6.4.1.3-01",
+  "EAA-6.4.1.4-01",
+  "EAA-6.4.1.4-02",
+  "EAA-6.4.1.5-01",
+  "EAA-6.5-01",
+  "EAA-6.5-02",
+  "EAA-6.6.1-01",
   "PuB-EAA-5.2.4.3-02",
   "PuB-EAA-5.2.4.3-03",
   "PuB-EAA-5.2.4.3-04",
-  "QEAA-5.2.5.5-01"
+  "PuB-EAA-6.2.10.3-01",
+  "PuB-EAA-6.2.2.3-01",
+  "PuB-EAA-6.2.2.3-02",
+  "PuB-EAA-6.2.4.3-01",
+  "PuB-EAA-6.2.4.3-02",
+  "PuB-EAA-6.2.5.6-01",
+  "PuB-EAA-6.6.3-01",
+  "PuB-EAA-6.6.3-02",
+  "PuB-EAA-6.6.3-03",
+  "PuB-EAA-6.6.3-04",
+  "QEAA-5.2.5.5-01",
+  "QEAA-6.2.10.2-01",
+  "QEAA-6.2.2.2-01",
+  "QEAA-6.2.2.2-02",
+  "QEAA-6.2.4.2-01",
+  "QEAA-6.2.4.2-02",
+  "QEAA-6.2.5.5-01",
+  "QEAA-6.6.2-01",
+  "QEAA-6.6.2-02",
+  "QEAA-6.6.2-03",
+  "QEAA-6.6.2-04"
 ];

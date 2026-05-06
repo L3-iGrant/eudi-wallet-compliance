@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { check } from '../../src/checks/eaa-4-2-11-1-03';
-import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample } from './helpers';
+import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample, runCheck } from './helpers';
 
 describe('EAA-4.2.11.1-03 (shortLived ⊕ status mutex, tier-aware)', () => {
   it('fails when both shortLived and status are present', async () => {
@@ -15,7 +15,7 @@ describe('EAA-4.2.11.1-03 (shortLived ⊕ status mutex, tier-aware)', () => {
         uri: 'https://example/status',
       },
     };
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
@@ -25,7 +25,7 @@ describe('EAA-4.2.11.1-03 (shortLived ⊕ status mutex, tier-aware)', () => {
 
   it('passes when only status is present (sjv-eaa-7 has status, no shortLived)', async () => {
     const sample = await loadSample('sjv-eaa-7');
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -35,7 +35,7 @@ describe('EAA-4.2.11.1-03 (shortLived ⊕ status mutex, tier-aware)', () => {
 
   it('passes when only shortLived is present (sjv-eaa-6 carries shortLived, no status)', async () => {
     const sample = await loadSample('sjv-eaa-6');
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -45,7 +45,7 @@ describe('EAA-4.2.11.1-03 (shortLived ⊕ status mutex, tier-aware)', () => {
 
   it('passes when neither is present and tier is ordinary', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -54,7 +54,7 @@ describe('EAA-4.2.11.1-03 (shortLived ⊕ status mutex, tier-aware)', () => {
 
   it('fails when neither is present and tier is qeaa (one is required)', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: compactFromSample(sample) },
       { ...DEFAULT_SCOPE, tier: 'qeaa' },
     );
@@ -64,7 +64,7 @@ describe('EAA-4.2.11.1-03 (shortLived ⊕ status mutex, tier-aware)', () => {
 
   it('fails when neither is present and tier is pub-eaa', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: compactFromSample(sample) },
       { ...DEFAULT_SCOPE, tier: 'pub-eaa' },
     );
@@ -73,7 +73,7 @@ describe('EAA-4.2.11.1-03 (shortLived ⊕ status mutex, tier-aware)', () => {
   });
 
   it('returns na when no eaaPayload is supplied', async () => {
-    const verdict = await check({}, DEFAULT_SCOPE);
+    const verdict = await runCheck(check, {}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 });

@@ -1,0 +1,76 @@
+{
+  "sample_id": "mdl-eaa-4",
+  "title": "MDL-EAA-4: mdoc QEAA with qualified URN",
+  "description": "Non-mDL credential at the QEAA tier with category=urn:etsi:esi:eaa:eu:qualified, status carried in MSO, and the issuer cert in the COSE x5chain header parameter.",
+  "profile": "mdoc",
+  "tier": "qeaa",
+  "cbor_base64": "uQACam5hbWVTcGFjZXO5AAJvb3JnLmlzby4yMzIyMC4xhdgYWFm5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRABsZWxlbWVudFZhbHVlZ0JlYXRyaXpxZWxlbWVudElkZW50aWZpZXJqZ2l2ZW5fbmFtZdgYWFi5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRAFsZWxlbWVudFZhbHVlZUNvc3RhcWVsZW1lbnRJZGVudGlmaWVya2ZhbWlseV9uYW1l2BhYYLkABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAmxlbGVtZW50VmFsdWVpUUVBQS0wMDA0cWVsZW1lbnRJZGVudGlmaWVyb2RvY3VtZW50X251bWJlctgYWHC5AARmcmFuZG9t2EBQAAAAAAAAAAAAAAAAAAAAAGhkaWdlc3RJRANsZWxlbWVudFZhbHVlblJlZmVyZW5jZSBRVFNQcWVsZW1lbnRJZGVudGlmaWVyeBlpc3N1aW5nX2F1dGhvcml0eV91bmljb2Rl2BhYXLkABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEBGxlbGVtZW50VmFsdWVqMjAyNi0wMS0wMXFlbGVtZW50SWRlbnRpZmllcmppc3N1ZV9kYXRleBhvcmcuZXRzaS4wMTk0NzIwMS4wMTAxMDGB2BhYbrkABGZyYW5kb23YQFAAAAAAAAAAAAAAAAAAAAAAaGRpZ2VzdElEAGxlbGVtZW50VmFsdWV4HXVybjpldHNpOmVzaTplYWE6ZXU6cXVhbGlmaWVkcWVsZW1lbnRJZGVudGlmaWVyaGNhdGVnb3J5amlzc3VlckF1dGiEWQG+uQACYTEmYjMzgdhAWQGvMIIBqzCCAVGgAwIBAgIBATAKBggqhkjOPQQDAjBLMSgwJgYDVQQDEx9pR3JhbnQuaW8gbWRvYyBSZWZlcmVuY2UgSXNzdWVyMRIwEAYDVQQKEwlpR3JhbnQuaW8xCzAJBgNVBAYTAlNFMB4XDTI2MDEwMTAwMDAwMFoXDTMxMDEwMTAwMDAwMFowSzEoMCYGA1UEAxMfaUdyYW50LmlvIG1kb2MgUmVmZXJlbmNlIElzc3VlcjESMBAGA1UEChMJaUdyYW50LmlvMQswCQYDVQQGEwJTRTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABK/nUSPhzck701KIjigRMNDMdoBoxiFpCu2h4a7+5Tc9HGhfb25vfa5I83UcLq5968rFP+CKiYD8y8ox1IqSmNOjJjAkMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0PAQH/BAQDAgKEMAoGCCqGSM49BAMCA0gAMEUCIQC7o5j1ecSct71zgxLg1hDZPgKjMAcUQpmUNPwxoJaWkAIgTkAwvGJ85jLQCP9wAjTmkSVe7yZ8Hh/IrpznRLsH8nC5AABZAsTYGFkCv7kAB2d2ZXJzaW9uYzEuMG9kaWdlc3RBbGdvcml0aG1nU0hBLTI1Nmx2YWx1ZURpZ2VzdHO5AAJvb3JnLmlzby4yMzIyMC4xuQAFYTDYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhMdhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGEy2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYTPYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABhNNhAWCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgYb3JnLmV0c2kuMDE5NDcyMDEuMDEwMTAxuQABYTDYQFggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABtZGV2aWNlS2V5SW5mb7kAAWlkZXZpY2VLZXm5AARhMQJiLTEBYi0y2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYi0z2EBYIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZ2RvY1R5cGVzb3JnLmV4YW1wbGUucWVhYS52MWx2YWxpZGl0eUluZm+5AANmc2lnbmVkwHQyMDI2LTAxLTAxVDAwOjAwOjAwWml2YWxpZEZyb23AdDIwMjYtMDEtMDFUMDA6MDA6MDBaanZhbGlkVW50aWzAdDIwMzEtMDEtMDFUMDA6MDA6MDBaZnN0YXR1c7kABGR0eXBlb1Rva2VuU3RhdHVzTGlzdGdwdXJwb3NlanJldm9jYXRpb25laW5kZXgEY3VyaXg4aHR0cHM6Ly9yZWZlcmVuY2UtaXNzdWVyLmlncmFudC5pby5leGFtcGxlL3N0YXR1cy9xZWFhLTTYQFhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+  "decoded_protected_header": {
+    "alg": "ES256",
+    "x5chain": "<1 cert, 431 bytes>"
+  },
+  "decoded_mso": {
+    "version": "1.0",
+    "digestAlgorithm": "SHA-256",
+    "docType": "org.example.qeaa.v1",
+    "validityInfo": {
+      "signed": "2026-01-01T00:00:00Z",
+      "validFrom": "2026-01-01T00:00:00Z",
+      "validUntil": "2031-01-01T00:00:00Z"
+    },
+    "valueDigests": "<32-byte digests per element; bytes elided>",
+    "deviceKeyInfo": "<COSE_Key (P-256, placeholder coordinates)>",
+    "status": {
+      "type": "TokenStatusList",
+      "purpose": "revocation",
+      "index": 4,
+      "uri": "https://reference-issuer.igrant.io.example/status/qeaa-4"
+    }
+  },
+  "decoded_namespaces": {
+    "org.iso.23220.1": [
+      {
+        "digestID": 0,
+        "elementIdentifier": "given_name",
+        "elementValue": "Beatriz"
+      },
+      {
+        "digestID": 1,
+        "elementIdentifier": "family_name",
+        "elementValue": "Costa"
+      },
+      {
+        "digestID": 2,
+        "elementIdentifier": "document_number",
+        "elementValue": "QEAA-0004"
+      },
+      {
+        "digestID": 3,
+        "elementIdentifier": "issuing_authority_unicode",
+        "elementValue": "Reference QTSP"
+      },
+      {
+        "digestID": 4,
+        "elementIdentifier": "issue_date",
+        "elementValue": "2026-01-01"
+      }
+    ],
+    "org.etsi.01947201.010101": [
+      {
+        "digestID": 0,
+        "elementIdentifier": "category",
+        "elementValue": "urn:etsi:esi:eaa:eu:qualified"
+      }
+    ]
+  },
+  "issuer_cert_pem": "-----BEGIN CERTIFICATE-----\nMIIBqzCCAVGgAwIBAgIBATAKBggqhkjOPQQDAjBLMSgwJgYDVQQDEx9pR3JhbnQu\naW8gbWRvYyBSZWZlcmVuY2UgSXNzdWVyMRIwEAYDVQQKEwlpR3JhbnQuaW8xCzAJ\nBgNVBAYTAlNFMB4XDTI2MDEwMTAwMDAwMFoXDTMxMDEwMTAwMDAwMFowSzEoMCYG\nA1UEAxMfaUdyYW50LmlvIG1kb2MgUmVmZXJlbmNlIElzc3VlcjESMBAGA1UEChMJ\naUdyYW50LmlvMQswCQYDVQQGEwJTRTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA\nBK/nUSPhzck701KIjigRMNDMdoBoxiFpCu2h4a7+5Tc9HGhfb25vfa5I83UcLq59\n68rFP+CKiYD8y8ox1IqSmNOjJjAkMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0P\nAQH/BAQDAgKEMAoGCCqGSM49BAMCA0gAMEUCIQC7o5j1ecSct71zgxLg1hDZPgKj\nMAcUQpmUNPwxoJaWkAIgTkAwvGJ85jLQCP9wAjTmkSVe7yZ8Hh/IrpznRLsH8nA=\n-----END CERTIFICATE-----",
+  "exercises_controls": [
+    "EAA-6.1-03",
+    "QEAA-6.2.2.2-01",
+    "QEAA-6.2.2.2-02",
+    "QEAA-6.2.10.2-01",
+    "QEAA-6.6.2-04"
+  ],
+  "generated_by": "iGrant.io mdoc Reference Generator (cbor-x, placeholder signatures)",
+  "generated_at": "2026-05-05T19:41:49.673Z"
+}

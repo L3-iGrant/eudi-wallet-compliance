@@ -1,5 +1,6 @@
-import { parseSdJwtVc, ParseError } from '@iwc/shared';
-import type { AssessmentScope, Evidence, Verdict } from '../types';
+import type { ParsedEvidence } from '@iwc/shared';
+import type { AssessmentScope, Verdict } from '../types';
+import type { CheckExtras } from '../registry';
 
 const CONTROL_ID = 'QEAA-5.2.5.5-01';
 const EVIDENCE_REF = 'eaa-payload';
@@ -15,8 +16,9 @@ const EVIDENCE_REF = 'eaa-payload';
  * without spurious failures.
  */
 export async function check(
-  evidence: Evidence,
+  evidence: ParsedEvidence,
   scope: AssessmentScope,
+  extras: CheckExtras,
 ): Promise<Verdict> {
   if (scope.tier !== 'qeaa') {
     return {
@@ -26,26 +28,15 @@ export async function check(
       notes: `Rule applies to QEAA only; current tier is ${scope.tier}.`,
     };
   }
-  if (!evidence.eaaPayload) {
+  if (evidence.kind !== 'sd-jwt-vc') {
     return {
       controlId: CONTROL_ID,
       status: 'na',
       evidenceRef: '',
-      notes: 'No EAA payload supplied.',
+      notes: 'Check applies to SD-JWT VC evidence only.',
     };
   }
-  let payload: Record<string, unknown>;
-  try {
-    ({ payload } = parseSdJwtVc(evidence.eaaPayload));
-  } catch (err) {
-    const message = err instanceof ParseError ? err.message : (err as Error).message;
-    return {
-      controlId: CONTROL_ID,
-      status: 'fail',
-      evidenceRef: EVIDENCE_REF,
-      notes: `EAA payload could not be parsed: ${message}`,
-    };
-  }
+  const { payload } = evidence.parsed;
   if ('subAttrs' in payload) {
     return {
       controlId: CONTROL_ID,

@@ -146,7 +146,17 @@ describe('runAssessment', () => {
       evidenceRef: 'eaa-payload',
       notes: 'header.typ is vc+sd-jwt',
     }));
-    const result = await runAssessment(sampleControls, {}, sdJwtScope);
+    // Phase 7: runAssessment short-circuits to na when the EAA payload is
+    // absent or fails to parse, so a registered check is only invoked
+    // when parsing succeeds. Pass a minimal well-formed compact form so
+    // the dispatch reaches the registered function.
+    const minimalCompact =
+      'eyJhbGciOiJub25lIn0.eyJ2Y3QiOiJ1cm46dGVzdC92MSJ9.placeholder~';
+    const result = await runAssessment(
+      sampleControls,
+      { eaaPayload: minimalCompact },
+      sdJwtScope,
+    );
     const verdict = result.verdicts.find((v) => v.controlId === 'EAA-5.1-01');
     expect(verdict?.status).toBe('pass');
     expect(verdict?.notes).toBe('header.typ is vc+sd-jwt');

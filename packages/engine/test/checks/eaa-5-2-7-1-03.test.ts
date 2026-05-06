@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { check } from '../../src/checks/eaa-5-2-7-1-03';
-import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample } from './helpers';
+import { DEFAULT_SCOPE, buildCompact, compactFromSample, loadSample, runCheck } from './helpers';
 
 describe('EAA-5.2.7.1-03 (exp claim present, integer, exp > nbf)', () => {
   it('passes when exp is an integer NumericDate strictly greater than nbf', async () => {
     const sample = await loadSample('sjv-eaa-1');
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: compactFromSample(sample) },
       DEFAULT_SCOPE,
     );
@@ -20,7 +20,7 @@ describe('EAA-5.2.7.1-03 (exp claim present, integer, exp > nbf)', () => {
       nbf: 1735689600,
       exp: 1735689600, // equal to nbf, must be strictly greater
     };
-    const verdict = await check(
+    const verdict = await runCheck(check, 
       { eaaPayload: buildCompact(sample.decoded_header, broken) },
       DEFAULT_SCOPE,
     );
@@ -29,7 +29,7 @@ describe('EAA-5.2.7.1-03 (exp claim present, integer, exp > nbf)', () => {
   });
 
   it('returns na when no eaaPayload is supplied', async () => {
-    const verdict = await check({}, DEFAULT_SCOPE);
+    const verdict = await runCheck(check, {}, DEFAULT_SCOPE);
     expect(verdict.status).toBe('na');
   });
 });

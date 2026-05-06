@@ -6,7 +6,7 @@ import { ChevronRight } from '../../../_components/ChevronRight';
 export const metadata: Metadata = {
   title: 'Reference Samples · EUDI Wallet Compliance · iGrant.io',
   description:
-    'Cryptographically-valid SD-JWT VC reference samples mirroring the ETSI EAA Plugtests test cases. Use them to exercise the self-assessment runner or any conformance pipeline.',
+    'Reference samples mirroring the ETSI EAA Plugtests test cases. SD-JWT VC and ISO/IEC mdoc/mDL EAAs both covered. Drop them into the self-assessment runner or any conformance pipeline.',
   alternates: { canonical: '/modules/eaa-conformance/reference-samples/' },
 };
 
@@ -30,12 +30,14 @@ export default function ReferenceSamplesIndex() {
         Reference Samples
       </p>
       <h1 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-white">
-        Cryptographically-valid SD-JWT VC EAAs
+        Reference EAAs
       </h1>
       <p className="mt-4 max-w-2xl text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
-        Each sample mirrors an ETSI EAA Plugtests SJV-EAA test case. Signed
-        with a self-signed iGrant.io reference issuer certificate; ready to
-        drop into the Self-Assessment runner or any conformance pipeline.
+        Each sample mirrors an ETSI EAA Plugtests test case. SD-JWT VC samples
+        carry real signatures from a self-signed iGrant.io reference issuer
+        certificate; mdoc samples carry placeholder signatures (the engine
+        does not verify mdoc signatures yet). Ready to drop into the
+        Self-Assessment runner or any conformance pipeline.
       </p>
 
       <section className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">

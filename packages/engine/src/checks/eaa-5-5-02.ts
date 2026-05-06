@@ -1,5 +1,6 @@
-import { parseSdJwtVc, ParseError } from '@iwc/shared';
-import type { AssessmentScope, Evidence, Verdict } from '../types';
+import type { ParsedEvidence } from '@iwc/shared';
+import type { AssessmentScope, Verdict } from '../types';
+import type { CheckExtras } from '../registry';
 
 const CONTROL_ID = 'EAA-5.5-02';
 const EVIDENCE_REF = 'eaa-payload';
@@ -55,27 +56,20 @@ function validateJwk(jwk: Record<string, unknown>): JwkValidation {
  * certificate reference (x5c, x5t#S256, x5u). When cnf is absent, the
  * rule is N/A (EAA-5.5-01 already flags absence).
  */
-export async function check(evidence: Evidence, _scope: AssessmentScope): Promise<Verdict> {
-  if (!evidence.eaaPayload) {
+export async function check(
+  evidence: ParsedEvidence,
+  _scope: AssessmentScope,
+  _extras: CheckExtras,
+): Promise<Verdict> {
+  if (evidence.kind !== 'sd-jwt-vc') {
     return {
       controlId: CONTROL_ID,
       status: 'na',
       evidenceRef: '',
-      notes: 'No EAA payload supplied.',
+      notes: 'Check applies to SD-JWT VC evidence only.',
     };
   }
-  let payload: Record<string, unknown>;
-  try {
-    ({ payload } = parseSdJwtVc(evidence.eaaPayload));
-  } catch (err) {
-    const message = err instanceof ParseError ? err.message : (err as Error).message;
-    return {
-      controlId: CONTROL_ID,
-      status: 'fail',
-      evidenceRef: EVIDENCE_REF,
-      notes: `EAA payload could not be parsed: ${message}`,
-    };
-  }
+  const { payload } = evidence.parsed;
   const cnfRaw = payload['cnf'];
   if (cnfRaw === undefined || cnfRaw === null) {
     return {
