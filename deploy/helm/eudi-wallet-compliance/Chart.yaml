@@ -1,6 +1,0 @@
-apiVersion: v2
-name: eudi-wallet-compliance
-description: EUDI Wallet Compliance self-assessment portal, gated by Google SSO restricted to igrant.io.
-type: application
-version: 0.1.0
-appVersion: "0.1.0"
