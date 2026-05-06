@@ -45,6 +45,25 @@ vi.mock('@/components/pdf/ConformanceReportPdf', () => ({
   ConformanceReportPdf: () => null,
 }));
 
+// Stub the runtime status-list resolver. The mdoc fixture carries a real
+// status_list.uri, which would otherwise trigger a network fetch from
+// EAA-6.2.10.2-01 during runAssessment and turn this test into a flaky
+// network-dependent run on CI.
+vi.mock('@iwc/status-list', async () => {
+  const actual = await vi.importActual<typeof import('@iwc/status-list')>(
+    '@iwc/status-list',
+  );
+  return {
+    ...actual,
+    fetchStatusList: vi.fn(async () => ({
+      format: 'jwt' as const,
+      bitsPerStatus: 1,
+      statuses: new Uint8Array([0]),
+    })),
+    getStatusAt: vi.fn(() => 0),
+  };
+});
+
 import ScopePicker from '@/app/eudi-wallet-compliance/self-assessment/page';
 import UploadPage from '@/app/eudi-wallet-compliance/self-assessment/upload/page';
 
