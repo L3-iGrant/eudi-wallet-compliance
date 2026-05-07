@@ -45,10 +45,10 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Set up gke-gcloud-auth-plugin
+      - name: Set up gcloud + kubectl
         uses: google-github-actions/setup-gcloud@v2
         with:
-          install_components: gke-gcloud-auth-plugin
+          install_components: gke-gcloud-auth-plugin,kubectl
 
       - name: Get GKE credentials
         uses: google-github-actions/get-gke-credentials@v2
@@ -56,16 +56,10 @@ jobs:
           cluster_name: ${{ vars.GKE_CLUSTER }}
           location: ${{ vars.GKE_LOCATION }}
 
-      - name: Set up Helm
-        uses: azure/setup-helm@v4
-        with:
-          version: v3.16.2
-
-      - name: Helm release
+      - name: Roll deployment to new image
         run: |
-          helm upgrade --install ${{ vars.HELM_RELEASE }} \
-            ./deploy/helm/eudi-wallet-compliance \
-            --namespace ${{ vars.HELM_NAMESPACE }} \
-            --set image.repository=${{ env.IMAGE_REPO }} \
-            --set image.tag=${{ env.VERSION }} \
-            --wait --timeout 5m
+          kubectl -n ${{ vars.K8S_NAMESPACE }} set image \
+            deployment/${{ vars.K8S_DEPLOYMENT }} \
+            ${{ vars.K8S_CONTAINER }}=${{ env.IMAGE_REPO }}:${{ env.VERSION }}
+          kubectl -n ${{ vars.K8S_NAMESPACE }} rollout status \
+            deployment/${{ vars.K8S_DEPLOYMENT }} --timeout=5m
