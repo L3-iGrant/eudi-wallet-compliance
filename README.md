@@ -79,7 +79,7 @@ To report a security vulnerability privately, see [`SECURITY.md`](./SECURITY.md)
 
 ## Code of Conduct
 
-Participants are expected to follow the [Code of Conduct](./CODE_OF_CONDUCT.md). Reports go to **conduct@igrant.io**.
+Participants are expected to follow the [Code of Conduct](./CODE_OF_CONDUCT.md). Reports go to **support@igrant.io**.
 
 ## Licence
 
@@ -92,6 +92,6 @@ Third-party notices and attribution: see [`NOTICE`](./NOTICE).
 ## Contact
 
 - Commercial enquiries: <support@igrant.io>
-- Security disclosures: <security@igrant.io> (see [`SECURITY.md`](./SECURITY.md))
-- Code of Conduct concerns: <conduct@igrant.io>
-- Data-protection requests (GDPR): <privacy@igrant.io>
+- Security disclosures: <support@igrant.io> (see [`SECURITY.md`](./SECURITY.md))
+- Code of Conduct concerns: <support@igrant.io>
+- Data-protection requests (GDPR): <support@igrant.io>

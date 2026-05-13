@@ -392,7 +392,7 @@ Engine-check contributions:
 - **Bug or accuracy issue**: open a GitHub issue with a minimal reproduction. Redact any personal data before pasting payloads or screenshots; see [privacy and synthetic-data requirement](#privacy-and-synthetic-data-requirement).
 - **Spec interpretation question**: open a GitHub discussion. Real questions about how a spec rule should be encoded benefit from being public.
 - **Security vulnerability**: do not open a public issue. See [`SECURITY.md`](./SECURITY.md) for the private disclosure procedure.
-- **Code of Conduct concern**: see [`CODE_OF_CONDUCT.md`](./CODE_OF_CONDUCT.md). Reports go to **conduct@igrant.io**.
+- **Code of Conduct concern**: see [`CODE_OF_CONDUCT.md`](./CODE_OF_CONDUCT.md). Reports go to **support@igrant.io**.
 - **Commercial conversations**: email <support@igrant.io>.
 
 ## Governance
