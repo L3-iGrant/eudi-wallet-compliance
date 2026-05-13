@@ -41,7 +41,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: `document_number missing from "${ns}" namespace.`,
+      notes: `document_number is missing from the "${ns}" namespace. ETSI TS 119 471 §6.2.3 requires every mdoc EAA to expose document_number in its primary namespace (mDL → "${NS_MDL}", non-mDL → "${NS_ISO_23220}"). Add an IssuerSignedItem with elementIdentifier="document_number" carrying the credential's reference number/identifier in that namespace.`,
     };
   }
   return {

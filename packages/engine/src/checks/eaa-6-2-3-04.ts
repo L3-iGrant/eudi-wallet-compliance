@@ -48,7 +48,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: `Non-mDL credential missing document_number from "${NS_ISO_23220}".`,
+      notes: `Non-mDL credential is missing document_number from the "${NS_ISO_23220}" namespace. Per clause 6.3 of ISO/IEC 23220-2, non-mDL mdoc credentials must expose document_number in this namespace. Add an IssuerSignedItem with elementIdentifier="document_number" in "${NS_ISO_23220}" carrying the credential's reference number/identifier.`,
     };
   }
   return {

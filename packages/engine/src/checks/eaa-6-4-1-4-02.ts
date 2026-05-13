@@ -42,7 +42,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'MobileSecurityObject.valueDigests is empty or missing.',
+      notes: 'MobileSecurityObject.valueDigests is missing or empty. Per ISO/IEC 18013-5 §9.1.2.5, an mdoc with selectively-disclosable attributes must carry valueDigests as a CBOR map keyed by namespace, where each value is itself a CBOR map of digestID → digest bytes for every IssuerSignedItem. Without it, verifiers have no commitments to validate disclosed items against.',
     };
   }
   const total = namespaces.reduce(
@@ -54,7 +54,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'MobileSecurityObject.valueDigests has namespaces but no digest entries.',
+      notes: 'MobileSecurityObject.valueDigests declares namespaces but contains no digest entries. Each inner namespace map must list at least one digestID → digest entry, matching the IssuerSignedItem digests for that namespace. An empty digest map cannot commit to any disclosable attribute.',
     };
   }
   return {
