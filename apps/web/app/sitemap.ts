@@ -13,7 +13,7 @@ import { controlIdToSlug } from '@iwc/shared';
 import { absoluteUrl } from '@/lib/site';
 import { DOCS_PAGES } from '@/app/eudi-wallet-compliance/docs/_pages';
 
-const PROFILES = ['sd-jwt-vc', 'mdoc', 'abstract'] as const;
+const PROFILES = ['sd-jwt-vc', 'mdoc'] as const;
 const ROLES = ['issuer', 'verifier', 'wallet', 'rp', 'qtsp', 'all'] as const;
 const TIER_SLUGS = ['ordinary', 'qeaa', 'pub-eaa'] as const;
 

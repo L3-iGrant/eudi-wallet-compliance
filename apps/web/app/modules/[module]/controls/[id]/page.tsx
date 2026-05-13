@@ -11,16 +11,13 @@ import { HoverTooltip } from '../../../../_components/HoverTooltip';
  * Build a deep-link to the Self-Assessment upload flow with the scope
  * pre-filled from the catalogue entry.
  *
- * Three coercions are needed because the catalogue carries values the
+ * Two coercions are needed because the catalogue carries values the
  * upload page cannot accept directly:
  *
- * - profile: catalogue rules can be tagged "abstract" (cross-cutting
- *   rules that apply regardless of profile). The upload page only
- *   knows the concrete profiles "sd-jwt-vc" and "mdoc". Pick the
- *   first concrete profile from the control if any, otherwise default
- *   to "sd-jwt-vc". The engine still evaluates abstract-profile rules
- *   under either concrete profile so the focused rule's verdict
- *   appears in the report.
+ * - profile: catalogue rules tag concrete profiles directly
+ *   ("sd-jwt-vc" and "mdoc"). Cross-cutting clause-4 rules tag both;
+ *   we just pick the first one for the upload-page link, and the
+ *   engine evaluates the rule under that profile.
  * - role: catalogue rules can be tagged "all". Pick the first concrete
  *   role from the control if any, otherwise default to "issuer".
  * - tier: catalogue uses "ordinary-eaa", engine uses "ordinary".
@@ -80,7 +77,6 @@ const APPLIES_TO_LABEL: Record<string, string> = {
 const PROFILE_LABEL: Record<string, string> = {
   'sd-jwt-vc': 'SD-JWT VC',
   mdoc: 'mdoc',
-  abstract: 'Abstract',
 };
 
 const ROLE_LABEL: Record<string, string> = {

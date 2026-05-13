@@ -5,7 +5,7 @@ import { loadAllControls, loadModules, type Profile } from '@iwc/controls';
 import { ControlsTable, PROFILE_LABEL } from '../../_components/ControlsTable';
 import { ChevronRight } from '../../../../_components/ChevronRight';
 
-const PROFILES = ['sd-jwt-vc', 'mdoc', 'abstract'] as const;
+const PROFILES = ['sd-jwt-vc', 'mdoc'] as const;
 type ProfileSlug = (typeof PROFILES)[number];
 
 function isProfileSlug(s: string): s is ProfileSlug {

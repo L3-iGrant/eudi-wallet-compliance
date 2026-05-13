@@ -15,7 +15,6 @@ const APPLIES_TO_LABEL: Record<string, string> = {
 const PROFILE_LABEL: Record<string, string> = {
   'sd-jwt-vc': 'SD-JWT VC',
   mdoc: 'mdoc',
-  abstract: 'Abstract',
 };
 
 const ROLE_LABEL: Record<string, string> = {
