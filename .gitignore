@@ -47,3 +47,6 @@ pnpm-debug.log*
 !.vscode/settings.json
 *.swp
 *.swo
+
+# Claude Code per-user state
+.claude/

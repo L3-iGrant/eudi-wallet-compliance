@@ -1,10 +1,13 @@
 # CODEOWNERS for eudi-wallet-compliance.
 #
+# Maintainer entity: iGrant.io, Sweden (https://igrant.io/)
+# GitHub organisation: L3-iGrant (operated by iGrant.io)
+#
 # GitHub uses this file to auto-request review from the relevant
 # maintainers when a PR touches a path. The right side is the GitHub
-# team or user. Update the handles below to your actual maintainers
-# team; the placeholder `@L3-iGrant/maintainers` assumes a team of
-# that name in the L3-iGrant org.
+# team or user. The handle `@L3-iGrant/maintainers` refers to the
+# maintainers team in the L3-iGrant org; members of that team act on
+# behalf of iGrant.io, Sweden.
 #
 # Branch protection on main should additionally require at least one
 # CODEOWNERS approval before merge.
