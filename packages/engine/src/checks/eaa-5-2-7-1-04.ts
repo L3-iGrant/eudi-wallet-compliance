@@ -42,7 +42,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: `exp is ${JSON.stringify(value)}, not a non-negative integer NumericDate.`,
+      notes: `exp is ${JSON.stringify(value)}, not a non-negative integer NumericDate per RFC 7519 §2. Expected a JSON number of seconds since 1970-01-01T00:00:00Z (e.g. 1767225600); string-quoted timestamps and floating-point/negative values are rejected.`,
     };
   }
   return {
