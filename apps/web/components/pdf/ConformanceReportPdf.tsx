@@ -282,6 +282,17 @@ export function ConformanceReportPdf({ report }: ConformanceReportPdfProps) {
     (v) => v.status !== 'na' || v.notes !== 'No check implemented yet',
   );
   const unimplementedCount = report.verdicts.length - activeVerdicts.length;
+  // Mirror the on-screen report's summary: subtract unimplemented-check
+  // N/As so the cover-page donut and N/A card match what the user just
+  // saw on the report page. The unimplementedCount is surfaced separately
+  // in the note below the summary.
+  const activeSummary = activeVerdicts.reduce(
+    (acc, v) => {
+      acc[v.status] += 1;
+      return acc;
+    },
+    { pass: 0, fail: 0, warn: 0, na: 0 } as { pass: number; fail: number; warn: number; na: number },
+  );
   const items = flattenWithHeadings(activeVerdicts);
   const pages: RowItem[][] = [];
   for (let i = 0; i < items.length; i += ROWS_PER_PAGE) {
@@ -293,6 +304,7 @@ export function ConformanceReportPdf({ report }: ConformanceReportPdfProps) {
     <Document title={`Conformance Report ${report.reportId.slice(0, 8)}`}>
       <CoverPage
         report={report}
+        activeSummary={activeSummary}
         unimplementedCount={unimplementedCount}
         totalPages={totalPages}
       />
@@ -404,10 +416,12 @@ function VerdictDonutPdf({
 
 function CoverPage({
   report,
+  activeSummary,
   unimplementedCount,
   totalPages,
 }: {
   report: AssessmentResult;
+  activeSummary: { pass: number; fail: number; warn: number; na: number };
   unimplementedCount: number;
   totalPages: number;
 }) {
@@ -438,12 +452,12 @@ function CoverPage({
 
       <Text style={styles.h2}>Summary</Text>
       <View style={styles.summarySection}>
-        <VerdictDonutPdf summary={report.summary} />
+        <VerdictDonutPdf summary={activeSummary} />
         <View style={styles.summaryGrid}>
-          <SummaryCard label="Pass" value={report.summary.pass} colour={EMERALD} />
-          <SummaryCard label="Fail" value={report.summary.fail} colour={RED} />
-          <SummaryCard label="Warn" value={report.summary.warn} colour={AMBER} />
-          <SummaryCard label="N/A" value={report.summary.na} colour={ZINC_700} />
+          <SummaryCard label="Pass" value={activeSummary.pass} colour={EMERALD} />
+          <SummaryCard label="Fail" value={activeSummary.fail} colour={RED} />
+          <SummaryCard label="Warn" value={activeSummary.warn} colour={AMBER} />
+          <SummaryCard label="N/A" value={activeSummary.na} colour={ZINC_700} />
         </View>
       </View>
       {unimplementedCount > 0 && (
