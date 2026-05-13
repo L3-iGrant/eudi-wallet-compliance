@@ -38,7 +38,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: `also_known_as is ${describe(value)}, not a JSON string.`,
+      notes: `also_known_as is ${describe(value)}, not a JSON string. Expected a JSON string carrying the subject's pseudonym (used as an alternative to sub when the issuer prefers a derived identifier). Numbers, arrays and nested objects are rejected.`,
     };
   }
   if (value.length === 0) {
@@ -46,7 +46,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'also_known_as is an empty string.',
+      notes: 'also_known_as is an empty string. Expected a non-empty JSON string carrying the subject\'s pseudonym. If no pseudonym is needed, omit the claim entirely.',
     };
   }
   return {

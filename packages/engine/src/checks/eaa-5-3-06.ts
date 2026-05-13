@@ -37,7 +37,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'subAttrs is present but is not a JSON object or array of objects.',
+      notes: 'subAttrs is present but is not a JSON object or an array of objects. Expected either a single attribute group (a JSON object carrying sub_id/sub_aka plus an attrs map) or an array of such groups.',
     };
   }
   const missing: string[] = [];
@@ -51,7 +51,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: `attrs member missing from: ${missing.join(', ')}.`,
+      notes: `attrs member is missing from: ${missing.join(', ')}. Every subAttrs group must carry an attrs object listing the selectively-disclosable claims grouped under that subject identifier.`,
     };
   }
   return {

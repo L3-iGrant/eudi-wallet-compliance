@@ -39,7 +39,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: `sub is ${describe(value)}, not a JSON string.`,
+      notes: `sub is ${describe(value)}, not a JSON string. RFC 7519 §4.1.2 requires sub to be a StringOrURI (a JSON string identifying the subject the claims are about). Integers, booleans and nested objects are rejected.`,
     };
   }
   if (value.length === 0) {
@@ -47,7 +47,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'sub is an empty string.',
+      notes: 'sub is an empty string. Expected a non-empty StringOrURI identifying the subject (an opaque identifier or pseudonym; not the natural-language name of the person). If the credential is unbound to a subject, omit the claim entirely.',
     };
   }
   return {

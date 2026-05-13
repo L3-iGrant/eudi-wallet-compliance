@@ -54,7 +54,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: `iss_reg_id is ${describe(value)}, not a JSON string.`,
+      notes: `iss_reg_id is ${describe(value)}, not a JSON string. Expected a non-empty string carrying the issuer\'s registration identifier in ETSI EN 319 412-1 §5.1.4 format <3-letter scheme><2-letter country>-<reference> (e.g. "VATBE-1234567890"). Numbers and arrays are rejected; format conformance is checked separately by PuB-EAA-5.2.4.3-04.`,
     };
   }
   if (value.length === 0) {
@@ -62,7 +62,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'iss_reg_id is an empty string.',
+      notes: 'iss_reg_id is an empty string. Expected a non-empty value in ETSI EN 319 412-1 §5.1.4 format <3-letter scheme><2-letter country>-<reference> (e.g. "VATBE-1234567890"). If the registration identifier is meant to come from the qualified certificate instead, omit the claim entirely.',
     };
   }
   return {

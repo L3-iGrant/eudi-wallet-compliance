@@ -57,7 +57,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: `issuing_country is ${describe(value)}, not an ISO 3166-1 alpha-2 country string.`,
+      notes: `issuing_country is ${describe(value)}, not an ISO 3166-1 alpha-2 country string. Expected a 2-letter uppercase JSON string identifying the country in which the PuB-EAA issuer is established (e.g. "BE" for Belgium, "IT" for Italy, "DE" for Germany). Numbers, arrays and nested objects are rejected.`,
     };
   }
   if (!/^[A-Z]{2}$/.test(value)) {
@@ -65,7 +65,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: `issuing_country is "${value}", which is not an upper-case ISO 3166-1 alpha-2 code.`,
+      notes: `issuing_country is "${value}", which is not an upper-case ISO 3166-1 alpha-2 code. Expected exactly two upper-case letters (e.g. "BE", "IT", "DE"). Lower-case codes ("be") and three-letter alpha-3 codes ("BEL") are rejected.`,
     };
   }
   return {
