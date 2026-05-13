@@ -16,6 +16,11 @@ jobs:
     name: Analyse (${{ matrix.language }})
     runs-on: ubuntu-latest
     timeout-minutes: 360
+    # Skip the upload step's hard failure when Code Scanning is not yet
+    # enabled on the repo (e.g. private repo without GitHub Advanced
+    # Security). Once Code Scanning is enabled in repo settings, the
+    # analysis results upload successfully and this flag becomes a no-op.
+    continue-on-error: true
     permissions:
       security-events: write
       packages: read
