@@ -29,7 +29,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: `Payload is missing the ${INTEGRITY_CLAIM} claim, or the value is not a non-empty string.`,
+      notes: `Payload is missing the ${INTEGRITY_CLAIM} claim, or its value is not a non-empty JSON string. ${INTEGRITY_CLAIM} is an SRI-style integrity digest (per W3C SRI) over the type-metadata document referenced by vct, so a verifier can detect tampered metadata. Expected a value like "sha256-04bd32139d56c2c7029b7bfc8a606b8a63af97b77c2d32b6eddc1306359fb4e9" (algorithm prefix "sha256-" / "sha384-" / "sha512-" followed by a base64-encoded digest of the type-metadata bytes).`,
     };
   }
   return {

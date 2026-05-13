@@ -28,7 +28,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'Payload is missing the vct claim, or the vct claim is not a non-empty string.',
+      notes: 'Payload is missing the vct claim, or vct is not a non-empty JSON string. Expected a URI/URN identifying the credential type (e.g. "urn:eudi:pid:1" or "https://issuer.example/credentials/pid/1.0"). The vct claim names the type-metadata document the verifier must dereference.',
     };
   }
   return {
