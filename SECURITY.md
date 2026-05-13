@@ -32,14 +32,14 @@ Out of scope:
 
 ## How to report
 
-Send a private email to **security@igrant.io** with:
+Send a private email to **support@igrant.io** with:
 
 - A description of the issue and its impact.
 - A minimal reproduction (input, expected output, observed output).
 - The affected commit SHA or release tag.
 - Optionally, your suggested fix.
 
-You may PGP-encrypt the report. If a public key for `security@igrant.io` is not available at the time of writing, send plaintext and we will follow up with a key fingerprint.
+You may PGP-encrypt the report. If a public key for `support@igrant.io` is not available at the time of writing, send plaintext and we will follow up with a key fingerprint.
 
 You may also use [GitHub's private vulnerability reporting](https://github.com/L3-iGrant/eudi-wallet-compliance/security/advisories/new) to file a draft advisory directly.
 
@@ -68,7 +68,7 @@ iGrant.io, Sweden acts as data controller for security reports under Regulation 
 - **Lawful basis.** Legitimate interest in maintaining the security of the project (Article 6(1)(f) GDPR).
 - **Data minimisation.** We retain only what is needed to triage, fix, and document the issue.
 - **Retention.** Reports and associated correspondence are kept for up to 36 months from the publication of the corresponding fix, then deleted, unless we are legally obliged to retain them longer (for example, an ongoing investigation or a regulator request).
-- **Your rights.** Under the GDPR you have the right to request access, rectification, erasure, and restriction of processing of your personal data. To exercise these rights, contact **privacy@igrant.io**.
+- **Your rights.** Under the GDPR you have the right to request access, rectification, erasure, and restriction of processing of your personal data. To exercise these rights, contact **support@igrant.io**.
 
 ## Hall of fame
 

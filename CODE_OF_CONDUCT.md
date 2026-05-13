@@ -48,7 +48,7 @@ Maintainers have the right and responsibility to remove, edit, or reject comment
 
 If you experience or witness behaviour that violates this Code of Conduct, please report it to the maintainers at:
 
-**conduct@igrant.io**
+**support@igrant.io**
 
 Reports may also be sent to any individual maintainer listed in `CODEOWNERS`. All reports will be reviewed and investigated promptly and fairly.
 
@@ -67,7 +67,7 @@ We process reports in line with our obligations under Regulation (EU) 2016/679 (
 - **Data minimisation.** We collect only what is needed to investigate the report.
 - **Confidentiality.** Reports are accessible only to the maintainers handling them and, where necessary, to legal counsel or law enforcement.
 - **Retention.** Records of reports and outcomes are retained for up to 24 months from the date the report is closed, then deleted, unless a longer retention is required by law or by an ongoing matter.
-- **Your rights.** Under the GDPR you have the right to request access, rectification, erasure, and restriction of processing of your personal data. To exercise these rights, contact **privacy@igrant.io**.
+- **Your rights.** Under the GDPR you have the right to request access, rectification, erasure, and restriction of processing of your personal data. To exercise these rights, contact **support@igrant.io**.
 
 The maintainer organisation (iGrant.io, Sweden) acts as data controller for reports submitted under this Code of Conduct.
 
@@ -101,7 +101,7 @@ Maintainers will follow these Community Impact Guidelines in determining the con
 
 ## Appeals
 
-A person subject to enforcement action may appeal the decision by writing to **conduct@igrant.io** within 30 days of receiving the action, stating the grounds for appeal. Appeals are reviewed by a maintainer who was not involved in the original decision.
+A person subject to enforcement action may appeal the decision by writing to **support@igrant.io** within 30 days of receiving the action, stating the grounds for appeal. Appeals are reviewed by a maintainer who was not involved in the original decision.
 
 ## Governance and jurisdiction
 
