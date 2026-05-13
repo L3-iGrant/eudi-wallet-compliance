@@ -39,7 +39,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'MobileSecurityObject.deviceKeyInfo.deviceKey is missing. Per ISO/IEC 18013-5 §9.1.2.4, an mdoc EAA must commit to the holder\'s device-binding public key by carrying deviceKey inside deviceKeyInfo. Encode it as a COSE_Key (RFC 9052 §7) — a CBOR map with kty (1), crv (-1 for EC2/OKP) and the coordinate parameters appropriate for the algorithm — under deviceKeyInfo.deviceKey in the MSO.',
+      notes: 'MobileSecurityObject.deviceKeyInfo.deviceKey is missing. Per ISO/IEC 18013-5 §9.1.2.4, an mdoc EAA must commit to the holder\'s device-binding public key by carrying deviceKey inside deviceKeyInfo. Encode it as a COSE_Key (RFC 9052 §7): a CBOR map with kty (1), crv (-1 for EC2/OKP) and the coordinate parameters appropriate for the algorithm, under deviceKeyInfo.deviceKey in the MSO.',
     };
   }
   return {

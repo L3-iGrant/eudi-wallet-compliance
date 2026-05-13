@@ -54,7 +54,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'status.index is present but is not a non-negative JSON integer. Expected an integer >= 0 (e.g. 42), encoded as a JSON number — string-quoted values ("42") and floating-point/negative values are rejected.',
+      notes: 'status.index is present but is not a non-negative JSON integer. Expected an integer >= 0 (e.g. 42), encoded as a JSON number; string-quoted values ("42") and floating-point/negative values are rejected.',
     };
   }
   return {

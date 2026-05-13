@@ -40,7 +40,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'MobileSecurityObject.digestAlgorithm is missing or is not a non-empty CBOR text string (tstr). Per ISO/IEC 18013-5 §9.1.2.5, the MSO must declare the hash algorithm used to compute the valueDigests entries — an IANA Named Information Hash Algorithm Registry name such as "SHA-256", "SHA-384", or "SHA-512". Add the "digestAlgorithm" member to the MSO with one of those values.',
+      notes: 'MobileSecurityObject.digestAlgorithm is missing or is not a non-empty CBOR text string (tstr). Per ISO/IEC 18013-5 §9.1.2.5, the MSO must declare the hash algorithm used to compute the valueDigests entries; an IANA Named Information Hash Algorithm Registry name such as "SHA-256", "SHA-384", or "SHA-512". Add the "digestAlgorithm" member to the MSO with one of those values.',
     };
   }
   return {

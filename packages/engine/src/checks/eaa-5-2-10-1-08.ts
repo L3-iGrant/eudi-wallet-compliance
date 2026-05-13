@@ -52,7 +52,7 @@ export async function check(
         status: 'fail',
         evidenceRef: EVIDENCE_REF,
         notes:
-          'status uses the IETF nested envelope but status.status_list.idx is missing. Expected `{ status: { status_list: { idx: <non-negative integer>, uri: "https://..." } } }` — the idx names the credential\'s row in the Token Status List.',
+          'status uses the IETF nested envelope but status.status_list.idx is missing. Expected `{ status: { status_list: { idx: <non-negative integer>, uri: "https://..." } } }`; the idx names the credential\'s row in the Token Status List.',
       };
     }
     return {

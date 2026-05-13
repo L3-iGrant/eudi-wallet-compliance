@@ -45,7 +45,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'COSE_Sign1 signature is missing or empty. Per RFC 9052 §4.2, the signature field is the fourth element of the COSE_Sign1 structure (a CBOR byte string carrying the bytes produced by the signing algorithm). An empty byte string indicates the credential was emitted unsigned or with the signature stripped — a verifier cannot establish issuer authenticity.',
+      notes: 'COSE_Sign1 signature is missing or empty. Per RFC 9052 §4.2, the signature field is the fourth element of the COSE_Sign1 structure (a CBOR byte string carrying the bytes produced by the signing algorithm). An empty byte string indicates the credential was emitted unsigned or with the signature stripped; a verifier cannot establish issuer authenticity.',
     };
   }
   return {

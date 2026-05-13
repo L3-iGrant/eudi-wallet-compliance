@@ -50,7 +50,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'deviceKey is present but is not a CBOR map (COSE_Key shape). Expected a COSE_Key per RFC 9052 §7 — a CBOR map with integer keys including kty (1), and the curve/coordinate parameters appropriate for the algorithm (e.g. kty=2 EC2 with crv, x, y; or kty=1 OKP with crv, x). Booleans, byte strings, arrays and primitive scalars are rejected.',
+      notes: 'deviceKey is present but is not a CBOR map (COSE_Key shape). Expected a COSE_Key per RFC 9052 §7, i.e. a CBOR map with integer keys including kty (1), and the curve/coordinate parameters appropriate for the algorithm (e.g. kty=2 EC2 with crv, x, y; or kty=1 OKP with crv, x). Booleans, byte strings, arrays and primitive scalars are rejected.',
     };
   }
   return {
