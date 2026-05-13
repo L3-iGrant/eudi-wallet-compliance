@@ -9,11 +9,16 @@ import {
 } from '@react-pdf/renderer';
 import type { AssessmentResult, Verdict } from '@iwc/engine';
 
-// Brand palette mirrors the web report.
+// Brand palette mirrors the web report. The donut strokes use the
+// -500 shades that the on-screen VerdictDonut renders with; card
+// value text uses the -700 shades that the on-screen Stat tile uses.
 const BLUE = '#1d4ed8';
 const EMERALD = '#047857';
 const RED = '#b91c1c';
 const AMBER = '#b45309';
+const EMERALD_500 = '#10b981';
+const RED_500 = '#ef4444';
+const AMBER_500 = '#f59e0b';
 const ZINC_950 = '#09090b';
 const ZINC_700 = '#3f3f46';
 const ZINC_500 = '#71717a';
@@ -350,9 +355,9 @@ function VerdictDonutPdf({
   const r = 35;
   const c = 2 * Math.PI * r;
   const segments: Array<{ count: number; colour: string }> = [
-    { count: summary.pass, colour: EMERALD },
-    { count: summary.fail, colour: RED },
-    { count: summary.warn, colour: AMBER },
+    { count: summary.pass, colour: EMERALD_500 },
+    { count: summary.fail, colour: RED_500 },
+    { count: summary.warn, colour: AMBER_500 },
   ];
 
   let cumulativeDeg = 0;
