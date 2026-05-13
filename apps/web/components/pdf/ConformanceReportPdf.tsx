@@ -9,15 +9,6 @@ import {
 } from '@react-pdf/renderer';
 import type { AssessmentResult, Verdict } from '@iwc/engine';
 
-// react-pdf v4.x ships CircleProps without strokeDashoffset, even though
-// the underlying renderer honours the attribute. Module-augment instead
-// of casting at every call site so the donut math reads naturally.
-declare module '@react-pdf/renderer' {
-  interface CircleProps {
-    strokeDashoffset?: number | string;
-  }
-}
-
 // Brand palette mirrors the web report.
 const BLUE = '#1d4ed8';
 const EMERALD = '#047857';
@@ -339,10 +330,14 @@ export function ConformanceReportPdf({ report }: ConformanceReportPdfProps) {
  * Donut chart for the PDF cover page. Mirrors the web report's
  * VerdictDonut: pass / fail / warn segments only, N/A excluded.
  *
- * No chart library; one stroked Circle per segment with
- * strokeDasharray sized to its fraction of the total and
- * strokeDashoffset advancing per segment so segments sit
- * end-to-end. Renders nothing when there are no decisive verdicts.
+ * No chart library and no strokeDashoffset: the @react-pdf renderer
+ * silently drops a negative strokeDashoffset on a Circle, which made
+ * every segment start at the same position and left a visible gap
+ * between the last segment and 12 o'clock. Each segment is therefore
+ * its own Circle with strokeDasharray sized to its fraction of the
+ * total and a per-segment rotate(...) that walks the start point
+ * around the ring. Renders nothing when there are no decisive
+ * verdicts.
  */
 function VerdictDonutPdf({
   summary,
@@ -360,14 +355,15 @@ function VerdictDonutPdf({
     { count: summary.warn, colour: AMBER },
   ];
 
-  let cumulative = 0;
+  let cumulativeDeg = 0;
   const arcs = segments
     .filter((s) => s.count > 0)
     .map((s) => {
-      const len = (s.count / total) * c;
-      const offset = -cumulative;
-      cumulative += len;
-      return { len, offset, colour: s.colour };
+      const fraction = s.count / total;
+      const len = fraction * c;
+      const rotateDeg = -90 + cumulativeDeg;
+      cumulativeDeg += fraction * 360;
+      return { len, rotateDeg, colour: s.colour };
     });
 
   return (
@@ -390,8 +386,7 @@ function VerdictDonutPdf({
           stroke={a.colour}
           strokeWidth={12}
           strokeDasharray={`${a.len} ${c - a.len}`}
-          strokeDashoffset={a.offset}
-          transform="rotate(-90)"
+          transform={`rotate(${a.rotateDeg})`}
         />
       ))}
       <Text
