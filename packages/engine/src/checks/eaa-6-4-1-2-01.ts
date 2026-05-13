@@ -40,7 +40,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'MobileSecurityObject.version is missing or not a non-empty string.',
+      notes: 'MobileSecurityObject.version is missing or is not a non-empty CBOR text string (tstr). Per ISO/IEC 18013-5 §9.1.2.4, every MSO must carry a version member (e.g. "1.0") to identify the MSO format revision. Encode it as a CBOR text string under the "version" key inside the MSO.',
     };
   }
   return {

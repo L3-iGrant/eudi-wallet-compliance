@@ -48,7 +48,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: `iss_reg_id is present but not a tstr (got ${typeof found}).`,
+      notes: `iss_reg_id is present but is not a CBOR text string (tstr); got ${typeof found}. ETSI TS 119 471 expects iss_reg_id in the "${NS_ETSI}" namespace to be a tstr carrying the issuer\'s registration identifier (ETSI EN 319 412-1 §5.1.4 format <3-letter scheme><2-letter country>-<reference>, e.g. "VATBE-1234567890"). Encode it as a CBOR text string, not a byte string, integer or array.`,
     };
   }
   return {

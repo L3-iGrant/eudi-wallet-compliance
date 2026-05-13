@@ -89,6 +89,8 @@ export async function check(
   }
   const cnf = cnfRaw as Record<string, unknown>;
 
+  const certRefKeys = ['x5c', 'x5t#S256', 'x5u'];
+
   // Path 1: JWK public key.
   if (cnf['jwk'] !== undefined) {
     const jwk = cnf['jwk'];
@@ -97,16 +99,22 @@ export async function check(
         controlId: CONTROL_ID,
         status: 'fail',
         evidenceRef: EVIDENCE_REF,
-        notes: 'cnf.jwk is present but not a JSON object.',
+        notes: 'cnf.jwk is present but not a JSON object. Expected an RFC 7517 JWK with kty (and the curve/coordinate fields it requires).',
       };
     }
     const validation = validateJwk(jwk as Record<string, unknown>);
     if (!validation.ok) {
+      const nestedCertRefs = certRefKeys.filter(
+        (k) => (jwk as Record<string, unknown>)[k] !== undefined,
+      );
+      const hint = nestedCertRefs.length
+        ? ` Note: ${nestedCertRefs.join(', ')} appears under cnf.jwk; certificate references belong directly under cnf (not nested inside jwk). Either supply a proper public-key JWK with kty, or move ${nestedCertRefs.join(' / ')} up one level to cnf.`
+        : ' Expected an RFC 7517 JWK; if you intended to convey a certificate reference instead, place x5c / x5t#S256 / x5u directly under cnf rather than under cnf.jwk.';
       return {
         controlId: CONTROL_ID,
         status: 'fail',
         evidenceRef: EVIDENCE_REF,
-        notes: `cnf.jwk is malformed: ${validation.reason}.`,
+        notes: `cnf.jwk is malformed: ${validation.reason}.${hint}`,
       };
     }
     return {
@@ -118,7 +126,6 @@ export async function check(
   }
 
   // Path 2: certificate reference.
-  const certRefKeys = ['x5c', 'x5t#S256', 'x5u'];
   const presentCertRefs = certRefKeys.filter((k) => cnf[k] !== undefined);
   if (presentCertRefs.length > 0) {
     return {
@@ -133,7 +140,7 @@ export async function check(
     controlId: CONTROL_ID,
     status: 'fail',
     evidenceRef: EVIDENCE_REF,
-    notes: 'cnf is present but contains neither a jwk nor an x5c/x5t#S256/x5u reference.',
+    notes: 'cnf is present but contains neither a jwk (RFC 7517 public key with kty) nor an x5c / x5t#S256 / x5u certificate reference at the cnf level.',
   };
 }
 

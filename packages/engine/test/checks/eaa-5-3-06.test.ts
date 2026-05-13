@@ -36,6 +36,6 @@ describe('EAA-5.3-06 (subAttrs has attrs member)', () => {
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('fail');
-    expect(verdict.notes).toMatch(/attrs member missing/);
+    expect(verdict.notes).toMatch(/attrs member (is )?missing/);
   });
 });

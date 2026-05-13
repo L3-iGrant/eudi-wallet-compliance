@@ -41,7 +41,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'status is present but not a JSON object.',
+      notes: 'status is present but not a JSON object. Expected the ETSI flat shape `{ status: { type, purpose, index, uri } }` or the IETF nested envelope `{ status: { status_list: { idx, uri } } }`.',
     };
   }
   const obj = status as Record<string, unknown>;
@@ -59,7 +59,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: `status.type is ${describe(value)}, not a JSON string.`,
+      notes: `status.type is ${describe(value)}, not a JSON string. Expected a non-empty string identifying the status mechanism (e.g. "TokenStatusList").`,
     };
   }
   if (value.length === 0) {
@@ -67,7 +67,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'status.type is an empty string.',
+      notes: 'status.type is an empty string. Expected a non-empty JSON string identifying the status mechanism (e.g. "TokenStatusList").',
     };
   }
   return {

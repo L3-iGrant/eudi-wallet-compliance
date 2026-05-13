@@ -42,7 +42,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: `issuing_authority is ${describe(value)}, not a JSON string.`,
+      notes: `issuing_authority is ${describe(value)}, not a JSON string. Per CIR (EU) 2024/2977 Annex I Table 5, issuing_authority must be a non-empty JSON string carrying the name of the EAA issuer (e.g. "Belgian Federal Public Service").`,
     };
   }
   if (value.length === 0) {
@@ -50,7 +50,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'issuing_authority is an empty string.',
+      notes: 'issuing_authority is an empty string. Expected a non-empty JSON string carrying the name of the EAA issuer (e.g. "Belgian Federal Public Service"). If the credential is issued without an explicit authority, omit the claim entirely.',
     };
   }
   return {

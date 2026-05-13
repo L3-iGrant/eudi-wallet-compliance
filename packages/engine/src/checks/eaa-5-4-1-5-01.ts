@@ -55,7 +55,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: '_sd_alg is present but not a JSON string.',
+      notes: '_sd_alg is present but is not a JSON string. Expected a hash-algorithm name from the IANA "Named Information Hash Algorithm Registry" (per draft-ietf-oauth-selective-disclosure-jwt §5.1.1); typical values are "sha-256", "sha-384", "sha-512". Numbers and nested objects are rejected.',
     };
   }
   if (!REGISTERED_HASH_ALGS.has(sdAlg.toLowerCase())) {

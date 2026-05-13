@@ -29,7 +29,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'nbf claim missing or not a non-negative integer NumericDate.',
+      notes: 'nbf claim is missing or is not a non-negative integer NumericDate. RFC 7519 §2 requires nbf to be a JSON number representing seconds since 1970-01-01T00:00:00Z (e.g. 1735689600). String-quoted timestamps ("1735689600"), ISO-8601 strings and floating-point/negative values are not accepted.',
     };
   }
   return {

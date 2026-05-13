@@ -38,7 +38,7 @@ describe('EAA-5.5-02 (cnf must contain JWK or certificate reference)', () => {
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('fail');
-    expect(verdict.notes).toContain('neither a jwk nor an x5c');
+    expect(verdict.notes).toMatch(/neither a jwk.*x5c/);
   });
 
   it('fails when cnf.jwk is missing kty', async () => {

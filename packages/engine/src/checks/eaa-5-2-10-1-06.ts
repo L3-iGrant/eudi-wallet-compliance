@@ -41,7 +41,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'status component is present but not a JSON object.',
+      notes: 'status component is present but not a JSON object. Expected the ETSI flat shape `{ status: { type, purpose, index, uri } }` or the IETF nested envelope `{ status: { status_list: { idx, uri } } }`.',
     };
   }
   if (ns.shape === 'ietf-nested') {
@@ -59,7 +59,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'status JSON Object is missing the purpose member.',
+      notes: 'status JSON Object is missing the purpose member (e.g. "revocation" or "suspension"). The ETSI flat shape requires status.purpose alongside type/index/uri. If you intended the IETF nested envelope, drop the flat keys and use `status.status_list.{idx, uri}` instead.',
     };
   }
   if (typeof ns.purpose !== 'string' || ns.purpose.length === 0) {
@@ -67,7 +67,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'status.purpose member is present but not a non-empty string.',
+      notes: 'status.purpose is present but is not a non-empty JSON string. Expected a value such as "revocation" or "suspension" identifying what the status reflects.',
     };
   }
   return {

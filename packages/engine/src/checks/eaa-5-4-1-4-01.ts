@@ -46,11 +46,15 @@ export async function check(
   }
   const sd = payload['_sd'];
   if (!Array.isArray(sd) || sd.length === 0) {
+    const nestedPaths = findNestedSdPaths(payload);
+    const nestedHint = nestedPaths.length
+      ? ` Nested _sd array(s) exist under ${nestedPaths.join(', ')}, but those govern only sub-properties of their containing object and cannot satisfy a disclosure for a top-level claim.`
+      : '';
     return {
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: `${propertyDisclosureCount} object-property disclosure(s) present but payload._sd is missing or empty.`,
+      notes: `${propertyDisclosureCount} object-property disclosure(s) present but the top-level _sd array is missing or empty. Each property disclosure's digest must appear in the _sd array at the same level as the claim it replaces.${nestedHint}`,
     };
   }
   if (!sd.every((x) => typeof x === 'string' && x.length > 0)) {
@@ -75,6 +79,21 @@ function base64UrlDecodeToString(s: string): string {
   const base64 = padded + '='.repeat(padLength);
   if (typeof atob === 'function') return atob(base64);
   return Buffer.from(base64, 'base64').toString('binary');
+}
+
+function findNestedSdPaths(payload: Record<string, unknown>): string[] {
+  const paths: string[] = [];
+  function walk(obj: unknown, path: string) {
+    if (obj === null || typeof obj !== 'object' || Array.isArray(obj)) return;
+    const rec = obj as Record<string, unknown>;
+    if (path && Array.isArray(rec['_sd'])) paths.push(path);
+    for (const [k, v] of Object.entries(rec)) {
+      if (k === '_sd') continue;
+      walk(v, path ? `${path}.${k}` : k);
+    }
+  }
+  walk(payload, '');
+  return paths;
 }
 
 export const controlId = CONTROL_ID;

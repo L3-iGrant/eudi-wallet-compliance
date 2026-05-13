@@ -31,7 +31,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'exp claim missing or not a non-negative integer NumericDate.',
+      notes: 'exp claim is missing or is not a non-negative integer NumericDate. RFC 7519 §2 requires exp to be a JSON number representing seconds since 1970-01-01T00:00:00Z (e.g. 1767225600). String-quoted timestamps ("1767225600"), ISO-8601 strings and floating-point/negative values are not accepted.',
     };
   }
   const nbf = payload['nbf'];
@@ -40,7 +40,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: `exp (${exp}) must be strictly greater than nbf (${nbf}).`,
+      notes: `exp (${exp}) must be strictly greater than nbf (${nbf}); otherwise the EAA defines a validity window that closes before it opens. Either increase exp or decrease nbf so the technical validity period spans a positive interval.`,
     };
   }
   return {

@@ -48,7 +48,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: `mDL is missing document_number from the "${NS_MDL}" namespace.`,
+      notes: `mDL is missing document_number from the "${NS_MDL}" namespace. Per Table 5 of ISO/IEC 18013-5 §7.2.1, an mDL must expose document_number (the official document identifier issued by the issuing authority) inside this namespace. Add an IssuerSignedItem with elementIdentifier="document_number" in "${NS_MDL}".`,
     };
   }
   return {
