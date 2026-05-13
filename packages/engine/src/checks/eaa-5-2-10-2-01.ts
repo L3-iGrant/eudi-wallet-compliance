@@ -69,7 +69,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'status index is missing or not a non-negative integer; cannot resolve.',
+      notes: 'Cannot resolve the status list: the index is missing or is not a non-negative integer. Expected `status.index` (ETSI flat) or `status.status_list.idx` (IETF nested) as a JSON integer >= 0, naming this credential\'s row in the list.',
     };
   }
 

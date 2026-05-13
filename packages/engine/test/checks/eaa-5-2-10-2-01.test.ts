@@ -92,7 +92,7 @@ describe('EAA-5.2.10.2-01 (status URI must resolve)', () => {
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('fail');
-    expect(verdict.notes).toContain('status index is missing');
+    expect(verdict.notes).toMatch(/index is missing/);
   });
 
   it('passes when the IETF nested envelope provides idx and uri', async () => {

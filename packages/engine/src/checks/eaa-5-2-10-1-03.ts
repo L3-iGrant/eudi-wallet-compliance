@@ -37,7 +37,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'status component is present but not a JSON object.',
+      notes: 'status component is present but is not a JSON object. Expected either the ETSI flat shape `{ "status": { "type": "...", "purpose": "...", "index": N, "uri": "https://..." } }` or the IETF Token Status List nested envelope `{ "status": { "status_list": { "idx": N, "uri": "https://..." } } }`.',
     };
   }
   return {

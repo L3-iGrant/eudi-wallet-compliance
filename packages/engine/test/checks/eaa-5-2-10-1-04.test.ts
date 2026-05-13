@@ -37,7 +37,7 @@ describe('EAA-5.2.10.1-04 (status JSON Object type member)', () => {
       DEFAULT_SCOPE,
     );
     expect(verdict.status).toBe('fail');
-    expect(verdict.notes).toContain('not a non-empty string');
+    expect(verdict.notes).toMatch(/not a non-empty (JSON )?string/);
   });
 
   it('returns na when status is absent (sjv-eaa-1)', async () => {

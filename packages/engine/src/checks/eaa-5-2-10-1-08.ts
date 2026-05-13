@@ -42,7 +42,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'status component is present but not a JSON object.',
+      notes: 'status component is present but not a JSON object. Expected the ETSI flat shape `{ status: { type, purpose, index, uri } }` or the IETF nested envelope `{ status: { status_list: { idx, uri } } }`.',
     };
   }
   if (ns.shape === 'ietf-nested') {
@@ -52,7 +52,7 @@ export async function check(
         status: 'fail',
         evidenceRef: EVIDENCE_REF,
         notes:
-          'status uses the IETF nested envelope but status.status_list.idx is missing.',
+          'status uses the IETF nested envelope but status.status_list.idx is missing. Expected `{ status: { status_list: { idx: <non-negative integer>, uri: "https://..." } } }` — the idx names the credential\'s row in the Token Status List.',
       };
     }
     return {
@@ -68,7 +68,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'status JSON Object is missing the index member.',
+      notes: 'status JSON Object is missing the index member. The ETSI flat shape requires `status.index` as a non-negative integer naming this credential\'s row in the status list. If you intended the IETF nested envelope, use `status.status_list.idx` instead.',
     };
   }
   return {

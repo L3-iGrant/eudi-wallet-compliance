@@ -49,7 +49,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'status component is present but not a JSON object.',
+      notes: 'status component is present but not a JSON object. Expected the ETSI flat shape `{ status: { type, purpose, index, uri } }` or the IETF nested envelope `{ status: { status_list: { idx, uri } } }`.',
     };
   }
   const uri = (status as Record<string, unknown>)['uri'];
@@ -66,7 +66,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'status.uri is present but not a non-empty JSON string.',
+      notes: 'status.uri is present but is not a non-empty JSON string. Expected an absolute http(s) URL pointing to the status-list endpoint, e.g. "https://issuer.example/status-lists/eaa-1".',
     };
   }
   if (!isUrl(uri)) {
@@ -74,7 +74,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: `status.uri is not a valid http(s) URL: "${uri}".`,
+      notes: `status.uri is not a valid http(s) URL: "${uri}". Expected an absolute http(s) URL pointing to the status-list endpoint, e.g. "https://issuer.example/status-lists/eaa-1". Relative URIs, mailto:/data:/file: and other non-http(s) schemes are rejected because the URI must be dereferenceable by a verifier.`,
     };
   }
   return {

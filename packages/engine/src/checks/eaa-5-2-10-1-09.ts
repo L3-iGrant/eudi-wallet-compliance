@@ -37,7 +37,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'status component is present but not a JSON object.',
+      notes: 'status component is present but not a JSON object. Expected the ETSI flat shape `{ status: { type, purpose, index, uri } }` or the IETF nested envelope `{ status: { status_list: { idx, uri } } }`.',
     };
   }
   const idx = (status as Record<string, unknown>)['index'];
@@ -54,7 +54,7 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'status.index is present but not a non-negative JSON integer.',
+      notes: 'status.index is present but is not a non-negative JSON integer. Expected an integer >= 0 (e.g. 42), encoded as a JSON number — string-quoted values ("42") and floating-point/negative values are rejected.',
     };
   }
   return {
