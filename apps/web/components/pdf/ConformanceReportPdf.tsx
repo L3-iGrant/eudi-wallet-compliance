@@ -9,20 +9,16 @@ import {
 } from '@react-pdf/renderer';
 import type { AssessmentResult, Verdict } from '@iwc/engine';
 
-// react-pdf v4.x ships CircleProps without strokeDashoffset, even though
-// the underlying renderer honours the attribute. Module-augment instead
-// of casting at every call site so the donut math reads naturally.
-declare module '@react-pdf/renderer' {
-  interface CircleProps {
-    strokeDashoffset?: number | string;
-  }
-}
-
-// Brand palette mirrors the web report.
+// Brand palette mirrors the web report. The donut strokes use the
+// -500 shades that the on-screen VerdictDonut renders with; card
+// value text uses the -700 shades that the on-screen Stat tile uses.
 const BLUE = '#1d4ed8';
 const EMERALD = '#047857';
 const RED = '#b91c1c';
 const AMBER = '#b45309';
+const EMERALD_500 = '#10b981';
+const RED_500 = '#ef4444';
+const AMBER_500 = '#f59e0b';
 const ZINC_950 = '#09090b';
 const ZINC_700 = '#3f3f46';
 const ZINC_500 = '#71717a';
@@ -282,6 +278,17 @@ export function ConformanceReportPdf({ report }: ConformanceReportPdfProps) {
     (v) => v.status !== 'na' || v.notes !== 'No check implemented yet',
   );
   const unimplementedCount = report.verdicts.length - activeVerdicts.length;
+  // Mirror the on-screen report's summary: subtract unimplemented-check
+  // N/As so the cover-page donut and N/A card match what the user just
+  // saw on the report page. The unimplementedCount is surfaced separately
+  // in the note below the summary.
+  const activeSummary = activeVerdicts.reduce(
+    (acc, v) => {
+      acc[v.status] += 1;
+      return acc;
+    },
+    { pass: 0, fail: 0, warn: 0, na: 0 } as { pass: number; fail: number; warn: number; na: number },
+  );
   const items = flattenWithHeadings(activeVerdicts);
   const pages: RowItem[][] = [];
   for (let i = 0; i < items.length; i += ROWS_PER_PAGE) {
@@ -293,6 +300,7 @@ export function ConformanceReportPdf({ report }: ConformanceReportPdfProps) {
     <Document title={`Conformance Report ${report.reportId.slice(0, 8)}`}>
       <CoverPage
         report={report}
+        activeSummary={activeSummary}
         unimplementedCount={unimplementedCount}
         totalPages={totalPages}
       />
@@ -327,10 +335,14 @@ export function ConformanceReportPdf({ report }: ConformanceReportPdfProps) {
  * Donut chart for the PDF cover page. Mirrors the web report's
  * VerdictDonut: pass / fail / warn segments only, N/A excluded.
  *
- * No chart library; one stroked Circle per segment with
- * strokeDasharray sized to its fraction of the total and
- * strokeDashoffset advancing per segment so segments sit
- * end-to-end. Renders nothing when there are no decisive verdicts.
+ * No chart library and no strokeDashoffset: the @react-pdf renderer
+ * silently drops a negative strokeDashoffset on a Circle, which made
+ * every segment start at the same position and left a visible gap
+ * between the last segment and 12 o'clock. Each segment is therefore
+ * its own Circle with strokeDasharray sized to its fraction of the
+ * total and a per-segment rotate(...) that walks the start point
+ * around the ring. Renders nothing when there are no decisive
+ * verdicts.
  */
 function VerdictDonutPdf({
   summary,
@@ -343,19 +355,20 @@ function VerdictDonutPdf({
   const r = 35;
   const c = 2 * Math.PI * r;
   const segments: Array<{ count: number; colour: string }> = [
-    { count: summary.pass, colour: EMERALD },
-    { count: summary.fail, colour: RED },
-    { count: summary.warn, colour: AMBER },
+    { count: summary.pass, colour: EMERALD_500 },
+    { count: summary.fail, colour: RED_500 },
+    { count: summary.warn, colour: AMBER_500 },
   ];
 
-  let cumulative = 0;
+  let cumulativeDeg = 0;
   const arcs = segments
     .filter((s) => s.count > 0)
     .map((s) => {
-      const len = (s.count / total) * c;
-      const offset = -cumulative;
-      cumulative += len;
-      return { len, offset, colour: s.colour };
+      const fraction = s.count / total;
+      const len = fraction * c;
+      const rotateDeg = -90 + cumulativeDeg;
+      cumulativeDeg += fraction * 360;
+      return { len, rotateDeg, colour: s.colour };
     });
 
   return (
@@ -378,8 +391,7 @@ function VerdictDonutPdf({
           stroke={a.colour}
           strokeWidth={12}
           strokeDasharray={`${a.len} ${c - a.len}`}
-          strokeDashoffset={a.offset}
-          transform="rotate(-90)"
+          transform={`rotate(${a.rotateDeg})`}
         />
       ))}
       <Text
@@ -404,10 +416,12 @@ function VerdictDonutPdf({
 
 function CoverPage({
   report,
+  activeSummary,
   unimplementedCount,
   totalPages,
 }: {
   report: AssessmentResult;
+  activeSummary: { pass: number; fail: number; warn: number; na: number };
   unimplementedCount: number;
   totalPages: number;
 }) {
@@ -438,12 +452,12 @@ function CoverPage({
 
       <Text style={styles.h2}>Summary</Text>
       <View style={styles.summarySection}>
-        <VerdictDonutPdf summary={report.summary} />
+        <VerdictDonutPdf summary={activeSummary} />
         <View style={styles.summaryGrid}>
-          <SummaryCard label="Pass" value={report.summary.pass} colour={EMERALD} />
-          <SummaryCard label="Fail" value={report.summary.fail} colour={RED} />
-          <SummaryCard label="Warn" value={report.summary.warn} colour={AMBER} />
-          <SummaryCard label="N/A" value={report.summary.na} colour={ZINC_700} />
+          <SummaryCard label="Pass" value={activeSummary.pass} colour={EMERALD} />
+          <SummaryCard label="Fail" value={activeSummary.fail} colour={RED} />
+          <SummaryCard label="Warn" value={activeSummary.warn} colour={AMBER} />
+          <SummaryCard label="N/A" value={activeSummary.na} colour={ZINC_700} />
         </View>
       </View>
       {unimplementedCount > 0 && (
