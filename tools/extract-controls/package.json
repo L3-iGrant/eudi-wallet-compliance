@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@iwc/controls": "workspace:*",
-    "pdf-parse": "^1.1.1",
+    "pdf-parse": "^2.4.5",
     "yaml": "^2.9.0",
     "zod": "^4.4.3"
   },
