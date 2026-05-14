@@ -16,8 +16,8 @@
     "build:bundle": "tsx scripts/build-bundle.ts"
   },
   "dependencies": {
-    "yaml": "^2.6.0",
-    "zod": "^4.0.0"
+    "yaml": "^2.9.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
