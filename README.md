@@ -1,8 +1,14 @@
 # EUDI Wallet Compliance Self-Assessment
 
-[![CI](https://github.com/L3-iGrant/eudi-wallet-compliance/actions/workflows/ci.yml/badge.svg)](https://github.com/L3-iGrant/eudi-wallet-compliance/actions/workflows/ci.yml)
-[![Licence: Apache-2.0](https://img.shields.io/badge/Licence-Apache_2.0-blue.svg)](./LICENSE)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](./CODE_OF_CONDUCT.md)
+[![CI](https://github.com/L3-iGrant/eudi-wallet-compliance/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/L3-iGrant/eudi-wallet-compliance/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/L3-iGrant/eudi-wallet-compliance/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/L3-iGrant/eudi-wallet-compliance/actions/workflows/codeql.yml)
+[![Latest release](https://img.shields.io/github/v/release/L3-iGrant/eudi-wallet-compliance?sort=semver&display_name=tag&label=release)](https://github.com/L3-iGrant/eudi-wallet-compliance/releases)
+[![Last commit](https://img.shields.io/github/last-commit/L3-iGrant/eudi-wallet-compliance/main?label=last%20commit)](https://github.com/L3-iGrant/eudi-wallet-compliance/commits/main)
+[![Open issues](https://img.shields.io/github/issues/L3-iGrant/eudi-wallet-compliance?label=open%20issues)](https://github.com/L3-iGrant/eudi-wallet-compliance/issues)
+[![Open PRs](https://img.shields.io/github/issues-pr/L3-iGrant/eudi-wallet-compliance?label=open%20PRs)](https://github.com/L3-iGrant/eudi-wallet-compliance/pulls)
+[![Licence: Apache-2.0](https://img.shields.io/badge/licence-Apache_2.0-blue.svg)](./LICENSE)
+[![Contributor Covenant 2.1](https://img.shields.io/badge/code%20of%20conduct-Contributor%20Covenant%202.1-4baaaa.svg)](./CODE_OF_CONDUCT.md)
+[![Conformance: ETSI TS 119 472-1](https://img.shields.io/badge/conformance-ETSI%20TS%20119%20472--1%20v1.2.1-1d4ed8)](https://www.etsi.org/deliver/etsi_ts/119400_119499/11947201/)
 
 A reference conformance toolkit for EUDI Wallet infrastructure providers. The catalogue carries normative controls extracted verbatim from ETSI, ISO/IEC, IETF, and EU regulatory sources; the engine evaluates real-world credentials against those controls; the web app surfaces both as a self-assessment tool that issues a downloadable conformance report.
 
