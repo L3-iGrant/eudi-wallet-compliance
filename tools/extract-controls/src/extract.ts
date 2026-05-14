@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { parseArgs } from 'node:util';
 import { stringify as stringifyYaml } from 'yaml';
-import pdfParse from 'pdf-parse/lib/pdf-parse.js';
+import { PDFParse } from 'pdf-parse';
 import type { Control, Profile, AppliesTo, RequirementLevel } from '@iwc/controls';
 
 interface CliArgs {
@@ -44,23 +44,19 @@ interface ExtractedDocument {
 
 async function extractPdfText(pdfPath: string): Promise<ExtractedDocument> {
   const buffer = await readFile(pdfPath);
-  const pageStarts: number[] = [];
-  let combinedText = '';
-
-  await pdfParse(buffer, {
-    pagerender: async (pageData) => {
+  const parser = new PDFParse({ data: new Uint8Array(buffer) });
+  try {
+    const result = await parser.getText();
+    const pageStarts: number[] = [];
+    let combinedText = '';
+    for (const page of result.pages) {
       pageStarts.push(combinedText.length);
-      const content = await pageData.getTextContent({
-        normalizeWhitespace: false,
-        disableCombineTextItems: false,
-      });
-      const pageText = content.items.map((it) => it.str).join(' ');
-      combinedText += pageText + '\n';
-      return pageText;
-    },
-  });
-
-  return { text: combinedText, pageStarts };
+      combinedText += page.text + '\n';
+    }
+    return { text: combinedText, pageStarts };
+  } finally {
+    await parser.destroy();
+  }
 }
 
 function offsetToPage(pageStarts: number[], offset: number): number {

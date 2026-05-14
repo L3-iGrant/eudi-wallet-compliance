@@ -22,6 +22,7 @@
  *   mdl-eaa-5: mdoc PuB-EAA with shortLived = true.
  */
 
+import 'reflect-metadata';
 import { writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -195,7 +196,7 @@ async function generateDevCert(): Promise<{ pem: string; der: Uint8Array }> {
     notBefore: new Date('2026-01-01T00:00:00Z'),
     notAfter: new Date('2031-01-01T00:00:00Z'),
     signingAlgorithm: { name: 'ECDSA', hash: 'SHA-256' },
-    keys,
+    keys: keys as CryptoKeyPair,
     extensions: [
       new x509.BasicConstraintsExtension(true, 0, true),
       new x509.KeyUsagesExtension(
