@@ -37,7 +37,7 @@
     "happy-dom": "^20.9.0",
     "serve": "^14.2.6",
     "tailwindcss": "^4",
-    "typescript": "^5",
+    "typescript": "^6.0.3",
     "vitest": "^3.0.0"
   }
 }
