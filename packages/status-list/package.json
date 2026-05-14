@@ -13,10 +13,10 @@
   "dependencies": {
     "cbor-x": "^1.6.0",
     "fflate": "^0.8.2",
-    "jose": "^5.9.0"
+    "jose": "^6.2.3"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
+    "@types/node": "^25.7.0",
     "typescript": "^5.9.0",
     "vitest": "^3.0.0"
   }
