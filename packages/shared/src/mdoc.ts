@@ -257,7 +257,7 @@ function decodeMso(payloadBstr: Uint8Array): MobileSecurityObject {
  * the dedicated `org.etsi.01947201.010101` namespace. Several real issuers
  * (e.g. BOSA's PuB-EAA mdoc) only use the namespace form. Lift them onto
  * the MSO so every consumer sees a uniform shape regardless of where the
- * wire format placed them. The MSO-root values take precedence — only
+ * wire format placed them. The MSO-root values take precedence: only
  * fill from the namespace when the MSO field is absent.
  */
 function liftEtsiExtensionsFromNamespaces(
@@ -375,7 +375,7 @@ export function parseMdoc(input: string | Uint8Array): ParsedMdoc {
   // RFC 9052 §4.4 allows COSE_Sign1 to be tagged with CBOR tag 18
   // (`COSE_Sign1_Tagged`). ISO/IEC 18013-5 §9.1.2.4 specifies the untagged
   // form, but several issuers in the wild (e.g. BOSA's PuB-EAA mdoc) emit
-  // the tagged form. Accept both — unwrap when tagged.
+  // the tagged form. Accept both: unwrap when tagged.
   const issuerAuthArr =
     issuerAuthRaw instanceof Tag && issuerAuthRaw.tag === 18
       ? issuerAuthRaw.value

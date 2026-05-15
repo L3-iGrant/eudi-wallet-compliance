@@ -23,7 +23,7 @@ const EVIDENCE_REF = 'eaa-payload';
  * clause 4.2.4 semantics. The element name changed across ISO/IEC
  * 23220-2 revisions (see EAA-6.2.4.1-03 for naming history). Structural
  * presence is enforced there; the semantic check (clause 4.2.4) is
- * deferred — the value content (string identifying the EAA Trust Service
+ * deferred: the value content (string identifying the EAA Trust Service
  * Provider) is policy-driven.
  */
 export async function check(
