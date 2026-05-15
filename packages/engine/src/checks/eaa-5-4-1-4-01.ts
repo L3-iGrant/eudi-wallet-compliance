@@ -6,13 +6,33 @@ const CONTROL_ID = 'EAA-5.4.1.4-01';
 const EVIDENCE_REF = 'eaa-payload';
 
 /**
- * EAA-5.4.1.4-01: When a SD-JWT VC EAA carries selectively-disclosable
- * JSON properties, the payload shall include the `_sd` component
- * containing their disclosure digests.
+ * EAA-5.4.1.4-01: A SD-JWT VC EAA containing one or more selectively
+ * disclosable attested attributes that are JSON Properties (clause 4.2.1
+ * of IETF SD-JWT) shall include the `_sd` component containing their
+ * disclosure digests computed as specified in clause 5.2.4.1 of IETF
+ * SD-JWT.
  *
- * Structural interpretation: if there is at least one object-property
- * disclosure (a 3-element JSON array on the wire), then the payload
- * must include `_sd` as a non-empty array of strings.
+ * IETF SD-JWT §5.2.4.1 places each property-disclosure digest in an
+ * `_sd` array AT THE SAME LEVEL as the claim it replaces. The `_sd`
+ * array can appear at the top of the payload OR nested inside any
+ * intermediate JSON object (including objects that are themselves
+ * elements of a JSON array). A payload where every selectively
+ * disclosable property is nested inside a sub-object will legitimately
+ * have NO top-level `_sd` member: only the nested ones.
+ *
+ * Engine rule:
+ *   - na   : no object-property disclosures present
+ *   - fail : there are property disclosures but no `_sd` digests anywhere
+ *            in the payload, OR the total digest count is less than the
+ *            number of property disclosures (a property disclosure
+ *            without a matching digest is non-conformant)
+ *   - pass : at least one `_sd` array exists and the cumulative digest
+ *            count covers every property disclosure
+ *
+ * Strict digest-by-digest matching (computing the base64url(SHA-256) of
+ * each disclosure and asserting presence in some `_sd` array) is a
+ * stronger check; we keep the structural one here and leave that
+ * verification to the runtime resolver.
  */
 export async function check(
   evidence: ParsedEvidence,
@@ -41,35 +61,37 @@ export async function check(
       controlId: CONTROL_ID,
       status: 'na',
       evidenceRef: EVIDENCE_REF,
-      notes: 'No object-property disclosures; rule applies only when JSON properties are selectively disclosed.',
+      notes:
+        'No object-property disclosures; rule applies only when JSON properties are selectively disclosed.',
     };
   }
-  const sd = payload['_sd'];
-  if (!Array.isArray(sd) || sd.length === 0) {
-    const nestedPaths = findNestedSdPaths(payload);
-    const nestedHint = nestedPaths.length
-      ? ` Nested _sd array(s) exist under ${nestedPaths.join(', ')}, but those govern only sub-properties of their containing object and cannot satisfy a disclosure for a top-level claim.`
-      : '';
+
+  const { count: digestCount, paths } = collectAllSdDigests(payload);
+  if (digestCount === 0) {
     return {
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: `${propertyDisclosureCount} object-property disclosure(s) present but the top-level _sd array is missing or empty. Each property disclosure's digest must appear in the _sd array at the same level as the claim it replaces.${nestedHint}`,
+      notes:
+        `${propertyDisclosureCount} object-property disclosure(s) present but no _sd array (top-level or nested) appears in the payload. ` +
+        `Each property disclosure digest must appear in an _sd array at the same level as the claim it replaces (IETF SD-JWT §5.2.4.1).`,
     };
   }
-  if (!sd.every((x) => typeof x === 'string' && x.length > 0)) {
+  if (digestCount < propertyDisclosureCount) {
     return {
       controlId: CONTROL_ID,
       status: 'fail',
       evidenceRef: EVIDENCE_REF,
-      notes: 'payload._sd contains non-string or empty entries; expected non-empty string digests.',
+      notes:
+        `${propertyDisclosureCount} object-property disclosure(s) present, but only ${digestCount} _sd digest(s) found across the payload (at ${paths.join(', ') || '(none)'}). ` +
+        `Each property disclosure digest must appear in an _sd array at the same level as the claim it replaces (IETF SD-JWT §5.2.4.1).`,
     };
   }
   return {
     controlId: CONTROL_ID,
     status: 'pass',
     evidenceRef: EVIDENCE_REF,
-    notes: `payload._sd carries ${sd.length} disclosure digest(s).`,
+    notes: `${digestCount} _sd digest(s) across ${paths.length} _sd array(s) cover ${propertyDisclosureCount} object-property disclosure(s).`,
   };
 }
 
@@ -81,19 +103,38 @@ function base64UrlDecodeToString(s: string): string {
   return Buffer.from(base64, 'base64').toString('binary');
 }
 
-function findNestedSdPaths(payload: Record<string, unknown>): string[] {
+/**
+ * Walk the payload and total up every `_sd` array's length. Also collect
+ * a dotted path for each `_sd` array found, so failure messages can
+ * point the issuer to where their digests actually live. Array indices
+ * are rendered as `[i]`.
+ */
+function collectAllSdDigests(payload: Record<string, unknown>): {
+  count: number;
+  paths: string[];
+} {
+  let count = 0;
   const paths: string[] = [];
-  function walk(obj: unknown, path: string) {
-    if (obj === null || typeof obj !== 'object' || Array.isArray(obj)) return;
-    const rec = obj as Record<string, unknown>;
-    if (path && Array.isArray(rec['_sd'])) paths.push(path);
+  function walk(node: unknown, path: string): void {
+    if (node === null || node === undefined) return;
+    if (Array.isArray(node)) {
+      for (let i = 0; i < node.length; i++) walk(node[i], `${path}[${i}]`);
+      return;
+    }
+    if (typeof node !== 'object') return;
+    const rec = node as Record<string, unknown>;
+    const sd = rec['_sd'];
+    if (Array.isArray(sd) && sd.length > 0) {
+      count += sd.filter((x) => typeof x === 'string' && x.length > 0).length;
+      paths.push(path || '<root>');
+    }
     for (const [k, v] of Object.entries(rec)) {
-      if (k === '_sd') continue;
+      if (k === '_sd' || k === '_sd_alg') continue;
       walk(v, path ? `${path}.${k}` : k);
     }
   }
   walk(payload, '');
-  return paths;
+  return { count, paths };
 }
 
 export const controlId = CONTROL_ID;

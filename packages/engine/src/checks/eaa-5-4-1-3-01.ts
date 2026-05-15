@@ -9,10 +9,14 @@ const EVIDENCE_REF = 'eaa-payload';
  * EAA-5.4.1.3-01: A SD-JWT VC EAA shall contain one disclosure for each
  * selectively-disclosable attested attribute.
  *
- * Structural interpretation: every disclosure attached to the compact
- * form must correspond to an entry in the payload's `_sd` digest array
- * (i.e. counts must match for object-property disclosures). Returns N/A
- * when neither disclosures nor `_sd` are present.
+ * Structural interpretation: every object-property disclosure attached
+ * to the compact form must correspond to an entry in SOME `_sd` digest
+ * array in the payload. The `_sd` array can be at the top of the payload
+ * OR nested inside any sub-object (including objects that are elements
+ * of a JSON array). Counts must match overall.
+ *
+ * Array-element disclosures (2-element decoded arrays) are not counted
+ * here; the IETF SD-JWT counting rule is loose for them.
  */
 export async function check(
   evidence: ParsedEvidence,
@@ -28,9 +32,8 @@ export async function check(
     };
   }
   const { payload, disclosures } = evidence.parsed;
-  const sd = payload['_sd'];
-  const sdArray = Array.isArray(sd) ? (sd as unknown[]) : [];
-  if (disclosures.length === 0 && sdArray.length === 0) {
+  const { count: sdDigestCount, paths } = collectAllSdDigests(payload);
+  if (disclosures.length === 0 && sdDigestCount === 0) {
     return {
       controlId: CONTROL_ID,
       status: 'na',
@@ -38,32 +41,29 @@ export async function check(
       notes: 'No disclosures and no _sd digests; rule applies only when SD is exercised.',
     };
   }
-  // Object-property disclosures: a 3-element array. Count them and
-  // compare with _sd length. Array-element disclosures (2-element arrays)
-  // are not represented in `_sd`; they are out of scope for this counting
-  // check. The IETF SD-JWT counting rule is loose here, so we report a
-  // warn rather than a fail when counts diverge.
-  const propertyDisclosures = disclosures.filter((d) => {
+  const propertyDisclosureCount = disclosures.filter((d) => {
     try {
       const decoded = JSON.parse(base64UrlDecodeToString(d));
       return Array.isArray(decoded) && decoded.length === 3;
     } catch {
       return false;
     }
-  });
-  if (propertyDisclosures.length === sdArray.length) {
+  }).length;
+  if (propertyDisclosureCount === sdDigestCount) {
     return {
       controlId: CONTROL_ID,
       status: 'pass',
       evidenceRef: EVIDENCE_REF,
-      notes: `${propertyDisclosures.length} object-property disclosure(s) match ${sdArray.length} _sd digest(s).`,
+      notes:
+        `${propertyDisclosureCount} object-property disclosure(s) match ${sdDigestCount} _sd digest(s) across ${paths.length} _sd array(s) (${paths.join(', ') || '<root>'}).`,
     };
   }
   return {
     controlId: CONTROL_ID,
     status: 'warn',
     evidenceRef: EVIDENCE_REF,
-    notes: `${propertyDisclosures.length} object-property disclosure(s) but ${sdArray.length} _sd digest(s); counts do not match. Verify each disclosure has a digest in _sd and vice versa.`,
+    notes:
+      `${propertyDisclosureCount} object-property disclosure(s) but ${sdDigestCount} _sd digest(s) across ${paths.length} _sd array(s) (${paths.join(', ') || '<root>'}); counts do not match. Verify each disclosure has a matching digest.`,
   };
 }
 
@@ -73,6 +73,34 @@ function base64UrlDecodeToString(s: string): string {
   const base64 = padded + '='.repeat(padLength);
   if (typeof atob === 'function') return atob(base64);
   return Buffer.from(base64, 'base64').toString('binary');
+}
+
+function collectAllSdDigests(payload: Record<string, unknown>): {
+  count: number;
+  paths: string[];
+} {
+  let count = 0;
+  const paths: string[] = [];
+  function walk(node: unknown, path: string): void {
+    if (node === null || node === undefined) return;
+    if (Array.isArray(node)) {
+      for (let i = 0; i < node.length; i++) walk(node[i], `${path}[${i}]`);
+      return;
+    }
+    if (typeof node !== 'object') return;
+    const rec = node as Record<string, unknown>;
+    const sd = rec['_sd'];
+    if (Array.isArray(sd) && sd.length > 0) {
+      count += sd.filter((x) => typeof x === 'string' && x.length > 0).length;
+      paths.push(path || '<root>');
+    }
+    for (const [k, v] of Object.entries(rec)) {
+      if (k === '_sd' || k === '_sd_alg') continue;
+      walk(v, path ? `${path}.${k}` : k);
+    }
+  }
+  walk(payload, '');
+  return { count, paths };
 }
 
 export const controlId = CONTROL_ID;
