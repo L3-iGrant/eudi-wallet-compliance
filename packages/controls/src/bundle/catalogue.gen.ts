@@ -8551,8 +8551,8 @@ export const CONTROLS_BUNDLE: ControlsCatalogue = [
     "evidence_type": [
       "eaa-payload"
     ],
-    "short_title": "Non-mDL shall include issuing_authority_unicode component",
-    "spec_text": "If an ISO/IEC-mdoc EAA is NOT a mDL it shall include the issuing_authority_unicode component, specified in clause 6.3 of ISO/IEC 23220-2.",
+    "short_title": "Non-mDL shall include the unicode issuing-authority element",
+    "spec_text": "If an ISO/IEC-mdoc EAA is NOT a mDL it shall include the unicode issuing authority element, specified in clause 6.3 of ISO/IEC 23220-2. Naming note: ISO/IEC 23220-2:2026 renames the element to \"issuing_authority\" (the latin1 variant becomes \"issuing_authority_latin1\"); ETSI TS 119 472-1 v1.2.1 still cites the older 23220-2 name \"issuing_authority_unicode\". The engine accepts either as satisfying this requirement.",
     "plain_english": "TODO",
     "common_mistakes": [],
     "related_controls": []

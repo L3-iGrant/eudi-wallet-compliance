@@ -19,8 +19,12 @@ const CONTROL_ID = 'EAA-6.2.4.1-04';
 const EVIDENCE_REF = 'eaa-payload';
 
 /**
- * EAA-6.2.4.1-04: issuing_authority_unicode shall implement clause 4.2.4
- * semantics. Deferred (semantic).
+ * EAA-6.2.4.1-04: the unicode issuing authority element shall implement
+ * clause 4.2.4 semantics. The element name changed across ISO/IEC
+ * 23220-2 revisions (see EAA-6.2.4.1-03 for naming history). Structural
+ * presence is enforced there; the semantic check (clause 4.2.4) is
+ * deferred — the value content (string identifying the EAA Trust Service
+ * Provider) is policy-driven.
  */
 export async function check(
   evidence: ParsedEvidence,
@@ -40,7 +44,7 @@ export async function check(
     status: 'na',
     evidenceRef: EVIDENCE_REF,
     notes:
-      'Structural presence is covered by EAA-6.2.4.1-03; clause-4.2.4 semantic conformance is deferred.',
+      'Structural presence of the unicode issuing-authority element is covered by EAA-6.2.4.1-03 (accepts ISO/IEC 23220-2:2026 "issuing_authority" or the legacy "issuing_authority_unicode"); clause-4.2.4 semantic conformance is deferred.',
   };
 }
 

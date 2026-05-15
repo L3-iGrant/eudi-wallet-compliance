@@ -539,20 +539,26 @@ describe('§6.2.4 EAA issuer identifier', () => {
     expect(v.status).toBe('fail');
   });
 
-  it('EAA-6.2.4.1-03 passes for non-mDL with issuing_authority_unicode', async () => {
+  it('EAA-6.2.4.1-03 passes for non-mDL with legacy issuing_authority_unicode', async () => {
     const parsed = await loadMdocFixture();
     const ok = asConformantNonMdl(parsed);
     const v = await runCheckParsed(check_6_2_4_1_03, asMdocEvidence(ok), DEFAULT_MDOC_SCOPE);
     expect(v.status).toBe('pass');
   });
 
-  it('EAA-6.2.4.1-03 fails for non-mDL missing issuing_authority_unicode', async () => {
+  it('EAA-6.2.4.1-03 passes for non-mDL with ISO/IEC 23220-2:2026 issuing_authority', async () => {
     const parsed = await loadMdocFixture();
-    const broken = withoutItem(
-      asConformantNonMdl(parsed),
-      NS_ISO_23220,
-      'issuing_authority_unicode',
-    );
+    let base = asConformantNonMdl(parsed);
+    base = withoutItem(base, NS_ISO_23220, 'issuing_authority_unicode');
+    base = withItem(base, NS_ISO_23220, 'issuing_authority', 'Service Public Fédéral');
+    const v = await runCheckParsed(check_6_2_4_1_03, asMdocEvidence(base), DEFAULT_MDOC_SCOPE);
+    expect(v.status).toBe('pass');
+  });
+
+  it('EAA-6.2.4.1-03 fails for non-mDL missing both names', async () => {
+    const parsed = await loadMdocFixture();
+    let broken = withoutItem(asConformantNonMdl(parsed), NS_ISO_23220, 'issuing_authority_unicode');
+    broken = withoutItem(broken, NS_ISO_23220, 'issuing_authority');
     const v = await runCheckParsed(check_6_2_4_1_03, asMdocEvidence(broken), DEFAULT_MDOC_SCOPE);
     expect(v.status).toBe('fail');
   });
