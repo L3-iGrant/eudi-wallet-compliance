@@ -250,6 +250,47 @@ function decodeMso(payloadBstr: Uint8Array): MobileSecurityObject {
   return mso;
 }
 
+/**
+ * ETSI TS 119 472-1 §6 allows the EAA-specific data elements (`status`,
+ * `category`, `oneTime`, `shortLived`, `iss_reg_id`, `also_known_as`) to
+ * live either in the MSO root (as MSO extensions) or as data elements in
+ * the dedicated `org.etsi.01947201.010101` namespace. Several real issuers
+ * (e.g. BOSA's PuB-EAA mdoc) only use the namespace form. Lift them onto
+ * the MSO so every consumer sees a uniform shape regardless of where the
+ * wire format placed them. The MSO-root values take precedence — only
+ * fill from the namespace when the MSO field is absent.
+ */
+function liftEtsiExtensionsFromNamespaces(
+  mso: MobileSecurityObject,
+  nameSpaces: Record<string, IssuerSignedItem[]>,
+): void {
+  const items = nameSpaces['org.etsi.01947201.010101'];
+  if (!items) return;
+  for (const item of items) {
+    const v = item.elementValue;
+    switch (item.elementIdentifier) {
+      case 'status':
+        if (mso.status === undefined && isPlainObject(v)) mso.status = v as Record<string, unknown>;
+        break;
+      case 'shortLived':
+        if (mso.shortLived === undefined && typeof v === 'boolean') mso.shortLived = v;
+        break;
+      case 'oneTime':
+        if (mso.oneTime === undefined && typeof v === 'boolean') mso.oneTime = v;
+        break;
+      case 'category':
+        if (mso.category === undefined && typeof v === 'string') mso.category = v;
+        break;
+      case 'iss_reg_id':
+        if (mso.iss_reg_id === undefined && typeof v === 'string') mso.iss_reg_id = v;
+        break;
+      case 'also_known_as':
+        if (mso.also_known_as === undefined && typeof v === 'string') mso.also_known_as = v;
+        break;
+    }
+  }
+}
+
 function decodeNameSpaces(raw: unknown): Record<string, IssuerSignedItem[]> {
   if (!isPlainObject(raw)) {
     throw new ParseError('IssuerSigned.nameSpaces must be a CBOR map');
@@ -331,12 +372,20 @@ export function parseMdoc(input: string | Uint8Array): ParsedMdoc {
     throw new ParseError('mdoc IssuerSigned is missing the nameSpaces member');
   }
 
-  if (!Array.isArray(issuerAuthRaw) || issuerAuthRaw.length !== 4) {
+  // RFC 9052 §4.4 allows COSE_Sign1 to be tagged with CBOR tag 18
+  // (`COSE_Sign1_Tagged`). ISO/IEC 18013-5 §9.1.2.4 specifies the untagged
+  // form, but several issuers in the wild (e.g. BOSA's PuB-EAA mdoc) emit
+  // the tagged form. Accept both — unwrap when tagged.
+  const issuerAuthArr =
+    issuerAuthRaw instanceof Tag && issuerAuthRaw.tag === 18
+      ? issuerAuthRaw.value
+      : issuerAuthRaw;
+  if (!Array.isArray(issuerAuthArr) || issuerAuthArr.length !== 4) {
     throw new ParseError(
       'IssuerSigned.issuerAuth must be a four-element COSE_Sign1 array',
     );
   }
-  const [protectedBstr, unprotectedRaw, payloadBstr, signatureBstr] = issuerAuthRaw;
+  const [protectedBstr, unprotectedRaw, payloadBstr, signatureBstr] = issuerAuthArr;
   if (!isUint8Array(protectedBstr)) {
     throw new ParseError('COSE_Sign1[0] (protected) must be a byte string');
   }
@@ -351,6 +400,7 @@ export function parseMdoc(input: string | Uint8Array): ParsedMdoc {
   const protectedHeader = decodeProtectedHeader(protectedBstr);
   const mso = decodeMso(payloadBstr);
   const nameSpaces = decodeNameSpaces(nameSpacesRaw);
+  liftEtsiExtensionsFromNamespaces(mso, nameSpaces);
 
   return {
     docType: mso.docType,
